@@ -61,7 +61,8 @@ nav a:hover{color:var(--accent)}
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(circle at 78% 20%,rgba(201,77,50,.15),transparent 28%),
+    linear-gradient(90deg,rgba(13,15,18,.98) 0%,rgba(13,15,18,.88) 44%,rgba(13,15,18,.28) 72%,rgba(13,15,18,.62) 100%),
+    url('stelios-live.webp') right center/auto 100% no-repeat,
     linear-gradient(135deg,#111419 0%,#0d0f12 55%,#0a0b0d 100%);
 }
 .hero:before{
@@ -113,7 +114,20 @@ h1 span{display:block;color:var(--accent)}
 .btn:hover{background:#df6246}
 .btn.ghost{background:transparent;color:var(--text);border-color:#3b414c}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-section{padding:84px 0;border-top:1px solid var(--line)}
+section{padding:84px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
+#about::after,#projects::after,#discography::after,#live::after,#media::after,#contact::after{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  width:min(38vw,460px);
+  background:url('stelios-live.webp') center/cover no-repeat;
+  opacity:.16;
+  filter:grayscale(20%);
+  pointer-events:none;
+}
+#about::after,#discography::after,#media::after{right:0;mask-image:linear-gradient(to left,black 55%,transparent 100%)}
+#projects::after,#live::after,#contact::after{left:0;mask-image:linear-gradient(to right,black 55%,transparent 100%)}
+section .wrap{position:relative;z-index:1}
 .section-head{
   display:grid;
   grid-template-columns:220px 1fr;
@@ -184,6 +198,9 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
   .section-head{grid-template-columns:1fr;gap:12px}
   .grid{grid-template-columns:1fr}
   .video-grid{grid-template-columns:1fr}
+  #about::after,#projects::after,#discography::after,#live::after,#media::after,#contact::after{
+    width:70vw;opacity:.10;background-position:center top;
+  }
 }
 </style>
 </head>
@@ -221,7 +238,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-body">
         <h2>Behind the kit</h2>
         <p>Stelios Sioulas is a drummer from Thessaloniki, Greece, with a career spanning original bands, tribute acts, studio recordings and live collaborations.</p>
-        <p>His projects include The Prisoners, The Puppets, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, John Jeff Touch, Ούτε Σπόντα, Persona Non Grata, Pop ’N’ Roll, 6 Degrees of Separation, Palermo and Obscurus Rex, alongside additional session and live work.</p>
+        <p>His projects include The Prisoners, The Puppets, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, John Jeff Touch, Ούτε Σπόντα, Persona Non Grata, Pop ’N’ Roll, 6 Degrees of Separation, Palermo, Soletaken and Obscurus Rex, alongside additional session and live work.</p>
+        <p>He has also worked as a drum instructor in music conservatories, adding teaching experience to his long-standing live and studio activity.</p>
       </div>
     </div>
   </section>
@@ -236,6 +254,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
           <article class="card"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Drums · Thessaloniki.</p></article>
           <article class="card"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Drums · member since 2021.</p></article>
           <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Drums · founding member since the band's formation in 2023.</p></article>
+          <article class="card"><div class="meta">Since 2008 · Founding member</div><h3>Soletaken</h3><p>Drums · founding member since the band's formation in 2008.</p></article>
           <article class="card"><div class="meta">Touring</div><h3>Obscurus Rex</h3><p>Touring drummer.</p></article>
           <article class="card"><div class="meta">Metallica tribute</div><h3>The Puppets</h3><p>Drums.</p></article>
           <article class="card"><div class="meta">Heavy Metal</div><h3>Sarissa</h3><p>Drums · joined in 2012.</p></article>
@@ -274,7 +293,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-body">
         <h2>Live dates</h2>
         <p>Upcoming shows will appear here, followed by a selected live archive where useful.</p>
-        <div class="placeholder">No live dates published yet.</div>
+        <div class="placeholder">Stelios has performed extensively at Eightball Club / Eightball Live Stage in Thessaloniki across many different bands and projects over the years.</div>
       </div>
     </div>
   </section>
@@ -287,8 +306,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
         <p>Selected official band videos and drum-focused material from across Stelios' career.</p>
         <div class="video-grid">
           <article class="video-card">
-            <iframe src="https://www.youtube.com/embed/6B_dCEx_vEY" title="Ούτε Σπόντα - Το σκάκι" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div class="video-copy"><div class="meta">Ούτε Σπόντα · Video clip</div><h3>Το σκάκι</h3><p>Stelios Sioulas — drums.</p></div>
+            <iframe src="https://www.youtube.com/embed/XpKAH3tD184" title="Ούτε Σπόντα - Δίνε Του" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-copy"><div class="meta">Ούτε Σπόντα · Video</div><h3>Δίνε Του</h3><p>Stelios Sioulas — drums.</p></div>
           </article>
           <article class="video-card">
             <iframe src="https://www.youtube.com/embed/X38Jy5wYe_c" title="Forbidden Lore - Endless Run" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
