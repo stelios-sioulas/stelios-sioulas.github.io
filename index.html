@@ -169,6 +169,13 @@ section{padding:84px 0;border-top:1px solid var(--line)}
   padding:34px;
 }
 .contact-box p{margin-bottom:0}
+.video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.video-card{background:var(--panel);border:1px solid var(--line);overflow:hidden}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+.video-copy{padding:18px 20px 20px}
+.video-copy .meta{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.video-copy h3{font-size:21px;margin-bottom:6px}
+.video-copy p{margin:0;font-size:13px;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-size:12px}
 @media(max-width:800px){
   .nav{align-items:flex-start;padding:18px 0;flex-direction:column}
@@ -176,6 +183,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
   .hero{min-height:70vh;padding-top:100px}
   .section-head{grid-template-columns:1fr;gap:12px}
   .grid{grid-template-columns:1fr}
+  .video-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -199,7 +207,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
     <div class="wrap hero-content">
       <div class="kicker">Drummer · Musician</div>
       <h1>Stelios <span>Sioulas</span></h1>
-      <p>Official website. Music, projects, recordings, live performances and selected media.</p>
+      <p>Thessaloniki-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
       <div class="hero-actions">
         <a class="btn" href="#projects">Explore projects</a>
         <a class="btn ghost" href="#contact">Contact</a>
@@ -212,7 +220,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-label">01 / About</div>
       <div class="section-body">
         <h2>Behind the kit</h2>
-        <p>This section will contain Stelios Sioulas' official biography and musical background. We will add only confirmed information and approved text.</p>
+        <p>Stelios Sioulas is a drummer from Thessaloniki, Greece, with a career spanning original bands, tribute acts, studio recordings and live collaborations.</p>
+        <p>His projects include The Prisoners, The Puppets, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, John Jeff Touch, Ούτε Σπόντα, Persona Non Grata, Pop ’N’ Roll, 6 Degrees of Separation, Palermo and Obscurus Rex, alongside additional session and live work.</p>
       </div>
     </div>
   </section>
@@ -222,23 +231,22 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-label">02 / Projects</div>
       <div class="section-body">
         <h2>Bands &amp; projects</h2>
-        <p>A dedicated overview of current and previous bands, collaborations and session work.</p>
+        <p>Selected bands, projects and collaborations from a much larger live and recording history.</p>
         <div class="grid">
-          <article class="card">
-            <div class="meta">Current</div>
-            <h3>Current projects</h3>
-            <p>Confirmed current bands and collaborations will appear here.</p>
-          </article>
-          <article class="card">
-            <div class="meta">Archive</div>
-            <h3>Previous bands</h3>
-            <p>A chronological view of past bands and important chapters.</p>
-          </article>
-          <article class="card">
-            <div class="meta">Collaborations</div>
-            <h3>Session work</h3>
-            <p>Guest appearances, recordings and other musical collaborations.</p>
-          </article>
+          <article class="card"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Drums · Thessaloniki.</p></article>
+          <article class="card"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Drums · member since 2021.</p></article>
+          <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Drums · founding member since the band's formation in 2023.</p></article>
+          <article class="card"><div class="meta">Touring</div><h3>Obscurus Rex</h3><p>Touring drummer.</p></article>
+          <article class="card"><div class="meta">Metallica tribute</div><h3>The Puppets</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Heavy Metal</div><h3>Sarissa</h3><p>Drums · joined in 2012.</p></article>
+          <article class="card"><div class="meta">Melodic Metal</div><h3>Star.Gate</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Symphonic Metal</div><h3>Forbidden Lore</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Heavy Metal / Hard Rock</div><h3>Illusive Mirrors</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Greek alternative / rock</div><h3>Ούτε Σπόντα</h3><p>Drums · live and recorded work.</p></article>
+          <article class="card"><div class="meta">Project</div><h3>6 Degrees of Separation</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Project</div><h3>Palermo</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Project</div><h3>John Jeff Touch</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">Session</div><h3>War Dance</h3><p>Session drums on <em>Sons of Thunder</em> (2023).</p></article>
         </div>
       </div>
     </div>
@@ -249,8 +257,13 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-label">03 / Discography</div>
       <div class="section-body">
         <h2>Selected recordings</h2>
-        <p>Albums, EPs and singles featuring Stelios on drums will be organized here with artwork, year, band and credits.</p>
-        <div class="placeholder">Discography content is being prepared.</div>
+        <p>Selected confirmed recordings featuring Stelios on drums.</p>
+        <div class="grid">
+          <article class="card"><div class="meta">2013 · Star.Gate</div><h3>Reborn</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">2016 · Sarissa</div><h3>Nemesis</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">2016 · Star.Gate</div><h3>Longing for Light</h3><p>Drums.</p></article>
+          <article class="card"><div class="meta">2023 · War Dance</div><h3>Sons of Thunder</h3><p>Session drums.</p></article>
+        </div>
       </div>
     </div>
   </section>
@@ -271,8 +284,21 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-label">05 / Media</div>
       <div class="section-body">
         <h2>Photos &amp; video</h2>
-        <p>Live photography, drum videos, interviews and selected performance footage.</p>
-        <div class="placeholder">Media gallery will be added after the first approved photo selection.</div>
+        <p>Selected official band videos and drum-focused material from across Stelios' career.</p>
+        <div class="video-grid">
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/6B_dCEx_vEY" title="Ούτε Σπόντα - Το σκάκι" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-copy"><div class="meta">Ούτε Σπόντα · Video clip</div><h3>Το σκάκι</h3><p>Stelios Sioulas — drums.</p></div>
+          </article>
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/X38Jy5wYe_c" title="Forbidden Lore - Endless Run" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-copy"><div class="meta">Forbidden Lore · Official video</div><h3>Endless Run</h3><p>Drum recording — Stelios Sioulas.</p></div>
+          </article>
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/Y_9stpMR6rs" title="Sarissa - No Man's Land" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-copy"><div class="meta">Sarissa · Official lyric video</div><h3>No Man's Land</h3><p>From <em>Nemesis</em> (2016) — drums by Stelios Sioulas.</p></div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -283,7 +309,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#747b85;font-s
       <div class="section-body">
         <h2>Booking &amp; contact</h2>
         <div class="contact-box">
-          <p>Official contact details and social links will be added here once confirmed.</p>
+          <p><a href="https://www.facebook.com/stelios.sioulas.7" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/steliossioulas79/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@SteliosSioulas" target="_blank" rel="noopener">YouTube</a> · Booking details to be added.</p>
         </div>
       </div>
     </div>
