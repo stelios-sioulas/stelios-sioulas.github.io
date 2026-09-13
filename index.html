@@ -133,11 +133,11 @@ h1>span{display:block}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 section{padding:84px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
 #about{--section-image:url('assets/bg-about.webp?v=focus');--section-position:50% center}
-#projects{--section-image:url('assets/bg-projects.webp');--section-position:30% center}
+#projects{--section-image:url('assets/bg-projects.webp?v=focus');--section-position:0% 30%;--section-size:150% auto}
 #teaching{--section-image:url('assets/bg-teaching.webp');--section-position:44% center}
-#discography{--section-image:url('assets/bg-discography.webp');--section-position:0% center}
+#discography{--section-image:url('assets/bg-discography.webp');--section-position:0% center;--section-size:auto 125%}
 #live{--section-image:url('assets/bg-live.webp');--section-position:50% center}
-#media{--section-image:url('assets/bg-media.webp');--section-position:50% 32%}
+#media{--section-image:url('assets/bg-media.webp');--section-position:0% 30%;--section-size:150% auto}
 #contact{--section-image:url('assets/bg-contact.webp');--section-position:52% center}
 #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
   content:"";
@@ -149,7 +149,7 @@ section{padding:84px 0;border-top:1px solid var(--line);position:relative;overfl
   transform:translateY(-50%);
   background-image:var(--section-image);
   background-position:var(--section-position,center);
-  background-size:cover;
+  background-size:var(--section-size,cover);
   background-repeat:no-repeat;
   opacity:.30;
   filter:saturate(.86) contrast(1.08) brightness(.84);
