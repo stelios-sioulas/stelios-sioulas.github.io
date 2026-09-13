@@ -64,7 +64,7 @@ nav a:hover{color:var(--accent)}
   background:
     linear-gradient(90deg,rgba(7,10,15,.99) 0%,rgba(7,10,15,.90) 42%,rgba(7,10,15,.26) 72%,rgba(7,10,15,.60) 100%),
     radial-gradient(circle at 78% 22%,rgba(58,120,184,.22),transparent 28%),
-    url('stelios-live.webp') right center/auto 100% no-repeat,
+    url('assets/bg-hero.webp') right center/auto 100% no-repeat,
     linear-gradient(135deg,#0d1420 0%,#070a0f 58%,#05070a 100%);
 }
 .hero:before{
@@ -95,7 +95,60 @@ h1{
   letter-spacing:-.025em;
   max-width:900px;
 }
-h1 span{display:block;color:var(--accent)}
+h1>span{display:block}
+.motion-word{
+  position:relative;
+  width:max-content;
+  max-width:100%;
+  isolation:isolate;
+  color:#ffffff;
+  -webkit-text-fill-color:#ffffff;
+  text-shadow:0 3px 14px rgba(0,0,0,.9);
+}
+.motion-word--blue{
+  color:#2d6598;
+  -webkit-text-fill-color:#2d6598;
+  text-shadow:0 3px 14px rgba(0,0,0,.92),0 0 22px rgba(45,101,152,.16);
+}
+.motion-word::before,
+.motion-word::after{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  color:#1d4b7b;
+  -webkit-text-fill-color:#1d4b7b;
+  pointer-events:none;
+  -webkit-mask-image:
+    linear-gradient(103deg,transparent 0%,rgba(0,0,0,.55) 11%,#000 27%,#000 61%,rgba(0,0,0,.62) 78%,transparent 100%),
+    repeating-linear-gradient(154deg,#000 0 2px,transparent 2px 9px);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(103deg,transparent 0%,rgba(0,0,0,.55) 11%,#000 27%,#000 61%,rgba(0,0,0,.62) 78%,transparent 100%),
+    repeating-linear-gradient(154deg,#000 0 2px,transparent 2px 9px);
+  mask-composite:intersect;
+}
+.motion-word::before{
+  opacity:.62;
+  transform:translate(8px,-5px);
+  filter:blur(.4px);
+  text-shadow:
+    7px -4px 0 rgba(42,97,151,.52),
+    15px -9px 0 rgba(29,75,123,.38),
+    24px -14px 0 rgba(16,47,82,.24),
+    34px -20px 0 rgba(9,28,49,.12);
+}
+.motion-word::after{
+  opacity:.42;
+  transform:translate(-6px,4px);
+  filter:blur(.65px);
+  text-shadow:
+    -7px 5px 0 rgba(42,97,151,.34),
+    -15px 10px 0 rgba(29,75,123,.23),
+    -24px 16px 0 rgba(16,47,82,.12);
+}
+.motion-word--white::before{opacity:.34}
+.motion-word--white::after{opacity:.17}
 .hero p{
   max-width:620px;
   color:var(--muted);
@@ -119,18 +172,38 @@ h1 span{display:block;color:var(--accent)}
 .btn.ghost{background:transparent;color:var(--text);border-color:#314254}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 section{padding:84px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
+#about{--section-image:url('assets/bg-about.webp');--section-position:28% center}
+#projects{--section-image:url('assets/bg-projects.webp');--section-position:50% center}
+#teaching{--section-image:url('assets/bg-teaching.webp');--section-position:44% center}
+#discography{--section-image:url('assets/bg-discography.webp');--section-position:52% center}
+#live{--section-image:url('assets/bg-live.webp');--section-position:18% center}
+#media{--section-image:url('assets/bg-media.webp');--section-position:50% 32%}
+#contact{--section-image:url('assets/bg-contact.webp');--section-position:52% center}
 #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
   content:"";
   position:absolute;
-  top:0;bottom:0;
-  width:min(38vw,460px);
-  background:url('stelios-live.webp') center/cover no-repeat;
-  opacity:.18;
-  filter:saturate(.9) contrast(1.04);
+  top:50%;
+  width:min(46vw,620px);
+  height:min(82%,760px);
+  transform:translateY(-50%);
+  background-image:var(--section-image);
+  background-position:var(--section-position,center);
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:.24;
+  filter:saturate(.82) contrast(1.08) brightness(.78);
   pointer-events:none;
 }
-#about::after,#teaching::after,#live::after,#contact::after{right:0;mask-image:linear-gradient(to left,black 55%,transparent 100%)}
-#projects::after,#discography::after,#media::after{left:0;mask-image:linear-gradient(to right,black 55%,transparent 100%)}
+#about::after,#teaching::after,#live::after,#contact::after{
+  right:0;
+  -webkit-mask-image:radial-gradient(ellipse at 100% 50%,#000 0%,#000 48%,transparent 82%);
+  mask-image:radial-gradient(ellipse at 100% 50%,#000 0%,#000 48%,transparent 82%);
+}
+#projects::after,#discography::after,#media::after{
+  left:0;
+  -webkit-mask-image:radial-gradient(ellipse at 0% 50%,#000 0%,#000 48%,transparent 82%);
+  mask-image:radial-gradient(ellipse at 0% 50%,#000 0%,#000 48%,transparent 82%);
+}
 section .wrap{position:relative;z-index:1}
 .section-head{
   display:grid;
@@ -146,9 +219,37 @@ section .wrap{position:relative;z-index:1}
   font-size:13px;
 }
 .section-body h2{
+  position:relative;
+  width:max-content;
+  max-width:100%;
+  isolation:isolate;
   font-size:clamp(34px,5vw,54px);
   line-height:1;
   margin-bottom:22px;
+}
+.section-body h2::before{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  color:#1d4b7b;
+  -webkit-text-fill-color:#1d4b7b;
+  opacity:.34;
+  transform:translate(5px,-3px);
+  filter:blur(.35px);
+  text-shadow:
+    6px -4px 0 rgba(42,97,151,.4),
+    13px -8px 0 rgba(29,75,123,.28),
+    21px -13px 0 rgba(16,47,82,.16);
+  -webkit-mask-image:
+    linear-gradient(101deg,transparent 0%,#000 24%,#000 67%,transparent 100%),
+    repeating-linear-gradient(154deg,#000 0 2px,transparent 2px 8px);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(101deg,transparent 0%,#000 24%,#000 67%,transparent 100%),
+    repeating-linear-gradient(154deg,#000 0 2px,transparent 2px 8px);
+  mask-composite:intersect;
+  pointer-events:none;
 }
 .section-body h2::after{
   content:"";
@@ -237,6 +338,24 @@ section .wrap{position:relative;z-index:1}
   padding:34px;
 }
 .contact-box p{margin-bottom:0}
+.instagram-feature{
+  display:grid;
+  grid-template-columns:minmax(220px,.78fr) minmax(300px,1.22fr);
+  margin-top:34px;
+  background:linear-gradient(145deg,rgba(21,31,44,.96),rgba(9,15,24,.96));
+  border:1px solid var(--line);
+  box-shadow:0 16px 34px rgba(0,0,0,.26);
+  overflow:hidden;
+  scroll-margin-top:96px;
+}
+.instagram-intro-copy{padding:30px;align-self:center}
+.instagram-intro-copy .meta{color:var(--accent2);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px}
+.instagram-intro-copy h3{font-size:28px;line-height:1.05;margin-bottom:14px}
+.instagram-intro-copy p{margin:0 0 20px;font-size:14px}
+.instagram-link{display:inline-block;color:var(--text);font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:13px;border-bottom:1px solid var(--accent)}
+.instagram-link:hover{color:var(--accent2)}
+.instagram-embed-shell{height:650px;background:#000;border-left:1px solid var(--line);overflow:hidden}
+.instagram-embed-shell iframe{width:100%;height:100%;border:0;display:block;background:#000}
 .video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
 .video-card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.18)}
 .video-card iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
@@ -252,13 +371,20 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
   .section-head{grid-template-columns:1fr;gap:12px}
   .grid{grid-template-columns:1fr}
   .video-grid{grid-template-columns:1fr}
+  .instagram-feature{grid-template-columns:1fr}
+  .instagram-embed-shell{height:620px;border-left:0;border-top:1px solid var(--line)}
   .event-card{grid-template-columns:1fr;gap:18px;padding:24px}
   .event-date{padding:0 0 18px;border-right:0;border-bottom:1px solid var(--line)}
   .event-date strong{font-size:46px}
   .event-date span{margin-top:8px}
   #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
-    width:70vw;opacity:.10;background-position:center top;
+    width:88vw;
+    height:min(68%,580px);
+    opacity:.12;
+    background-position:var(--section-position,center);
   }
+  .motion-word::before{transform:translate(5px,-3px)}
+  .motion-word::after{transform:translate(-4px,3px)}
 }
 </style>
 </head>
@@ -282,10 +408,11 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
   <section class="hero">
     <div class="wrap hero-content">
       <div class="kicker">Drummer · Musician</div>
-      <h1>Stelios <span>Sioulas</span></h1>
+      <h1 aria-label="Stelios Sioulas"><span class="motion-word motion-word--white" data-text="Stelios">Stelios</span><span class="motion-word motion-word--blue" data-text="Sioulas">Sioulas</span></h1>
       <p>Thessaloniki-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
       <div class="hero-actions">
         <a class="btn" href="#projects">Explore projects</a>
+        <a class="btn ghost" href="#drum-intro">Play drum intro</a>
         <a class="btn ghost" href="#contact">Contact</a>
       </div>
     </div>
@@ -295,7 +422,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">01 / About</div>
       <div class="section-body">
-        <h2>Behind the kit</h2>
+        <h2 data-text="Behind the kit">Behind the kit</h2>
         <p>Stelios Sioulas is a drummer from Thessaloniki, Greece, with a career spanning original bands, tribute acts, studio recordings and live collaborations.</p>
         <p>His projects include The Prisoners, The Puppets, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, John Jeff Touch, Ούτε Σπόντα, Persona Non Grata, Pop ’N’ Roll, 6 Degrees of Separation, Palermo, Soletaken and Obscurus Rex, alongside additional session and live work.</p>
         
@@ -307,7 +434,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">02 / Projects</div>
       <div class="section-body">
-        <h2>Bands &amp; projects</h2>
+        <h2 data-text="Bands &amp; projects">Bands &amp; projects</h2>
         <p>Selected bands, projects and collaborations from a much larger live and recording history.</p>
         <div class="grid">
           <article class="card"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Drums · Thessaloniki.</p></article>
@@ -335,7 +462,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">03 / Teaching</div>
       <div class="section-body">
-        <h2>Drum teaching</h2>
+        <h2 data-text="Drum teaching">Drum teaching</h2>
         <p>Alongside his live and studio career, Stelios has also taught drums in established music schools and conservatories.</p>
         <div class="grid">
           <article class="card"><div class="meta">Thessaloniki</div><h3>YMCA Thessaloniki / ΧΑΝΘ</h3><p>Drum instructor.</p></article>
@@ -350,7 +477,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">04 / Discography</div>
       <div class="section-body">
-        <h2>Selected recordings</h2>
+        <h2 data-text="Selected recordings">Selected recordings</h2>
         <p>Selected confirmed recordings featuring Stelios on drums.</p>
         <div class="grid">
           <article class="card"><div class="meta">2013 · Star.Gate</div><h3>Reborn</h3><p>Drums.</p></article>
@@ -366,7 +493,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">05 / Live</div>
       <div class="section-body">
-        <h2>Live dates</h2>
+        <h2 data-text="Live dates">Live dates</h2>
         <p>Upcoming shows and selected live highlights.</p>
         <div class="event-list">
           <article class="event-card">
@@ -388,8 +515,19 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">06 / Media</div>
       <div class="section-body">
-        <h2>Photos &amp; video</h2>
+        <h2 data-text="Photos &amp; video">Photos &amp; video</h2>
         <p>Selected official band videos and drum-focused material from across Stelios' career.</p>
+        <article class="instagram-feature" id="drum-intro">
+          <div class="instagram-intro-copy">
+            <div class="meta">Instagram · Drum intro</div>
+            <h3>5/4 Polyrhythmic Warm-up</h3>
+            <p>A focused warm-up before a Persona Non Grata recording session, selected to highlight Stelios’ timing, control and feel.</p>
+            <a class="instagram-link" href="https://www.instagram.com/p/Cpz86cUvA5I/" target="_blank" rel="noopener">Open on Instagram ↗</a>
+          </div>
+          <div class="instagram-embed-shell">
+            <iframe src="https://www.instagram.com/p/Cpz86cUvA5I/embed/" title="Stelios Sioulas — 5/4 drum warm-up on Instagram" loading="lazy" scrolling="no" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+          </div>
+        </article>
         <div class="video-grid">
           <article class="video-card">
             <iframe src="https://www.youtube.com/embed/tdMbeJyw7nE" title="Star.Gate - Reborn" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -416,7 +554,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">07 / Contact</div>
       <div class="section-body">
-        <h2>Booking &amp; contact</h2>
+        <h2 data-text="Booking &amp; contact">Booking &amp; contact</h2>
         <div class="contact-box">
           <p><a href="https://www.facebook.com/stelios.sioulas.7" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/steliossioulas79/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@SteliosSioulas" target="_blank" rel="noopener">YouTube</a> · Booking details to be added.</p>
         </div>
