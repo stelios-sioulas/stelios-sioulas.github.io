@@ -10,21 +10,21 @@
 <meta property="og:title" content="Stelios Sioulas — Drummer">
 <meta property="og:description" content="Official website of drummer Stelios Sioulas.">
 <meta property="og:locale" content="en_US">
-<meta name="theme-color" content="#0b0d10">
+<meta name="theme-color" content="#070a0f">
 <link rel="canonical" href="https://stelios-sioulas.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0d10;
-  --panel:#15191f;
-  --panel2:#1d2229;
-  --text:#eeeae2;
-  --muted:#9ba3ad;
-  --line:#2a3038;
-  --accent:#b88445;
-  --accent2:#d1a862;
+  --bg:#070a0f;
+  --panel:#101722;
+  --panel2:#151f2c;
+  --text:#f4f7fa;
+  --muted:#aab5c2;
+  --line:#263442;
+  --accent:#3a78b8;
+  --accent2:#65a7e3;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -39,7 +39,7 @@ a{color:inherit;text-decoration:none}
 .wrap{width:min(1100px,calc(100% - 40px));margin:0 auto}
 header{
   position:sticky;top:0;z-index:20;
-  background:rgba(11,13,16,.92);
+  background:rgba(7,10,15,.93);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -62,16 +62,16 @@ nav a:hover{color:var(--accent)}
   position:relative;
   overflow:hidden;
   background:
-    linear-gradient(90deg,rgba(11,13,16,.99) 0%,rgba(11,13,16,.90) 42%,rgba(11,13,16,.30) 72%,rgba(11,13,16,.68) 100%),
-    radial-gradient(circle at 78% 22%,rgba(184,132,69,.16),transparent 26%),
+    linear-gradient(90deg,rgba(7,10,15,.99) 0%,rgba(7,10,15,.90) 42%,rgba(7,10,15,.26) 72%,rgba(7,10,15,.60) 100%),
+    radial-gradient(circle at 78% 22%,rgba(58,120,184,.22),transparent 28%),
     url('stelios-live.webp') right center/auto 100% no-repeat,
-    linear-gradient(135deg,#101318 0%,#0b0d10 58%,#08090b 100%);
+    linear-gradient(135deg,#0d1420 0%,#070a0f 58%,#05070a 100%);
 }
 .hero:before{
   content:"";
   position:absolute;inset:0;
   background:
-    linear-gradient(180deg,transparent 0%,rgba(184,132,69,.035) 100%),
+    linear-gradient(180deg,transparent 0%,rgba(58,120,184,.045) 100%),
     repeating-linear-gradient(115deg,rgba(255,255,255,.014) 0 1px,transparent 1px 20px);
   pointer-events:none;
 }
@@ -108,15 +108,15 @@ h1 span{display:block;color:var(--accent)}
   padding:12px 20px;
   border:1px solid var(--accent);
   background:var(--accent);
-  color:#0b0d10;
+  color:#ffffff;
   font-family:Oswald,sans-serif;
   text-transform:uppercase;
   font-weight:600;
   letter-spacing:.04em;
   font-size:14px;
 }
-.btn:hover{background:var(--accent2)}
-.btn.ghost{background:transparent;color:var(--text);border-color:#3a424c}
+.btn:hover{background:var(--accent2);color:#07101a}
+.btn.ghost{background:transparent;color:var(--text);border-color:#314254}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 section{padding:84px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
 #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
@@ -125,8 +125,8 @@ section{padding:84px 0;border-top:1px solid var(--line);position:relative;overfl
   top:0;bottom:0;
   width:min(38vw,460px);
   background:url('stelios-live.webp') center/cover no-repeat;
-  opacity:.14;
-  filter:grayscale(35%) sepia(10%);
+  opacity:.18;
+  filter:saturate(.9) contrast(1.04);
   pointer-events:none;
 }
 #about::after,#teaching::after,#live::after,#contact::after{right:0;mask-image:linear-gradient(to left,black 55%,transparent 100%)}
@@ -156,7 +156,7 @@ section .wrap{position:relative;z-index:1}
   width:54px;
   height:2px;
   margin-top:16px;
-  background:linear-gradient(90deg,var(--accent2),transparent);
+  background:linear-gradient(90deg,var(--accent2),rgba(101,167,227,0));
 }
 .section-body p{color:var(--muted);max-width:720px}
 .grid{
@@ -166,7 +166,7 @@ section .wrap{position:relative;z-index:1}
   margin-top:34px;
 }
 .card{
-  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  background:linear-gradient(145deg,#162233,var(--panel));
   border:1px solid var(--line);
   padding:24px;
   min-height:180px;
@@ -203,7 +203,7 @@ section .wrap{position:relative;z-index:1}
 .video-copy .meta{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
 .video-copy h3{font-size:21px;margin-bottom:6px}
 .video-copy p{margin:0;font-size:13px;color:var(--muted)}
-footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#777f88;font-size:12px}
+footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-size:12px}
 @media(max-width:800px){
   .nav{align-items:flex-start;padding:18px 0;flex-direction:column}
   nav{gap:14px 18px}
