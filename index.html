@@ -190,6 +190,47 @@ section .wrap{position:relative;z-index:1}
   background:var(--panel);
   color:var(--muted);
 }
+.event-list{display:grid;gap:16px;margin-top:32px}
+.event-card{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:28px;
+  align-items:center;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);
+  padding:28px 30px;
+  box-shadow:0 12px 28px rgba(0,0,0,.20);
+}
+.event-date{
+  padding-right:28px;
+  border-right:1px solid var(--line);
+}
+.event-date strong{
+  display:block;
+  color:var(--accent2);
+  font-family:Oswald,sans-serif;
+  font-size:54px;
+  line-height:.9;
+}
+.event-date span{
+  display:block;
+  margin-top:10px;
+  color:var(--text);
+  font-family:Oswald,sans-serif;
+  font-size:15px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.event-copy .meta{
+  color:var(--accent);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:7px;
+}
+.event-copy h3{font-size:28px;margin-bottom:8px}
+.event-copy p{margin:0;color:var(--muted)}
+.event-copy .event-role{margin-top:10px;color:var(--text)}
 .contact-box{
   background:linear-gradient(135deg,var(--panel2),var(--panel));
   border:1px solid var(--line);
@@ -211,6 +252,10 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
   .section-head{grid-template-columns:1fr;gap:12px}
   .grid{grid-template-columns:1fr}
   .video-grid{grid-template-columns:1fr}
+  .event-card{grid-template-columns:1fr;gap:18px;padding:24px}
+  .event-date{padding:0 0 18px;border-right:0;border-bottom:1px solid var(--line)}
+  .event-date strong{font-size:46px}
+  .event-date span{margin-top:8px}
   #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
     width:70vw;opacity:.10;background-position:center top;
   }
@@ -322,7 +367,18 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
       <div class="section-label">05 / Live</div>
       <div class="section-body">
         <h2>Live dates</h2>
-        <p>Upcoming shows will appear here, followed by a selected live archive where useful.</p>
+        <p>Upcoming shows and selected live highlights.</p>
+        <div class="event-list">
+          <article class="event-card">
+            <div class="event-date"><strong>03</strong><span>October 2026</span></div>
+            <div class="event-copy">
+              <div class="meta">Eightball Club · Thessaloniki</div>
+              <h3>The Prisoners</h3>
+              <p>Iron Maiden tribute show · Support: Obscurus Rex.</p>
+              <p class="event-role">Stelios Sioulas on drums with both The Prisoners and Obscurus Rex.</p>
+            </div>
+          </article>
+        </div>
         <div class="placeholder">Stelios has performed extensively at Eightball Club / Eightball Live Stage in Thessaloniki across many different bands and projects over the years.</div>
       </div>
     </div>
