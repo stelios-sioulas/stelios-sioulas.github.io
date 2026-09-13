@@ -96,59 +96,19 @@ h1{
   max-width:900px;
 }
 h1>span{display:block}
-.motion-word{
-  position:relative;
+.hero-name{
+  display:block;
   width:max-content;
   max-width:100%;
-  isolation:isolate;
   color:#ffffff;
   -webkit-text-fill-color:#ffffff;
   text-shadow:0 3px 14px rgba(0,0,0,.9);
 }
-.motion-word--blue{
+.hero-name--blue{
   color:#2d6598;
   -webkit-text-fill-color:#2d6598;
   text-shadow:0 3px 14px rgba(0,0,0,.92),0 0 22px rgba(45,101,152,.16);
 }
-.motion-word::before,
-.motion-word::after{
-  content:attr(data-text);
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  color:#1d4b7b;
-  -webkit-text-fill-color:#1d4b7b;
-  pointer-events:none;
-  -webkit-mask-image:
-    linear-gradient(103deg,transparent 0%,rgba(0,0,0,.55) 11%,#000 27%,#000 61%,rgba(0,0,0,.62) 78%,transparent 100%),
-    repeating-linear-gradient(154deg,#000 0 2px,transparent 2px 9px);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(103deg,transparent 0%,rgba(0,0,0,.55) 11%,#000 27%,#000 61%,rgba(0,0,0,.62) 78%,transparent 100%),
-    repeating-linear-gradient(154deg,#000 0 2px,transparent 2px 9px);
-  mask-composite:intersect;
-}
-.motion-word::before{
-  opacity:.62;
-  transform:translate(8px,-5px);
-  filter:blur(.4px);
-  text-shadow:
-    7px -4px 0 rgba(42,97,151,.52),
-    15px -9px 0 rgba(29,75,123,.38),
-    24px -14px 0 rgba(16,47,82,.24),
-    34px -20px 0 rgba(9,28,49,.12);
-}
-.motion-word::after{
-  opacity:.42;
-  transform:translate(-6px,4px);
-  filter:blur(.65px);
-  text-shadow:
-    -7px 5px 0 rgba(42,97,151,.34),
-    -15px 10px 0 rgba(29,75,123,.23),
-    -24px 16px 0 rgba(16,47,82,.12);
-}
-.motion-word--white::before{opacity:.34}
-.motion-word--white::after{opacity:.17}
 .hero p{
   max-width:620px;
   color:var(--muted);
@@ -176,7 +136,7 @@ section{padding:84px 0;border-top:1px solid var(--line);position:relative;overfl
 #projects{--section-image:url('assets/bg-projects.webp');--section-position:50% center}
 #teaching{--section-image:url('assets/bg-teaching.webp');--section-position:44% center}
 #discography{--section-image:url('assets/bg-discography.webp');--section-position:52% center}
-#live{--section-image:url('assets/bg-live.webp');--section-position:18% center}
+#live{--section-image:url('assets/bg-live.webp');--section-position:50% center}
 #media{--section-image:url('assets/bg-media.webp');--section-position:50% 32%}
 #contact{--section-image:url('assets/bg-contact.webp');--section-position:52% center}
 #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
@@ -383,8 +343,6 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     opacity:.12;
     background-position:var(--section-position,center);
   }
-  .motion-word::before{transform:translate(5px,-3px)}
-  .motion-word::after{transform:translate(-4px,3px)}
 }
 </style>
 </head>
@@ -408,7 +366,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
   <section class="hero">
     <div class="wrap hero-content">
       <div class="kicker">Drummer · Musician</div>
-      <h1 aria-label="Stelios Sioulas"><span class="motion-word motion-word--white" data-text="Stelios">Stelios</span><span class="motion-word motion-word--blue" data-text="Sioulas">Sioulas</span></h1>
+      <h1 aria-label="Stelios Sioulas"><span class="hero-name">Stelios</span><span class="hero-name hero-name--blue">Sioulas</span></h1>
       <p>Thessaloniki-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
       <div class="hero-actions">
         <a class="btn" href="#projects">Explore projects</a>
@@ -447,7 +405,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
           <article class="card"><div class="meta">Melodic Metal</div><h3>Star.Gate</h3><p>Drums.</p></article>
           <article class="card"><div class="meta">Symphonic Metal</div><h3>Forbidden Lore</h3><p>Drums.</p></article>
           <article class="card"><div class="meta">Heavy Metal / Hard Rock</div><h3>Illusive Mirrors</h3><p>Drums.</p></article>
-          <article class="card"><div class="meta">Greek alternative / rock</div><h3>Ούτε Σπόντα</h3><p>Drums · live and recorded work.</p></article>
+          <article class="card"><div class="meta">Greek alternative / rock</div><h3>ΟΥΤΕ ΣΠΟΝΤΑ</h3><p>Drums · live and recorded work.</p></article>
           <article class="card"><div class="meta">Project</div><h3>6 Degrees of Separation</h3><p>Drums.</p></article>
           <article class="card"><div class="meta">Project</div><h3>Palermo</h3><p>Drums.</p></article>
           <article class="card"><div class="meta">Project</div><h3>John Jeff Touch</h3><p>Drums.</p></article>
@@ -466,8 +424,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
         <p>Alongside his live and studio career, Stelios has also taught drums in established music schools and conservatories.</p>
         <div class="grid">
           <article class="card"><div class="meta">Thessaloniki</div><h3>YMCA Thessaloniki / ΧΑΝΘ</h3><p>Drum instructor.</p></article>
-          <article class="card"><div class="meta">Thessaloniki</div><h3>Ωδείο Μελωδία</h3><p>Drum instructor.</p></article>
-          <article class="card"><div class="meta">Agia Paraskevi</div><h3>Ηχόμορφες</h3><p>Drum instructor.</p></article>
+          <article class="card"><div class="meta">Thessaloniki</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Drum instructor.</p></article>
+          <article class="card"><div class="meta">Agia Paraskevi</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Drum instructor.</p></article>
         </div>
       </div>
     </div>
