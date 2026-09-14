@@ -361,31 +361,6 @@ section .wrap{position:relative;z-index:1}
 .video-copy .meta{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
 .video-copy h3{font-size:21px;margin-bottom:6px}
 .video-copy p{margin:0;font-size:13px;color:var(--muted)}
-.intro-audio-btn{
-  position:fixed;
-  left:18px;
-  bottom:18px;
-  z-index:1200;
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  min-height:38px;
-  padding:8px 11px;
-  border:1px solid #314254;
-  background:rgba(7,10,15,.92);
-  color:var(--muted);
-  font-family:Inter,Arial,sans-serif;
-  font-size:12px;
-  line-height:1;
-  cursor:pointer;
-  backdrop-filter:blur(7px);
-  opacity:.86;
-  transition:border-color .18s ease,color .18s ease,background .18s ease,opacity .18s ease;
-}
-.intro-audio-btn:hover,.intro-audio-btn:focus-visible{border-color:var(--accent);color:#fff;background:rgba(16,31,50,.96);opacity:1;outline:none}
-.intro-audio-btn svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
-.intro-audio-btn.is-playing{border-color:var(--accent2);color:#fff;box-shadow:0 0 18px rgba(58,120,184,.22)}
-.intro-audio-btn[hidden]{display:none!important}
 .back-to-top{
   position:fixed;
   right:18px;
@@ -480,7 +455,6 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
   .video-grid{grid-template-columns:1fr}
   .instagram-feature{grid-template-columns:1fr}
   .instagram-embed-shell{height:620px;border-left:0;border-top:1px solid var(--line)}
-  .intro-audio-btn{left:10px;bottom:10px;min-height:36px;padding:7px 9px}
   .back-to-top{right:10px;bottom:10px;width:38px;height:38px}
   .event-card{grid-template-columns:1fr;gap:18px;padding:24px}
   .event-date{padding:0 0 18px;border-right:0;border-bottom:1px solid var(--line)}
@@ -497,13 +471,6 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
 </style>
 </head>
 <body>
-<audio id="steliosIntroAudio" preload="auto" playsinline>
-  <source src="https://uptheprisoners.github.io/PrisonerIntro.mp3" type="audio/mpeg">
-</audio>
-<button class="intro-audio-btn" id="introAudioButton" type="button" aria-label="Play intro audio" aria-pressed="false">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.2-3.9v7.8a4.5 4.5 0 0 0 2.2-3.9zm0-8.2v2.1a7 7 0 0 1 0 12.2v2.1a9 9 0 0 0 0-16.4z"/></svg>
-  <span>Intro</span>
-</button>
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Stelios Sioulas"><img class="brand-mark" src="assets/favicon-s.svg?v=1" alt="" aria-hidden="true"><span><span class="brand-stelios">Stelios</span> <span class="brand-sioulas">Sioulas</span></span></a>
@@ -527,7 +494,6 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
       <p>Athens-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
       <div class="hero-actions">
         <a class="btn" href="#projects">Explore projects</a>
-        <button class="btn ghost" id="heroIntroButton" type="button" aria-pressed="false">Play drum intro</button>
         <a class="btn ghost" href="#contact">Contact</a>
       </div>
     </div>
@@ -700,56 +666,6 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
 </footer>
 
 <script>
-(function(){
-  const audio=document.getElementById('steliosIntroAudio');
-  const fixedButton=document.getElementById('introAudioButton');
-  const heroButton=document.getElementById('heroIntroButton');
-  if(!audio||!fixedButton||!heroButton)return;
-
-  audio.volume=.72;
-
-  function setPlayingState(playing){
-    fixedButton.classList.toggle('is-playing',playing);
-    fixedButton.setAttribute('aria-pressed',playing?'true':'false');
-    fixedButton.setAttribute('aria-label',playing?'Pause intro audio':'Play intro audio');
-    heroButton.setAttribute('aria-pressed',playing?'true':'false');
-    heroButton.textContent=playing?'Pause drum intro':'Play drum intro';
-  }
-
-  function toggleIntro(){
-    if(!audio.paused&&!audio.ended){
-      audio.pause();
-      return;
-    }
-    audio.currentTime=0;
-    const result=audio.play();
-    if(result&&typeof result.catch==='function'){
-      result.catch(()=>setPlayingState(false));
-    }
-  }
-
-  audio.addEventListener('play',()=>setPlayingState(true));
-  audio.addEventListener('pause',()=>setPlayingState(false));
-  audio.addEventListener('ended',()=>setPlayingState(false));
-  fixedButton.addEventListener('click',toggleIntro);
-  heroButton.addEventListener('click',toggleIntro);
-
-  const introSessionKey='steliosIntroAutoplayPlayed';
-  const navigationEntry=performance.getEntriesByType('navigation')[0];
-  const isReload=navigationEntry&&navigationEntry.type==='reload';
-  let introAlreadyPlayed=false;
-  try{introAlreadyPlayed=sessionStorage.getItem(introSessionKey)==='1'}catch(e){}
-
-  if(isReload||!introAlreadyPlayed){
-    try{sessionStorage.setItem(introSessionKey,'1')}catch(e){}
-    audio.currentTime=0;
-    const autoplayAttempt=audio.play();
-    if(autoplayAttempt&&typeof autoplayAttempt.catch==='function'){
-      autoplayAttempt.catch(()=>setPlayingState(false));
-    }
-  }
-})();
-
 const backToTop=document.getElementById('backToTop');
 if(backToTop){
   const updateBackToTop=()=>{
