@@ -12,6 +12,8 @@
 <meta property="og:locale" content="en_US">
 <meta name="theme-color" content="#070a0f">
 <link rel="canonical" href="https://stelios-sioulas.github.io/">
+<link rel="alternate" hreflang="en" href="https://stelios-sioulas.github.io/">
+<link rel="alternate" hreflang="el" href="https://stelios-sioulas.github.io/index-el.html">
 <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon-s.svg?v=2">
 <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon-s.svg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,6 +70,7 @@ header{
 nav{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
 nav a{font-size:13px;color:var(--muted)}
 nav a:hover{color:var(--accent)}
+.lang-switch{border:1px solid var(--line);padding:6px 9px;border-radius:999px;color:var(--accent2)!important;font-family:Oswald,sans-serif;font-weight:600;letter-spacing:.06em}
 .hero{
   min-height:78vh;
   display:grid;
@@ -303,6 +306,8 @@ section .wrap{position:relative;z-index:1}
   letter-spacing:.08em;
   margin-bottom:8px;
 }
+.project-actions{margin-top:18px}
+.project-actions .btn{min-width:180px;text-align:center}
 .placeholder{
   margin-top:28px;
   padding:20px 22px;
@@ -557,12 +562,13 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <a class="brand" href="#top" aria-label="Stelios Sioulas"><img class="brand-mark" src="assets/favicon-s.svg?v=2" alt="" aria-hidden="true"><span><span class="brand-stelios">Stelios</span> <span class="brand-sioulas">Sioulas</span></span></a>
     <nav aria-label="Main navigation">
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
+      <a href="projects.html">Projects</a>
       <a href="#teaching">Teaching</a>
       <a href="#discography">Discography</a>
       <a href="#live">Live</a>
       <a href="#media">Media</a>
       <a href="#contact">Contact</a>
+      <a class="lang-switch" href="index-el.html" lang="el">EL</a>
     </nav>
   </div>
 </header>
@@ -574,7 +580,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
       <h1 aria-label="Stelios Sioulas"><span class="hero-name">Stelios</span><span class="hero-name hero-name--blue">Sioulas</span></h1>
       <p>Athens-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
       <div class="hero-actions">
-        <a class="btn" href="#projects">Explore projects</a>
+        <a class="btn" href="projects.html">Explore projects</a>
         <a class="btn ghost" href="#contact">Contact</a>
       </div>
     </div>
@@ -586,7 +592,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
       <div class="section-body">
         <h2 aria-label="Behind the kit" data-text="Behind the kit">Behind the kit</h2>
         <p>Stelios Sioulas is a drummer from Thessaloniki, Greece, with a career spanning original bands, tribute acts, studio recordings and live collaborations.</p>
-        <p>His projects include The Prisoners, The Puppets, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, John Jeff Touch, Ούτε Σπόντα, Persona Non Grata, Pop ’N’ Roll, 6 Degrees of Separation, Palermo, Soletaken and Obscurus Rex, alongside additional session and live work.</p>
+        <p>His projects include The Prisoners, Persona Non Grata, Pop ’N’ Roll, Obscurus Rex, Mushroom People, Onion Rings, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, The Puppets, Soletaken and other session and live collaborations.</p>
         
       </div>
     </div>
@@ -596,26 +602,17 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap section-head">
       <div class="section-label">02 / Projects</div>
       <div class="section-body">
-        <h2 aria-label="Bands &amp; projects" data-text="Bands &amp; projects">Bands &amp; projects</h2>
-        <p>Selected bands, projects and collaborations from a much larger live and recording history.</p>
+        <h2 aria-label="Current projects" data-text="Current projects">Current projects</h2>
+        <p>Active bands and live projects. Open the full projects page for Stelios' wider band and collaboration history.</p>
         <div class="grid">
-          <a class="card card-link" href="https://www.facebook.com/SarissaHellenicMetal/" target="_blank" rel="noopener" aria-label="Open Sarissa official Facebook page"><div class="meta">Heavy Metal</div><h3>Sarissa</h3><p>Drums · joined in 2012.</p></a>
-          <a class="card card-link" href="https://www.stargateband.eu/" target="_blank" rel="noopener" aria-label="Open Star.Gate official website"><div class="meta">Melodic Metal</div><h3>Star.Gate</h3><p>Drums.</p></a>
-          <a class="card card-link" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener" aria-label="Open Persona Non Grata official Facebook page"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Drums · member since 2021.</p></a>
-          <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener" aria-label="Open The Prisoners official website"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Drums · Thessaloniki.</p></a>
-          <a class="card card-link" href="https://www.facebook.com/IllusiveMirrorsBandGR/" target="_blank" rel="noopener" aria-label="Open Illusive Mirrors official Facebook page"><div class="meta">Heavy Metal / Hard Rock</div><h3>Illusive Mirrors</h3><p>Drums.</p></a>
-          <a class="card card-link" href="https://www.facebook.com/WarDance.Metal/" target="_blank" rel="noopener" aria-label="Open War Dance official Facebook page"><div class="meta">Session</div><h3>War Dance</h3><p>Session drums on <em>Sons of Thunder</em> (2023).</p></a>
-          <a class="card card-link" href="https://obscurusrex.com/" target="_blank" rel="noopener" aria-label="Open Obscurus Rex official website"><div class="meta">Touring</div><h3>Obscurus Rex</h3><p>Touring drummer.</p></a>
-          <a class="card card-link" href="https://www.johnjefftouch.com/" target="_blank" rel="noopener" aria-label="Open John Jeff Touch official website"><div class="meta">Project</div><h3>John Jeff Touch</h3><p>Drums.</p></a>
-          <a class="card card-link" href="https://www.facebook.com/groups/49489087578/" target="_blank" rel="noopener" aria-label="Open The Puppets public Facebook group"><div class="meta">Metallica tribute</div><h3>The Puppets</h3><p>Drums.</p></a>
-          <a class="card card-link" href="https://www.youtube.com/user/OuteSpondaBand" target="_blank" rel="noopener" aria-label="Open ΟΥΤΕ ΣΠΟΝΤΑ YouTube channel"><div class="meta">Greek alternative / rock</div><h3>ΟΥΤΕ ΣΠΟΝΤΑ</h3><p>Drums · live and recorded work.</p></a>
-          <a class="card card-link" href="https://www.facebook.com/forbiddenlore.band/" target="_blank" rel="noopener" aria-label="Open Forbidden Lore official Facebook page"><div class="meta">Symphonic Metal</div><h3>Forbidden Lore</h3><p>Drums.</p></a>
-          <article class="card"><div class="meta">Since 2008 · Founding member</div><h3>Soletaken</h3><p>Drums · founding member since the band's formation in 2008.</p></article>
-          <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Drums · founding member since the band's formation in 2023.</p></article>
-          <a class="card card-link" href="https://www.facebook.com/Momento.gr" target="_blank" rel="noopener" aria-label="Open Momento official Facebook page"><div class="meta">Founding member</div><h3>Momento</h3><p>Drums · founding member.</p></a>
-          <article class="card"><div class="meta">Project</div><h3>6 Degrees of Separation</h3><p>Drums.</p></article>
-          <article class="card"><div class="meta">Project</div><h3>Palermo</h3><p>Drums.</p></article>
+          <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Active live project.</p></a>
+          <a class="card card-link" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Member since 2021.</p></a>
+          <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Founding member since 2023.</p></article>
+          <a class="card card-link" href="https://obscurusrex.com/" target="_blank" rel="noopener"><div class="meta">Touring</div><h3>Obscurus Rex</h3><p>Touring member.</p></a>
+          <article class="card"><div class="meta">Current / active</div><h3>Mushroom People</h3><p>Active project.</p></article>
+          <article class="card"><div class="meta">Current / active</div><h3>Onion Rings</h3><p>Active project.</p></article>
         </div>
+        <div class="project-actions"><a class="btn ghost" href="projects.html">View all projects</a></div>
       </div>
     </div>
   </section>
