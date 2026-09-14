@@ -7,6 +7,8 @@
 <meta name="description" content="Official website of drummer Stelios Sioulas — mobile edition.">
 <meta name="theme-color" content="#070a0f">
 <link rel="canonical" href="https://stelios-sioulas.github.io/">
+<link rel="alternate" hreflang="en" href="https://stelios-sioulas.github.io/mobile.html">
+<link rel="alternate" hreflang="el" href="https://stelios-sioulas.github.io/mobile-el.html">
 <link rel="icon" type="image/svg+xml" href="assets/favicon-s.svg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +20,7 @@ a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 28px),680px);ma
 header{position:sticky;top:0;z-index:50;background:rgba(7,10,15,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .topbar{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:8px;font:700 18px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}.brand img{width:24px;height:24px}.brand b{color:#fff}.brand span{color:#2d6598}
-.menu-btn{border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;width:42px;height:42px;font-size:22px;display:grid;place-items:center}
+.top-actions{display:flex;align-items:center;gap:8px}.lang-switch{border:1px solid var(--line);background:var(--panel);color:var(--accent2);border-radius:999px;padding:7px 10px;font:600 11px Oswald,sans-serif;letter-spacing:.06em}.menu-btn{border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;width:42px;height:42px;font-size:22px;display:grid;place-items:center}
 .mobile-nav{display:none;padding:0 0 14px;grid-template-columns:repeat(2,1fr);gap:8px}.mobile-nav.open{display:grid}.mobile-nav a{padding:10px 12px;border:1px solid var(--line);background:rgba(16,23,34,.82);border-radius:10px;color:var(--muted);font-size:13px}
 .hero{min-height:72svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(7,10,15,.03),rgba(7,10,15,.12) 42%,rgba(7,10,15,.9) 78%,#070a0f 100%),url('assets/bg-hero.webp?v=clean') 62% center/cover no-repeat}
 .hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 68% 25%,rgba(58,120,184,.22),transparent 34%);pointer-events:none}.hero-content{position:relative;z-index:1;padding:34px 0 30px}
@@ -44,7 +46,7 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
 <header>
   <div class="wrap topbar">
     <a class="brand" href="#top"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div class="top-actions"><a class="lang-switch" href="mobile-el.html" lang="el">EL</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div>
   </div>
   <nav class="wrap mobile-nav" id="mobileNav">
     <a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#discography">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a>
@@ -77,12 +79,12 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
   <section id="projects">
     <div class="wrap">
       <div class="section-label">02 / Projects</div>
-      <h2>Current projects</h2>
-      <p>Three active projects up front. The full career list opens separately so the mobile homepage stays short and easy to browse.</p>
+      <h2>Featured active projects</h2>
+      <p>Three active-project highlights up front. The complete current lineup and wider career list open on a separate page.</p>
       <div class="featured-grid">
-        <a class="card card-link" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Drums · current member.</p></a>
-        <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Drums · active live project.</p></a>
-        <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Drums · founding member.</p></article>
+        <a class="card card-link" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Member since 2021.</p></a>
+        <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Active live project.</p></a>
+        <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Founding member since 2023.</p></article>
       </div>
       <a class="view-all" href="projects.html"><span>View all projects</span><span>→</span></a>
     </div>
