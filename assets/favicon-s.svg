@@ -6,43 +6,37 @@
     </linearGradient>
   </defs>
 
-  <!-- Dark blue triangular badge -->
-  <path d="M128 24 L222 218 H34 Z" fill="url(#shield)"/>
+  <!-- Inverted dark-blue shield -->
+  <path d="M30 38 H226 L128 230 Z" fill="url(#shield)"/>
 
-  <!-- Three drumsticks forming the triangle edges -->
+  <!-- Three drumsticks forming the shield edges -->
   <g fill="none" stroke="#65a7e3" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M42 211 L124 31"/>
-    <path d="M132 31 L214 211"/>
-    <path d="M48 218 L208 218"/>
+    <path d="M42 46 H214"/>
+    <path d="M43 48 L128 218"/>
+    <path d="M213 48 L128 218"/>
   </g>
 
   <!-- Drumstick tips -->
   <g fill="#d9efff">
-    <ellipse cx="124" cy="29" rx="9" ry="13" transform="rotate(24 124 29)"/>
-    <ellipse cx="215" cy="210" rx="9" ry="13" transform="rotate(145 215 210)"/>
-    <ellipse cx="47" cy="218" rx="13" ry="9"/>
+    <ellipse cx="42" cy="46" rx="13" ry="9"/>
+    <ellipse cx="128" cy="218" rx="9" ry="13"/>
+    <ellipse cx="213" cy="48" rx="9" ry="13" transform="rotate(-27 213 48)"/>
   </g>
 
-  <!-- Inner edge for extra definition at favicon size -->
-  <path d="M128 49 L200 202 H56 Z" fill="none" stroke="#2d6598" stroke-width="3" opacity=".8"/>
+  <!-- Inner shield edge -->
+  <path d="M54 58 H202 L128 204 Z" fill="none" stroke="#2d6598" stroke-width="3" opacity=".85"/>
 
   <!-- Single stylized S -->
-  <path d="M169 82
-           C157 66 139 59 119 60
-           C94 61 76 74 74 94
-           C72 113 86 124 110 130
-           L136 137
-           C149 140 156 146 155 155
-           C154 166 143 173 127 174
-           C108 175 91 168 77 154
-           L62 170
-           C78 190 101 200 128 199
-           C158 198 181 181 183 157
-           C185 135 169 123 143 116
-           L117 109
-           C106 106 100 101 101 94
-           C102 86 111 81 123 81
-           C137 80 149 85 158 96
-           Z"
-        fill="#ffffff"/>
+  <path d="M162 88
+           C151 73 135 68 119 70
+           C101 72 91 83 92 98
+           C93 114 109 120 128 124
+           C148 128 161 136 160 151
+           C159 169 145 180 126 181
+           C109 182 95 176 86 165"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="22"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 </svg>
