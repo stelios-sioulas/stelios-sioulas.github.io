@@ -52,6 +52,16 @@ header{
 .brand{
   font-family:Oswald,sans-serif;
   font-size:20px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+}
+.brand-mark{
+  width:24px;
+  height:24px;
+  flex:0 0 auto;
+  display:block;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.45));
 }
 .brand .brand-stelios{color:#ffffff}
 .brand .brand-sioulas{color:#2d6598}
@@ -462,7 +472,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
 </button>
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Stelios Sioulas"><span class="brand-stelios">Stelios</span> <span class="brand-sioulas">Sioulas</span></a>
+    <a class="brand" href="#top" aria-label="Stelios Sioulas"><img class="brand-mark" src="assets/favicon-s.svg?v=1" alt="" aria-hidden="true"><span><span class="brand-stelios">Stelios</span> <span class="brand-sioulas">Sioulas</span></span></a>
     <nav aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
