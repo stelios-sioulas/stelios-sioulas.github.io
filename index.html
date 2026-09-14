@@ -103,14 +103,22 @@ h1>span{display:block}
   display:block;
   width:max-content;
   max-width:100%;
-  color:#ffffff;
-  -webkit-text-fill-color:#ffffff;
-  text-shadow:0 3px 14px rgba(0,0,0,.9);
+  color:#f7fbff;
+  font-family:Inter,Arial,sans-serif;
+  font-weight:600;
+  letter-spacing:-.055em;
+  background:linear-gradient(180deg,#ffffff 0%,#eef4fb 34%,#9aa8ba 52%,#f8fbff 70%,#7d8999 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.92)) drop-shadow(0 0 18px rgba(126,163,205,.16));
 }
 .hero-name--blue{
-  color:#2d6598;
-  -webkit-text-fill-color:#2d6598;
-  text-shadow:0 3px 14px rgba(0,0,0,.92),0 0 22px rgba(45,101,152,.16);
+  background:linear-gradient(180deg,#83eaff 0%,#1a91ff 27%,#075bd7 50%,#56d8ff 70%,#063a9f 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.94)) drop-shadow(0 0 24px rgba(8,119,255,.30));
 }
 .hero p{
   max-width:620px;
@@ -135,7 +143,7 @@ h1>span{display:block}
 .btn.ghost{background:transparent;color:var(--text);border-color:#314254}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 section{padding:84px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
-#about{--section-image:url('assets/bg-about.webp?v=focus');--section-position:50% center}
+#about{--section-image:url('assets/bg-about.webp?v=crowd-blur');--section-position:42% center}
 #projects{--section-image:url('assets/bg-projects.webp?v=focus');--section-position:0% 30%;--section-size:150% auto}
 #teaching{--section-image:url('assets/bg-teaching.webp');--section-position:44% center}
 #discography{--section-image:url('assets/bg-discography.webp');--section-position:0% center;--section-size:auto 125%}
@@ -426,7 +434,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
     <div class="wrap hero-content">
       <div class="kicker">Drummer · Musician</div>
       <h1 aria-label="Stelios Sioulas"><span class="hero-name">Stelios</span><span class="hero-name hero-name--blue">Sioulas</span></h1>
-      <p>Thessaloniki-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
+      <p>Athens-based drummer with a long-running presence across metal, rock, tribute projects and the wider Greek live scene.</p>
       <div class="hero-actions">
         <a class="btn" href="#projects">Explore projects</a>
         <button class="btn ghost" id="heroIntroButton" type="button" aria-pressed="false">Play drum intro</button>
