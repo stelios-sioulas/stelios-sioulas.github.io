@@ -528,6 +528,18 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
   }
 }
 </style>
+<script>
+(function(){
+  try{
+    const qs=new URLSearchParams(window.location.search);
+    if(window.matchMedia('(max-width: 820px)').matches && !qs.has('desktop')){
+      const target=new URL('mobile.html',window.location.href);
+      target.hash=window.location.hash;
+      window.location.replace(target.href);
+    }
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 <header>
