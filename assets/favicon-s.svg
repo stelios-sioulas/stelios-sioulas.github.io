@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Stelios Sioulas S drumstick emblem">
+  <defs>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#123f6e"/>
+      <stop offset="1" stop-color="#071a2d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark blue triangular badge -->
+  <path d="M128 24 L222 218 H34 Z" fill="url(#shield)"/>
+
+  <!-- Three drumsticks forming the triangle edges -->
+  <g fill="none" stroke="#65a7e3" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 211 L124 31"/>
+    <path d="M132 31 L214 211"/>
+    <path d="M48 218 L208 218"/>
+  </g>
+
+  <!-- Drumstick tips -->
+  <g fill="#d9efff">
+    <ellipse cx="124" cy="29" rx="9" ry="13" transform="rotate(24 124 29)"/>
+    <ellipse cx="215" cy="210" rx="9" ry="13" transform="rotate(145 215 210)"/>
+    <ellipse cx="47" cy="218" rx="13" ry="9"/>
+  </g>
+
+  <!-- Inner edge for extra definition at favicon size -->
+  <path d="M128 49 L200 202 H56 Z" fill="none" stroke="#2d6598" stroke-width="3" opacity=".8"/>
+
+  <!-- Single stylized S -->
+  <path d="M169 82
+           C157 66 139 59 119 60
+           C94 61 76 74 74 94
+           C72 113 86 124 110 130
+           L136 137
+           C149 140 156 146 155 155
+           C154 166 143 173 127 174
+           C108 175 91 168 77 154
+           L62 170
+           C78 190 101 200 128 199
+           C158 198 181 181 183 157
+           C185 135 169 123 143 116
+           L117 109
+           C106 106 100 101 101 94
+           C102 86 111 81 123 81
+           C137 80 149 85 158 96
+           Z"
+        fill="#ffffff"/>
+</svg>
