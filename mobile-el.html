@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stelios Sioulas — Ντράμερ</title>
+<meta name="description" content="Επίσημη ιστοσελίδα του ντράμερ Stelios Sioulas — mobile έκδοση.">
+<meta name="theme-color" content="#070a0f">
+<link rel="canonical" href="https://stelios-sioulas.github.io/">
+<link rel="alternate" hreflang="en" href="https://stelios-sioulas.github.io/mobile.html">
+<link rel="alternate" hreflang="el" href="https://stelios-sioulas.github.io/mobile-el.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon-s.svg?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a0f;--panel:#101722;--panel2:#151f2c;--text:#f4f7fa;--muted:#aab5c2;--line:#263442;--accent:#3a78b8;--accent2:#65a7e3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 28px),680px);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(7,10,15,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;font:700 18px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}.brand img{width:24px;height:24px}.brand b{color:#fff}.brand span{color:#2d6598}
+.top-actions{display:flex;align-items:center;gap:8px}.lang-switch{border:1px solid var(--line);background:var(--panel);color:var(--accent2);border-radius:999px;padding:7px 10px;font:600 11px Oswald,sans-serif;letter-spacing:.06em}.menu-btn{border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;width:42px;height:42px;font-size:22px;display:grid;place-items:center}
+.mobile-nav{display:none;padding:0 0 14px;grid-template-columns:repeat(2,1fr);gap:8px}.mobile-nav.open{display:grid}.mobile-nav a{padding:10px 12px;border:1px solid var(--line);background:rgba(16,23,34,.82);border-radius:10px;color:var(--muted);font-size:13px}
+.hero{min-height:72svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(7,10,15,.03),rgba(7,10,15,.12) 42%,rgba(7,10,15,.9) 78%,#070a0f 100%),url('assets/bg-hero.webp?v=clean') 62% center/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 68% 25%,rgba(58,120,184,.22),transparent 34%);pointer-events:none}.hero-content{position:relative;z-index:1;padding:34px 0 30px}
+.kicker{font:600 12px Oswald,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2)}
+h1,h2,h3{font-family:Oswald,sans-serif;text-transform:uppercase;margin:0}h1{font-size:clamp(54px,17vw,82px);line-height:.86;margin-top:10px}h1 .blue{display:block;color:#4d8fca}
+.hero p{font-size:15px;color:#d6dde5;max-width:420px;margin:18px 0 0}.hero-actions{display:flex;gap:9px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 15px;border-radius:9px;border:1px solid var(--accent);background:var(--accent);font:600 13px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}.btn.ghost{background:rgba(7,10,15,.55);border-color:#405064}
+.quick-nav{display:flex;gap:8px;overflow:auto;padding:12px 14px 14px;scrollbar-width:none;border-bottom:1px solid var(--line)}.quick-nav::-webkit-scrollbar{display:none}.quick-nav a{white-space:nowrap;padding:8px 11px;border:1px solid var(--line);background:var(--panel);border-radius:999px;color:var(--muted);font-size:12px}
+section{padding:46px 0;border-bottom:1px solid var(--line)}.section-label{color:var(--accent2);font:600 11px Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}h2{font-size:36px;line-height:1;margin-bottom:15px}section p{color:var(--muted);font-size:14px;margin:0 0 12px}
+.photo-block{width:100%;aspect-ratio:16/10;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:22px;background-position:center;background-size:cover;background-repeat:no-repeat;box-shadow:0 12px 28px rgba(0,0,0,.26)}
+.photo-about{background-image:linear-gradient(180deg,transparent,rgba(7,10,15,.22)),url('assets/bg-about.webp?v=crowd-blur');background-position:44% center}.photo-live{background-image:linear-gradient(180deg,transparent,rgba(7,10,15,.24)),url('assets/bg-live.webp?v=bandus');background-position:50% 42%}
+.featured-grid,.record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}.card{min-height:116px;padding:14px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#162233,var(--panel));position:relative}.card .meta{color:var(--accent2);font-size:9px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}.card h3{font-size:17px;line-height:1.05;margin-bottom:6px}.card p{font-size:11px;line-height:1.35;margin:0}.card-link{padding-right:28px}.card-link:after{content:"↗";position:absolute;right:10px;top:10px;color:var(--accent2);font-size:14px}
+.view-all{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:14px 16px;border:1px solid var(--accent);border-radius:12px;background:rgba(58,120,184,.12);font:600 13px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.view-all span:last-child{font-size:18px}
+.teaching-list{display:grid;gap:9px;margin-top:18px}.teaching-item{padding:14px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 11px 11px 0}.teaching-item strong{display:block;font-family:Oswald,sans-serif;text-transform:uppercase;font-size:17px}.teaching-item span{color:var(--muted);font-size:12px}
+.event-card{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,var(--panel2),var(--panel))}.event-date{color:var(--accent2);font:700 34px Oswald,sans-serif;line-height:1}.event-date span{font-size:13px;color:var(--text);margin-left:7px}.event-card h3{font-size:24px;margin:12px 0 6px}.event-card p{margin:0;font-size:13px}
+.media-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}.video-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}.video-card iframe{width:100%;aspect-ratio:16/9;border:0;display:block}.video-copy{padding:13px 14px}.video-copy .meta{color:var(--accent2);font-size:10px;text-transform:uppercase;letter-spacing:.07em}.video-copy h3{font-size:18px;margin-top:4px}
+.social-row{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:18px}.social-row a{padding:13px;border:1px solid var(--line);border-radius:11px;background:var(--panel);text-align:center;font:600 12px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:8px}.social-row svg{width:17px;height:17px;flex:0 0 auto}
+footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:inline-block;margin-top:10px;color:var(--accent2);font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+@media(min-width:640px){.featured-grid,.record-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <a class="brand" href="#top"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a>
+    <div class="top-actions"><a class="lang-switch" href="mobile.html" lang="en">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div>
+  </div>
+  <nav class="wrap mobile-nav" id="mobileNav">
+    <a href="#about">Σχετικά</a><a href="#projects">Projects</a><a href="#teaching">Διδασκαλία</a><a href="#discography">Δισκογραφία</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Επικοινωνία</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-content">
+      <div class="kicker">Ντράμερ · Μουσικός</div>
+      <h1>Stelios <span class="blue">Sioulas</span></h1>
+      <p>Ντράμερ με βάση την Αθήνα, ενεργός στη metal, rock και tribute σκηνή, σε studio δουλειές και live εμφανίσεις.</p>
+      <div class="hero-actions"><a class="btn" href="#projects">Τρέχοντα projects</a><a class="btn ghost" href="#media">Δες videos</a></div>
+    </div>
+  </section>
+
+  <nav class="quick-nav" aria-label="Γρήγορη πλοήγηση">
+    <a href="#projects">Projects</a><a href="#live">Live</a><a href="#media">Media</a><a href="#teaching">Διδασκαλία</a><a href="#contact">Επικοινωνία</a>
+  </nav>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-label">01 / Σχετικά</div>
+      <h2>Πίσω από τα τύμπανα</h2>
+      <p>Ο Stelios Sioulas είναι ντράμερ από τη Θεσσαλονίκη και ζει στην Αθήνα. Η πορεία του περιλαμβάνει original μπάντες, tribute σχήματα, studio ηχογραφήσεις, touring και live συνεργασίες.</p>
+      <div class="photo-block photo-about" role="img" aria-label="Ο Stelios Sioulas σε live εμφάνιση στα ντραμς"></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-label">02 / Projects</div>
+      <h2>Επιλεγμένα ενεργά projects</h2>
+      <p>Τρία ενεργά projects εμφανίζονται εδώ ως highlights. Η πλήρης λίστα των τρεχόντων και παλαιότερων projects ανοίγει σε ξεχωριστή σελίδα.</p>
+      <div class="featured-grid">
+        <a class="card card-link" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener"><div class="meta">Since 2021</div><h3>Persona Non Grata</h3><p>Μέλος από το 2021.</p></a>
+        <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Ενεργό live project.</p></a>
+        <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Ιδρυτικό μέλος από το 2023.</p></article>
+      </div>
+      <a class="view-all" href="projects-el.html"><span>Όλα τα projects</span><span>→</span></a>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="wrap">
+      <div class="section-label">03 / Διδασκαλία</div>
+      <h2>Διδασκαλία ντραμς</h2>
+      <p>Διδακτική εμπειρία σε μουσικές σχολές και ωδεία.</p>
+      <div class="teaching-list">
+        <div class="teaching-item"><strong>YMCA Thessaloniki / ΧΑΝΘ</strong><span>Καθηγητής ντραμς · Θεσσαλονίκη</span></div>
+        <div class="teaching-item"><strong>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</strong><span>Καθηγητής ντραμς · Θεσσαλονίκη</span></div>
+        <div class="teaching-item"><strong>ΗΧΟΜΟΡΦΕΣ</strong><span>Καθηγητής ντραμς · Αγία Παρασκευή</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="discography">
+    <div class="wrap">
+      <div class="section-label">04 / Δισκογραφία</div>
+      <h2>Επιλεγμένες ηχογραφήσεις</h2>
+      <div class="record-grid">
+        <article class="card"><div class="meta">2013 · Star.Gate</div><h3>Reborn</h3><p>Ντραμς.</p></article>
+        <article class="card"><div class="meta">2016 · Sarissa</div><h3>Nemesis</h3><p>Ντραμς.</p></article>
+        <article class="card"><div class="meta">2016 · Star.Gate</div><h3>Longing for Light</h3><p>Ντραμς.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="live">
+    <div class="wrap">
+      <div class="section-label">05 / Live</div>
+      <h2>Live εμφανίσεις</h2>
+      <div class="event-card">
+        <div class="event-date">03 <span>Οκτωβρίου 2026</span></div>
+        <h3>The Prisoners · Eightball</h3>
+        <p>Θεσσαλονίκη · μαζί με Obscurus Rex. Ο Stelios στα ντραμς και με τα δύο projects.</p>
+      </div>
+      <div class="photo-block photo-live" role="img" aria-label="Live εμφάνιση στο Eightball"></div>
+    </div>
+  </section>
+
+  <section id="media">
+    <div class="wrap">
+      <div class="section-label">06 / Media</div>
+      <h2>Δες videos</h2>
+      <p>Μια σύντομη επιλογή για mobile. Περισσότερο υλικό υπάρχει στα social κανάλια του Stelios.</p>
+      <div class="media-grid">
+        <article class="video-card"><iframe src="https://www.youtube.com/embed/O6IHi-c-nlA" title="Stelios Sioulas - The Prodigy Drumcover" loading="lazy" allowfullscreen></iframe><div class="video-copy"><div class="meta">Solo · Drum cover</div><h3>The Prodigy Drumcover</h3></div></article>
+        <article class="video-card"><iframe src="https://www.youtube.com/embed/tdMbeJyw7nE" title="Star.Gate - Reborn" loading="lazy" allowfullscreen></iframe><div class="video-copy"><div class="meta">Star.Gate</div><h3>Reborn</h3></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-label">07 / Επικοινωνία</div>
+      <h2>Social & επικοινωνία</h2>
+      <div class="social-row">
+        <a href="https://www.facebook.com/stelios.sioulas.7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8h2.8l.4-3.2h-3.2v-2c0-.9.3-1.6 1.7-1.6H17V4.3c-.8-.1-1.7-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.4v2.3H7.5V14h2.8v8h3.2Z"/></svg><span>Facebook</span></a>
+        <a href="https://www.instagram.com/steliossioulas79/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        <a href="https://www.tiktok.com/@stelios.sioulas.t" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.2 3c.3 2 1.5 3.5 3.5 4.3 1 .4 2 .5 3 .5v3.1c-2.3 0-4.4-.7-6.2-2v6.3c0 3.7-3 6.8-6.8 6.8S1 19 1 15.3s3-6.8 6.8-6.8c.5 0 1 .1 1.5.2V12c-.5-.2-1-.3-1.5-.3-2 0-3.6 1.6-3.6 3.6s1.6 3.6 3.6 3.6 3.6-1.6 3.6-3.6V3h2.8Z"/></svg><span>TikTok</span></a>
+        <a href="https://www.youtube.com/@SteliosSioulas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 12s0-3.4-.4-5c-.2-1-.9-1.7-1.8-1.9C19.2 4.7 12 4.7 12 4.7s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.9C1 8.6 1 12 1 12s0 3.4.4 5c.2 1 .9 1.7 1.8 1.9 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.9.4-1.6.4-5 .4-5Zm-13.2 3.2V8.8l5.7 3.2-5.7 3.2Z"/></svg><span>YouTube</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="year"></span> Stelios Sioulas.<br><a class="desktop-link" href="index-el.html?desktop=1">Προβολή desktop site</a></div></footer>
+<script>
+const btn=document.getElementById('menuBtn'),nav=document.getElementById('mobileNav');
+btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.textContent=open?'×':'☰';});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}));
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
