@@ -12,9 +12,8 @@
 <meta property="og:locale" content="en_US">
 <meta name="theme-color" content="#070a0f">
 <link rel="canonical" href="https://stelios-sioulas.github.io/">
-<link rel="icon" href="favicon.ico?v=white-bg-2" sizes="any">
-<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png?v=white-bg-2">
-<link rel="apple-touch-icon" href="assets/favicon.png?v=white-bg-2">
+<link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon-s.svg?v=1">
+<link rel="shortcut icon" type="image/svg+xml" href="assets/favicon-s.svg?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -51,9 +50,11 @@ header{
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 .brand{
-  font-family:Inter,Arial,sans-serif;
-  font-size:20px;font-weight:600;letter-spacing:-.035em;text-transform:uppercase;
+  font-family:Oswald,sans-serif;
+  font-size:20px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
 }
+.brand .brand-stelios{color:#ffffff}
+.brand .brand-sioulas{color:#2d6598}
 nav{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
 nav a{font-size:13px;color:var(--muted)}
 nav a:hover{color:var(--accent)}
@@ -103,22 +104,14 @@ h1>span{display:block}
   display:block;
   width:max-content;
   max-width:100%;
-  color:#f7fbff;
-  font-family:Inter,Arial,sans-serif;
-  font-weight:600;
-  letter-spacing:-.055em;
-  background:linear-gradient(180deg,#ffffff 0%,#eef4fb 34%,#9aa8ba 52%,#f8fbff 70%,#7d8999 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,.92)) drop-shadow(0 0 18px rgba(126,163,205,.16));
+  color:#ffffff;
+  -webkit-text-fill-color:#ffffff;
+  text-shadow:0 3px 14px rgba(0,0,0,.9);
 }
 .hero-name--blue{
-  background:linear-gradient(180deg,#83eaff 0%,#1a91ff 27%,#075bd7 50%,#56d8ff 70%,#063a9f 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,.94)) drop-shadow(0 0 24px rgba(8,119,255,.30));
+  color:#2d6598;
+  -webkit-text-fill-color:#2d6598;
+  text-shadow:0 3px 14px rgba(0,0,0,.92),0 0 22px rgba(45,101,152,.16);
 }
 .hero p{
   max-width:620px;
@@ -430,7 +423,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
 </button>
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top">Stelios Sioulas</a>
+    <a class="brand" href="#top" aria-label="Stelios Sioulas"><span class="brand-stelios">Stelios</span> <span class="brand-sioulas">Sioulas</span></a>
     <nav aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
