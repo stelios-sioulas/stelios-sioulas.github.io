@@ -136,6 +136,14 @@ h1>span{display:block}
 .btn.ghost{background:transparent;color:var(--text);border-color:#314254}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 section{padding:84px 0;border-top:1px solid var(--line);position:relative;overflow:hidden}
+main > section:not(.hero){
+  background-color:#070a0f;
+  transition:background-color .32s ease,box-shadow .32s ease;
+}
+main > section:not(.hero) .wrap{
+  transition:transform .32s cubic-bezier(.2,.7,.2,1);
+  transform-origin:center;
+}
 #about{--section-image:url('assets/bg-about.webp?v=crowd-blur');--section-position:42% center}
 #projects{--section-image:url('assets/bg-projects.webp?v=focus');--section-position:0% 30%;--section-size:150% auto}
 #teaching{--section-image:url('assets/bg-teaching.webp');--section-position:44% center}
@@ -158,6 +166,7 @@ section{padding:84px 0;border-top:1px solid var(--line);position:relative;overfl
   opacity:.30;
   filter:saturate(.86) contrast(1.08) brightness(.84);
   pointer-events:none;
+  transition:transform .32s cubic-bezier(.2,.7,.2,1),opacity .32s ease,filter .32s ease;
 }
 #projects::after,#discography::after,#media::after{
   right:0;
@@ -367,6 +376,36 @@ section .wrap{position:relative;z-index:1}
 .intro-audio-btn svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
 .intro-audio-btn.is-playing{border-color:var(--accent2);color:#fff;box-shadow:0 0 18px rgba(58,120,184,.22)}
 .intro-audio-btn[hidden]{display:none!important}
+@media(hover:hover) and (pointer:fine){
+  main > section:not(.hero):hover{
+    background-color:#0a121e;
+    box-shadow:
+      inset 0 1px 0 rgba(101,167,227,.08),
+      inset 0 -1px 0 rgba(101,167,227,.05),
+      inset 0 0 80px rgba(58,120,184,.035);
+  }
+  main > section:not(.hero):hover .wrap{
+    transform:scale(1.008);
+  }
+  main > section:not(.hero):hover::after{
+    transform:translateY(-50%) scale(1.025);
+    opacity:.34;
+    filter:saturate(.92) contrast(1.1) brightness(.88);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  main > section:not(.hero),
+  main > section:not(.hero) .wrap,
+  #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
+    transition:none!important;
+  }
+  main > section:not(.hero):hover .wrap{
+    transform:none;
+  }
+  main > section:not(.hero):hover::after{
+    transform:translateY(-50%);
+  }
+}
 @media(min-width:1050px){
   #projects .section-body,#discography .section-body,#media .section-body{
     margin-right:clamp(120px,13vw,180px);
@@ -478,7 +517,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
           <a class="card card-link" href="https://obscurusrex.com/" target="_blank" rel="noopener" aria-label="Open Obscurus Rex official website"><div class="meta">Touring</div><h3>Obscurus Rex</h3><p>Touring drummer.</p></a>
           <a class="card card-link" href="https://www.johnjefftouch.com/" target="_blank" rel="noopener" aria-label="Open John Jeff Touch official website"><div class="meta">Project</div><h3>John Jeff Touch</h3><p>Drums.</p></a>
           <a class="card card-link" href="https://www.facebook.com/groups/49489087578/" target="_blank" rel="noopener" aria-label="Open The Puppets public Facebook group"><div class="meta">Metallica tribute</div><h3>The Puppets</h3><p>Drums.</p></a>
-          <a class="card card-link" href="https://www.facebook.com/OuteSponda/" target="_blank" rel="noopener" aria-label="Open ΟΥΤΕ ΣΠΟΝΤΑ official Facebook page"><div class="meta">Greek alternative / rock</div><h3>ΟΥΤΕ ΣΠΟΝΤΑ</h3><p>Drums · live and recorded work.</p></a>
+          <a class="card card-link" href="https://www.youtube.com/user/OuteSpondaBand" target="_blank" rel="noopener" aria-label="Open ΟΥΤΕ ΣΠΟΝΤΑ YouTube channel"><div class="meta">Greek alternative / rock</div><h3>ΟΥΤΕ ΣΠΟΝΤΑ</h3><p>Drums · live and recorded work.</p></a>
           <a class="card card-link" href="https://www.facebook.com/forbiddenlore.band/" target="_blank" rel="noopener" aria-label="Open Forbidden Lore official Facebook page"><div class="meta">Symphonic Metal</div><h3>Forbidden Lore</h3><p>Drums.</p></a>
           <article class="card"><div class="meta">Since 2008 · Founding member</div><h3>Soletaken</h3><p>Drums · founding member since the band's formation in 2008.</p></article>
           <article class="card"><div class="meta">Since 2023 · Founding member</div><h3>Pop ’N’ Roll</h3><p>Drums · founding member since the band's formation in 2023.</p></article>
