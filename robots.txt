@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stelios-sioulas.github.io/sitemap.xml
