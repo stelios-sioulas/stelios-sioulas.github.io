@@ -37,7 +37,10 @@ section{padding:46px 0;border-bottom:1px solid var(--line)}.section-label{color:
 .featured-grid,.record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}.card{min-height:116px;padding:14px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#162233,var(--panel));position:relative}.card .meta{color:var(--accent2);font-size:9px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}.card h3{font-size:17px;line-height:1.05;margin-bottom:6px}.card p{font-size:11px;line-height:1.35;margin:0}.card-link{padding-right:28px}.card-link:after{content:"↗";position:absolute;right:10px;top:10px;color:var(--accent2);font-size:14px}
 .view-all{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:14px 16px;border:1px solid var(--accent);border-radius:12px;background:rgba(58,120,184,.12);font:600 13px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.view-all span:last-child{font-size:18px}
 .teaching-list{display:grid;gap:9px;margin-top:18px}.teaching-item{padding:14px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 11px 11px 0}.teaching-item strong{display:block;font-family:Oswald,sans-serif;text-transform:uppercase;font-size:17px}.teaching-item span{color:var(--muted);font-size:12px}
-.event-card{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,var(--panel2),var(--panel))}.event-date{color:var(--accent2);font:700 34px Oswald,sans-serif;line-height:1}.event-date span{font-size:13px;color:var(--text);margin-left:7px}.event-card h3{font-size:24px;margin:12px 0 6px}.event-card p{margin:0;font-size:13px}
+.event-card{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,var(--panel2),var(--panel))}
+.event-card-link{display:block;position:relative;transition:transform .18s ease,border-color .18s ease,background .18s ease;padding-right:40px}
+.event-card-link:after{content:"↗";position:absolute;right:15px;top:14px;color:var(--accent2);font-size:18px}
+.event-card-link:active{transform:scale(.99);border-color:var(--accent)}.event-date{color:var(--accent2);font:700 34px Oswald,sans-serif;line-height:1}.event-date span{font-size:13px;color:var(--text);margin-left:7px}.event-card h3{font-size:24px;margin:12px 0 6px}.event-card p{margin:0;font-size:13px}
 .media-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}.video-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}.video-card iframe{width:100%;aspect-ratio:16/9;border:0;display:block}.video-copy{padding:13px 14px}.video-copy .meta{color:var(--accent2);font-size:10px;text-transform:uppercase;letter-spacing:.07em}.video-copy h3{font-size:18px;margin-top:4px}
 .social-row{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:18px}.social-row a{padding:13px;border:1px solid var(--line);border-radius:11px;background:var(--panel);text-align:center;font:600 12px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:8px}.social-row svg{width:17px;height:17px;flex:0 0 auto}
 footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:inline-block;margin-top:10px;color:var(--accent2);font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}
@@ -121,11 +124,11 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
     <div class="wrap">
       <div class="section-label">05 / Live</div>
       <h2>Live εμφανίσεις</h2>
-      <div class="event-card">
+      <a class="event-card event-card-link" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball">
         <div class="event-date">03 <span>Οκτωβρίου 2026</span></div>
         <h3>The Prisoners · Eightball</h3>
         <p>Θεσσαλονίκη · μαζί με Obscurus Rex. Ο Stelios στα ντραμς και με τα δύο projects.</p>
-      </div>
+      </a>
       <div class="photo-block photo-live" role="img" aria-label="Live εμφάνιση στο Eightball"></div>
     </div>
   </section>
