@@ -366,6 +366,9 @@ section .wrap{position:relative;z-index:1}
 .event-copy h3{font-size:28px;margin-bottom:8px}
 .event-copy p{margin:0;color:var(--muted)}
 .event-copy .event-role{margin-top:10px;color:var(--text)}
+.event-card-link{position:relative;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.event-card-link::after{content:"↗";position:absolute;top:18px;right:20px;color:var(--accent2);font-size:20px;opacity:.72}
+.event-card-link:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 38px rgba(0,0,0,.3)}
 .contact-box{
   background:linear-gradient(135deg,var(--panel2),var(--panel));
   border:1px solid var(--line);
@@ -694,7 +697,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
         <h2 aria-label="Live dates" data-text="Live dates">Live dates</h2>
         <p>Upcoming shows and selected live highlights.</p>
         <div class="event-list">
-          <article class="event-card">
+          <a class="event-card event-card-link" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Open The Prisoners event on the official Eightball website">
             <div class="event-date"><strong>03</strong><span>October 2026</span></div>
             <div class="event-copy">
               <div class="meta">Eightball Club · Thessaloniki</div>
@@ -702,7 +705,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:#7f8da0;font-s
               <p>Iron Maiden tribute show · Support: Obscurus Rex.</p>
               <p class="event-role">Stelios Sioulas on drums with both The Prisoners and Obscurus Rex.</p>
             </div>
-          </article>
+          </a>
         </div>
         <div class="placeholder">Stelios has performed extensively at Eightball Club / Eightball Live Stage in Thessaloniki across many different bands and projects over the years.</div>
       </div>
