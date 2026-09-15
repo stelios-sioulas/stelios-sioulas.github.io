@@ -1,0 +1,78 @@
+name: Apply creative drum profile copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-creative-drum-profile.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update English and Greek desktop/mobile copy
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          files = [Path('index.html'), Path('index-el.html'), Path('mobile.html'), Path('mobile-el.html')]
+
+          for path in files:
+              text = path.read_text(encoding='utf-8')
+              greek = path.name.endswith('-el.html') or path.name == 'index-el.html'
+
+              # Hero positioning: creative drummer without implying whole-song songwriting credits.
+              text = text.replace('Drummer · Musician', 'Drummer · Performer · Original Drum Parts')
+              text = text.replace('Ντράμερ · Μουσικός', 'Ντράμερ · Performer · Original Drum Parts')
+
+              # Add a clear creative-credit statement to About, once.
+              about_marker_en = 'Across much of his recorded work, Stelios develops and writes his own drum parts'
+              about_marker_el = 'Σε μεγάλο μέρος της δισκογραφικής δουλειάς στην οποία έχει συμμετάσχει, ο Στέλιος διαμορφώνει και γράφει ο ίδιος τα μέρη των τυμπάνων'
+              marker = about_marker_el if greek else about_marker_en
+              if marker not in text:
+                  m = re.search(r'(<section id="about">.*?<p>.*?</p>)', text, flags=re.S)
+                  if m:
+                      if greek:
+                          extra = ('\n        <p>Σε μεγάλο μέρος της δισκογραφικής δουλειάς στην οποία έχει συμμετάσχει, ο Στέλιος διαμορφώνει και γράφει ο ίδιος τα μέρη των τυμπάνων, αντί να εκτελεί απλώς έτοιμα drum arrangements. Τα drum solos και τα solo sections του αποτελούν δικές του συνθέσεις.</p>')
+                      else:
+                          extra = ('\n        <p>Across much of his recorded work, Stelios develops and writes his own drum parts rather than simply performing pre-written drum arrangements. His drum solos and solo sections are his own compositions.</p>')
+                      text = text[:m.end()] + extra + text[m.end():]
+
+              # Reinforce the same idea in Discography, without assigning unverified track-by-track songwriting credits.
+              disco_marker_en = 'The drum performances often include parts developed by Stelios himself'
+              disco_marker_el = 'Οι εκτελέσεις στα τύμπανα περιλαμβάνουν συχνά μέρη που έχει διαμορφώσει ο ίδιος ο Στέλιος'
+              dmarker = disco_marker_el if greek else disco_marker_en
+              if dmarker not in text:
+                  m = re.search(r'(<section id="discography">.*?<h2[^>]*>.*?</h2>)', text, flags=re.S)
+                  if m:
+                      if greek:
+                          extra = ('\n      <p>Οι εκτελέσεις στα τύμπανα περιλαμβάνουν συχνά μέρη που έχει διαμορφώσει ο ίδιος ο Στέλιος, με ιδιαίτερη έμφαση στα προσωπικά του drum solos και solo sections.</p>')
+                      else:
+                          extra = ('\n      <p>The drum performances often include parts developed by Stelios himself, with his original drum solos and solo sections forming a distinctive part of his recorded work.</p>')
+                      text = text[:m.end()] + extra + text[m.end():]
+
+              # Improve SEO descriptions while keeping the existing site structure/design untouched.
+              if greek:
+                  text = text.replace('Επίσημη ιστοσελίδα του Έλληνα ντράμερ Stelios Sioulas. Μπάντες και projects, δισκογραφία, live εμφανίσεις, drum videos, teaching και contact.', 'Επίσημη ιστοσελίδα του Έλληνα ντράμερ Stelios Sioulas. Projects, δισκογραφία, live εμφανίσεις, original drum parts, drum solos, videos, διδασκαλία και επικοινωνία.')
+                  text = text.replace('Επίσημη ιστοσελίδα του Έλληνα ντράμερ Stelios Sioulas. Projects, live εμφανίσεις, δισκογραφία, drum videos και επικοινωνία.', 'Επίσημη ιστοσελίδα του Έλληνα ντράμερ Stelios Sioulas. Projects, live εμφανίσεις, δισκογραφία, original drum parts, drum solos, videos και επικοινωνία.')
+              else:
+                  text = text.replace('Official website of Greek drummer Stelios Sioulas. Bands and projects, discography, live performances, drum videos, teaching and contact.', 'Official website of Greek drummer Stelios Sioulas. Projects, discography, live performances, original drum parts, drum solos, videos, teaching and contact.')
+                  text = text.replace('Official website of Greek drummer Stelios Sioulas. Projects, live performances, discography, drum videos and contact.', 'Official website of Greek drummer Stelios Sioulas. Projects, live performances, discography, original drum parts, drum solos, videos and contact.')
+
+              path.write_text(text, encoding='utf-8')
+
+      - name: Commit site updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html index-el.html mobile.html mobile-el.html
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Highlight original drum parts and creative contribution"
+            git push
+          fi
