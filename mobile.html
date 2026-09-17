@@ -46,17 +46,12 @@ section{padding:46px 0;border-bottom:1px solid var(--line)}.section-label{color:
 footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:inline-block;margin-top:10px;color:var(--accent2);font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em}
 @media(min-width:640px){.featured-grid,.record-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
+<style>
+.site-mobile-header{position:sticky!important;top:0!important;z-index:50!important;background:rgba(7,10,15,.95)!important;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)!important}.site-mobile-header .site-mobile-top{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}.site-mobile-header .site-mobile-brand{display:flex;align-items:center;gap:8px;font:700 18px Oswald,sans-serif!important;text-transform:uppercase;letter-spacing:.04em}.site-mobile-header .site-mobile-brand img{width:24px;height:24px}.site-mobile-header .site-mobile-brand b{color:#fff}.site-mobile-header .site-mobile-brand span{color:#2d6598}.site-mobile-header .site-mobile-actions{display:flex;align-items:center;gap:8px}.site-mobile-header .site-mobile-lang{border:1px solid var(--line);background:var(--panel);color:var(--accent2);border-radius:999px;padding:7px 10px;font:600 11px Oswald,sans-serif!important;letter-spacing:.06em}.site-mobile-header .site-mobile-btn{border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;width:42px;height:42px;font-size:22px;display:grid;place-items:center}.site-mobile-header .site-mobile-nav{display:none;padding:0 0 14px;grid-template-columns:repeat(2,1fr);gap:8px}.site-mobile-header .site-mobile-nav.open{display:grid}.site-mobile-header .site-mobile-nav a{padding:10px 12px;border:1px solid var(--line);background:rgba(16,23,34,.82);border-radius:10px;color:var(--muted);font:600 13px Oswald,sans-serif!important;text-transform:uppercase;letter-spacing:.04em}
+</style>
 </head>
 <body>
-<header>
-  <div class="wrap topbar">
-    <a class="brand" href="#top"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a>
-    <div class="top-actions"><a class="lang-switch" href="mobile-el.html" lang="el">EL</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div>
-  </div>
-  <nav class="wrap mobile-nav" id="mobileNav">
-    <a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#discography">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a>
-  </nav>
-</header>
+<header class="site-mobile-header"><div class="wrap site-mobile-top"><a class="site-mobile-brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="site-mobile-actions"><a class="site-mobile-lang" href="mobile-el.html">EL</a><button class="site-mobile-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap site-mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#discography">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
 
 <main id="top">
   <section class="hero">
