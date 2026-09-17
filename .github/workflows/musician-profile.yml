@@ -42,28 +42,21 @@ jobs:
               if '<!-- ATHENS-MUSICIAN-PROFILE-V1 -->' in s:
                   continue
 
-              # Stronger hero calls to action.
-              s = re.sub(r'<div class="hero-actions">[\\s\\S]*?</div>', '<div class="hero-actions">' + cfg['hero_buttons'] + '\n      </div>', s, count=1)
+              s = re.sub(r'<div class="hero-actions">[\s\S]*?</div>', '<div class="hero-actions">' + cfg['hero_buttons'] + '\n      </div>', s, count=1)
+              s = re.sub(r'(<section[^>]*id="about"[\s\S]*?<h2[^>]*>.*?</h2>\s*)<p>.*?</p>', r'\1<p>' + cfg['about_first'] + '</p>', s, count=1)
 
-              # Correct the current-location positioning in the first About paragraph.
-              s = re.sub(r'(<section[^>]*id="about"[\\s\\S]*?<h2[^>]*>.*?</h2>\\s*)<p>.*?</p>', r'\\1<p>' + cfg['about_first'] + '</p>', s, count=1)
-
-              # Add a prominent proof-of-playing / collaboration CTA before the embedded social media.
               marker = '<article class="instagram-feature"'
               if marker in s:
                   s = s.replace(marker, cfg['media_intro'] + marker, 1)
 
-              # Add a clear professional availability statement to Contact.
               marker = '<div class="contact-box">'
               if marker in s:
                   s = s.replace(marker, cfg['contact_intro'] + marker, 1)
 
-              # Add scoped CSS once.
               s = s.replace('</style>', css + '</style>', 1)
               s = s.replace('<body>', '<body>\n<!-- ATHENS-MUSICIAN-PROFILE-V1 -->', 1)
               p.write_text(s, encoding='utf-8')
 
-          # Add the Greek teaching page to the sitemap.
           sm = Path('sitemap.xml')
           s = sm.read_text(encoding='utf-8')
           if 'https://steliossioulas.gr/teaching-el.html' not in s:
@@ -76,4 +69,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html index-el.html sitemap.xml
           git diff --cached --quiet || git commit -m "Strengthen musician profile"
+          git fetch origin main
+          git rebase origin/main
           git push
