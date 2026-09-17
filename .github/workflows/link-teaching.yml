@@ -1,0 +1,45 @@
+name: Link teaching page
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-teaching-links:
+    if: github.event.head_commit.message != 'Link Teaching page from home'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Teaching page links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          replacements = {
+              'index.html': [
+                  ('<a href="#teaching">Teaching</a>', '<a href="teaching.html">Teaching</a>'),
+                  ('        <div class="grid">\n          <article class="card"><div class="meta">Thessaloniki</div><h3>YMCA Thessaloniki / ΧΑΝΘ</h3><p>Drum instructor.</p></article>\n          <article class="card"><div class="meta">Thessaloniki</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Drum instructor.</p></article>\n          <article class="card"><div class="meta">Agia Paraskevi</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Drum instructor.</p></article>\n        </div>', '        <div class="grid">\n          <article class="card"><div class="meta">Thessaloniki</div><h3>YMCA Thessaloniki / ΧΑΝΘ</h3><p>Drum instructor.</p></article>\n          <article class="card"><div class="meta">Thessaloniki</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Drum instructor.</p></article>\n          <article class="card"><div class="meta">Agia Paraskevi</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Drum instructor.</p></article>\n        </div>\n        <div class="project-actions"><a class="btn ghost" href="teaching.html">View teaching</a></div>')
+              ],
+              'index-el.html': [
+                  ('<a href="#teaching">Διδασκαλία</a>', '<a href="teaching-el.html">Διδασκαλία</a>'),
+                  ('        <div class="grid">\n          <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>YMCA Θεσσαλονίκη / ΧΑΝΘ</h3><p>Καθηγητής ντραμς.</p></article>\n          <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Καθηγητής ντραμς.</p></article>\n          <article class="card"><div class="meta">Αγία Παρασκευή</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Καθηγητής ντραμς.</p></article>\n        </div>', '        <div class="grid">\n          <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>YMCA Θεσσαλονίκη / ΧΑΝΘ</h3><p>Καθηγητής ντραμς.</p></article>\n          <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Καθηγητής ντραμς.</p></article>\n          <article class="card"><div class="meta">Αγία Παρασκευή</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Καθηγητής ντραμς.</p></article>\n        </div>\n        <div class="project-actions"><a class="btn ghost" href="teaching-el.html">Δες τη διδασκαλία</a></div>')
+              ]
+          }
+          for name, reps in replacements.items():
+              p = Path(name)
+              s = p.read_text(encoding='utf-8')
+              for old, new in reps:
+                  if old not in s:
+                      raise SystemExit(f'Expected text not found in {name}: {old[:80]}')
+                  s = s.replace(old, new, 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html index-el.html
+          git diff --cached --quiet || git commit -m "Link Teaching page from home"
+          git push
