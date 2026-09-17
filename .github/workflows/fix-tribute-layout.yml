@@ -1,0 +1,40 @@
+name: Fix tribute project layout
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    if: "!contains(github.event.head_commit.message, '[tribute-fix]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix grouping
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for fn in ('projects.html','projects-el.html'):
+              p=Path(fn); s=p.read_text(encoding='utf-8')
+              # Rebuild the tribute section with all three tribute projects.
+              block_en='''<section><div class="wrap"><h2>Tribute Projects</h2><div class="list"><a class="project" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Drums · active live project.</p></div><div class="arrow">↗</div></a><a class="project" href="https://www.facebook.com/groups/49489087578/" target="_blank" rel="noopener"><div><div class="meta">Metallica tribute</div><h3>The Puppets</h3><p>Drums.</p></div><div class="arrow">↗</div></a><a class="project" href="https://eightballclub.gr/event/showbiz-live-a-tribute-to-muse-2/" target="_blank" rel="noopener"><div><div class="meta">MUSE tribute</div><h3>Showbiz</h3><p>Drums · MUSE tribute project.</p></div><div class="arrow">↗</div></a></div></div></section>'''
+              block_el=block_en
+              if fn.endswith('-el.html'): block_el=block_en.replace('Drums · active live project.','Drums · ενεργό live project.')
+              block=block_el if fn.endswith('-el.html') else block_en
+              s=re.sub(r'<section><div class="wrap"><h2>Tribute Projects</h2>.*?</section>',block,s,count=1,flags=re.S)
+              # Remove any remaining Puppets card only from the Other projects section.
+              parts=s.split('<h2>Other projects & collaborations</h2>') if fn=='projects.html' else s.split('<h2>Άλλα projects & συνεργασίες</h2>')
+              if len(parts)==2:
+                  tail=re.sub(r'<a class="project" href="https://www\.facebook\.com/groups/49489087578/".*?</a>','',parts[1],count=1,flags=re.S)
+                  s=parts[0]+('<h2>Other projects & collaborations</h2>' if fn=='projects.html' else '<h2>Άλλα projects & συνεργασίες</h2>')+tail
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects.html projects-el.html
+          git diff --cached --quiet && exit 0
+          git commit -m "[tribute-fix] keep tribute projects grouped"
+          git push
