@@ -184,6 +184,33 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
 .contact-form-actions .btn::after{content:""!important}
 
 </style>
+<style>
+/* footer credit refinement */
+.footer-credit-line{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.footer-separator{
+  color:var(--accent2);
+  font-size:10px;
+  line-height:1;
+}
+.creator-credit{color:#93a4b6}
+.creator-credit strong{
+  color:var(--accent2);
+  font-weight:600;
+}
+.footer-credit-line + .desktop-link{margin-top:14px}
+@media(max-width:680px){
+  .footer-inner{justify-content:center!important;text-align:center}
+  .footer-credit-line{justify-content:center;gap:5px 9px}
+  .footer-separator{display:none}
+  .creator-credit{flex-basis:100%}
+  .social-icons{width:100%;justify-content:center}
+}
+</style>
 </head>
 <body>
 <header><div class="wrap topbar"><a class="brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile-el.html">GR</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="discography.html">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
@@ -315,7 +342,7 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
   </section>
 </main>
 
-<footer><div class="wrap">© <span id="year"></span> Stelios Sioulas.<br><span class="creator-credit">Website design &amp; development by Debbie Moraiti</span><br><a class="desktop-link" href="index.html?desktop=1">View desktop site</a></div></footer>
+<footer><div class="wrap"><div class="footer-credit-line"><span class="copyright-credit">© <span id="year"></span> Stelios Sioulas.</span><span class="footer-separator" aria-hidden="true">•</span><span class="creator-credit">Website design &amp; development by <strong>Debbie Moraiti</strong></span></div><a class="desktop-link" href="index.html?desktop=1">View desktop site</a></div></footer>
 <script>
 const btn=document.getElementById('menuBtn'),nav=document.getElementById('mobileNav');
 btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.textContent=open?'×':'☰';});
