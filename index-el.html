@@ -807,6 +807,59 @@ html[lang="el"] .hero-name{
 }
 
 </style>
+<style>
+/* unified CTA system */
+.btn,
+.view-all,
+.reel-link,
+.desktop-link{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  min-height:44px;
+  padding:11px 16px!important;
+  border:1px solid var(--accent2)!important;
+  border-radius:0!important;
+  background:rgba(20,45,70,.72)!important;
+  color:var(--accent2)!important;
+  font-family:Oswald,sans-serif!important;
+  font-weight:600!important;
+  font-size:12px!important;
+  line-height:1.1!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease!important;
+}
+.btn:hover,
+.btn:focus-visible,
+.view-all:hover,
+.view-all:focus-visible,
+.reel-link:hover,
+.reel-link:focus-visible,
+.desktop-link:hover,
+.desktop-link:focus-visible{
+  background:rgba(58,120,184,.22)!important;
+  color:#fff!important;
+  border-color:var(--accent2)!important;
+  outline:none!important;
+}
+.btn:active,
+.view-all:active,
+.reel-link:active,
+.desktop-link:active{transform:translateY(1px)!important}
+.btn.ghost,
+.btn.page-link,
+.btn.ghost.page-link,
+.view-all.page-link{background:rgba(20,45,70,.72)!important;color:var(--accent2)!important;border-color:var(--accent2)!important}
+.contact-message-trigger{min-width:180px}
+.contact-form-actions .btn{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+.contact-form-actions .btn:hover,.contact-form-actions .btn:focus-visible{background:#4a8fd0!important;border-color:#4a8fd0!important;color:#fff!important}
+@media(max-width:680px){.btn,.view-all,.reel-link,.desktop-link{width:100%}}
+
+</style>
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
@@ -820,8 +873,8 @@ html[lang="el"] .hero-name{
       <p>Ντράμερ με βάση την Αθήνα και πολυετή παρουσία στη metal, rock και tribute σκηνή, με έντονη δραστηριότητα στα ελληνικά live.</p>
       <div class="hero-actions">
         <a class="btn page-link" href="projects-el.html">Δες projects</a>
-        <a class="btn ghost" href="#media">Δες videos</a>
-        <a class="btn ghost" href="#contact">Επικοινωνία</a>
+        <a class="btn" href="#media">Δες videos</a>
+        <a class="btn" href="#contact">Επικοινωνία</a>
       </div>
     </div>
   </section>
@@ -859,7 +912,7 @@ html[lang="el"] .hero-name{
           <article class="card"><div class="meta">Pop/rock cover trio</div><h3>Musicbox</h3><p>Ιδρυτικό μέλος.</p></article>
           <article class="card"><div class="meta">Project</div><h3>A Void Eternal</h3><p>Ντραμς.</p></article>
         </div>
-        <div class="project-actions"><a class="btn ghost page-link" href="projects-el.html">Όλα τα projects</a></div>
+        <div class="project-actions"><a class="btn page-link" href="projects-el.html">Όλα τα projects</a></div>
       </div>
     </div>
   </section>
@@ -875,7 +928,7 @@ html[lang="el"] .hero-name{
           <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Καθηγητής ντραμς.</p></article>
           <article class="card"><div class="meta">Αγία Παρασκευή</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Καθηγητής ντραμς.</p></article>
         </div>
-        <div class="project-actions"><a class="btn ghost page-link" href="teaching-el.html">Δες τη διδασκαλία</a></div>
+        <div class="project-actions"><a class="btn page-link" href="teaching-el.html">Δες τη διδασκαλία</a></div>
       </div>
     </div>
   </section>
@@ -892,7 +945,7 @@ html[lang="el"] .hero-name{
           <article class="card"><div class="meta">2023 · War Dance</div><h3>Sons of Thunder</h3><p>Session ντραμς.</p></article>
           <article class="card"><div class="meta">2017 · John Jeff Touch</div><h3>Burn</h3><p>Ντραμς.</p></article>
         </div>
-        <div class="project-actions"><a class="btn ghost page-link" href="discography-el.html">Πλήρης δισκογραφία</a></div>
+        <div class="project-actions"><a class="btn page-link" href="discography-el.html">Πλήρης δισκογραφία</a></div>
       </div>
     </div>
   </section>
@@ -925,7 +978,7 @@ html[lang="el"] .hero-name{
       <div class="section-body">
         <h2 aria-label="Βίντεο &amp; performance" data-text="Βίντεο &amp; performance">Βίντεο &amp; performance</h2>
         <p>Επιλεγμένα επίσημα videos από μπάντες και υλικό με έμφαση στα ντραμς από διαφορετικές περιόδους της πορείας του.</p>
-        <div class="profile-cta"><div><div class="meta">Live · Video · Συνεργασίες</div><h3>Δες τον Stelios να παίζει</h3><p>Επιλεγμένα live, drum-focused και ηχογραφημένα performances. Περισσότερο live υλικό θα προστίθεται καθώς εξελίσσονται τα νέα projects και οι εμφανίσεις.</p></div><div class="profile-cta-actions"><a class="btn" href="#live">Live εμφανίσεις</a><a class="btn ghost" href="#contact">Συνεργασία</a></div></div>
+        <div class="profile-cta"><div><div class="meta">Live · Video · Συνεργασίες</div><h3>Δες τον Stelios να παίζει</h3><p>Επιλεγμένα live, drum-focused και ηχογραφημένα performances. Περισσότερο live υλικό θα προστίθεται καθώς εξελίσσονται τα νέα projects και οι εμφανίσεις.</p></div><div class="profile-cta-actions"><a class="btn" href="#live">Live εμφανίσεις</a><a class="btn" href="#contact">Συνεργασία</a></div></div>
         <article class="instagram-feature" id="drum-intro">
           <div class="instagram-intro-copy">
             <div class="meta">Instagram · Drum intro</div>
