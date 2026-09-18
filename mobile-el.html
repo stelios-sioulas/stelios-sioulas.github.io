@@ -49,9 +49,16 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
 <style>
 .site-mobile-header{position:sticky!important;top:0!important;z-index:50!important;background:rgba(7,10,15,.95)!important;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)!important}.site-mobile-header .site-mobile-top{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}.site-mobile-header .site-mobile-brand{display:flex;align-items:center;gap:8px;font:700 18px Oswald,sans-serif!important;text-transform:uppercase;letter-spacing:.04em}.site-mobile-header .site-mobile-brand img{width:24px;height:24px}.site-mobile-header .site-mobile-brand b{color:#fff}.site-mobile-header .site-mobile-brand span{color:#2d6598}.site-mobile-header .site-mobile-actions{display:flex;align-items:center;gap:8px}.site-mobile-header .site-mobile-lang{border:1px solid var(--line);background:var(--panel);color:var(--accent2);border-radius:999px;padding:7px 10px;font:600 11px Oswald,sans-serif!important;letter-spacing:.06em}.site-mobile-header .site-mobile-btn{border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;width:42px;height:42px;font-size:22px;display:grid;place-items:center}.site-mobile-header .site-mobile-nav{display:none;padding:0 0 14px;grid-template-columns:repeat(2,1fr);gap:8px}.site-mobile-header .site-mobile-nav.open{display:grid}.site-mobile-header .site-mobile-nav a{padding:10px 12px;border:1px solid var(--line);background:rgba(16,23,34,.82);border-radius:10px;color:var(--muted);font:600 13px Oswald,sans-serif!important;text-transform:uppercase;letter-spacing:.04em}
 </style>
+<style>
+/* page-link visual cue */
+a.btn.page-link{background:rgba(20,45,70,.72)!important;color:var(--accent2)!important;border-color:var(--accent2)!important}
+a.btn.page-link:hover{background:rgba(58,120,184,.22)!important;color:#fff!important}
+a.view-all.page-link{color:var(--accent2)!important;border-color:var(--accent)!important}
+a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!important}
+</style>
 </head>
 <body>
-<header><div class="wrap topbar"><a class="brand" href="mobile-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile.html">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#discography">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
+<header><div class="wrap topbar"><a class="brand" href="mobile-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile.html">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">Σχετικά</a><a href="#projects">Projects</a><a href="#teaching">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Επικοινωνία</a></nav></header>
 
 <main id="top">
   <section class="hero">
@@ -87,7 +94,7 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
         <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Ενεργό live project.</p></a>
         <article class="card"><div class="meta">Heavymetaling of pop songs</div><h3>Pop ’N’ Roll</h3><p>Ιδρυτικό μέλος από το 2023.</p></article>
       </div>
-      <a class="view-all" href="projects-el.html"><span>Όλα τα projects</span><span>→</span></a>
+      <a class="view-all page-link" href="projects-el.html"><span>Όλα τα projects</span><span>→</span></a>
     </div>
   </section>
 
@@ -108,13 +115,14 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
   <section id="discography">
     <div class="wrap">
       <div class="section-label">04 / Δισκογραφία</div>
-      <h2>Επιλεγμένες ηχογραφήσεις</h2>
-      <p>Οι εκτελέσεις στα τύμπανα περιλαμβάνουν συχνά μέρη που έχει διαμορφώσει ο ίδιος ο Στέλιος, με ιδιαίτερη έμφαση στα προσωπικά του drum solos και solo sections.</p>
+      <h2>Δισκογραφία</h2>
+      <p>Μια σύντομη επιλογή εδώ· ο πλήρης κατάλογος ανοίγει στη δική του σελίδα.</p>
       <div class="record-grid">
-        <article class="card"><div class="meta">2013 · Star.Gate</div><h3>Reborn</h3><p>Ντραμς.</p></article>
-        <article class="card"><div class="meta">2016 · Sarissa</div><h3>Nemesis</h3><p>Ντραμς.</p></article>
+        <article class="card"><div class="meta">2023 · War Dance</div><h3>Sons of Thunder</h3><p>Session ντραμς.</p></article>
         <article class="card"><div class="meta">2016 · Star.Gate</div><h3>Longing for Light</h3><p>Ντραμς.</p></article>
+        <article class="card"><div class="meta">2013 · Star.Gate</div><h3>Reborn</h3><p>Ντραμς.</p></article>
       </div>
+      <a class="view-all page-link" href="discography-el.html"><span>Πλήρης δισκογραφία</span><span>→</span></a>
     </div>
   </section>
 
@@ -140,7 +148,7 @@ footer{padding:26px 0 40px;color:#7f8da0;font-size:11px}.desktop-link{display:in
         <article class="video-card"><iframe src="https://www.youtube.com/embed/O6IHi-c-nlA" title="Stelios Sioulas - The Prodigy Drumcover" loading="lazy" allowfullscreen></iframe><div class="video-copy"><div class="meta">Solo · Drum cover</div><h3>The Prodigy Drumcover</h3></div></article>
         <article class="video-card"><iframe src="https://www.youtube.com/embed/tdMbeJyw7nE" title="Star.Gate - Reborn" loading="lazy" allowfullscreen></iframe><div class="video-copy"><div class="meta">Star.Gate</div><h3>Reborn</h3></div></article>
       </div>
-      <a class="view-all" href="press-kit-el.html"><span>Press kit</span><span>→</span></a>
+      <a class="view-all page-link" href="press-kit-el.html"><span>Press kit</span><span>→</span></a>
     </div>
   </section>
 
@@ -164,6 +172,28 @@ const btn=document.getElementById('menuBtn'),nav=document.getElementById('mobile
 btn.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.textContent=open?'×':'☰';});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}));
 document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+<script>
+(function(){
+  const R='lang-scroll-ratio',T='lang-scroll-target';
+  document.querySelectorAll('a.site-lang,a.lang-switch').forEach(a=>a.addEventListener('click',()=>{
+    try{
+      const max=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
+      const target=new URL(a.href,window.location.href);
+      sessionStorage.setItem(R,String(window.scrollY/max));
+      sessionStorage.setItem(T,target.pathname);
+    }catch(e){}
+  }));
+  window.addEventListener('load',()=>{
+    try{
+      if(sessionStorage.getItem(T)!==window.location.pathname)return;
+      const ratio=parseFloat(sessionStorage.getItem(R)||'0');
+      sessionStorage.removeItem(R);sessionStorage.removeItem(T);
+      const restore=()=>window.scrollTo(0,Math.max(0,ratio*Math.max(document.documentElement.scrollHeight-window.innerHeight,0)));
+      requestAnimationFrame(()=>{restore();setTimeout(restore,120);setTimeout(restore,700);});
+    }catch(e){}
+  });
+})();
 </script>
 </body>
 </html>
