@@ -157,6 +157,34 @@ html[lang="el"] .hero-name{
 }
 
 </style>
+<style>
+
+/* contact trigger matches View buttons */
+.contact-message-trigger{
+  width:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  min-height:46px!important;
+  padding:14px 16px!important;
+  border:1px solid var(--accent)!important;
+  border-radius:12px!important;
+  background:rgba(58,120,184,.12)!important;
+  color:var(--accent2)!important;
+  font:600 13px Oswald,sans-serif!important;
+  text-transform:uppercase!important;
+  letter-spacing:.05em!important;
+  cursor:pointer;
+}
+.contact-message-trigger::after{content:"→";font-size:18px;line-height:1}
+.contact-message-trigger:active{
+  transform:scale(.99);
+  border-color:var(--accent2)!important;
+  background:rgba(58,120,184,.20)!important;
+  color:#fff!important;
+}
+
+</style>
 </head>
 <body>
 <header><div class="wrap topbar"><a class="brand" href="mobile-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile.html">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">Σχετικά</a><a href="#projects">Projects</a><a href="#teaching">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Επικοινωνία</a></nav></header>
