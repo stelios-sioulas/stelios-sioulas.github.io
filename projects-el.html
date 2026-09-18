@@ -216,6 +216,33 @@ html[lang="el"] .hero-name{
 @media(max-width:680px){.btn,.view-all,.reel-link,.desktop-link{width:100%}}
 
 </style>
+<style>
+/* footer credit refinement */
+.footer-credit-line{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.footer-separator{
+  color:var(--accent2);
+  font-size:10px;
+  line-height:1;
+}
+.creator-credit{color:#93a4b6}
+.creator-credit strong{
+  color:var(--accent2);
+  font-weight:600;
+}
+.footer-credit-line + .desktop-link{margin-top:14px}
+@media(max-width:680px){
+  .footer-inner{justify-content:center!important;text-align:center}
+  .footer-credit-line{justify-content:center;gap:5px 9px}
+  .footer-separator{display:none}
+  .creator-credit{flex-basis:100%}
+  .social-icons{width:100%;justify-content:center}
+}
+</style>
 </head><body><header class="site-header"><div class="site-top"><a class="site-brand" href="index-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index-el.html#about">Σχετικά</a><a href="projects-el.html" class="active">Projects</a><a href="teaching-el.html">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="index-el.html#live">Live</a><a href="index-el.html#media">Media</a><a href="index-el.html#contact">Επικοινωνία</a><a class="site-lang" href="projects.html">EN</a></nav></div></header><div class="hero"><div class="wrap"><div class="eyebrow">Μπάντες & projects</div><h1>Projects</h1><p>Επιλεγμένα παλαιότερα projects, ηχογραφήσεις και συνεργασίες.</p></div></div>
 <section><div class="wrap"><h2>Τρέχοντα / Ενεργά</h2><div class="list">
 <a class="project" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener"><div><div class="meta">Progressive metal band since 2003</div><h3>Persona Non Grata</h3><p>Μέλος από το 2021.</p></div><div class="arrow">↗</div></a>
@@ -251,7 +278,7 @@ html[lang="el"] .hero-name{
 </button>
 <footer>
   <div class="wrap footer-inner">
-    <div><div>© <span id="year"></span> Stelios Sioulas. Με επιφύλαξη παντός δικαιώματος.</div><div class="creator-credit">Website design &amp; development by Debbie Moraiti</div></div>
+    <div class="footer-credit-line"><span class="copyright-credit">© <span id="year"></span> Stelios Sioulas. Με επιφύλαξη παντός δικαιώματος.</span><span class="footer-separator" aria-hidden="true">•</span><span class="creator-credit">Website design &amp; development by <strong>Debbie Moraiti</strong></span></div>
     <div class="social-icons" aria-label="Social media">
       <a class="social-icon" href="https://www.facebook.com/stelios.sioulas.7" target="_blank" rel="noopener" aria-label="Stelios Sioulas on Facebook">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8h2.8l.4-3.2h-3.2v-2c0-.9.3-1.6 1.7-1.6H17V4.3c-.8-.1-1.7-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.4v2.3H7.5V14h2.8v8h3.2Z"/></svg>
