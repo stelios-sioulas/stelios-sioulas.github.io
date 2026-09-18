@@ -113,6 +113,59 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
   }catch(e){}
 })();
 </script>
+<style>
+/* unified CTA system */
+.btn,
+.view-all,
+.reel-link,
+.desktop-link{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  min-height:44px;
+  padding:11px 16px!important;
+  border:1px solid var(--accent2)!important;
+  border-radius:0!important;
+  background:rgba(20,45,70,.72)!important;
+  color:var(--accent2)!important;
+  font-family:Oswald,sans-serif!important;
+  font-weight:600!important;
+  font-size:12px!important;
+  line-height:1.1!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease!important;
+}
+.btn:hover,
+.btn:focus-visible,
+.view-all:hover,
+.view-all:focus-visible,
+.reel-link:hover,
+.reel-link:focus-visible,
+.desktop-link:hover,
+.desktop-link:focus-visible{
+  background:rgba(58,120,184,.22)!important;
+  color:#fff!important;
+  border-color:var(--accent2)!important;
+  outline:none!important;
+}
+.btn:active,
+.view-all:active,
+.reel-link:active,
+.desktop-link:active{transform:translateY(1px)!important}
+.btn.ghost,
+.btn.page-link,
+.btn.ghost.page-link,
+.view-all.page-link{background:rgba(20,45,70,.72)!important;color:var(--accent2)!important;border-color:var(--accent2)!important}
+.contact-message-trigger{min-width:180px}
+.contact-form-actions .btn{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+.contact-form-actions .btn:hover,.contact-form-actions .btn:focus-visible{background:#4a8fd0!important;border-color:#4a8fd0!important;color:#fff!important}
+@media(max-width:680px){.btn,.view-all,.reel-link,.desktop-link{width:100%}}
+
+</style>
 </head>
 <body><header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html" class="active">Teaching</a><a href="discography.html">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><a class="site-lang" href="teaching-el.html">GR</a></nav></div></header>
 <div class="hero"><div class="wrap"><div class="eyebrow">03 / Teaching</div><h1>Drum Teaching</h1><p>Practical drum lessons focused on technique, timing, coordination, groove, fills and the musical skills needed to play with confidence.</p></div></div>
