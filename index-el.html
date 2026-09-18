@@ -1154,5 +1154,18 @@ document.querySelectorAll('.contact-form').forEach(form=>{
   });
 });
 </script>
+<script>
+/* Greek uppercase without tonos */
+document.addEventListener('DOMContentLoaded',()=>{
+  const map={'ά':'α','έ':'ε','ή':'η','ί':'ι','ό':'ο','ύ':'υ','ώ':'ω','Ά':'Α','Έ':'Ε','Ή':'Η','Ί':'Ι','Ό':'Ο','Ύ':'Υ','Ώ':'Ω','ΐ':'ϊ','ΰ':'ϋ'};
+  const strip=s=>s.replace(/[άέήίόύώΆΈΉΊΌΎΏΐΰ]/g,ch=>map[ch]||ch);
+  document.querySelectorAll('body *').forEach(el=>{
+    if(getComputedStyle(el).textTransform!=='uppercase') return;
+    const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+    let node;
+    while((node=walker.nextNode())) node.nodeValue=strip(node.nodeValue);
+  });
+});
+</script>
 </body>
 </html>
