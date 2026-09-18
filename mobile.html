@@ -132,6 +132,58 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
 }
 
 </style>
+<style>
+/* unified CTA system */
+.btn,
+.view-all,
+.reel-link,
+.desktop-link{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:8px!important;
+  width:100%!important;
+  min-height:46px!important;
+  padding:13px 15px!important;
+  border:1px solid var(--accent)!important;
+  border-radius:12px!important;
+  background:rgba(58,120,184,.12)!important;
+  color:var(--accent2)!important;
+  font-family:Oswald,sans-serif!important;
+  font-weight:600!important;
+  font-size:13px!important;
+  line-height:1.1!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease!important;
+}
+.btn::after,
+.reel-link::after,
+.desktop-link::after{content:"→";font-size:17px;line-height:1}
+.btn:active,
+.view-all:active,
+.reel-link:active,
+.desktop-link:active{
+  transform:scale(.99)!important;
+  border-color:var(--accent2)!important;
+  background:rgba(58,120,184,.20)!important;
+  color:#fff!important;
+}
+.btn.ghost,
+.btn.page-link,
+.btn.ghost.page-link,
+.view-all.page-link{background:rgba(58,120,184,.12)!important;color:var(--accent2)!important;border-color:var(--accent)!important}
+.contact-message-trigger::after{content:"→"!important}
+.contact-form-actions .btn{
+  justify-content:center!important;
+  background:var(--accent)!important;
+  color:#fff!important;
+  border-color:var(--accent)!important;
+}
+.contact-form-actions .btn::after{content:""!important}
+
+</style>
 </head>
 <body>
 <header><div class="wrap topbar"><a class="brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile-el.html">GR</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="discography.html">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
@@ -142,7 +194,7 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
       <div class="kicker">Drummer · Performer · Original Drum Parts</div>
       <h1>Stelios <span class="blue">Sioulas</span></h1>
       <p>Athens-based drummer active across metal, rock, tribute projects, studio work and the Greek live scene.</p>
-      <div class="hero-actions"><a class="btn" href="#projects">Current projects</a><a class="btn ghost" href="#media">Watch</a></div>
+      <div class="hero-actions"><a class="btn" href="#projects">Current projects</a><a class="btn" href="#media">Watch</a></div>
     </div>
   </section>
 
