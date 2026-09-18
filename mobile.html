@@ -62,6 +62,21 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
 .hero-actions .btn{flex:1 1 0!important;min-width:140px!important;min-height:44px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;line-height:1.1!important}
 
 </style>
+<script>
+/* invisible language position restore */
+(function(){
+  try{
+    if(sessionStorage.getItem('lang-scroll-target')===window.location.pathname){
+      document.documentElement.classList.add('lang-restore-pending');
+      if('scrollRestoration' in history) history.scrollRestoration='manual';
+      const style=document.createElement('style');
+      style.id='lang-restore-style';
+      style.textContent='html.lang-restore-pending{background:#070a0f!important}html.lang-restore-pending body{visibility:hidden!important}';
+      document.head.appendChild(style);
+    }
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 <header><div class="wrap topbar"><a class="brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile-el.html">GR</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="discography.html">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
@@ -181,24 +196,67 @@ document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 <script>
 (function(){
-  const R='lang-scroll-ratio',T='lang-scroll-target';
+  const KEY='lang-scroll-state',TARGET='lang-scroll-target';
+  const sections=()=>Array.from(document.querySelectorAll('section'));
+
   document.querySelectorAll('a.site-lang,a.lang-switch').forEach(a=>a.addEventListener('click',()=>{
     try{
+      const y=window.scrollY;
       const max=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
+      const probe=y+Math.min(100,window.innerHeight*.15);
+      let sectionIndex=-1,sectionProgress=null;
+      sections().some((sec,i)=>{
+        const top=sec.getBoundingClientRect().top+y;
+        const height=Math.max(sec.offsetHeight,1);
+        if(probe>=top && probe<top+height){
+          sectionIndex=i;
+          sectionProgress=(probe-top)/height;
+          return true;
+        }
+        return false;
+      });
       const target=new URL(a.href,window.location.href);
-      sessionStorage.setItem(R,String(window.scrollY/max));
-      sessionStorage.setItem(T,target.pathname);
+      sessionStorage.setItem(KEY,JSON.stringify({ratio:y/max,sectionIndex,sectionProgress}));
+      sessionStorage.setItem(TARGET,target.pathname);
     }catch(e){}
   }));
-  window.addEventListener('load',()=>{
-    try{
-      if(sessionStorage.getItem(T)!==window.location.pathname)return;
-      const ratio=parseFloat(sessionStorage.getItem(R)||'0');
-      sessionStorage.removeItem(R);sessionStorage.removeItem(T);
-      const restore=()=>window.scrollTo(0,Math.max(0,ratio*Math.max(document.documentElement.scrollHeight-window.innerHeight,0)));
-      requestAnimationFrame(()=>{restore();setTimeout(restore,120);setTimeout(restore,700);});
-    }catch(e){}
-  });
+
+  try{
+    if(sessionStorage.getItem(TARGET)!==window.location.pathname)return;
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    const state=JSON.parse(sessionStorage.getItem(KEY)||'{}');
+    const restore=()=>{
+      let top=null;
+      const list=sections();
+      if(Number.isInteger(state.sectionIndex) && state.sectionIndex>=0 && state.sectionIndex<list.length && Number.isFinite(state.sectionProgress)){
+        const sec=list[state.sectionIndex];
+        const secTop=sec.getBoundingClientRect().top+window.scrollY;
+        const probeOffset=Math.min(100,window.innerHeight*.15);
+        top=secTop+(Math.max(0,Math.min(1,state.sectionProgress))*sec.offsetHeight)-probeOffset;
+      }
+      if(!Number.isFinite(top)){
+        const max=Math.max(document.documentElement.scrollHeight-window.innerHeight,0);
+        top=(Number.isFinite(state.ratio)?state.ratio:0)*max;
+      }
+      const root=document.documentElement;
+      const previous=root.style.scrollBehavior;
+      root.style.scrollBehavior='auto';
+      window.scrollTo(0,Math.max(0,top));
+      root.style.scrollBehavior=previous;
+    };
+    const reveal=()=>{
+      document.documentElement.classList.remove('lang-restore-pending');
+      document.getElementById('lang-restore-style')?.remove();
+      sessionStorage.removeItem(KEY);
+      sessionStorage.removeItem(TARGET);
+    };
+    restore();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{restore();reveal();}));
+    setTimeout(reveal,350);
+  }catch(e){
+    document.documentElement.classList.remove('lang-restore-pending');
+    document.getElementById('lang-restore-style')?.remove();
+  }
 })();
 </script>
 </body>
