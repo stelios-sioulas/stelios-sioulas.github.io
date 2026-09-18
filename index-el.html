@@ -671,6 +671,25 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
   }catch(e){}
 })();
 </script>
+<style>
+/* contact form */
+.contact-form{display:grid;gap:14px;margin:0 0 24px;padding:24px;border:1px solid var(--line);background:rgba(7,10,15,.36)}
+.contact-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-field{display:grid;gap:7px}
+.contact-field--full{grid-column:1/-1}
+.contact-field label{font:600 12px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--accent2)}
+.contact-field input,.contact-field textarea{width:100%;border:1px solid #314254;background:rgba(7,10,15,.78);color:var(--text);padding:12px 13px;font:inherit;outline:none;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.contact-field input:focus,.contact-field textarea:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(101,167,227,.10);background:rgba(10,18,30,.92)}
+.contact-field textarea{min-height:150px;resize:vertical}
+.contact-form-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.contact-form .btn{min-width:180px}
+.contact-form .btn:disabled{opacity:.55;cursor:wait}
+.contact-form-status{min-height:1.4em;margin:0!important;color:var(--accent2)!important;font-size:13px!important}
+.contact-form-status.is-error{color:#e6a1a1!important}
+.contact-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+@media(max-width:680px){.contact-form-grid{grid-template-columns:1fr}.contact-field--full{grid-column:auto}.contact-form{padding:18px}.contact-form .btn{width:100%}}
+
+</style>
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
@@ -845,6 +864,17 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
         <p class="contact-lead">Για live projects, νέες μπάντες, session δουλειές, συνεργασίες και μαθήματα drums, μπορείς να επικοινωνήσεις με τον Stelios.</p>
           <div class="availability"><span>Διαθέσιμος για</span><strong>Live projects · Νέες μπάντες · Session work · Συνεργασίες</strong></div>
           <div class="contact-box">
+          <form class="contact-form" action="https://formspree.io/f/mvkggpvg" method="POST" data-sending="Αποστολή..." data-success="Το μήνυμά σου στάλθηκε επιτυχώς." data-error="Η αποστολή δεν ολοκληρώθηκε. Δοκίμασε ξανά.">
+  <div class="contact-form-grid">
+    <div class="contact-field"><label for="contact-name-el">Όνομα</label><input id="contact-name-el" name="name" type="text" autocomplete="name" required></div>
+    <div class="contact-field"><label for="contact-email-el">Email</label><input id="contact-email-el" name="email" type="email" autocomplete="email" required></div>
+    <div class="contact-field contact-field--full"><label for="contact-subject-el">Θέμα</label><input id="contact-subject-el" name="subject" type="text" required></div>
+    <div class="contact-field contact-field--full"><label for="contact-message-el">Μήνυμα</label><textarea id="contact-message-el" name="message" required></textarea></div>
+  </div>
+  <input class="contact-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="hidden" name="_source" value="steliossioulas.gr">
+  <div class="contact-form-actions"><button class="btn" type="submit">Αποστολή μηνύματος</button><p class="contact-form-status" role="status" aria-live="polite"></p></div>
+</form>
           <div class="contact-socials">
             <a class="contact-social" href="https://www.facebook.com/stelios.sioulas.7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8h2.8l.4-3.2h-3.2v-2c0-.9.3-1.6 1.7-1.6H17V4.3c-.8-.1-1.7-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.4v2.3H7.5V14h2.8v8h3.2Z"/></svg><span>Facebook</span></a>
             <a class="contact-social" href="https://www.instagram.com/steliossioulas79/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
@@ -963,6 +993,41 @@ document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('lang-restore-style')?.remove();
   }
 })();
+</script>
+<script>
+/* contact form ajax */
+document.querySelectorAll('.contact-form').forEach(form=>{
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const status=form.querySelector('.contact-form-status');
+    const submit=form.querySelector('button[type="submit"]');
+    const original=submit.textContent;
+    status.classList.remove('is-error');
+    status.textContent='';
+    submit.disabled=true;
+    submit.textContent=form.dataset.sending||original;
+    try{
+      const response=await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      });
+      if(response.ok){
+        form.reset();
+        status.textContent=form.dataset.success||'Message sent.';
+      }else{
+        status.classList.add('is-error');
+        status.textContent=form.dataset.error||'Something went wrong. Please try again.';
+      }
+    }catch(err){
+      status.classList.add('is-error');
+      status.textContent=form.dataset.error||'Something went wrong. Please try again.';
+    }finally{
+      submit.disabled=false;
+      submit.textContent=original;
+    }
+  });
+});
 </script>
 </body>
 </html>
