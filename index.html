@@ -701,6 +701,37 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 
 </style>
 <style>body.contact-modal-open{overflow:hidden}</style>
+<style>
+/* selective section photo visibility */
+#about::after{
+  opacity:.44;
+  filter:saturate(.94) contrast(1.08) brightness(.92);
+}
+#teaching::after,#live::after{
+  opacity:.36;
+  filter:saturate(.90) contrast(1.08) brightness(.88);
+}
+#contact::after{
+  opacity:.34;
+  filter:saturate(.88) contrast(1.08) brightness(.87);
+}
+@media(hover:hover) and (pointer:fine){
+  main > section#about:hover::after{
+    opacity:.49;
+    filter:saturate(.98) contrast(1.1) brightness(.95);
+  }
+  main > section#teaching:hover::after,
+  main > section#live:hover::after{
+    opacity:.40;
+    filter:saturate(.94) contrast(1.1) brightness(.91);
+  }
+  main > section#contact:hover::after{
+    opacity:.38;
+    filter:saturate(.92) contrast(1.1) brightness(.90);
+  }
+}
+
+</style>
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
