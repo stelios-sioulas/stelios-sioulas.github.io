@@ -274,15 +274,21 @@ html[lang="el"] .hero-name{
 .event-card.event-art::before{
   content:"";
   position:absolute;
-  inset:0;
+  top:0;
+  right:0;
+  bottom:0;
+  left:48%;
   z-index:0;
   background-image:var(--event-poster);
   background-size:cover;
-  background-position:var(--event-position,center);
+  background-position:var(--event-position,right center);
   background-repeat:no-repeat;
-  opacity:.11;
+  opacity:.13;
   filter:saturate(.78) contrast(1.04) brightness(.82);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 24%,#000 52%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 24%,#000 52%);
   transform:scale(1.02);
+  transform-origin:right center;
   pointer-events:none;
 }
 .event-card.event-art > *{
@@ -294,11 +300,11 @@ html[lang="el"] .hero-name{
 }
 .event-card.event-prisoners{
   --event-poster:url('assets/event-prisoners-oct03.jpg');
-  --event-position:center 42%;
+  --event-position:right 30%;
 }
 .event-card.event-doro{
   --event-poster:url('https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png');
-  --event-position:center 25%;
+  --event-position:right 26%;
 }
 </style>
 </head>
