@@ -941,21 +941,21 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 <style>
 /* English desktop photo visibility */
 @media(min-width:801px){
-  html[lang="en"] #about::after{opacity:.52}
-  html[lang="en"] #projects::after,
+  html[lang="en"] #about::after{opacity:.48}
+  html[lang="en"] #projects::after{opacity:.40}
+  html[lang="en"] #teaching::after,
+  html[lang="en"] #live::after{opacity:.41}
   html[lang="en"] #discography::after,
   html[lang="en"] #media::after{opacity:.46}
-  html[lang="en"] #teaching::after,
-  html[lang="en"] #live::after{opacity:.46}
   html[lang="en"] #contact::after{opacity:.56}
 }
 @media(min-width:801px) and (hover:hover) and (pointer:fine){
-  html[lang="en"] #about:hover::after{opacity:.57}
+  html[lang="en"] #about:hover::after{opacity:.53}
   html[lang="en"] #projects:hover::after,
-  html[lang="en"] #discography:hover::after,
-  html[lang="en"] #media:hover::after,
   html[lang="en"] #teaching:hover::after,
-  html[lang="en"] #live:hover::after{opacity:.51}
+  html[lang="en"] #live:hover::after{opacity:.46}
+  html[lang="en"] #discography:hover::after,
+  html[lang="en"] #media:hover::after{opacity:.51}
   html[lang="en"] #contact:hover::after{opacity:.61}
 }
 </style>
