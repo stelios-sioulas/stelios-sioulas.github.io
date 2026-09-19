@@ -1,0 +1,130 @@
+media:
+  input: assets
+  output: /assets
+
+content:
+  - name: live
+    label: LIVE
+    type: file
+    path: data/live.json
+    format: json
+    fields:
+      - name: section
+        label: Κείμενα ενότητας
+        type: object
+        required: true
+        fields:
+          - name: label
+            label: Αρίθμηση / ετικέτα ενότητας
+            type: string
+            required: true
+          - name: title_en
+            label: Τίτλος desktop (EN)
+            type: string
+            required: true
+          - name: title_el
+            label: Τίτλος desktop (EL)
+            type: string
+            required: true
+          - name: intro_en
+            label: Εισαγωγή desktop (EN)
+            type: text
+            required: false
+          - name: intro_el
+            label: Εισαγωγή desktop (EL)
+            type: text
+            required: false
+          - name: mobile_title_en
+            label: Τίτλος mobile (EN)
+            type: string
+            required: true
+          - name: mobile_title_el
+            label: Τίτλος mobile (EL)
+            type: string
+            required: true
+
+      - name: events
+        label: Live εμφανίσεις
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} — {day} {date_el}"
+        fields:
+          - name: day
+            label: Ημέρα
+            type: string
+            required: true
+          - name: date_en
+            label: Μήνας και έτος (EN)
+            type: string
+            required: true
+          - name: date_el
+            label: Μήνας και έτος (EL)
+            type: string
+            required: true
+          - name: venue_en
+            label: Χώρος και πόλη (EN)
+            type: string
+            required: false
+          - name: venue_el
+            label: Χώρος και πόλη (EL)
+            type: string
+            required: false
+          - name: title
+            label: Όνομα μπάντας / εμφάνισης
+            type: string
+            required: true
+          - name: description_en
+            label: Περιγραφή desktop (EN)
+            type: text
+            required: false
+          - name: description_el
+            label: Περιγραφή desktop (EL)
+            type: text
+            required: false
+          - name: role_en
+            label: Ρόλος Stelios desktop (EN)
+            type: text
+            required: false
+          - name: role_el
+            label: Ρόλος Stelios desktop (EL)
+            type: text
+            required: false
+          - name: mobile_title_en
+            label: Τίτλος mobile (EN)
+            type: string
+            required: false
+          - name: mobile_title_el
+            label: Τίτλος mobile (EL)
+            type: string
+            required: false
+          - name: mobile_description_en
+            label: Περιγραφή mobile (EN)
+            type: text
+            required: false
+          - name: mobile_description_el
+            label: Περιγραφή mobile (EL)
+            type: text
+            required: false
+          - name: url
+            label: Σύνδεσμος εκδήλωσης
+            type: string
+            required: false
+          - name: aria_label_en
+            label: Προσβάσιμη περιγραφή συνδέσμου (EN)
+            type: string
+            required: false
+          - name: aria_label_el
+            label: Προσβάσιμη περιγραφή συνδέσμου (EL)
+            type: string
+            required: false
+
+      - name: highlight_en
+        label: Ιστορικό / highlight desktop (EN)
+        type: text
+        required: false
+      - name: highlight_el
+        label: Ιστορικό / highlight desktop (EL)
+        type: text
+        required: false
