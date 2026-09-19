@@ -1424,6 +1424,19 @@ document.querySelectorAll('.contact-form').forEach(form=>{
   audio.addEventListener('ended',function(){updateState(false);});
   audio.addEventListener('pause',function(){if(audio.ended||audio.currentTime===0) updateState(false);});
 
+  function stopIntro(){
+    if(!audio.paused){
+      audio.pause();
+    }
+    audio.currentTime=0;
+    updateState(false);
+  }
+
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden) stopIntro();
+  });
+  window.addEventListener('pagehide',stopIntro);
+
   document.addEventListener('pointerdown',unlock,true);
   document.addEventListener('keydown',unlock,true);
 
