@@ -990,7 +990,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
-<header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html">Teaching</a><a href="discography.html">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><button class="intro-sound-btn" type="button" aria-label="Replay audio intro" title="Replay audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="index-el.html">GR</a></nav></div></header>
+<header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html">Teaching</a><a href="discography.html">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><button class="intro-sound-btn is-off" type="button" aria-label="Replay audio intro" title="Replay audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="index-el.html">GR</a></nav></div></header>
 
 <main id="top">
   <section class="hero">
@@ -1358,32 +1358,35 @@ document.querySelectorAll('.contact-form').forEach(form=>{
 </script>
 
 <script>
-/* Audio intro: autoplay on fresh load, manual play/stop, no replay on language switch */
+/* Audio intro: autoplay on direct load/new tab/refresh; skip same-tab site navigation */
 (function(){
-  const btn=document.querySelector('.intro-sound-btn');
-  if(!btn) return;
+  const buttons=Array.from(document.querySelectorAll('.intro-sound-btn'));
+  if(!buttons.length) return;
 
-  const SKIP_KEY='stelios-intro-skip-next';
+  const SKIP_KEY='stelios-intro-skip-next-navigation';
   const audio=new Audio('assets/stelios-intro.mp3?v=20260919');
   audio.preload='auto';
   let playToken=0;
 
   function updateState(playing){
-    btn.classList.toggle('is-playing',playing);
-    btn.classList.toggle('is-off',!playing);
-    btn.setAttribute('aria-pressed',playing?'true':'false');
     const greek=document.documentElement.lang==='el';
     const label=playing
       ? (greek?'Διακοπή ηχητικού intro':'Stop audio intro')
       : (greek?'Αναπαραγωγή ηχητικού intro':'Play audio intro');
-    btn.setAttribute('aria-label',label);
-    btn.setAttribute('title',label);
+
+    buttons.forEach(function(btn){
+      btn.classList.toggle('is-playing',playing);
+      btn.classList.toggle('is-off',!playing);
+      btn.setAttribute('aria-pressed',playing?'true':'false');
+      btn.setAttribute('aria-label',label);
+      btn.setAttribute('title',label);
+    });
   }
 
   function stopIntro(){
     playToken++;
-    try{ audio.pause(); }catch(e){}
-    try{ audio.currentTime=0; }catch(e){}
+    try{audio.pause();}catch(e){}
+    try{audio.currentTime=0;}catch(e){}
     updateState(false);
   }
 
@@ -1407,41 +1410,62 @@ document.querySelectorAll('.contact-form').forEach(form=>{
     }
   }
 
-  btn.addEventListener('click',function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    if(!audio.paused && !audio.ended){
-      stopIntro();
-    }else{
-      playIntro();
-    }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(!audio.paused && !audio.ended) stopIntro();
+      else playIntro();
+    });
   });
 
   audio.addEventListener('play',function(){updateState(true);});
   audio.addEventListener('ended',stopIntro);
-  audio.addEventListener('pause',function(){
-    if(audio.currentTime===0||audio.ended) updateState(false);
-  });
-
+  window.addEventListener('pagehide',stopIntro);
   document.addEventListener('visibilitychange',function(){
     if(document.hidden) stopIntro();
   });
-  window.addEventListener('pagehide',stopIntro);
 
-  document.querySelectorAll('a.site-lang,a.lang-switch').forEach(function(link){
-    link.addEventListener('click',function(){
-      try{ sessionStorage.setItem(SKIP_KEY,'1'); }catch(e){}
-      stopIntro();
-    });
+  /* Mark only ordinary same-tab navigation inside this site.
+     New-tab clicks are deliberately ignored so the new tab can autoplay. */
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link=e.target.closest && e.target.closest('a[href]');
+    if(!link || link.hasAttribute('download')) return;
+    const target=(link.getAttribute('target')||'').toLowerCase();
+    if(target && target!=='_self') return;
+
+    let url;
+    try{url=new URL(link.href,window.location.href);}catch(err){return;}
+    if(url.origin!==window.location.origin) return;
+
+    const sameDocument=
+      url.pathname===window.location.pathname &&
+      url.search===window.location.search;
+
+    if(sameDocument) return;
+
+    try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
   });
 
-  function autoStart(){
+  function shouldAutoplay(){
     let skip=false;
+
     try{
       skip=sessionStorage.getItem(SKIP_KEY)==='1';
       if(skip) sessionStorage.removeItem(SKIP_KEY);
     }catch(e){}
-    if(!skip) playIntro();
+
+    try{
+      const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if(nav && nav.type==='back_forward') skip=true;
+    }catch(e){}
+
+    return !skip;
+  }
+
+  function autoStart(){
+    if(shouldAutoplay()) playIntro();
   }
 
   updateState(false);
