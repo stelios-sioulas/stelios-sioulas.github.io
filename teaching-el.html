@@ -478,11 +478,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 
 <script>
-/* Global audio control on internal pages: manual play/stop only */
+/* Audio intro: autoplay on direct load/new tab/refresh; skip same-tab site navigation */
 (function(){
   const buttons=Array.from(document.querySelectorAll('.intro-sound-btn'));
   if(!buttons.length) return;
 
+  const SKIP_KEY='stelios-intro-skip-next-navigation';
   const audio=new Audio('assets/stelios-intro.mp3?v=20260919');
   audio.preload='auto';
   let playToken=0;
@@ -545,7 +546,55 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(document.hidden) stopIntro();
   });
 
+  /* Mark only ordinary same-tab navigation inside this site.
+     New-tab clicks are deliberately ignored so the new tab can autoplay. */
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link=e.target.closest && e.target.closest('a[href]');
+    if(!link || link.hasAttribute('download')) return;
+    const target=(link.getAttribute('target')||'').toLowerCase();
+    if(target && target!=='_self') return;
+
+    let url;
+    try{url=new URL(link.href,window.location.href);}catch(err){return;}
+    if(url.origin!==window.location.origin) return;
+
+    const sameDocument=
+      url.pathname===window.location.pathname &&
+      url.search===window.location.search;
+
+    if(sameDocument) return;
+
+    try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
+  });
+
+  function shouldAutoplay(){
+    let skip=false;
+
+    try{
+      skip=sessionStorage.getItem(SKIP_KEY)==='1';
+      if(skip) sessionStorage.removeItem(SKIP_KEY);
+    }catch(e){}
+
+    try{
+      const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if(nav && nav.type==='back_forward') skip=true;
+    }catch(e){}
+
+    return !skip;
+  }
+
+  function autoStart(){
+    if(shouldAutoplay()) playIntro();
+  }
+
   updateState(false);
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',autoStart,{once:true});
+  }else{
+    autoStart();
+  }
 })();
 </script>
 </body></html>
