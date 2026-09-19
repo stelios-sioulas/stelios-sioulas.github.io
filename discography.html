@@ -142,8 +142,64 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
   .site-header .site-lang{display:inline-flex!important;align-items:center;justify-content:center;min-height:36px}
 }
 </style>
+<style>
+/* desktop header lock 2026-09-19 */
+@media (min-width:901px){
+  .site-header .site-top,
+  .site-header .wrap.site-top{
+    width:min(1120px,calc(100% - 32px))!important;
+    max-width:none!important;
+    min-height:66px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:18px!important;
+  }
+  .site-header .site-brand{
+    flex:0 0 auto!important;
+    margin:0!important;
+  }
+  .site-header .site-mobile-actions{display:none!important}
+  .site-header .site-nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    flex-wrap:nowrap!important;
+    gap:18px!important;
+    margin-left:auto!important;
+  }
+  .site-header .site-nav a{
+    font:600 12px Oswald,sans-serif!important;
+    line-height:1!important;
+    letter-spacing:.05em!important;
+    text-transform:uppercase!important;
+    color:var(--muted)!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:none!important;
+    white-space:nowrap!important;
+  }
+  .site-header .site-nav a:hover,
+  .site-header .site-nav a.active{color:var(--accent2)!important}
+  .site-header .site-nav a.site-lang{
+    color:var(--accent2)!important;
+    border:1px solid var(--line)!important;
+    padding:6px 9px!important;
+    border-radius:999px!important;
+    background:transparent!important;
+  }
+}
+@media (max-width:900px){
+  .site-header .site-nav .desktop-lang{display:none!important}
+}
+
+</style>
 </head><body>
-<header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><div class="site-mobile-actions"><a class="site-lang" href="discography-el.html">GR</a><button class="site-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">☰</button></div><nav class="site-nav" id="siteNav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html">Teaching</a><a href="discography.html" class="active">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a></nav></div></header>
+<header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><div class="site-mobile-actions"><a class="site-lang" href="discography-el.html">GR</a><button class="site-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">☰</button></div><nav class="site-nav" id="siteNav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html">Teaching</a><a href="discography.html" class="active">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><a class="site-lang desktop-lang" href="discography-el.html">GR</a></nav></div></header>
 <div class="hero"><div class="wrap"><div class="eyebrow">Recording catalogue</div><h1>Discography</h1><p>A concise look at albums and selected recordings featuring Stelios on drums.</p></div></div>
 <section><div class="wrap"><h2>Discography</h2><div class="catalogue">
 <div class="release"><div class="year">TBA</div><div class="artist">Persona Non Grata</div><div><h3>Nexus <span class="status">To be released</span></h3></div><div class="credit">Drum tracking</div></div>
