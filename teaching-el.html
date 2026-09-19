@@ -559,6 +559,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     try{url=new URL(link.href,window.location.href);}catch(err){return;}
     if(url.origin!==window.location.origin) return;
 
+    /* The Stelios Sioulas logo/name is always internal navigation.
+       Never replay the intro when it returns to the home page. */
+    if(link.matches('.site-brand,.brand')){
+      try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
+      return;
+    }
+
     const sameDocument=
       url.pathname===window.location.pathname &&
       url.search===window.location.search;
