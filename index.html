@@ -890,6 +890,48 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 }
 
 </style>
+<style>
+/* event artwork backgrounds */
+.event-card.event-art{
+  overflow:hidden;
+  isolation:isolate;
+}
+.event-card.event-art::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-image:var(--event-poster);
+  background-size:cover;
+  background-position:var(--event-position,center);
+  background-repeat:no-repeat;
+  opacity:.14;
+  filter:saturate(.82) contrast(1.04) brightness(.84);
+  transform:scale(1.025);
+  transition:opacity .22s ease,transform .22s ease,filter .22s ease;
+  pointer-events:none;
+}
+.event-card.event-art > *{
+  position:relative;
+  z-index:1;
+}
+.event-card.event-art::after{
+  z-index:2;
+}
+.event-card.event-art:hover::before{
+  opacity:.19;
+  transform:scale(1.045);
+  filter:saturate(.9) contrast(1.06) brightness(.9);
+}
+.event-card.event-prisoners{
+  --event-poster:url('assets/event-prisoners-oct03.jpg');
+  --event-position:center 43%;
+}
+.event-card.event-doro{
+  --event-poster:url('https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png');
+  --event-position:center 26%;
+}
+</style>
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
@@ -983,7 +1025,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
         <h2 aria-label="Live dates" data-text="Live dates">Live dates</h2>
         <p>Upcoming shows and selected live highlights.</p>
         <div class="event-list">
-          <a class="event-card event-card-link" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Open The Prisoners event on the official Eightball website">
+          <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Open The Prisoners event on the official Eightball website">
             <div class="event-date"><strong>03</strong><span>October 2026</span></div>
             <div class="event-copy">
               <div class="meta">Eightball Club · Thessaloniki</div>
@@ -992,7 +1034,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
               <p class="event-role">Stelios Sioulas on drums with both The Prisoners and Obscurus Rex.</p>
             </div>
           </a>
-          <a class="event-card event-card-link" href="https://eventation.gr/doroathens_en#about" target="_blank" rel="noopener" aria-label="Open Doro Pesch Athens event on the official Eventation website">
+          <a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/doroathens_en#about" target="_blank" rel="noopener" aria-label="Open Doro Pesch Athens event on the official Eventation website">
             <div class="event-date"><strong>09</strong><span>October 2026</span></div>
             <div class="event-copy">
               <div class="meta">Fuzz Club · Athens</div>
