@@ -542,87 +542,92 @@ document.querySelectorAll('.contact-form').forEach(form=>{
 </script>
 
 <script>
-/* Audio intro: autoplay when allowed + manual replay */
+/* Audio intro: autoplay on fresh load, manual play/stop, no replay on language switch */
 (function(){
   const btn=document.querySelector('.intro-sound-btn');
   if(!btn) return;
 
+  const SKIP_KEY='stelios-intro-skip-next';
   const audio=new Audio('assets/stelios-intro.mp3?v=20260919');
   audio.preload='auto';
-  let started=false;
+  let playToken=0;
 
   function updateState(playing){
     btn.classList.toggle('is-playing',playing);
     btn.classList.toggle('is-off',!playing);
     btn.setAttribute('aria-pressed',playing?'true':'false');
+    const greek=document.documentElement.lang==='el';
+    const label=playing
+      ? (greek?'Διακοπή ηχητικού intro':'Stop audio intro')
+      : (greek?'Αναπαραγωγή ηχητικού intro':'Play audio intro');
+    btn.setAttribute('aria-label',label);
+    btn.setAttribute('title',label);
   }
 
-  function cleanupUnlock(){
-    document.removeEventListener('pointerdown',unlock,true);
-    document.removeEventListener('keydown',unlock,true);
+  function stopIntro(){
+    playToken++;
+    try{ audio.pause(); }catch(e){}
+    try{ audio.currentTime=0; }catch(e){}
+    updateState(false);
   }
 
   function playIntro(){
+    const token=++playToken;
     try{
       audio.pause();
       audio.currentTime=0;
       const result=audio.play();
       if(result&&typeof result.then==='function'){
         result.then(function(){
-          started=true;
-          updateState(true);
-          cleanupUnlock();
+          if(token===playToken) updateState(true);
         }).catch(function(){
-          updateState(false);
+          if(token===playToken) updateState(false);
         });
-      }else{
-        started=true;
+      }else if(token===playToken){
         updateState(true);
-        cleanupUnlock();
       }
     }catch(e){
-      updateState(false);
+      if(token===playToken) updateState(false);
     }
-  }
-
-  function unlock(e){
-    if(started){cleanupUnlock();return;}
-    if(e&&e.target&&e.target.closest&&e.target.closest('.intro-sound-btn')) return;
-    playIntro();
   }
 
   btn.addEventListener('click',function(e){
     e.preventDefault();
+    e.stopPropagation();
     if(!audio.paused && !audio.ended){
-      audio.pause();
-      audio.currentTime=0;
-      updateState(false);
-      return;
+      stopIntro();
+    }else{
+      playIntro();
     }
-    playIntro();
   });
 
   audio.addEventListener('play',function(){updateState(true);});
-  audio.addEventListener('ended',function(){updateState(false);});
-  audio.addEventListener('pause',function(){if(audio.ended||audio.currentTime===0) updateState(false);});
-
-  function stopIntro(){
-    if(!audio.paused){
-      audio.pause();
-    }
-    audio.currentTime=0;
-    updateState(false);
-  }
+  audio.addEventListener('ended',stopIntro);
+  audio.addEventListener('pause',function(){
+    if(audio.currentTime===0||audio.ended) updateState(false);
+  });
 
   document.addEventListener('visibilitychange',function(){
     if(document.hidden) stopIntro();
   });
   window.addEventListener('pagehide',stopIntro);
 
-  document.addEventListener('pointerdown',unlock,true);
-  document.addEventListener('keydown',unlock,true);
+  document.querySelectorAll('a.site-lang,a.lang-switch').forEach(function(link){
+    link.addEventListener('click',function(){
+      try{ sessionStorage.setItem(SKIP_KEY,'1'); }catch(e){}
+      stopIntro();
+    });
+  });
 
-  function autoStart(){playIntro();}
+  function autoStart(){
+    let skip=false;
+    try{
+      skip=sessionStorage.getItem(SKIP_KEY)==='1';
+      if(skip) sessionStorage.removeItem(SKIP_KEY);
+    }catch(e){}
+    if(!skip) playIntro();
+  }
+
   updateState(false);
 
   if(document.readyState==='loading'){
