@@ -1,0 +1,34 @@
+{
+  "section": {
+    "label": "05 / Live",
+    "title_en": "Live dates",
+    "title_el": "Live εμφανίσεις",
+    "intro_en": "Upcoming shows and selected live highlights.",
+    "intro_el": "Επόμενες εμφανίσεις και επιλεγμένα live highlights.",
+    "mobile_title_en": "Live",
+    "mobile_title_el": "Live εμφανίσεις"
+  },
+  "events": [
+    {
+      "day": "03",
+      "date_en": "October 2026",
+      "date_el": "Οκτωβρίου 2026",
+      "venue_en": "Eightball Club · Thessaloniki",
+      "venue_el": "Eightball Club · Θεσσαλονίκη",
+      "title": "The Prisoners",
+      "description_en": "Iron Maiden tribute show · Support: Obscurus Rex.",
+      "description_el": "Iron Maiden tribute show · Support: Obscurus Rex.",
+      "role_en": "Stelios Sioulas on drums with both The Prisoners and Obscurus Rex.",
+      "role_el": "Ο Stelios Sioulas στα ντραμς και με τους The Prisoners και με τους Obscurus Rex.",
+      "mobile_title_en": "The Prisoners · Eightball",
+      "mobile_title_el": "The Prisoners · Eightball",
+      "mobile_description_en": "Thessaloniki · with Obscurus Rex. Stelios on drums with both projects.",
+      "mobile_description_el": "Θεσσαλονίκη · μαζί με Obscurus Rex. Ο Stelios στα ντραμς και με τα δύο projects.",
+      "url": "https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/",
+      "aria_label_en": "Open The Prisoners event on the official Eightball website",
+      "aria_label_el": "Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball"
+    }
+  ],
+  "highlight_en": "Stelios has performed extensively at Eightball Club / Eightball Live Stage in Thessaloniki across many different bands and projects over the years.",
+  "highlight_el": "Stelios has performed extensively at Eightball Club / Eightball Live Stage in Θεσσαλονίκη across many different bands and projects over the years."
+}
