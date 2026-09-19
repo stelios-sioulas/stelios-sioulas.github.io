@@ -265,6 +265,42 @@ html[lang="el"] .hero-name{
   .social-icons{width:100%;justify-content:center}
 }
 </style>
+<style>
+/* event artwork backgrounds */
+.event-card.event-art{
+  overflow:hidden;
+  isolation:isolate;
+}
+.event-card.event-art::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-image:var(--event-poster);
+  background-size:cover;
+  background-position:var(--event-position,center);
+  background-repeat:no-repeat;
+  opacity:.11;
+  filter:saturate(.78) contrast(1.04) brightness(.82);
+  transform:scale(1.02);
+  pointer-events:none;
+}
+.event-card.event-art > *{
+  position:relative;
+  z-index:1;
+}
+.event-card.event-art::after{
+  z-index:2;
+}
+.event-card.event-prisoners{
+  --event-poster:url('assets/event-prisoners-oct03.jpg');
+  --event-position:center 42%;
+}
+.event-card.event-doro{
+  --event-poster:url('https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png');
+  --event-position:center 25%;
+}
+</style>
 </head>
 <body>
 <header><div class="wrap topbar"><a class="brand" href="mobile-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile.html">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">Σχετικά</a><a href="#projects">Projects</a><a href="#teaching">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Επικοινωνία</a></nav></header>
@@ -337,12 +373,12 @@ html[lang="el"] .hero-name{
     <div class="wrap">
       <div class="section-label">05 / Live</div>
       <h2>Live εμφανισεις</h2>
-      <a class="event-card event-card-link" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball">
+      <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball">
         <div class="event-date">03 <span>Οκτωβρίου 2026</span></div>
         <h3>The Prisoners · Eightball</h3>
         <p>Θεσσαλονίκη · μαζί με Obscurus Rex. Ο Stelios στα ντραμς και με τα δύο projects.</p>
       </a>
-      <a class="event-card event-card-link" href="https://eventation.gr/dorogr" target="_blank" rel="noopener" aria-label="Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation">
+      <a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/dorogr" target="_blank" rel="noopener" aria-label="Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation">
         <div class="event-date">09 <span>Οκτωβριου 2026</span></div>
         <h3>Doro Pesch · Fuzz Club</h3>
         <p>Αθηνα · Support: Obscurus Rex · στα ντραμς με τους Obscurus Rex.</p>
