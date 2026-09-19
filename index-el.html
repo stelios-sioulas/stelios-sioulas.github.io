@@ -991,6 +991,27 @@ html[lang="el"] .hero-name{
   --event-position:right 26%;
 }
 </style>
+<style>
+/* Greek desktop photo visibility test */
+@media(min-width:801px){
+  html[lang="el"] #about::after{opacity:.52}
+  html[lang="el"] #projects::after,
+  html[lang="el"] #discography::after,
+  html[lang="el"] #media::after{opacity:.46}
+  html[lang="el"] #teaching::after,
+  html[lang="el"] #live::after{opacity:.46}
+  html[lang="el"] #contact::after{opacity:.56}
+}
+@media(min-width:801px) and (hover:hover) and (pointer:fine){
+  html[lang="el"] #about:hover::after{opacity:.57}
+  html[lang="el"] #projects:hover::after,
+  html[lang="el"] #discography:hover::after,
+  html[lang="el"] #media:hover::after,
+  html[lang="el"] #teaching:hover::after,
+  html[lang="el"] #live:hover::after{opacity:.51}
+  html[lang="el"] #contact:hover::after{opacity:.61}
+}
+</style>
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
