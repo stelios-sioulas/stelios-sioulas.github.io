@@ -17,13 +17,22 @@
         label: value(event, 'date_' + language)
       };
     }
-    const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    const year = Number(match[1]);
+    const monthIndex = Number(match[2]) - 1;
+    const date = new Date(year, monthIndex, Number(match[3]));
+    const greekMonths = [
+      'Ιανουαρίου', 'Φεβρουαρίου', 'Μαρτίου', 'Απριλίου',
+      'Μαΐου', 'Ιουνίου', 'Ιουλίου', 'Αυγούστου',
+      'Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου'
+    ];
     return {
       day: match[3],
-      label: new Intl.DateTimeFormat(language === 'el' ? 'el-GR' : 'en-US', {
-        month: 'long',
-        year: 'numeric'
-      }).format(date)
+      label: language === 'el'
+        ? greekMonths[monthIndex] + ' ' + year
+        : new Intl.DateTimeFormat('en-US', {
+            month: 'long',
+            year: 'numeric'
+          }).format(date)
     };
   };
   const addTextElement = (parent, tag, className, text) => {
