@@ -85,14 +85,6 @@ content:
             label: Περιγραφή desktop (EL)
             type: text
             required: false
-          - name: role_en
-            label: Ρόλος Stelios desktop (EN)
-            type: text
-            required: false
-          - name: role_el
-            label: Ρόλος Stelios desktop (EL)
-            type: text
-            required: false
           - name: mobile_title_en
             label: Τίτλος mobile (EN)
             type: string
