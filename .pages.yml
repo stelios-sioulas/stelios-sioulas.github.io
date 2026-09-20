@@ -251,10 +251,6 @@ content:
                   label: Τρέχον / ενεργό
                 - name: past
                   label: Παλαιότερο / συνεργασία
-          - name: show_on_mobile
-            label: Εμφάνιση στην επιλεγμένη mobile λίστα
-            type: boolean
-            required: false
           - name: name
             label: Όνομα project
             type: string
