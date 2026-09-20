@@ -1,0 +1,242 @@
+{
+  "home": {
+    "label": "02 / Projects",
+    "title_en": "Current projects",
+    "title_el": "Τρεχοντα projects",
+    "mobile_title_en": "Featured active projects",
+    "mobile_title_el": "Επιλεγμενα ενεργα projects",
+    "intro_en": "Active bands and live projects. Open the full projects page for Stelios' wider band and collaboration history.",
+    "intro_el": "Ενεργές μπάντες και live projects. Στην πλήρη σελίδα των projects θα βρεις περισσότερες μπάντες και συνεργασίες από την πορεία του.",
+    "button_en": "View all projects",
+    "button_el": "Ολα τα projects"
+  },
+  "page": {
+    "eyebrow_en": "Bands & projects",
+    "eyebrow_el": "Μπαντες & projects",
+    "title": "Projects",
+    "intro_en": "Current and past projects, recordings and collaborations.",
+    "intro_el": "Τρέχοντα και παλαιότερα projects, ηχογραφήσεις και συνεργασίες.",
+    "current_heading_en": "Current / Active",
+    "current_heading_el": "Τρεχοντα / Ενεργα",
+    "past_heading_en": "Selected past projects & collaborations",
+    "past_heading_el": "Επιλεγμενα παλαιοτερα projects & συνεργασιες"
+  },
+  "projects": [
+    {
+      "group": "current",
+      "show_on_mobile": true,
+      "name": "The Prisoners",
+      "meta_en": "Iron Maiden tribute",
+      "meta_el": "Iron Maiden tribute",
+      "home_description_en": "Active live project.",
+      "home_description_el": "Ενεργό live project.",
+      "page_description_en": "Drums · active live project.",
+      "page_description_el": "Drums · ενεργό live project.",
+      "url": "https://uptheprisoners.gr/"
+    },
+    {
+      "group": "current",
+      "show_on_mobile": true,
+      "name": "Persona Non Grata",
+      "meta_en": "Progressive metal band since 2003",
+      "meta_el": "Progressive metal band since 2003",
+      "description_en": "Joined in 2021.",
+      "description_el": "Μέλος από το 2021.",
+      "url": "https://www.facebook.com/PersonaNonGrataband/"
+    },
+    {
+      "group": "current",
+      "show_on_mobile": true,
+      "name": "Pop ’N’ Roll",
+      "meta_en": "Heavymetaling of pop songs",
+      "meta_el": "Heavymetaling of pop songs",
+      "description_en": "Founding member since 2023.",
+      "description_el": "Ιδρυτικό μέλος από το 2023."
+    },
+    {
+      "group": "current",
+      "show_on_mobile": false,
+      "name": "Obscurus Rex",
+      "meta_en": "Heavy metal band since 2021",
+      "meta_el": "Heavy metal band since 2021",
+      "description_en": "Session drummer.",
+      "description_el": "Session drummer.",
+      "url": "https://obscurusrex.com/"
+    },
+    {
+      "group": "current",
+      "show_on_mobile": false,
+      "name": "Mushroom People",
+      "meta_en": "System of a Down tribute",
+      "meta_el": "System of a Down tribute",
+      "description_en": "Active live project.",
+      "description_el": "Ενεργό live project."
+    },
+    {
+      "group": "current",
+      "show_on_mobile": false,
+      "name": "Onion Rings",
+      "meta_en": "Pop and rock cover band",
+      "meta_el": "Pop and rock cover band",
+      "description_en": "Founding member since 2026.",
+      "description_el": "Ιδρυτικό μέλος από το 2026."
+    },
+    {
+      "group": "current",
+      "show_on_mobile": false,
+      "name": "Soletaken",
+      "meta_en": "Heavy metal cover band since 2008",
+      "meta_el": "Heavy metal cover band since 2008",
+      "description_en": "Founding member.",
+      "description_el": "Ιδρυτικό μέλος."
+    },
+    {
+      "group": "current",
+      "show_on_mobile": false,
+      "name": "Disaster Project",
+      "meta_en": "Fusion experimental project since 2014",
+      "meta_el": "Fusion experimental project since 2014",
+      "description_en": "Founding member.",
+      "description_el": "Ιδρυτικό μέλος."
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "The Puppets",
+      "meta_en": "Metallica tribute",
+      "meta_el": "Metallica tribute",
+      "description_en": "Drums.",
+      "description_el": "Ντραμς.",
+      "url": "https://www.facebook.com/groups/49489087578/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Showbiz",
+      "meta_en": "MUSE tribute",
+      "meta_el": "MUSE tribute",
+      "description_en": "Drums.",
+      "description_el": "Ντραμς.",
+      "url": "https://eightballclub.gr/event/showbiz-live-a-tribute-to-muse-2/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "No Age Retro",
+      "meta_en": "Nineties party band",
+      "meta_el": "Nineties party band",
+      "description_en": "Founding member.",
+      "description_el": "Ιδρυτικό μέλος."
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "A Brother Shamus",
+      "meta_en": "Acoustic rock cover duet",
+      "meta_el": "Acoustic rock cover duet",
+      "description_en": "Founding member.",
+      "description_el": "Ιδρυτικό μέλος."
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Musicbox",
+      "meta_en": "Pop/rock cover trio",
+      "meta_el": "Pop/rock cover trio",
+      "description_en": "Founding member.",
+      "description_el": "Ιδρυτικό μέλος."
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "A Void Eternal",
+      "meta_en": "Project",
+      "meta_el": "Project",
+      "description_en": "Drums.",
+      "description_el": "Ντραμς."
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Sarissa",
+      "meta_en": "Heavy Metal",
+      "meta_el": "Heavy Metal",
+      "url": "https://www.facebook.com/SarissaHellenicMetal/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Star.Gate",
+      "meta_en": "Melodic Metal",
+      "meta_el": "Melodic Metal",
+      "url": "https://www.stargateband.eu/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Illusive Mirrors",
+      "meta_en": "Heavy Metal / Hard Rock",
+      "meta_el": "Heavy Metal / Hard Rock",
+      "url": "https://www.facebook.com/IllusiveMirrorsBandGR/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "War Dance",
+      "meta_en": "Session · 2023",
+      "meta_el": "Session · 2023",
+      "description_en": "Sons of Thunder (2023).",
+      "description_el": "Sons of Thunder (2023).",
+      "italic_text": "Sons of Thunder",
+      "url": "https://www.facebook.com/WarDance.Metal/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "John Jeff Touch",
+      "meta_en": "Project",
+      "meta_el": "Project",
+      "url": "https://www.johnjefftouch.com/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "ΟΥΤΕ ΣΠΟΝΤΑ",
+      "meta_en": "Greek alternative / folk",
+      "meta_el": "Greek alternative / folk",
+      "description_en": "Live and recorded work.",
+      "description_el": "Live και ηχογραφημένη δουλειά.",
+      "url": "https://www.youtube.com/user/OuteSpondaBand"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Forbidden Lore",
+      "meta_en": "Symphonic Metal",
+      "meta_el": "Symphonic Metal",
+      "url": "https://www.facebook.com/forbiddenlore.band/"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Momento",
+      "meta_en": "Founding member",
+      "meta_el": "Ιδρυτικο μελος",
+      "url": "https://www.facebook.com/Momento.gr"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "6 Degrees of Separation",
+      "meta_en": "Project",
+      "meta_el": "Project"
+    },
+    {
+      "group": "past",
+      "show_on_mobile": false,
+      "name": "Palermo",
+      "meta_en": "Project",
+      "meta_el": "Project"
+    }
+  ]
+}
