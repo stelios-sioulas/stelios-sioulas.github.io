@@ -24,8 +24,11 @@
     card.className = 'event-card' + (url ? ' event-card-link' : '') + (poster ? ' event-art' : '');
     if (poster) {
       card.style.setProperty('--event-poster', 'url(' + JSON.stringify(poster) + ')');
-      const posterPosition = value(event, 'poster_position');
-      if (posterPosition) card.style.setProperty('--event-position', posterPosition);
+      const focusX = Number.isFinite(Number(event.focus_x)) ? Math.min(100, Math.max(0, Number(event.focus_x))) : 50;
+      const focusY = Number.isFinite(Number(event.focus_y)) ? Math.min(100, Math.max(0, Number(event.focus_y))) : 50;
+      const zoom = Number.isFinite(Number(event.zoom)) ? Math.min(180, Math.max(100, Number(event.zoom))) : 100;
+      card.style.setProperty('--event-position', focusX + '% ' + focusY + '%');
+      card.style.setProperty('--event-zoom', String(1.025 + (zoom - 100) / 100));
     }
 
     if (url) {
@@ -65,8 +68,11 @@
     card.className = 'event-card' + (url ? ' event-card-link' : '') + (poster ? ' event-art' : '');
     if (poster) {
       card.style.setProperty('--event-poster', 'url(' + JSON.stringify(poster) + ')');
-      const posterPosition = value(event, 'poster_position');
-      if (posterPosition) card.style.setProperty('--event-position', posterPosition);
+      const focusX = Number.isFinite(Number(event.focus_x)) ? Math.min(100, Math.max(0, Number(event.focus_x))) : 50;
+      const focusY = Number.isFinite(Number(event.focus_y)) ? Math.min(100, Math.max(0, Number(event.focus_y))) : 50;
+      const zoom = Number.isFinite(Number(event.zoom)) ? Math.min(180, Math.max(100, Number(event.zoom))) : 100;
+      card.style.setProperty('--event-position', focusX + '% ' + focusY + '%');
+      card.style.setProperty('--event-zoom', String(1.025 + (zoom - 100) / 100));
     }
 
     if (url) {
