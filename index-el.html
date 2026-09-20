@@ -966,7 +966,7 @@ html[lang="el"] .hero-name{
   -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
   mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
   transform:scale(var(--event-zoom,1.025));
-  transform-origin:right center;
+  transform-origin:var(--event-origin,right center);
   transition:opacity .22s ease,transform .22s ease,filter .22s ease;
   pointer-events:none;
 }
