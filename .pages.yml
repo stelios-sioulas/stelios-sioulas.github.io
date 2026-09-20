@@ -102,9 +102,28 @@ content:
             type: text
             required: false
           - name: url
-            label: Σύνδεσμος εκδήλωσης
+            label: Σύνδεσμος εκδήλωσης (κοινός)
             type: string
             required: false
+          - name: url_en
+            label: Διαφορετικός σύνδεσμος (EN)
+            type: string
+            required: false
+          - name: url_el
+            label: Διαφορετικός σύνδεσμος (EL)
+            type: string
+            required: false
+          - name: poster
+            label: Φωτογραφία / αφίσα κάρτας
+            type: image
+            required: false
+            description: Αν μείνει κενό, η κάρτα εμφανίζεται χωρίς φωτογραφία.
+          - name: poster_position
+            label: Εστίαση φωτογραφίας
+            type: string
+            required: false
+            hidden: true
+            readonly: true
           - name: aria_label_en
             label: Προσβάσιμη περιγραφή συνδέσμου (EN)
             type: string
