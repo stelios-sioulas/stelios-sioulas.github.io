@@ -233,9 +233,9 @@ content:
             required: true
             options:
               values:
-                - value: current
+                - name: current
                   label: Τρέχον / ενεργό
-                - value: past
+                - name: past
                   label: Παλαιότερο / συνεργασία
           - name: show_on_mobile
             label: Εμφάνιση στην επιλεγμένη mobile λίστα
