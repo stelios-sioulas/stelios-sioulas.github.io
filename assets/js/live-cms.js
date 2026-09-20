@@ -194,10 +194,12 @@
 
         section.querySelectorAll('.event-card, .live-empty').forEach(card => card.remove());
         const photo = section.querySelector('.photo-live');
+        const moreLink = section.querySelector('.view-all.page-link');
         const fragment = document.createDocumentFragment();
         if (events.length) events.forEach(event => fragment.appendChild(createMobileEvent(event)));
         else fragment.appendChild(createEmptyState());
-        if (photo) photo.before(fragment);
+        if (moreLink) moreLink.before(fragment);
+        else if (photo) photo.before(fragment);
       } else {
         const title = section.querySelector('h2');
         const desktopTitle = value(settings, 'title_' + language);
