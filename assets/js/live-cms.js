@@ -41,7 +41,12 @@
     addTextElement(copy, 'div', 'meta', value(event, 'venue_' + language));
     addTextElement(copy, 'h3', '', value(event, 'title'));
     addTextElement(copy, 'p', '', value(event, 'description_' + language));
-    addTextElement(copy, 'p', 'event-role', value(event, 'role_' + language));
+    addTextElement(
+      copy,
+      'p',
+      'event-role',
+      language === 'el' ? 'Ο Stelios Sioulas στα ντραμς.' : 'Stelios Sioulas on drums.'
+    );
     card.appendChild(copy);
 
     return card;
