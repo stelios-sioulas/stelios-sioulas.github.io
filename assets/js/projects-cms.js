@@ -111,9 +111,7 @@
           else intro.remove();
         }
 
-        const visibleProjects = projects.filter(project =>
-          project.group === 'current' && (!mobile || project.show_on_mobile === true)
-        );
+        const visibleProjects = projects.filter(project => project.group === 'current');
         if (grid) grid.replaceChildren(...visibleProjects.map(createHomeCard));
 
         const buttonText = value(settings, 'button_' + language);
