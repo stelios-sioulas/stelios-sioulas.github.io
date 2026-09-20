@@ -1,0 +1,116 @@
+{
+  "home": {
+    "label": "04 / Discography",
+    "title_en": "Discography",
+    "title_el": "Δισκογραφια",
+    "intro_en": "Selected documented recordings featuring Stelios on drums. The complete catalogue opens on a separate, minimal page.",
+    "intro_el": "Επιλεγμένες ηχογραφήσεις.",
+    "button_en": "View full discography",
+    "button_el": "Πληρης δισκογραφια"
+  },
+  "page": {
+    "eyebrow_en": "Recording catalogue",
+    "eyebrow_el": "Καταλογος ηχογραφησεων",
+    "title_en": "Discography",
+    "title_el": "Δισκογραφια",
+    "intro_en": "A concise look at albums and selected recordings featuring Stelios on drums.",
+    "intro_el": "Μια συνοπτική ματιά στα άλμπουμ και σε επιλεγμένες ηχογραφήσεις στις οποίες συμμετέχει ο Stelios στα τύμπανα."
+  },
+  "releases": [
+    {
+      "year": "TBA",
+      "artist": "Persona Non Grata",
+      "title": "Nexus",
+      "status_en": "To be released",
+      "status_el": "Προς κυκλοφορια",
+      "credit": "Drum tracking",
+      "show_on_home": true
+    },
+    {
+      "year": "TBA",
+      "artist": "Disaster Project",
+      "title": "Title WIP",
+      "status_en": "To be released",
+      "status_el": "Προς κυκλοφορια",
+      "credit": "Drum tracking, mixing and mastering",
+      "show_on_home": true
+    },
+    {
+      "year": "2026",
+      "artist": "A Void Eternal",
+      "title": "Poveglia",
+      "credit": "Drum tracking",
+      "show_on_home": true
+    },
+    {
+      "year": "2023",
+      "artist": "War Dance",
+      "title": "Sons of Thunder",
+      "credit": "Drum tracking",
+      "show_on_home": true
+    },
+    {
+      "year": "2020",
+      "artist": "Niki Tor",
+      "title": "Cry",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    },
+    {
+      "year": "2019",
+      "artist": "Disaster Project",
+      "title": "Mourouna Ala Provencial",
+      "credit": "Drum tracking, mixing and mastering",
+      "show_on_home": false
+    },
+    {
+      "year": "2017",
+      "artist": "John Jeff Touch",
+      "title": "Burn",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    },
+    {
+      "year": "2016",
+      "artist": "Star.Gate",
+      "title": "Longing For Light",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    },
+    {
+      "year": "2016",
+      "artist": "Sarissa",
+      "title": "Nemesis",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    },
+    {
+      "year": "2015",
+      "artist": "Disaster Project",
+      "title": "Triangular Radar",
+      "credit": "Drum tracking, mixing and mastering",
+      "show_on_home": false
+    },
+    {
+      "year": "2014",
+      "artist": "ΟΥΤΕ ΣΠΟΝΤΑ",
+      "title": "Τα ρεφρέν κάποιου χρησμού",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    },
+    {
+      "year": "2014",
+      "artist": "Momento",
+      "title": "Ride Along",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    },
+    {
+      "year": "2013",
+      "artist": "Star.Gate",
+      "title": "Reborn",
+      "credit": "Drum tracking",
+      "show_on_home": false
+    }
+  ]
+}
