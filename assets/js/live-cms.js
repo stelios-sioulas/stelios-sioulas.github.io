@@ -28,6 +28,7 @@
       const focusY = Number.isFinite(Number(event.focus_y)) ? Math.min(100, Math.max(0, Number(event.focus_y))) : 50;
       const zoom = Number.isFinite(Number(event.zoom)) ? Math.min(180, Math.max(100, Number(event.zoom))) : 100;
       card.style.setProperty('--event-position', focusX + '% ' + focusY + '%');
+      card.style.setProperty('--event-origin', focusX + '% ' + focusY + '%');
       card.style.setProperty('--event-zoom', String(1.025 + (zoom - 100) / 100));
     }
 
@@ -72,6 +73,7 @@
       const focusY = Number.isFinite(Number(event.focus_y)) ? Math.min(100, Math.max(0, Number(event.focus_y))) : 50;
       const zoom = Number.isFinite(Number(event.zoom)) ? Math.min(180, Math.max(100, Number(event.zoom))) : 100;
       card.style.setProperty('--event-position', focusX + '% ' + focusY + '%');
+      card.style.setProperty('--event-origin', focusX + '% ' + focusY + '%');
       card.style.setProperty('--event-zoom', String(1.025 + (zoom - 100) / 100));
     }
 
