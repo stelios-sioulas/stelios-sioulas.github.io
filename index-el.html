@@ -887,30 +887,183 @@ html[lang="el"] .hero-name{
   .social-icons{width:100%;justify-content:center}
 }
 </style>
+<style>
+/* desktop header lock 2026-09-19 */
+@media (min-width:901px){
+  .site-header .site-top,
+  .site-header .wrap.site-top{
+    width:min(1120px,calc(100% - 32px))!important;
+    max-width:none!important;
+    min-height:66px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:18px!important;
+  }
+  .site-header .site-brand{
+    flex:0 0 auto!important;
+    margin:0!important;
+  }
+  .site-header .site-mobile-actions{display:none!important}
+  .site-header .site-nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    flex-wrap:nowrap!important;
+    gap:18px!important;
+    margin-left:auto!important;
+  }
+  .site-header .site-nav a{
+    font:600 12px Oswald,sans-serif!important;
+    line-height:1!important;
+    letter-spacing:.05em!important;
+    text-transform:uppercase!important;
+    color:var(--muted)!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:none!important;
+    white-space:nowrap!important;
+  }
+  .site-header .site-nav a:hover,
+  .site-header .site-nav a.active{color:var(--accent2)!important}
+  .site-header .site-nav a.site-lang{
+    color:var(--accent2)!important;
+    border:1px solid var(--line)!important;
+    padding:6px 9px!important;
+    border-radius:999px!important;
+    background:transparent!important;
+  }
+}
+@media (max-width:900px){
+  .site-header .site-nav .desktop-lang{display:none!important}
+}
+
+</style>
+<style>
+/* event artwork backgrounds */
+.event-card.event-art{
+  overflow:hidden;
+  isolation:isolate;
+}
+.event-card.event-art::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:42%;
+  z-index:0;
+  background-image:var(--event-poster);
+  background-size:cover;
+  background-position:var(--event-position,right center);
+  background-repeat:no-repeat;
+  opacity:.18;
+  filter:saturate(.82) contrast(1.04) brightness(.84);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
+  transform:scale(1.025);
+  transform-origin:right center;
+  transition:opacity .22s ease,transform .22s ease,filter .22s ease;
+  pointer-events:none;
+}
+.event-card.event-art > *{
+  position:relative;
+  z-index:1;
+}
+.event-card.event-art::after{
+  z-index:2;
+}
+.event-card.event-art:hover::before{
+  opacity:.23;
+  transform:scale(1.045);
+  filter:saturate(.9) contrast(1.06) brightness(.9);
+}
+.event-card.event-prisoners{
+  --event-poster:url('assets/event-prisoners-oct03.jpg');
+  --event-position:right 30%;
+}
+.event-card.event-doro{
+  --event-poster:url('https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png');
+  --event-position:right 26%;
+}
+</style>
+<style>
+/* Greek desktop photo visibility test */
+@media(min-width:801px){
+  html[lang="el"] #about::after{opacity:.48}
+  html[lang="el"] #projects::after{opacity:.40}
+  html[lang="el"] #teaching::after,
+  html[lang="el"] #live::after{opacity:.41}
+  html[lang="el"] #discography::after,
+  html[lang="el"] #media::after{opacity:.46}
+  html[lang="el"] #contact::after{opacity:.56}
+}
+@media(min-width:801px) and (hover:hover) and (pointer:fine){
+  html[lang="el"] #about:hover::after{opacity:.53}
+  html[lang="el"] #projects:hover::after,
+  html[lang="el"] #teaching:hover::after,
+  html[lang="el"] #live:hover::after{opacity:.46}
+  html[lang="el"] #discography:hover::after,
+  html[lang="el"] #media:hover::after{opacity:.51}
+  html[lang="el"] #contact:hover::after{opacity:.61}
+}
+</style>
+
+<style>
+/* Stelios audio intro */
+.intro-sound-btn{
+  position:relative;
+  width:34px;height:34px;display:inline-grid;place-items:center;flex:0 0 auto;
+  border:1px solid var(--line);border-radius:50%;background:rgba(16,23,34,.82);
+  color:var(--muted);cursor:pointer;padding:0;
+  transition:color .18s ease,border-color .18s ease,background .18s ease,transform .18s ease;
+}
+.intro-sound-btn:hover,.intro-sound-btn:focus-visible{
+  color:#fff;border-color:var(--accent);background:rgba(58,120,184,.18);outline:none;
+}
+.intro-sound-btn:active{transform:scale(.94)}
+.intro-sound-btn.is-playing{color:var(--accent2);border-color:var(--accent2)}
+.intro-sound-btn.is-off::after{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:2px;
+  transform:rotate(-45deg);
+  pointer-events:none;
+}
+.intro-sound-btn svg{width:17px;height:17px;display:block;fill:currentColor}
+@media(max-width:820px){.intro-sound-btn{width:38px;height:38px}}
+</style>
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
-<header class="site-header"><div class="site-top"><a class="site-brand" href="index-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index-el.html#about">Σχετικά</a><a href="projects-el.html">Projects</a><a href="teaching-el.html">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="index-el.html#live">Live</a><a href="index-el.html#media">Media</a><a href="index-el.html#contact">Επικοινωνία</a><a class="site-lang" href="index.html">EN</a></nav></div></header>
+<header class="site-header"><div class="site-top"><a class="site-brand" href="index-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index-el.html#about">Σχετικα</a><a href="projects-el.html">Projects</a><a href="teaching-el.html">Διδασκαλια</a><a href="discography-el.html">Δισκογραφια</a><a href="index-el.html#live">Live</a><a href="index-el.html#media">Media</a><a href="index-el.html#contact">Επικοινωνια</a><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" title="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="index.html">EN</a></nav></div></header>
 
 <main id="top">
   <section class="hero">
     <div class="wrap hero-content">
-      <div class="kicker">Ντράμερ · Performer · Original Drum Parts</div>
+      <div class="kicker">Ντραμερ · Performer · Original Drum Parts</div>
       <h1 aria-label="Stelios Sioulas"><span class="hero-name">Stelios</span><span class="hero-name hero-name--blue">Sioulas</span></h1>
       <p>Ντράμερ με βάση την Αθήνα και πολυετή παρουσία στη metal, rock και tribute σκηνή, με έντονη δραστηριότητα στα ελληνικά live.</p>
       <div class="hero-actions">
-        <a class="btn page-link" href="projects-el.html">Δες projects</a>
-        <a class="btn" href="#media">Δες videos</a>
-        <a class="btn" href="#contact">Επικοινωνία</a>
+        <a class="btn page-link" href="projects-el.html">Δες τα projects</a>
+        <a class="btn" href="#media">Δες τα videos</a>
+        <a class="btn" href="#contact">Επικοινωνια</a>
       </div>
     </div>
   </section>
 
   <section id="about">
     <div class="wrap section-head">
-      <div class="section-label">01 / Σχετικά</div>
+      <div class="section-label">01 / Σχετικα</div>
       <div class="section-body">
-        <h2 aria-label="Πίσω από τα τύμπανα" data-text="Πίσω από τα τύμπανα">Πίσω από τα τύμπανα</h2>
+        <h2 aria-label="Πίσω από τα τύμπανα" data-text="Πίσω από τα τύμπανα">Πισω απο τα τυμπανα</h2>
         <p>Ο Stelios Sioulas είναι ντράμερ με βάση την Αθήνα, με πολυετή παρουσία στη metal, rock και tribute σκηνή και ευρεία εμπειρία σε ελληνικά live projects. Έχοντας χτίσει σημαντική μουσική εμπειρία και live συνεργασίες στη Θεσσαλονίκη, συνεχίζει τη δραστηριότητά του στην Αθήνα μέσα από μπάντες, live projects και διδασκαλία.</p>
         <p>Σε μεγάλο μέρος της δισκογραφικής δουλειάς στην οποία έχει συμμετάσχει, ο Στέλιος διαμορφώνει και γράφει ο ίδιος τα μέρη των τυμπάνων, αντί να εκτελεί απλώς έτοιμα drum arrangements. Τα drum solos και τα solo sections του αποτελούν δικές του συνθέσεις.</p>
         <p>Στα projects του περιλαμβάνονται οι The Prisoners, Persona Non Grata, Pop ’N’ Roll, Obscurus Rex, Mushroom People, Onion Rings, Sarissa, Star.Gate, Forbidden Lore, Illusive Mirrors, The Puppets, Soletaken, καθώς και άλλες session και live συνεργασίες.</p>
@@ -923,52 +1076,52 @@ html[lang="el"] .hero-name{
     <div class="wrap section-head">
       <div class="section-label">02 / Projects</div>
       <div class="section-body">
-        <h2 aria-label="Τρέχοντα projects" data-text="Τρέχοντα projects">Τρέχοντα projects</h2>
+        <h2 aria-label="Τρέχοντα projects" data-text="Τρέχοντα projects">Τρεχοντα projects</h2>
         <p>Ενεργές μπάντες και live projects. Στην πλήρη σελίδα των projects θα βρεις περισσότερες μπάντες και συνεργασίες από την πορεία του.</p>
         <div class="grid">
           <a class="card card-link" href="https://uptheprisoners.gr/" target="_blank" rel="noopener"><div class="meta">Iron Maiden tribute</div><h3>The Prisoners</h3><p>Ενεργό live project.</p></a>
           <a class="card card-link" href="https://www.facebook.com/PersonaNonGrataband/" target="_blank" rel="noopener"><div class="meta">Progressive metal band since 2003</div><h3>Persona Non Grata</h3><p>Μέλος από το 2021.</p></a>
           <article class="card"><div class="meta">Heavymetaling of pop songs</div><h3>Pop ’N’ Roll</h3><p>Ιδρυτικό μέλος από το 2023.</p></article>
           <a class="card card-link" href="https://obscurusrex.com/" target="_blank" rel="noopener"><div class="meta">Heavy metal band since 2021</div><h3>Obscurus Rex</h3><p>Session drummer.</p></a>
-          <article class="card"><div class="meta">System of a Down tribute</div><h3>Mushroom People</h3><p>Ενεργό tribute project.</p></article>
+          <article class="card"><div class="meta">System of a Down tribute</div><h3>Mushroom People</h3><p>Ενεργό live project.</p></article>
           <article class="card"><div class="meta">Pop and rock cover band</div><h3>Onion Rings</h3><p>Ιδρυτικό μέλος από το 2026.</p></article>
           <article class="card"><div class="meta">Heavy metal cover band since 2008</div><h3>Soletaken</h3><p>Ιδρυτικό μέλος.</p></article>
           <article class="card"><div class="meta">Fusion experimental project since 2014</div><h3>Disaster Project</h3><p>Ιδρυτικό μέλος.</p></article>
         </div>
-        <div class="project-actions"><a class="btn page-link" href="projects-el.html">Όλα τα projects</a></div>
+        <div class="project-actions"><a class="btn page-link" href="projects-el.html">Ολα τα projects</a></div>
       </div>
     </div>
   </section>
 
   <section id="teaching">
     <div class="wrap section-head">
-      <div class="section-label">03 / Διδασκαλία</div>
+      <div class="section-label">03 / Διδασκαλια</div>
       <div class="section-body">
-        <h2 aria-label="Διδασκαλία ντραμς" data-text="Διδασκαλία ντραμς">Διδασκαλία ντραμς</h2>
+        <h2 aria-label="Διδασκαλία ντραμς" data-text="Διδασκαλία ντραμς">Διδασκαλια ντραμς</h2>
         <p>Παράλληλα με τη live και studio δραστηριότητά του, ο Stelios έχει διδάξει ντραμς σε αναγνωρισμένες μουσικές σχολές και ωδεία.</p>
         <div class="grid">
-          <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>YMCA Θεσσαλονίκη / ΧΑΝΘ</h3><p>Καθηγητής ντραμς.</p></article>
-          <article class="card"><div class="meta">Θεσσαλονίκη</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3><p>Καθηγητής ντραμς.</p></article>
-          <article class="card"><div class="meta">Αγία Παρασκευή</div><h3>ΗΧΟΜΟΡΦΕΣ</h3><p>Καθηγητής ντραμς.</p></article>
+          <article class="card"><div class="meta">Θεσσαλονικη</div><h3>YMCA Θεσσαλονικη / ΧΑΝΘ</h3></article>
+          <article class="card"><div class="meta">Θεσσαλονικη</div><h3>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</h3></article>
+          <article class="card"><div class="meta">Αγια Παρασκευη</div><h3>ΗΧΟΜΟΡΦΕΣ</h3></article>
         </div>
-        <div class="project-actions"><a class="btn page-link" href="teaching-el.html">Δες τη διδασκαλία</a></div>
+        <div class="project-actions"><a class="btn page-link" href="teaching-el.html">Δες τη διδασκαλια</a></div>
       </div>
     </div>
   </section>
 
   <section id="discography">
     <div class="wrap section-head">
-      <div class="section-label">04 / Δισκογραφία</div>
+      <div class="section-label">04 / Δισκογραφια</div>
       <div class="section-body">
-        <h2 aria-label="Δισκογραφία" data-text="Δισκογραφία">Δισκογραφία</h2>
+        <h2 aria-label="Δισκογραφία" data-text="Δισκογραφία">Δισκογραφια</h2>
         <p>Επιλεγμένες ηχογραφήσεις.</p>
         <div class="grid">
-          <article class="card"><div class="meta">Προς κυκλοφορία · Persona Non Grata</div><h3>Nexus</h3><p>Drum tracking.</p></article>
-          <article class="card"><div class="meta">Προς κυκλοφορία · Disaster Project</div><h3>Title WIP</h3><p>Drum tracking, mixing and mastering.</p></article>
+          <article class="card"><div class="meta">Προς κυκλοφορια · Persona Non Grata</div><h3>Nexus</h3><p>Drum tracking.</p></article>
+          <article class="card"><div class="meta">Προς κυκλοφορια · Disaster Project</div><h3>Title WIP</h3><p>Drum tracking, mixing and mastering.</p></article>
           <article class="card"><div class="meta">2026 · A Void Eternal</div><h3>Poveglia</h3><p>Drum tracking.</p></article>
           <article class="card"><div class="meta">2023 · War Dance</div><h3>Sons of Thunder</h3><p>Drum tracking.</p></article>
         </div>
-        <div class="project-actions"><a class="btn page-link" href="discography-el.html">Πλήρης δισκογραφία</a></div>
+        <div class="project-actions"><a class="btn page-link" href="discography-el.html">Πληρης δισκογραφια</a></div>
       </div>
     </div>
   </section>
@@ -977,16 +1130,25 @@ html[lang="el"] .hero-name{
     <div class="wrap section-head">
       <div class="section-label">05 / Live</div>
       <div class="section-body">
-        <h2 aria-label="Live εμφανίσεις" data-text="Live εμφανίσεις">Live εμφανίσεις</h2>
+        <h2 aria-label="Live εμφανίσεις" data-text="Live εμφανίσεις">Live εμφανισεις</h2>
         <p>Επόμενες εμφανίσεις και επιλεγμένα live highlights.</p>
         <div class="event-list">
-          <a class="event-card event-card-link" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball">
+          <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball">
             <div class="event-date"><strong>03</strong><span>Οκτωβρίου 2026</span></div>
             <div class="event-copy">
-              <div class="meta">Eightball Club · Θεσσαλονίκη</div>
+              <div class="meta">Eightball Club · Θεσσαλονικη</div>
               <h3>The Prisoners</h3>
               <p>Iron Maiden tribute show · Support: Obscurus Rex.</p>
               <p class="event-role">Ο Stelios Sioulas στα ντραμς και με τους The Prisoners και με τους Obscurus Rex.</p>
+            </div>
+          </a>
+          <a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/dorogr" target="_blank" rel="noopener" aria-label="Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation">
+            <div class="event-date"><strong>09</strong><span>Οκτωβριου 2026</span></div>
+            <div class="event-copy">
+              <div class="meta">Fuzz Club · Αθηνα</div>
+              <h3>Doro Pesch</h3>
+              <p>Support: Obscurus Rex.</p>
+              <p class="event-role">Στα ντραμς με τους Obscurus Rex.</p>
             </div>
           </a>
         </div>
@@ -999,9 +1161,9 @@ html[lang="el"] .hero-name{
     <div class="wrap section-head">
       <div class="section-label">06 / Media</div>
       <div class="section-body">
-        <h2 aria-label="Βίντεο &amp; performance" data-text="Βίντεο &amp; performance">Βίντεο &amp; performance</h2>
+        <h2 aria-label="Βίντεο &amp; performance" data-text="Βίντεο &amp; performance">Βιντεο &amp; performance</h2>
         <p>Επιλεγμένα videos από μπάντες και υλικό από διαφορετικές περιόδους της πορείας του.</p>
-        <div class="profile-cta"><div><div class="meta">Live · Video · Συνεργασίες</div><h3>Δες τον Stelios να παίζει</h3><p>Επιλεγμένα live, drum-focused και ηχογραφημένα performances. </p></div><div class="profile-cta-actions"><a class="btn" href="#live">Live εμφανίσεις</a><a class="btn" href="#contact">Συνεργασία</a></div></div>
+        <div class="profile-cta"><div><div class="meta">Live · Video · Συνεργασιες</div><h3>Δες τον Στέλιο να παίζει</h3><p>Επιλεγμένα live, drum-focused και ηχογραφημένα performances. </p></div><div class="profile-cta-actions"><a class="btn" href="#live">Live εμφανισεις</a><a class="btn" href="#contact">Συνεργασια</a></div></div>
         <article class="instagram-feature" id="drum-intro">
           <div class="instagram-intro-copy">
             <div class="meta">Instagram · Drum intro</div>
@@ -1015,7 +1177,7 @@ html[lang="el"] .hero-name{
         </article>
         <article class="tiktok-feature">
           <div class="tiktok-intro-copy">
-            <div class="meta">TikTok · Επιλεγμένο video</div>
+            <div class="meta">TikTok · Επιλεγμενο video</div>
             <h3>Stelios on TikTok</h3>
             <p>Επιλεγμένο drum performance από το επίσημο TikTok προφίλ.</p>
             <a class="tiktok-link" href="https://www.tiktok.com/@stelios.sioulas.t/video/7653913479035882774" target="_blank" rel="noopener">Άνοιγμα στο TikTok ↗</a>
@@ -1033,31 +1195,31 @@ html[lang="el"] .hero-name{
         <div class="video-grid">
           <article class="video-card">
             <iframe src="https://www.youtube.com/embed/tdMbeJyw7nE" title="Star.Gate - Reborn" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div class="video-copy"><div class="meta">Star.Gate · Περίοδος Reborn</div><h3>Star.Gate — Reborn</h3></div>
+            <div class="video-copy"><div class="meta">Star.Gate · Περιοδος Reborn</div><h3>Star.Gate — Reborn</h3></div>
           </article>
           <article class="video-card">
             <iframe src="https://www.youtube.com/embed/X38Jy5wYe_c" title="Forbidden Lore - Endless Run" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div class="video-copy"><div class="meta">Forbidden Lore · Επίσημο video</div><h3>Endless Run</h3></div>
+            <div class="video-copy"><div class="meta">Forbidden Lore · Επισημο video</div><h3>Endless Run</h3></div>
           </article>
           <article class="video-card">
             <iframe src="https://www.youtube.com/embed/Y_9stpMR6rs" title="Sarissa - No Man's Land" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div class="video-copy"><div class="meta">Sarissa · Επίσημο lyric video</div><h3>No Man's Land</h3><p>Από το <em>Nemesis</em> (2016) — ντραμς: Stelios Sioulas.</p></div>
+            <div class="video-copy"><div class="meta">Sarissa · Επισημο lyric video</div><h3>No Man's Land</h3><p>Από το <em>Nemesis</em> (2016) — ντραμς: Stelios Sioulas.</p></div>
           </article>
           <article class="video-card">
             <iframe src="https://www.youtube-nocookie.com/embed/O6IHi-c-nlA?rel=0" title="Stelios Sioulas - The Prodigy Drumcover" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <div class="video-copy"><div class="meta">Solo · Drum cover</div><h3>The Prodigy Drumcover</h3><p>Προσωπικό drum video από το YouTube κανάλι.</p></div>
           </article>
         </div>
-        <div class="profile-cta"><div><div class="meta">Επαγγελματικό · Press material</div><h3>Press Kit</h3><p>Σύντομο επαγγελματικό bio, τρέχοντα projects, διδακτική εμπειρία, επίσημα links και επιλεγμένη press φωτογραφία για promoters, venues, μπάντες και media.</p></div><div class="profile-cta-actions"><a class="btn page-link" href="press-kit-el.html">Άνοιγμα press kit</a></div></div>
+        <div class="profile-cta"><div><div class="meta">Επαγγελματικο · Press material</div><h3>Press Kit</h3><p>Σύντομο επαγγελματικό bio, τρέχοντα projects, διδακτική εμπειρία, επίσημα links και επιλεγμένη press φωτογραφία για promoters, venues, μπάντες και media.</p></div><div class="profile-cta-actions"><a class="btn page-link" href="press-kit-el.html">Ανοιγμα press kit</a></div></div>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="wrap section-head">
-      <div class="section-label">07 / Επικοινωνία</div>
+      <div class="section-label">07 / Επικοινωνια</div>
       <div class="section-body">
-        <h2 aria-label="Booking &amp; επικοινωνία" data-text="Booking &amp; επικοινωνία">Booking &amp; επικοινωνία</h2>
+        <h2 aria-label="Booking &amp; επικοινωνία" data-text="Booking &amp; επικοινωνία">Booking &amp; επικοινωνια</h2>
           <div class="availability"><span>Διαθέσιμος για</span><strong>Live projects · Νέες μπάντες · Session work · Συνεργασίες</strong></div>
           <div class="contact-box">
           
@@ -1067,12 +1229,12 @@ html[lang="el"] .hero-name{
             <a class="contact-social" href="https://www.tiktok.com/@stelios.sioulas.t" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.2 3c.3 2 1.5 3.5 3.5 4.3 1 .4 2 .5 3 .5v3.1c-2.3 0-4.4-.7-6.2-2v6.3c0 3.7-3 6.8-6.8 6.8S1 19 1 15.3s3-6.8 6.8-6.8c.5 0 1 .1 1.5.2V12c-.5-.2-1-.3-1.5-.3-2 0-3.6 1.6-3.6 3.6s1.6 3.6 3.6 3.6 3.6-1.6 3.6-3.6V3h2.8Z"/></svg><span>TikTok</span></a>
             <a class="contact-social" href="https://www.youtube.com/@SteliosSioulas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 12s0-3.4-.4-5c-.2-1-.9-1.7-1.8-1.9C19.2 4.7 12 4.7 12 4.7s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.9C1 8.6 1 12 1 12s0 3.4.4 5c.2 1 .9 1.7 1.8 1.9 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.9.4-1.6.4-5 .4-5Zm-13.2 3.2V8.8l5.7 3.2-5.7 3.2Z"/></svg><span>YouTube</span></a>
           </div>
-          <div class="contact-message-actions"><button class="btn contact-message-trigger" type="button" data-contact-open="contactDialog-el"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg><span>Στείλε μήνυμα</span></button></div>
+          <div class="contact-message-actions"><button class="btn contact-message-trigger" type="button" data-contact-open="contactDialog-el"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg><span>Στειλε μηνυμα</span></button></div>
           <dialog class="contact-dialog" id="contactDialog-el" aria-labelledby="contactDialogTitle-el">
   <div class="contact-dialog-inner">
     <button class="contact-dialog-close" type="button" data-contact-close aria-label="Κλείσιμο">×</button>
-    <div class="meta">Άμεση επικοινωνία</div>
-    <h3 id="contactDialogTitle-el">Στείλε μήνυμα</h3>
+    <div class="meta">Αμεση επικοινωνια</div>
+    <h3 id="contactDialogTitle-el">Στειλε μηνυμα</h3>
     <p class="contact-dialog-intro">Συμπλήρωσε τη φόρμα και το μήνυμα θα σταλεί απευθείας στον Stelios.</p>
     <form class="contact-form" action="https://formspree.io/f/mvkggpvg" method="POST" data-sending="Αποστολή..." data-success="Το μήνυμά σου στάλθηκε επιτυχώς." data-error="Η αποστολή δεν ολοκληρώθηκε. Δοκίμασε ξανά.">
       <div class="contact-form-grid">
@@ -1083,7 +1245,7 @@ html[lang="el"] .hero-name{
       </div>
       <input class="contact-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="_source" value="steliossioulas.gr">
-      <div class="contact-form-actions"><button class="btn" type="submit">Αποστολή μηνύματος</button><p class="contact-form-status" role="status" aria-live="polite"></p></div>
+      <div class="contact-form-actions"><button class="btn" type="submit">Αποστολη μηνυματος</button><p class="contact-form-status" role="status" aria-live="polite"></p></div>
     </form>
   </div>
 </dialog>
@@ -1259,6 +1421,134 @@ document.addEventListener('DOMContentLoaded',()=>{
     while((node=walker.nextNode())) node.nodeValue=strip(node.nodeValue);
   });
 });
+</script>
+
+<script>
+/* Audio intro: autoplay on direct load/new tab/refresh; skip same-tab site navigation */
+(function(){
+  const buttons=Array.from(document.querySelectorAll('.intro-sound-btn'));
+  if(!buttons.length) return;
+
+  const SKIP_KEY='stelios-intro-skip-next-navigation';
+  const audio=new Audio('assets/stelios-intro.mp3?v=20260919');
+  audio.preload='auto';
+  let playToken=0;
+
+  function updateState(playing){
+    const greek=document.documentElement.lang==='el';
+    const label=playing
+      ? (greek?'Διακοπή ηχητικού intro':'Stop audio intro')
+      : (greek?'Αναπαραγωγή ηχητικού intro':'Play audio intro');
+
+    buttons.forEach(function(btn){
+      btn.classList.toggle('is-playing',playing);
+      btn.classList.toggle('is-off',!playing);
+      btn.setAttribute('aria-pressed',playing?'true':'false');
+      btn.setAttribute('aria-label',label);
+      btn.setAttribute('title',label);
+    });
+  }
+
+  function stopIntro(){
+    playToken++;
+    try{audio.pause();}catch(e){}
+    try{audio.currentTime=0;}catch(e){}
+    updateState(false);
+  }
+
+  function playIntro(){
+    const token=++playToken;
+    try{
+      audio.pause();
+      audio.currentTime=0;
+      const result=audio.play();
+      if(result&&typeof result.then==='function'){
+        result.then(function(){
+          if(token===playToken) updateState(true);
+        }).catch(function(){
+          if(token===playToken) updateState(false);
+        });
+      }else if(token===playToken){
+        updateState(true);
+      }
+    }catch(e){
+      if(token===playToken) updateState(false);
+    }
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(!audio.paused && !audio.ended) stopIntro();
+      else playIntro();
+    });
+  });
+
+  audio.addEventListener('play',function(){updateState(true);});
+  audio.addEventListener('ended',stopIntro);
+  window.addEventListener('pagehide',stopIntro);
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden) stopIntro();
+  });
+
+  /* Mark only ordinary same-tab navigation inside this site.
+     New-tab clicks are deliberately ignored so the new tab can autoplay. */
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link=e.target.closest && e.target.closest('a[href]');
+    if(!link || link.hasAttribute('download')) return;
+    const target=(link.getAttribute('target')||'').toLowerCase();
+    if(target && target!=='_self') return;
+
+    let url;
+    try{url=new URL(link.href,window.location.href);}catch(err){return;}
+    if(url.origin!==window.location.origin) return;
+
+    /* The Stelios Sioulas logo/name is always internal navigation.
+       Never replay the intro when it returns to the home page. */
+    if(link.matches('.site-brand,.brand')){
+      try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
+      return;
+    }
+
+    const sameDocument=
+      url.pathname===window.location.pathname &&
+      url.search===window.location.search;
+
+    if(sameDocument) return;
+
+    try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
+  });
+
+  function shouldAutoplay(){
+    let skip=false;
+
+    try{
+      skip=sessionStorage.getItem(SKIP_KEY)==='1';
+      if(skip) sessionStorage.removeItem(SKIP_KEY);
+    }catch(e){}
+
+    try{
+      const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if(nav && nav.type==='back_forward') skip=true;
+    }catch(e){}
+
+    return !skip;
+  }
+
+  function autoStart(){
+    if(shouldAutoplay()) playIntro();
+  }
+
+  updateState(false);
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',autoStart,{once:true});
+  }else{
+    autoStart();
+  }
+})();
 </script>
 <script src="assets/js/live-cms.js"></script>
 </body>

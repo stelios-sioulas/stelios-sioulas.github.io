@@ -33,7 +33,7 @@ h1,h2,h3{font-family:Oswald,sans-serif;text-transform:uppercase;margin:0}h1{font
 .quick-nav{display:flex;gap:8px;overflow:auto;padding:12px 14px 14px;scrollbar-width:none;border-bottom:1px solid var(--line)}.quick-nav::-webkit-scrollbar{display:none}.quick-nav a{white-space:nowrap;padding:8px 11px;border:1px solid var(--line);background:var(--panel);border-radius:999px;color:var(--muted);font-size:12px}
 section{padding:46px 0;border-bottom:1px solid var(--line)}.section-label{color:var(--accent2);font:600 11px Oswald,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}h2{font-size:36px;line-height:1;margin-bottom:15px}section p{color:var(--muted);font-size:14px;margin:0 0 12px}
 .photo-block{width:100%;aspect-ratio:16/10;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:22px;background-position:center;background-size:cover;background-repeat:no-repeat;box-shadow:0 12px 28px rgba(0,0,0,.26)}
-.photo-about{background-image:linear-gradient(180deg,transparent,rgba(7,10,15,.22)),url('assets/viber_image_2026-09-14_23-43-36-763.jpg?v=mobile-sync');background-position:44% center}.photo-live{background-image:linear-gradient(180deg,transparent,rgba(7,10,15,.24)),url('assets/bg-live.webp?v=bandus');background-position:50% 42%}
+.photo-about{background-image:linear-gradient(180deg,transparent,rgba(7,10,15,.14)),url('assets/viber_image_2026-09-14_23-43-36-763.jpg?v=mobile-sync');background-position:44% center}.photo-live{background-image:linear-gradient(180deg,transparent,rgba(7,10,15,.16)),url('assets/bg-live.webp?v=bandus');background-position:50% 42%}
 .featured-grid,.record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}.card{min-height:116px;padding:14px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#162233,var(--panel));position:relative}.card .meta{color:var(--accent2);font-size:9px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}.card h3{font-size:17px;line-height:1.05;margin-bottom:6px}.card p{font-size:11px;line-height:1.35;margin:0}.card-link{padding-right:28px}.card-link:after{content:"↗";position:absolute;right:10px;top:10px;color:var(--accent2);font-size:14px}
 .view-all{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:14px 16px;border:1px solid var(--accent);border-radius:12px;background:rgba(58,120,184,.12);font:600 13px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.view-all span:last-child{font-size:18px}
 .teaching-list{display:grid;gap:9px;margin-top:18px}.teaching-item{padding:14px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 11px 11px 0}.teaching-item strong{display:block;font-family:Oswald,sans-serif;text-transform:uppercase;font-size:17px}.teaching-item span{color:var(--muted);font-size:12px}
@@ -212,9 +212,79 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
   .social-icons{width:100%;justify-content:center}
 }
 </style>
+<style>
+/* event artwork backgrounds */
+.event-card.event-art{
+  overflow:hidden;
+  isolation:isolate;
+}
+.event-card.event-art::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:48%;
+  z-index:0;
+  background-image:var(--event-poster);
+  background-size:cover;
+  background-position:var(--event-position,right center);
+  background-repeat:no-repeat;
+  opacity:.13;
+  filter:saturate(.78) contrast(1.04) brightness(.82);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 24%,#000 52%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 24%,#000 52%);
+  transform:scale(1.02);
+  transform-origin:right center;
+  pointer-events:none;
+}
+.event-card.event-art > *{
+  position:relative;
+  z-index:1;
+}
+.event-card.event-art::after{
+  z-index:2;
+}
+.event-card.event-prisoners{
+  --event-poster:url('assets/event-prisoners-oct03.jpg');
+  --event-position:right 30%;
+}
+.event-card.event-doro{
+  --event-poster:url('https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png');
+  --event-position:right 26%;
+}
+</style>
+
+<style>
+/* Stelios audio intro */
+.intro-sound-btn{
+  position:relative;
+  width:34px;height:34px;display:inline-grid;place-items:center;flex:0 0 auto;
+  border:1px solid var(--line);border-radius:50%;background:rgba(16,23,34,.82);
+  color:var(--muted);cursor:pointer;padding:0;
+  transition:color .18s ease,border-color .18s ease,background .18s ease,transform .18s ease;
+}
+.intro-sound-btn:hover,.intro-sound-btn:focus-visible{
+  color:#fff;border-color:var(--accent);background:rgba(58,120,184,.18);outline:none;
+}
+.intro-sound-btn:active{transform:scale(.94)}
+.intro-sound-btn.is-playing{color:var(--accent2);border-color:var(--accent2)}
+.intro-sound-btn.is-off::after{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:2px;
+  transform:rotate(-45deg);
+  pointer-events:none;
+}
+.intro-sound-btn svg{width:17px;height:17px;display:block;fill:currentColor}
+@media(max-width:820px){.intro-sound-btn{width:38px;height:38px}}
+</style>
 </head>
 <body>
-<header><div class="wrap topbar"><a class="brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><a class="lang-switch" href="mobile-el.html">GR</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="discography.html">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
+<header><div class="wrap topbar"><a class="brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Replay audio intro" title="Replay audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="lang-switch" href="mobile-el.html">GR</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="discography.html">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
 
 <main id="top">
   <section class="hero">
@@ -259,10 +329,10 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
       <h2>Drum teaching</h2>
       <p>Teaching experience in established music schools and conservatories.</p>
       <div class="teaching-list">
-        <div class="teaching-item"><strong>ΩΔΕΙΟΝ ΟΡΦΕΑΣ</strong><span>Peraia</span></div>
+        <div class="teaching-item"><strong>ORFEAS MUSIC SCHOOL</strong><span>Peraia</span></div>
         <div class="teaching-item"><strong>YMCA Thessaloniki / ΧΑΝΘ</strong><span>Thessaloniki</span></div>
-        <div class="teaching-item"><strong>ΩΔΕΙΟ ΜΕΛΩΔΙΑ</strong><span>Thessaloniki</span></div>
-        <div class="teaching-item"><strong>ΗΧΟΜΟΡΦΕΣ</strong><span>Agia Paraskevi</span></div>
+        <div class="teaching-item"><strong>MELODIA MUSIC SCHOOL</strong><span>Thessaloniki</span></div>
+        <div class="teaching-item"><strong>IHOMORFES MUSIC SCHOOL</strong><span>Agia Paraskevi</span></div>
       </div>
     </div>
   </section>
@@ -284,10 +354,15 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
     <div class="wrap">
       <div class="section-label">05 / Live</div>
       <h2>Live</h2>
-      <a class="event-card event-card-link" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Open The Prisoners event on the official Eightball website">
+      <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener" aria-label="Open The Prisoners event on the official Eightball website">
         <div class="event-date">03 <span>October 2026</span></div>
         <h3>The Prisoners · Eightball</h3>
         <p>Thessaloniki · with Obscurus Rex. Stelios on drums with both projects.</p>
+      </a>
+      <a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/doroathens_en#about" target="_blank" rel="noopener" aria-label="Open Doro Pesch Athens event on the official Eventation website">
+        <div class="event-date">09 <span>October 2026</span></div>
+        <h3>Doro Pesch · Fuzz Club</h3>
+        <p>Athens · Support: Obscurus Rex · on drums with Obscurus Rex.</p>
       </a>
       <div class="photo-block photo-live" role="img" aria-label="Live performance at Eightball"></div>
     </div>
@@ -464,6 +539,134 @@ document.querySelectorAll('.contact-form').forEach(form=>{
     }
   });
 });
+</script>
+
+<script>
+/* Audio intro: autoplay on direct load/new tab/refresh; skip same-tab site navigation */
+(function(){
+  const buttons=Array.from(document.querySelectorAll('.intro-sound-btn'));
+  if(!buttons.length) return;
+
+  const SKIP_KEY='stelios-intro-skip-next-navigation';
+  const audio=new Audio('assets/stelios-intro.mp3?v=20260919');
+  audio.preload='auto';
+  let playToken=0;
+
+  function updateState(playing){
+    const greek=document.documentElement.lang==='el';
+    const label=playing
+      ? (greek?'Διακοπή ηχητικού intro':'Stop audio intro')
+      : (greek?'Αναπαραγωγή ηχητικού intro':'Play audio intro');
+
+    buttons.forEach(function(btn){
+      btn.classList.toggle('is-playing',playing);
+      btn.classList.toggle('is-off',!playing);
+      btn.setAttribute('aria-pressed',playing?'true':'false');
+      btn.setAttribute('aria-label',label);
+      btn.setAttribute('title',label);
+    });
+  }
+
+  function stopIntro(){
+    playToken++;
+    try{audio.pause();}catch(e){}
+    try{audio.currentTime=0;}catch(e){}
+    updateState(false);
+  }
+
+  function playIntro(){
+    const token=++playToken;
+    try{
+      audio.pause();
+      audio.currentTime=0;
+      const result=audio.play();
+      if(result&&typeof result.then==='function'){
+        result.then(function(){
+          if(token===playToken) updateState(true);
+        }).catch(function(){
+          if(token===playToken) updateState(false);
+        });
+      }else if(token===playToken){
+        updateState(true);
+      }
+    }catch(e){
+      if(token===playToken) updateState(false);
+    }
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(!audio.paused && !audio.ended) stopIntro();
+      else playIntro();
+    });
+  });
+
+  audio.addEventListener('play',function(){updateState(true);});
+  audio.addEventListener('ended',stopIntro);
+  window.addEventListener('pagehide',stopIntro);
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden) stopIntro();
+  });
+
+  /* Mark only ordinary same-tab navigation inside this site.
+     New-tab clicks are deliberately ignored so the new tab can autoplay. */
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link=e.target.closest && e.target.closest('a[href]');
+    if(!link || link.hasAttribute('download')) return;
+    const target=(link.getAttribute('target')||'').toLowerCase();
+    if(target && target!=='_self') return;
+
+    let url;
+    try{url=new URL(link.href,window.location.href);}catch(err){return;}
+    if(url.origin!==window.location.origin) return;
+
+    /* The Stelios Sioulas logo/name is always internal navigation.
+       Never replay the intro when it returns to the home page. */
+    if(link.matches('.site-brand,.brand')){
+      try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
+      return;
+    }
+
+    const sameDocument=
+      url.pathname===window.location.pathname &&
+      url.search===window.location.search;
+
+    if(sameDocument) return;
+
+    try{sessionStorage.setItem(SKIP_KEY,'1');}catch(err){}
+  });
+
+  function shouldAutoplay(){
+    let skip=false;
+
+    try{
+      skip=sessionStorage.getItem(SKIP_KEY)==='1';
+      if(skip) sessionStorage.removeItem(SKIP_KEY);
+    }catch(e){}
+
+    try{
+      const nav=performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if(nav && nav.type==='back_forward') skip=true;
+    }catch(e){}
+
+    return !skip;
+  }
+
+  function autoStart(){
+    if(shouldAutoplay()) playIntro();
+  }
+
+  updateState(false);
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',autoStart,{once:true});
+  }else{
+    autoStart();
+  }
+})();
 </script>
 <script src="assets/js/live-cms.js"></script>
 </body>
