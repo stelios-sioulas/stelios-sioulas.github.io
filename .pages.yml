@@ -128,3 +128,163 @@ content:
         label: Ιστορικό / highlight desktop (EL)
         type: text
         required: false
+
+  - name: projects
+    label: PROJECTS
+    type: file
+    path: data/projects.json
+    format: json
+    fields:
+      - name: home
+        label: Κείμενα Projects στην αρχική
+        type: object
+        required: true
+        fields:
+          - name: label
+            label: Αρίθμηση / ετικέτα ενότητας
+            type: string
+            required: true
+          - name: title_en
+            label: Τίτλος desktop (EN)
+            type: string
+            required: true
+          - name: title_el
+            label: Τίτλος desktop (EL)
+            type: string
+            required: true
+          - name: mobile_title_en
+            label: Τίτλος mobile (EN)
+            type: string
+            required: true
+          - name: mobile_title_el
+            label: Τίτλος mobile (EL)
+            type: string
+            required: true
+          - name: intro_en
+            label: Εισαγωγή desktop (EN)
+            type: text
+            required: false
+          - name: intro_el
+            label: Εισαγωγή desktop (EL)
+            type: text
+            required: false
+          - name: button_en
+            label: Κουμπί προς όλα τα projects (EN)
+            type: string
+            required: true
+          - name: button_el
+            label: Κουμπί προς όλα τα projects (EL)
+            type: string
+            required: true
+
+      - name: page
+        label: Κείμενα πλήρους σελίδας Projects
+        type: object
+        required: true
+        fields:
+          - name: eyebrow_en
+            label: Μικρός τίτλος hero (EN)
+            type: string
+            required: false
+          - name: eyebrow_el
+            label: Μικρός τίτλος hero (EL)
+            type: string
+            required: false
+          - name: title
+            label: Κύριος τίτλος
+            type: string
+            required: true
+          - name: intro_en
+            label: Εισαγωγή (EN)
+            type: text
+            required: false
+          - name: intro_el
+            label: Εισαγωγή (EL)
+            type: text
+            required: false
+          - name: current_heading_en
+            label: Τίτλος ενεργών projects (EN)
+            type: string
+            required: true
+          - name: current_heading_el
+            label: Τίτλος ενεργών projects (EL)
+            type: string
+            required: true
+          - name: past_heading_en
+            label: Τίτλος παλαιότερων projects (EN)
+            type: string
+            required: true
+          - name: past_heading_el
+            label: Τίτλος παλαιότερων projects (EL)
+            type: string
+            required: true
+
+      - name: projects
+        label: Λίστα projects
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} — {group}"
+        fields:
+          - name: group
+            label: Κατηγορία
+            type: select
+            required: true
+            options:
+              values:
+                - value: current
+                  label: Τρέχον / ενεργό
+                - value: past
+                  label: Παλαιότερο / συνεργασία
+          - name: show_on_mobile
+            label: Εμφάνιση στην επιλεγμένη mobile λίστα
+            type: boolean
+            required: false
+          - name: name
+            label: Όνομα project
+            type: string
+            required: true
+          - name: meta_en
+            label: Είδος / μικρή περιγραφή (EN)
+            type: string
+            required: false
+          - name: meta_el
+            label: Είδος / μικρή περιγραφή (EL)
+            type: string
+            required: false
+          - name: description_en
+            label: Περιγραφή (EN)
+            type: text
+            required: false
+          - name: description_el
+            label: Περιγραφή (EL)
+            type: text
+            required: false
+          - name: home_description_en
+            label: Διαφορετική περιγραφή αρχικής (EN)
+            type: text
+            required: false
+            description: Συμπλήρωσέ το μόνο αν η αρχική χρειάζεται διαφορετικό κείμενο.
+          - name: home_description_el
+            label: Διαφορετική περιγραφή αρχικής (EL)
+            type: text
+            required: false
+          - name: page_description_en
+            label: Διαφορετική περιγραφή πλήρους σελίδας (EN)
+            type: text
+            required: false
+            description: Συμπλήρωσέ το μόνο αν η πλήρης σελίδα χρειάζεται διαφορετικό κείμενο.
+          - name: page_description_el
+            label: Διαφορετική περιγραφή πλήρους σελίδας (EL)
+            type: text
+            required: false
+          - name: italic_text
+            label: Τμήμα περιγραφής σε πλάγια γραφή
+            type: string
+            required: false
+          - name: url
+            label: Δημόσιο προφίλ / website
+            type: string
+            required: false
+
