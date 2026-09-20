@@ -1,0 +1,67 @@
+{
+  "section": {
+    "label": "06 / Media",
+    "title_desktop_en": "Video & performance",
+    "title_desktop_el": "Βιντεο & performance",
+    "title_mobile_en": "Watch",
+    "title_mobile_el": "Δες τα videos",
+    "intro_en": "Selected official band videos and drum-focused material from across Stelios' career.",
+    "intro_el": "Επιλεγμένα videos από μπάντες και υλικό από διαφορετικές περιόδους της πορείας του."
+  },
+  "instagram": {
+    "meta_en": "Instagram · Drum intro",
+    "meta_el": "Instagram · Drum intro",
+    "title": "5/4 Polyrhythmic Warm-up",
+    "description_en": "A focused warm-up before a Persona Non Grata recording session, selected to highlight Stelios’ timing, control and feel.",
+    "description_el": "Ένα σύντομο warm-up πριν από ηχογράφηση των Persona Non Grata, με έμφαση στο timing, τον έλεγχο και το feel.",
+    "url": "https://www.instagram.com/reel/DcA1k6hNsSq/",
+    "iframe_title": "Stelios Sioulas — 5/4 drum warm-up on Instagram"
+  },
+  "tiktok": {
+    "meta_en": "TikTok · Featured video",
+    "meta_el": "TikTok · Επιλεγμενο video",
+    "title": "Stelios on TikTok",
+    "description_en": "Selected drum performance from Stelios’ official TikTok profile.",
+    "description_el": "Επιλεγμένο drum performance από το επίσημο TikTok προφίλ.",
+    "url": "https://www.tiktok.com/@stelios.sioulas.t/video/7653913479035882774",
+    "iframe_title": "Stelios Sioulas — featured TikTok drum video"
+  },
+  "youtube_videos": [
+    {
+      "meta_en": "Star.Gate · Reborn era",
+      "meta_el": "Star.Gate · Περιοδος Reborn",
+      "title": "Star.Gate — Reborn",
+      "description_en": "Stelios Sioulas — drums.",
+      "description_el": "",
+      "url": "https://www.youtube.com/watch?v=tdMbeJyw7nE",
+      "iframe_title": "Star.Gate - Reborn"
+    },
+    {
+      "meta_en": "Forbidden Lore · Official video",
+      "meta_el": "Forbidden Lore · Επισημο video",
+      "title": "Endless Run",
+      "description_en": "Drum recording — Stelios Sioulas.",
+      "description_el": "",
+      "url": "https://www.youtube.com/watch?v=X38Jy5wYe_c",
+      "iframe_title": "Forbidden Lore - Endless Run"
+    },
+    {
+      "meta_en": "Sarissa · Official lyric video",
+      "meta_el": "Sarissa · Επισημο lyric video",
+      "title": "No Man's Land",
+      "description_en": "From Nemesis (2016) — drums by Stelios Sioulas.",
+      "description_el": "Από το Nemesis (2016) — ντραμς: Stelios Sioulas.",
+      "url": "https://www.youtube.com/watch?v=Y_9stpMR6rs",
+      "iframe_title": "Sarissa - No Man's Land"
+    },
+    {
+      "meta_en": "Solo · Drum cover",
+      "meta_el": "Solo · Drum cover",
+      "title": "The Prodigy Drumcover",
+      "description_en": "Personal drum video from Stelios' YouTube channel.",
+      "description_el": "Προσωπικό drum video από το YouTube κανάλι.",
+      "url": "https://www.youtube.com/watch?v=O6IHi-c-nlA",
+      "iframe_title": "Stelios Sioulas - The Prodigy Drumcover"
+    }
+  ]
+}
