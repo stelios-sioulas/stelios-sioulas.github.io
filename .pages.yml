@@ -118,12 +118,30 @@ content:
             type: image
             required: false
             description: Αν μείνει κενό, η κάρτα εμφανίζεται χωρίς φωτογραφία.
-          - name: poster_position
-            label: Εστίαση φωτογραφίας
-            type: string
+          - name: focus_x
+            label: Οριζόντια εστίαση εικόνας (%)
+            type: number
             required: false
-            hidden: true
-            readonly: true
+            description: 0 = αριστερά, 50 = κέντρο, 100 = δεξιά.
+            options:
+              min: 0
+              max: 100
+          - name: focus_y
+            label: Κάθετη εστίαση εικόνας (%)
+            type: number
+            required: false
+            description: 0 = πάνω, 50 = κέντρο, 100 = κάτω.
+            options:
+              min: 0
+              max: 100
+          - name: zoom
+            label: Zoom εικόνας (%)
+            type: number
+            required: false
+            description: 100 = κανονικό. Αύξησέ το έως 180 για μεγαλύτερο zoom.
+            options:
+              min: 100
+              max: 180
           - name: aria_label_en
             label: Προσβάσιμη περιγραφή συνδέσμου (EN)
             type: string
