@@ -324,3 +324,83 @@ content:
             type: string
             required: false
 
+
+  - name: discography
+    label: DISCOGRAPHY
+    type: file
+    path: data/discography.json
+    format: json
+    fields:
+      - name: home
+        label: Σταθερά κείμενα αρχικής
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: label, label: Ετικέτα ενότητας, type: string, required: true }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+          - { name: button_en, label: Κουμπί EN, type: string, required: true }
+          - { name: button_el, label: Κουμπί EL, type: string, required: true }
+
+      - name: page
+        label: Σταθερά κείμενα πλήρους σελίδας
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: eyebrow_en, label: Μικρός τίτλος EN, type: string, required: false }
+          - { name: eyebrow_el, label: Μικρός τίτλος EL, type: string, required: false }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+
+      - name: releases
+        label: Κυκλοφορίες
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{artist} — {title} ({year})"
+        fields:
+          - name: year
+            label: Έτος
+            type: string
+            required: true
+            description: Χρησιμοποίησε TBA όταν δεν έχει ανακοινωθεί έτος.
+          - name: artist
+            label: Καλλιτέχνης / μπάντα
+            type: string
+            required: true
+          - name: title
+            label: Τίτλος κυκλοφορίας
+            type: string
+            required: true
+          - name: status_en
+            label: Κατάσταση (EN)
+            type: string
+            required: false
+            description: Π.χ. To be released. Άφησέ το κενό για ήδη κυκλοφορημένο έργο.
+          - name: status_el
+            label: Κατάσταση (EL)
+            type: string
+            required: false
+            description: Π.χ. Προς κυκλοφορια.
+          - name: credit
+            label: Συμμετοχή / credit
+            type: string
+            required: false
+          - name: url
+            label: Σύνδεσμος κυκλοφορίας
+            type: string
+            required: false
+          - name: show_on_home
+            label: Εμφάνιση στην αρχική (desktop και mobile)
+            type: boolean
+            required: false
+            default: true
