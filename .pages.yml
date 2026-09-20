@@ -51,20 +51,15 @@ content:
         list:
           collapsible:
             collapsed: true
-            summary: "{title} — {day} {date_el}"
+            summary: "{title} — {event_date}"
         fields:
-          - name: day
-            label: Ημέρα
-            type: string
+          - name: event_date
+            label: Ημερομηνία εκδήλωσης
+            type: date
             required: true
-          - name: date_en
-            label: Μήνας και έτος (EN)
-            type: string
-            required: true
-          - name: date_el
-            label: Μήνας και έτος (EL)
-            type: string
-            required: true
+            options:
+              time: false
+              format: yyyy-MM-dd
           - name: venue_en
             label: Χώρος και πόλη (EN)
             type: string
