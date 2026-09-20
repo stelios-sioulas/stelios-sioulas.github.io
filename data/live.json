@@ -10,9 +10,6 @@
   },
   "events": [
     {
-      "day": "03",
-      "date_en": "October 2026",
-      "date_el": "Οκτωβρίου 2026",
       "venue_en": "Eightball Club · Thessaloniki",
       "venue_el": "Eightball Club · Θεσσαλονικη",
       "title": "The Prisoners",
@@ -28,12 +25,10 @@
       "aria_label_el": "Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball",
       "focus_x": 100,
       "focus_y": 30,
-      "zoom": 100
+      "zoom": 100,
+      "event_date": "2026-10-03"
     },
     {
-      "day": "09",
-      "date_en": "October 2026",
-      "date_el": "Οκτωβριου 2026",
       "venue_en": "Fuzz Club · Athens",
       "venue_el": "Fuzz Club · Αθηνα",
       "title": "Doro Pesch",
@@ -50,7 +45,8 @@
       "aria_label_el": "Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation",
       "focus_x": 100,
       "focus_y": 26,
-      "zoom": 100
+      "zoom": 100,
+      "event_date": "2026-10-09"
     }
   ],
   "highlight_en": "Over the years, Stelios has performed with many different bands and projects at live stages throughout Thessaloniki and, in recent years, at numerous venues across Athens.",
