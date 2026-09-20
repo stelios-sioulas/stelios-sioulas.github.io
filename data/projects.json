@@ -24,7 +24,6 @@
   "projects": [
     {
       "group": "current",
-      "show_on_mobile": true,
       "name": "The Prisoners",
       "meta_en": "Iron Maiden tribute",
       "meta_el": "Iron Maiden tribute",
@@ -36,7 +35,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": true,
       "name": "Persona Non Grata",
       "meta_en": "Progressive metal band since 2003",
       "meta_el": "Progressive metal band since 2003",
@@ -46,7 +44,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": true,
       "name": "Pop ’N’ Roll",
       "meta_en": "Heavymetaling of pop songs",
       "meta_el": "Heavymetaling of pop songs",
@@ -55,7 +52,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": false,
       "name": "Obscurus Rex",
       "meta_en": "Heavy metal band since 2021",
       "meta_el": "Heavy metal band since 2021",
@@ -65,7 +61,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": false,
       "name": "Mushroom People",
       "meta_en": "System of a Down tribute",
       "meta_el": "System of a Down tribute",
@@ -74,7 +69,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": false,
       "name": "Onion Rings",
       "meta_en": "Pop and rock cover band",
       "meta_el": "Pop and rock cover band",
@@ -83,7 +77,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": false,
       "name": "Soletaken",
       "meta_en": "Heavy metal cover band since 2008",
       "meta_el": "Heavy metal cover band since 2008",
@@ -92,7 +85,6 @@
     },
     {
       "group": "current",
-      "show_on_mobile": false,
       "name": "Disaster Project",
       "meta_en": "Fusion experimental project since 2014",
       "meta_el": "Fusion experimental project since 2014",
@@ -101,7 +93,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "The Puppets",
       "meta_en": "Metallica tribute",
       "meta_el": "Metallica tribute",
@@ -111,7 +102,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Showbiz",
       "meta_en": "MUSE tribute",
       "meta_el": "MUSE tribute",
@@ -121,7 +111,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "No Age Retro",
       "meta_en": "Nineties party band",
       "meta_el": "Nineties party band",
@@ -130,7 +119,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "A Brother Shamus",
       "meta_en": "Acoustic rock cover duet",
       "meta_el": "Acoustic rock cover duet",
@@ -139,7 +127,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Musicbox",
       "meta_en": "Pop/rock cover trio",
       "meta_el": "Pop/rock cover trio",
@@ -148,7 +135,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "A Void Eternal",
       "meta_en": "Project",
       "meta_el": "Project",
@@ -157,7 +143,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Sarissa",
       "meta_en": "Heavy Metal",
       "meta_el": "Heavy Metal",
@@ -165,7 +150,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Star.Gate",
       "meta_en": "Melodic Metal",
       "meta_el": "Melodic Metal",
@@ -173,7 +157,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Illusive Mirrors",
       "meta_en": "Heavy Metal / Hard Rock",
       "meta_el": "Heavy Metal / Hard Rock",
@@ -181,7 +164,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "War Dance",
       "meta_en": "Session · 2023",
       "meta_el": "Session · 2023",
@@ -192,7 +174,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "John Jeff Touch",
       "meta_en": "Project",
       "meta_el": "Project",
@@ -200,7 +181,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "ΟΥΤΕ ΣΠΟΝΤΑ",
       "meta_en": "Greek alternative / folk",
       "meta_el": "Greek alternative / folk",
@@ -210,7 +190,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Forbidden Lore",
       "meta_en": "Symphonic Metal",
       "meta_el": "Symphonic Metal",
@@ -218,7 +197,6 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Momento",
       "meta_en": "Founding member",
       "meta_el": "Ιδρυτικο μελος",
@@ -226,14 +204,12 @@
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "6 Degrees of Separation",
       "meta_en": "Project",
       "meta_el": "Project"
     },
     {
       "group": "past",
-      "show_on_mobile": false,
       "name": "Palermo",
       "meta_en": "Project",
       "meta_el": "Project"
