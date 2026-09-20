@@ -326,6 +326,7 @@ section .wrap{position:relative;z-index:1}
   color:var(--muted);
 }
 .event-list{display:grid;gap:16px;margin-top:32px}
+.live-empty{position:relative;overflow:hidden;padding:30px;border:1px solid rgba(101,167,227,.38);background:linear-gradient(135deg,rgba(21,31,44,.96),rgba(10,18,28,.96));box-shadow:0 14px 32px rgba(0,0,0,.24)}.live-empty::after{content:"";position:absolute;width:180px;height:180px;right:-72px;top:-92px;border:1px solid rgba(101,167,227,.18);border-radius:50%;box-shadow:0 0 70px rgba(58,120,184,.14)}.live-empty .meta{color:var(--accent2);font-size:10px;text-transform:uppercase;letter-spacing:.11em}.live-empty h3{font-size:clamp(24px,3vw,34px);margin:7px 0}.live-empty p{max-width:660px;margin:0;color:var(--muted)}
 .event-card{
   display:grid;
   grid-template-columns:150px 1fr;
@@ -990,7 +991,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 </head>
 <body>
 <!-- ATHENS-MUSICIAN-PROFILE-V1 -->
-<header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html">Teaching</a><a href="discography.html">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><button class="intro-sound-btn is-off" type="button" aria-label="Replay audio intro" title="Replay audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="index-el.html">GR</a></nav></div></header>
+<header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><nav class="site-nav"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="teaching.html">Teaching</a><a href="discography.html">Discography</a><a href="live.html">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><button class="intro-sound-btn is-off" type="button" aria-label="Replay audio intro" title="Replay audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="index-el.html">GR</a></nav></div></header>
 
 <main id="top">
   <section class="hero">
@@ -1099,6 +1100,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
             </div>
           </a>
         </div>
+        <div class="project-actions"><a class="btn page-link" href="live.html">View more live dates</a></div>
         <div class="placeholder">Over the years, Stelios has performed with many different bands and projects at live stages throughout Thessaloniki and, in recent years, at numerous venues across Athens.</div>
       </div>
     </div>
@@ -1110,7 +1112,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
       <div class="section-body">
         <h2 aria-label="Video &amp; performance" data-text="Video &amp; performance">Video &amp; performance</h2>
         <p>Selected official band videos and drum-focused material from across Stelios' career.</p>
-        <div class="profile-cta"><div><div class="meta">Live · Video · Collaboration</div><h3>Watch Stelios play</h3><p>Selected live, drum-focused and recorded performances. More live footage will be added as new projects and shows come in.</p></div><div class="profile-cta-actions"><a class="btn" href="#live">See live dates</a><a class="btn" href="#contact">Collaborate</a></div></div>
+        <div class="profile-cta"><div><div class="meta">Live · Video · Collaboration</div><h3>Watch Stelios play</h3><p>Selected live, drum-focused and recorded performances. More live footage will be added as new projects and shows come in.</p></div><div class="profile-cta-actions"><a class="btn" href="live.html">See live dates</a><a class="btn" href="#contact">Collaborate</a></div></div>
         <article class="instagram-feature" id="drum-intro">
           <div class="instagram-intro-copy">
             <div class="meta">Instagram · Drum intro</div>

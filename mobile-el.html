@@ -38,6 +38,7 @@ section{padding:46px 0;border-bottom:1px solid var(--line)}.section-label{color:
 .view-all{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:14px 16px;border:1px solid var(--accent);border-radius:12px;background:rgba(58,120,184,.12);font:600 13px Oswald,sans-serif;text-transform:uppercase;letter-spacing:.05em}.view-all span:last-child{font-size:18px}
 .teaching-list{display:grid;gap:9px;margin-top:18px}.teaching-item{padding:14px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 11px 11px 0}.teaching-item strong{display:block;font-family:Oswald,sans-serif;text-transform:uppercase;font-size:17px}.teaching-item span{color:var(--muted);font-size:12px}
 .event-card{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,var(--panel2),var(--panel))}
+.live-empty{position:relative;overflow:hidden;margin-top:18px;padding:20px;border:1px solid rgba(101,167,227,.38);border-radius:14px;background:linear-gradient(145deg,var(--panel2),#0a121c)}.live-empty::after{content:"";position:absolute;width:110px;height:110px;right:-48px;top:-58px;border:1px solid rgba(101,167,227,.18);border-radius:50%}.live-empty .meta{color:var(--accent2);font-size:9px;text-transform:uppercase;letter-spacing:.1em}.live-empty h3{font-size:22px;margin:7px 0}.live-empty p{margin:0;color:var(--muted);font-size:13px}
 .event-card-link{display:block;position:relative;transition:transform .18s ease,border-color .18s ease,background .18s ease;padding-right:40px}
 .event-card-link:after{content:"↗";position:absolute;right:15px;top:14px;color:var(--accent2);font-size:18px}
 .event-card-link:active{transform:scale(.99);border-color:var(--accent)}.event-date{color:var(--accent2);font:700 34px Oswald,sans-serif;line-height:1}.event-date span{font-size:13px;color:var(--text);margin-left:7px}.event-card h3{font-size:24px;margin:12px 0 6px}.event-card p{margin:0;font-size:13px}
@@ -337,7 +338,7 @@ html[lang="el"] .hero-name{
 </style>
 </head>
 <body>
-<header><div class="wrap topbar"><a class="brand" href="mobile-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" title="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="lang-switch" href="mobile.html">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">Σχετικά</a><a href="#projects">Projects</a><a href="#teaching">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Επικοινωνία</a></nav></header>
+<header><div class="wrap topbar"><a class="brand" href="mobile-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" title="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="lang-switch" href="mobile.html">EN</a><button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">Σχετικά</a><a href="#projects">Projects</a><a href="#teaching">Διδασκαλία</a><a href="discography-el.html">Δισκογραφία</a><a href="live-el.html">Live</a><a href="#media">Media</a><a href="#contact">Επικοινωνία</a></nav></header>
 
 <main id="top">
   <section class="hero">
@@ -350,7 +351,7 @@ html[lang="el"] .hero-name{
   </section>
 
   <nav class="quick-nav" aria-label="Γρήγορη πλοήγηση">
-    <a href="#projects">Projects</a><a href="#live">Live</a><a href="#media">Media</a><a href="#teaching">Διδασκαλία</a><a href="#contact">Επικοινωνία</a>
+    <a href="#projects">Projects</a><a href="live-el.html">Live</a><a href="#media">Media</a><a href="#teaching">Διδασκαλία</a><a href="#contact">Επικοινωνία</a>
   </nav>
 
   <section id="about">

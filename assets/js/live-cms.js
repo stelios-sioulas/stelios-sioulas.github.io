@@ -4,6 +4,7 @@
 
   const language = document.documentElement.lang === 'el' ? 'el' : 'en';
   const mobile = section.dataset.liveCms === 'mobile';
+  const fullPage = section.dataset.liveCms === 'page';
   const value = (item, key) => {
     const result = item && item[key];
     return typeof result === 'string' ? result.trim() : '';
@@ -42,6 +43,47 @@
     element.textContent = text;
     parent.appendChild(element);
     return element;
+  };
+
+  const todayKey = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return year + '-' + month + '-' + day;
+  };
+
+  const upcomingEvents = events => events
+    .filter(event => {
+      const date = value(event, 'event_date');
+      return /^\d{4}-\d{2}-\d{2}$/.test(date) && date >= todayKey();
+    })
+    .sort((a, b) => value(a, 'event_date').localeCompare(value(b, 'event_date')));
+
+  const createEmptyState = () => {
+    const empty = document.createElement('div');
+    empty.className = 'live-empty';
+    addTextElement(
+      empty,
+      'div',
+      'meta',
+      language === 'el' ? 'Μεινε συντονισμενος' : 'Stay tuned'
+    );
+    addTextElement(
+      empty,
+      'h3',
+      '',
+      language === 'el' ? 'Νεες live ημερομηνιες συντομα' : 'New live dates coming soon'
+    );
+    addTextElement(
+      empty,
+      'p',
+      '',
+      language === 'el'
+        ? 'Τα τύμπανα κάνουν ένα μικρό διάλειμμα… Οι επόμενες live ημερομηνίες έρχονται σύντομα!'
+        : 'The drums are taking a short break… New live dates are coming soon!'
+    );
+    return empty;
   };
 
   const createDesktopEvent = event => {
@@ -138,7 +180,8 @@
     })
     .then(data => {
       const settings = data.section || {};
-      const events = Array.isArray(data.events) ? data.events : [];
+      const allUpcoming = upcomingEvents(Array.isArray(data.events) ? data.events : []);
+      const events = fullPage ? allUpcoming : allUpcoming.slice(0, 2);
       const label = section.querySelector('.section-label');
       if (label && value(settings, 'label')) {
         label.textContent = value(settings, 'label');
@@ -149,10 +192,11 @@
         const mobileTitle = value(settings, 'mobile_title_' + language);
         if (title && mobileTitle) title.textContent = mobileTitle;
 
-        section.querySelectorAll('.event-card').forEach(card => card.remove());
+        section.querySelectorAll('.event-card, .live-empty').forEach(card => card.remove());
         const photo = section.querySelector('.photo-live');
         const fragment = document.createDocumentFragment();
-        events.forEach(event => fragment.appendChild(createMobileEvent(event)));
+        if (events.length) events.forEach(event => fragment.appendChild(createMobileEvent(event)));
+        else fragment.appendChild(createEmptyState());
         if (photo) photo.before(fragment);
       } else {
         const title = section.querySelector('h2');
@@ -164,7 +208,9 @@
         }
 
         const body = section.querySelector('.section-body');
-        const intro = body && body.querySelector(':scope > p');
+        const intro = fullPage
+          ? section.querySelector('.hero p')
+          : body && body.querySelector(':scope > p');
         const introText = value(settings, 'intro_' + language);
         if (intro) {
           if (introText) intro.textContent = introText;
@@ -173,10 +219,14 @@
 
         const list = section.querySelector('.event-list');
         if (list) {
-          list.replaceChildren(...events.map(createDesktopEvent));
+          list.replaceChildren(...(
+            events.length
+              ? events.map(createDesktopEvent)
+              : fullPage ? [] : [createEmptyState()]
+          ));
         }
 
-        const highlight = section.querySelector('.placeholder');
+        const highlight = section.querySelector(fullPage ? '.history' : '.placeholder');
         const highlightText = value(data, 'highlight_' + language);
         if (highlight) {
           if (highlightText) highlight.textContent = highlightText;
