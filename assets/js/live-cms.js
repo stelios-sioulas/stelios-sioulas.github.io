@@ -8,6 +8,24 @@
     const result = item && item[key];
     return typeof result === 'string' ? result.trim() : '';
   };
+  const eventDateParts = event => {
+    const raw = value(event, 'event_date');
+    const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) {
+      return {
+        day: value(event, 'day'),
+        label: value(event, 'date_' + language)
+      };
+    }
+    const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    return {
+      day: match[3],
+      label: new Intl.DateTimeFormat(language === 'el' ? 'el-GR' : 'en-US', {
+        month: 'long',
+        year: 'numeric'
+      }).format(date)
+    };
+  };
   const addTextElement = (parent, tag, className, text) => {
     if (!text) return null;
     const element = document.createElement(tag);
@@ -40,10 +58,11 @@
       if (ariaLabel) card.setAttribute('aria-label', ariaLabel);
     }
 
+    const dateParts = eventDateParts(event);
     const date = document.createElement('div');
     date.className = 'event-date';
-    addTextElement(date, 'strong', '', value(event, 'day'));
-    addTextElement(date, 'span', '', value(event, 'date_' + language));
+    addTextElement(date, 'strong', '', dateParts.day);
+    addTextElement(date, 'span', '', dateParts.label);
     card.appendChild(date);
 
     const copy = document.createElement('div');
@@ -85,10 +104,11 @@
       if (ariaLabel) card.setAttribute('aria-label', ariaLabel);
     }
 
+    const dateParts = eventDateParts(event);
     const date = document.createElement('div');
     date.className = 'event-date';
-    date.append(document.createTextNode(value(event, 'day')));
-    addTextElement(date, 'span', '', value(event, 'date_' + language));
+    date.append(document.createTextNode(dateParts.day));
+    addTextElement(date, 'span', '', dateParts.label);
     card.appendChild(date);
 
     addTextElement(
