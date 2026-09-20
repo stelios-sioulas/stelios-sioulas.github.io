@@ -912,7 +912,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
   filter:saturate(.82) contrast(1.04) brightness(.84);
   -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
   mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 22%,#000 48%);
-  transform:scale(1.025);
+  transform:scale(var(--event-zoom,1.025));
   transform-origin:right center;
   transition:opacity .22s ease,transform .22s ease,filter .22s ease;
   pointer-events:none;
@@ -926,7 +926,7 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 }
 .event-card.event-art:hover::before{
   opacity:.23;
-  transform:scale(1.045);
+  transform:scale(calc(var(--event-zoom,1.025) + .02));
   filter:saturate(.9) contrast(1.06) brightness(.9);
 }
 .event-card.event-prisoners{
