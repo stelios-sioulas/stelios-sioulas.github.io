@@ -287,8 +287,8 @@ html[lang="el"] .hero-name{
   filter:saturate(.78) contrast(1.04) brightness(.82);
   -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 24%,#000 52%);
   mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 24%,#000 52%);
-  transform:scale(1.02);
-  transform-origin:right center;
+  transform:scale(var(--event-zoom,1.02));
+  transform-origin:var(--event-origin,right center);
   pointer-events:none;
 }
 .event-card.event-art > *{
