@@ -13,6 +13,8 @@ content:
         label: Κείμενα ενότητας
         type: object
         required: true
+        hidden: true
+        readonly: true
         fields:
           - name: label
             label: Αρίθμηση / ετικέτα ενότητας
@@ -115,10 +117,14 @@ content:
             label: Προσβάσιμη περιγραφή συνδέσμου (EN)
             type: string
             required: false
+            hidden: true
+            readonly: true
           - name: aria_label_el
             label: Προσβάσιμη περιγραφή συνδέσμου (EL)
             type: string
             required: false
+            hidden: true
+            readonly: true
 
       - name: highlight_en
         label: Ιστορικό / highlight desktop (EN)
@@ -139,6 +145,8 @@ content:
         label: Κείμενα Projects στην αρχική
         type: object
         required: true
+        hidden: true
+        readonly: true
         fields:
           - name: label
             label: Αρίθμηση / ετικέτα ενότητας
@@ -181,6 +189,8 @@ content:
         label: Κείμενα πλήρους σελίδας Projects
         type: object
         required: true
+        hidden: true
+        readonly: true
         fields:
           - name: eyebrow_en
             label: Μικρός τίτλος hero (EN)
@@ -283,6 +293,8 @@ content:
             label: Τμήμα περιγραφής σε πλάγια γραφή
             type: string
             required: false
+            hidden: true
+            readonly: true
           - name: url
             label: Δημόσιο προφίλ / website
             type: string
