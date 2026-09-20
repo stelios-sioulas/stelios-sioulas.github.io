@@ -18,9 +18,15 @@
   };
 
   const createDesktopEvent = event => {
-    const url = value(event, 'url');
+    const url = value(event, 'url_' + language) || value(event, 'url');
     const card = document.createElement(url ? 'a' : 'article');
-    card.className = 'event-card' + (url ? ' event-card-link' : '');
+    const poster = value(event, 'poster');
+    card.className = 'event-card' + (url ? ' event-card-link' : '') + (poster ? ' event-art' : '');
+    if (poster) {
+      card.style.setProperty('--event-poster', 'url(' + JSON.stringify(poster) + ')');
+      const posterPosition = value(event, 'poster_position');
+      if (posterPosition) card.style.setProperty('--event-position', posterPosition);
+    }
 
     if (url) {
       card.href = url;
@@ -53,9 +59,15 @@
   };
 
   const createMobileEvent = event => {
-    const url = value(event, 'url');
+    const url = value(event, 'url_' + language) || value(event, 'url');
     const card = document.createElement(url ? 'a' : 'article');
-    card.className = 'event-card' + (url ? ' event-card-link' : '');
+    const poster = value(event, 'poster');
+    card.className = 'event-card' + (url ? ' event-card-link' : '') + (poster ? ' event-art' : '');
+    if (poster) {
+      card.style.setProperty('--event-poster', 'url(' + JSON.stringify(poster) + ')');
+      const posterPosition = value(event, 'poster_position');
+      if (posterPosition) card.style.setProperty('--event-position', posterPosition);
+    }
 
     if (url) {
       card.href = url;
