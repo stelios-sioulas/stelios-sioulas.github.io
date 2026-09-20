@@ -1,0 +1,142 @@
+{
+  "home": {
+    "label_en": "03 / Teaching",
+    "label_el": "03 / Διδασκαλια",
+    "title_en": "Drum teaching",
+    "title_el": "Διδασκαλια ντραμς",
+    "intro_desktop_en": "Alongside his live and studio career, Stelios has also taught drums in established music schools and conservatories.",
+    "intro_desktop_el": "Παράλληλα με τη live και studio δραστηριότητά του, ο Stelios έχει διδάξει ντραμς σε αναγνωρισμένες μουσικές σχολές και ωδεία.",
+    "intro_mobile_en": "Teaching experience in established music schools and conservatories.",
+    "intro_mobile_el": "Πολυετής διδακτική εμπειρία σε μουσικές σχολές και ωδεία.",
+    "button_en": "View teaching",
+    "button_el": "Δες τη διδασκαλια"
+  },
+  "page": {
+    "eyebrow_en": "03 / Teaching",
+    "eyebrow_el": "03 / Διδασκαλια",
+    "title_en": "Drum Teaching",
+    "title_el": "Μαθηματα Drums",
+    "intro_en": "Practical drum lessons focused on technique, timing, coordination, groove, fills and the musical skills needed to play with confidence.",
+    "intro_el": "Πρακτικά μαθήματα drums με έμφαση στην τεχνική, το timing, τον συντονισμό, το groove, τα fills και τη μουσικότητα."
+  },
+  "schools": [
+    {
+      "name_en": "ORFEAS MUSIC SCHOOL",
+      "name_el": "ΩΔΕΙΟΝ ΟΡΦΕΑΣ",
+      "place_en": "Peraia",
+      "place_el": "Περαια"
+    },
+    {
+      "name_en": "YMCA Thessaloniki / ΧΑΝΘ",
+      "name_el": "YMCA Thessaloniki / ΧΑΝΘ",
+      "place_en": "Thessaloniki",
+      "place_el": "Θεσσαλονικη"
+    },
+    {
+      "name_en": "MELODIA MUSIC SCHOOL",
+      "name_el": "ΩΔΕΙΟ ΜΕΛΩΔΙΑ",
+      "place_en": "Thessaloniki",
+      "place_el": "Θεσσαλονικη"
+    },
+    {
+      "name_en": "IHOMORFES MUSIC SCHOOL",
+      "name_el": "ΗΧΟΜΟΡΦΕΣ",
+      "place_en": "Agia Paraskevi",
+      "place_el": "Αγια Παρασκευη"
+    }
+  ],
+  "focus": [
+    {
+      "meta_en": "Foundation",
+      "meta_el": "Foundation",
+      "title_en": "Technique",
+      "title_el": "Τεχνικη",
+      "description_en": "Stick control, hand and foot technique, posture and efficient movement.",
+      "description_el": "Έλεγχος χεριών, ποδιών, στάση και οικονομία κίνησης."
+    },
+    {
+      "meta_en": "Time",
+      "meta_el": "Time",
+      "title_en": "Timing & Coordination",
+      "title_el": "Timing & Coordination",
+      "description_en": "Exercises for independence, internal timing and coordination between hands and feet.",
+      "description_el": "Ανεξαρτησία, εσωτερικός χρόνος και συντονισμός."
+    },
+    {
+      "meta_en": "Playing",
+      "meta_el": "Playing",
+      "title_en": "Groove",
+      "title_el": "Groove",
+      "description_en": "Building solid grooves and learning how to support the music rather than simply fill space.",
+      "description_el": "Σταθερό groove και σωστή υποστήριξη της μουσικής."
+    },
+    {
+      "meta_en": "Application",
+      "meta_el": "Application",
+      "title_en": "Fills",
+      "title_el": "Fills",
+      "description_en": "Developing fills that are controlled, musical and connected to the groove.",
+      "description_el": "Fills με έλεγχο, μουσικότητα και σύνδεση με το groove."
+    },
+    {
+      "meta_en": "Performance",
+      "meta_el": "Performance",
+      "title_en": "Playing in a Band",
+      "title_el": "Παιξιμο σε μπαντα",
+      "description_en": "Dynamics, listening, arrangement awareness and practical live-playing skills.",
+      "description_el": "Δυναμικές, ακρόαση, arrangement και πρακτικές live δεξιότητες."
+    }
+  ],
+  "exercise_reels": [
+    {
+      "meta": "Exercise Reel 01",
+      "title_en": "Drum Exercise",
+      "title_el": "Ασκηση Drums",
+      "description_en": "Practice material for drummers.",
+      "description_el": "Υλικό εξάσκησης για drummers.",
+      "url": "https://www.instagram.com/reel/ColEkKUoU--/?stkn=MWZ5emhlMmxvb3prYg=="
+    },
+    {
+      "meta": "Exercise Reel 02",
+      "title_en": "Drum Exercise",
+      "title_el": "Ασκηση Drums",
+      "description_en": "Practice material for drummers.",
+      "description_el": "Υλικό εξάσκησης για drummers.",
+      "url": "https://www.instagram.com/reel/Cor6xjfoUTo/?stkn=MTdydzAxMDA4bXpj"
+    },
+    {
+      "meta": "Exercise Reel 03",
+      "title_en": "Drum Exercise",
+      "title_el": "Ασκηση Drums",
+      "description_en": "Practice material for drummers.",
+      "description_el": "Υλικό εξάσκησης για drummers.",
+      "url": "https://www.instagram.com/reel/DcS7_mBt7Dg/?stkn=djY3bng3azlybDc="
+    },
+    {
+      "meta": "Exercise Reel 04",
+      "title_en": "Drum Exercise",
+      "title_el": "Ασκηση Drums",
+      "description_en": "Practice material for drummers.",
+      "description_el": "Υλικό εξάσκησης για drummers.",
+      "url": "https://www.instagram.com/reel/DcA1k6hNsSq/?stkn=MXZueHBscmZoYmFkbg=="
+    }
+  ],
+  "performance_reels": [
+    {
+      "meta": "Live / Performance",
+      "title_en": "Live Playing",
+      "title_el": "Live Παιξιμο",
+      "description_en": "Live playing reel from Stelios.",
+      "description_el": "Reel από live εμφάνιση του Stelios.",
+      "url": "https://www.instagram.com/reel/Co7fkZFoiIu/?stkn=MW1sMG9ocjl2MWE4cQ=="
+    },
+    {
+      "meta": "Rehearsal / Performance",
+      "title_en": "Playing in Rehearsal",
+      "title_el": "Παιξιμο σε Προβα",
+      "description_en": "Rehearsal and playing reel from Stelios.",
+      "description_el": "Reel από πρόβα και παίξιμο του Stelios.",
+      "url": "https://www.instagram.com/reel/DbJIGItN3le/?stkn=dGF3Mnh2MnRkdGlq"
+    }
+  ]
+}
