@@ -24,9 +24,11 @@
       "mobile_description_el": "Θεσσαλονίκη · μαζί με Obscurus Rex. Ο Stelios στα ντραμς και με τα δύο projects.",
       "url": "https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/",
       "poster": "assets/event-prisoners-oct03.jpg",
-      "poster_position": "right 30%",
       "aria_label_en": "Open The Prisoners event on the official Eightball website",
-      "aria_label_el": "Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball"
+      "aria_label_el": "Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball",
+      "focus_x": 100,
+      "focus_y": 30,
+      "zoom": 100
     },
     {
       "day": "09",
@@ -44,9 +46,11 @@
       "url_en": "https://eventation.gr/doroathens_en#about",
       "url_el": "https://eventation.gr/dorogr",
       "poster": "https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png",
-      "poster_position": "right 26%",
       "aria_label_en": "Open Doro Pesch Athens event on the official Eventation website",
-      "aria_label_el": "Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation"
+      "aria_label_el": "Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation",
+      "focus_x": 100,
+      "focus_y": 26,
+      "zoom": 100
     }
   ],
   "highlight_en": "Over the years, Stelios has performed with many different bands and projects at live stages throughout Thessaloniki and, in recent years, at numerous venues across Athens.",
