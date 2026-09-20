@@ -404,3 +404,100 @@ content:
             type: boolean
             required: false
             default: true
+
+
+  - name: teaching
+    label: TEACHING
+    type: file
+    path: data/teaching.json
+    format: json
+    fields:
+      - name: home
+        label: Σταθερά κείμενα αρχικής
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: label_en, label: Ετικέτα EN, type: string, required: true }
+          - { name: label_el, label: Ετικέτα EL, type: string, required: true }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+          - { name: intro_desktop_en, label: Εισαγωγή desktop EN, type: text, required: false }
+          - { name: intro_desktop_el, label: Εισαγωγή desktop EL, type: text, required: false }
+          - { name: intro_mobile_en, label: Εισαγωγή mobile EN, type: text, required: false }
+          - { name: intro_mobile_el, label: Εισαγωγή mobile EL, type: text, required: false }
+          - { name: button_en, label: Κουμπί EN, type: string, required: true }
+          - { name: button_el, label: Κουμπί EL, type: string, required: true }
+
+      - name: page
+        label: Σταθερά κείμενα πλήρους σελίδας
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: eyebrow_en, label: Ετικέτα EN, type: string, required: true }
+          - { name: eyebrow_el, label: Ετικέτα EL, type: string, required: true }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+
+      - name: schools
+        label: Σχολές και ωδεία
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name_el} — {place_el}"
+        fields:
+          - { name: name_en, label: Όνομα (EN), type: string, required: true }
+          - { name: name_el, label: Όνομα (EL), type: string, required: true }
+          - { name: place_en, label: Περιοχή (EN), type: string, required: false }
+          - { name: place_el, label: Περιοχή (EL), type: string, required: false }
+
+      - name: focus
+        label: Αντικείμενα μαθημάτων
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title_en} / {title_el}"
+        fields:
+          - { name: meta_en, label: Κατηγορία (EN), type: string, required: false }
+          - { name: meta_el, label: Κατηγορία (EL), type: string, required: false }
+          - { name: title_en, label: Τίτλος (EN), type: string, required: true }
+          - { name: title_el, label: Τίτλος (EL), type: string, required: true }
+          - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
+          - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
+
+      - name: exercise_reels
+        label: Instagram exercise reels
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{meta} — {title_en}"
+        fields:
+          - { name: meta, label: Ετικέτα, type: string, required: false }
+          - { name: title_en, label: Τίτλος (EN), type: string, required: true }
+          - { name: title_el, label: Τίτλος (EL), type: string, required: true }
+          - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
+          - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
+          - { name: url, label: Instagram reel URL, type: string, required: true }
+
+      - name: performance_reels
+        label: Live και rehearsal reels
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{meta} — {title_en}"
+        fields:
+          - { name: meta, label: Ετικέτα, type: string, required: false }
+          - { name: title_en, label: Τίτλος (EN), type: string, required: true }
+          - { name: title_el, label: Τίτλος (EL), type: string, required: true }
+          - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
+          - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
+          - { name: url, label: Instagram reel URL, type: string, required: true }
