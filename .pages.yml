@@ -501,3 +501,88 @@ content:
           - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
           - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
           - { name: url, label: Instagram reel URL, type: string, required: true }
+
+
+  - name: media
+    label: VIDEOS / MEDIA
+    type: file
+    path: data/media.json
+    format: json
+    fields:
+      - name: section
+        label: Σταθερά κείμενα ενότητας
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: label, label: Ετικέτα ενότητας, type: string, required: true }
+          - { name: title_desktop_en, label: Τίτλος desktop EN, type: string, required: true }
+          - { name: title_desktop_el, label: Τίτλος desktop EL, type: string, required: true }
+          - { name: title_mobile_en, label: Τίτλος mobile EN, type: string, required: true }
+          - { name: title_mobile_el, label: Τίτλος mobile EL, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+
+      - name: instagram
+        label: Επιλεγμένο Instagram reel
+        type: object
+        required: true
+        fields:
+          - { name: meta_en, label: Ετικέτα (EN), type: string, required: false }
+          - { name: meta_el, label: Ετικέτα (EL), type: string, required: false }
+          - { name: title, label: Τίτλος, type: string, required: true }
+          - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
+          - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
+          - name: url
+            label: Δημόσιο Instagram reel URL
+            type: string
+            required: true
+            description: Επικόλλησε τον κανονικό σύνδεσμο του reel. Το embed δημιουργείται αυτόματα.
+          - name: iframe_title
+            label: Περιγραφή video για προσβασιμότητα
+            type: string
+            required: false
+
+      - name: tiktok
+        label: Επιλεγμένο TikTok video
+        type: object
+        required: true
+        fields:
+          - { name: meta_en, label: Ετικέτα (EN), type: string, required: false }
+          - { name: meta_el, label: Ετικέτα (EL), type: string, required: false }
+          - { name: title, label: Τίτλος, type: string, required: true }
+          - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
+          - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
+          - name: url
+            label: Δημόσιο TikTok video URL
+            type: string
+            required: true
+            description: Επικόλλησε τον κανονικό σύνδεσμο του video. Το embed δημιουργείται αυτόματα.
+          - name: iframe_title
+            label: Περιγραφή video για προσβασιμότητα
+            type: string
+            required: false
+
+      - name: youtube_videos
+        label: YouTube videos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} — {meta_en}"
+        fields:
+          - { name: meta_en, label: Ετικέτα (EN), type: string, required: false }
+          - { name: meta_el, label: Ετικέτα (EL), type: string, required: false }
+          - { name: title, label: Τίτλος, type: string, required: true }
+          - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
+          - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
+          - name: url
+            label: Δημόσιο YouTube URL
+            type: string
+            required: true
+            description: Δέχεται κανονικό YouTube link, youtu.be link ή Shorts link.
+          - name: iframe_title
+            label: Περιγραφή video για προσβασιμότητα
+            type: string
+            required: false
