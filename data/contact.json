@@ -1,10 +1,26 @@
 {
   "availability_en": "Live projects · New bands · Session work · Collaborations",
   "availability_el": "Live projects · Νέες μπάντες · Session work · Συνεργασίες",
-  "socials": {
-    "facebook": "https://www.facebook.com/stelios.sioulas.7",
-    "instagram": "https://www.instagram.com/steliossioulas79/",
-    "tiktok": "https://www.tiktok.com/@stelios.sioulas.t",
-    "youtube": "https://www.youtube.com/@SteliosSioulas"
-  }
+  "socials": [
+    {
+      "platform": "facebook",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/stelios.sioulas.7"
+    },
+    {
+      "platform": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/steliossioulas79/"
+    },
+    {
+      "platform": "tiktok",
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@stelios.sioulas.t"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@SteliosSioulas"
+    }
+  ]
 }
