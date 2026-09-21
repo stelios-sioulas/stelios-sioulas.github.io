@@ -1,0 +1,60 @@
+{
+  "page": {
+    "eyebrow_en": "Professional media",
+    "eyebrow_el": "Επαγγελματικο υλικο",
+    "title": "Press Kit",
+    "intro_en": "Concise professional material for promoters, venues, bands, music schools and media.",
+    "intro_el": "Σύντομο επαγγελματικό υλικό για promoters, venues, μπάντες, ωδεία και media.",
+    "profile_heading_en": "Professional profile",
+    "profile_heading_el": "Επαγγελματικο προφιλ",
+    "current_heading_en": "Current work",
+    "current_heading_el": "Τρεχουσα δραστηριοτητα",
+    "teaching_heading_en": "Teaching & availability",
+    "teaching_heading_el": "Διδασκαλια & διαθεσιμοτητα",
+    "downloads_heading_en": "Downloads & official links",
+    "downloads_heading_el": "Downloads & επισημα links"
+  },
+  "profile_en": "Stelios Sioulas is an Athens-based drummer with long-running experience across metal, rock and tribute projects, live performance, recording work and drum teaching. Across much of his recorded work, he develops and writes his own drum parts, while his drum solos and solo sections are his own compositions.",
+  "profile_el": "Ο Stelios Sioulas είναι ντράμερ με βάση την Αθήνα, με πολυετή παρουσία σε metal, rock και tribute projects, live εμφανίσεις, ηχογραφήσεις και διδασκαλία drums. Σε μεγάλο μέρος της δισκογραφικής δουλειάς στην οποία έχει συμμετάσχει, διαμορφώνει και γράφει ο ίδιος τα μέρη των τυμπάνων, ενώ τα drum solos και solo sections του αποτελούν δικές του συνθέσεις.",
+  "teaching_availability_en": "Teaching experience at Orfeas Music School in Peraia, YMCA Thessaloniki / HANTH and Melodia Music School in Thessaloniki, and Ihomorfes Music School in Agia Paraskevi, Athens. Available for live projects, new bands, session work, collaborations and drum lessons.",
+  "teaching_availability_el": "Διδακτική εμπειρία στο Ωδείον Ορφέας στην Περαία, στο Ωδείο ΧΑΝΘ και στο Ωδείο Μελωδία στη Θεσσαλονίκη, καθώς και στις Ηχομορφές στην Αγία Παρασκευή Αττικής. Διαθέσιμος για live projects, νέες μπάντες, session δουλειές, συνεργασίες και μαθήματα drums.",
+  "press_photo": "/assets/viber_image_2026-09-14_23-43-36-763.jpg",
+  "photo_intro_en": "High-resolution press photo for promotional and media use.",
+  "photo_intro_el": "Press φωτογραφία υψηλής ανάλυσης για promotional και media χρήση.",
+  "photo_button_en": "Download press photo",
+  "photo_button_el": "Download press photo",
+  "links": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/steliossioulas79/",
+      "external": true
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@SteliosSioulas",
+      "external": true
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@stelios.sioulas.t",
+      "external": true
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/stelios.sioulas.7",
+      "external": true
+    },
+    {
+      "label": "Projects",
+      "url_en": "projects.html",
+      "url_el": "projects-el.html",
+      "external": false
+    },
+    {
+      "label": "Teaching",
+      "url_en": "teaching.html",
+      "url_el": "teaching-el.html",
+      "external": false
+    }
+  ]
+}

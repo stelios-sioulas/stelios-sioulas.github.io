@@ -288,7 +288,7 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
 <header><div class="wrap topbar"><a class="brand" href="mobile.html"><img src="assets/favicon-s.svg?v=2" alt=""><b>Stelios</b> <span>Sioulas</span></a><div class="top-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Replay audio intro" title="Replay audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="lang-switch" href="mobile-el.html">GR</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></div><nav class="wrap mobile-nav" id="mobileNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#teaching">Teaching</a><a href="#discography">Discography</a><a href="#live">Live</a><a href="#media">Media</a><a href="#contact">Contact</a></nav></header>
 
 <main id="top">
-  <section class="hero">
+  <section class="hero" data-profile-cms="hero">
     <div class="wrap hero-content">
       <div class="kicker">Drummer · Performer · Original Drum Parts</div>
       <h1>Stelios <span class="blue">Sioulas</span></h1>
@@ -301,7 +301,7 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
     <a href="#projects">Projects</a><a href="#live">Live</a><a href="#media">Media</a><a href="#teaching">Teaching</a><a href="#contact">Contact</a>
   </nav>
 
-  <section id="about">
+  <section id="about" data-profile-cms="about">
     <div class="wrap">
       <div class="section-label">01 / About</div>
       <h2>Behind the kit</h2>
@@ -383,7 +383,7 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-contact-cms>
     <div class="wrap">
       <div class="section-label">07 / Contact</div>
       <h2>Follow & contact</h2>
@@ -676,5 +676,7 @@ document.querySelectorAll('.contact-form').forEach(form=>{
 <script src="assets/js/discography-cms.js"></script>
 <script src="assets/js/teaching-cms.js"></script>
 <script src="assets/js/media-cms.js"></script>
+<script src="assets/js/profile-cms.js"></script>
+<script src="assets/js/contact-cms.js"></script>
 </body>
 </html>

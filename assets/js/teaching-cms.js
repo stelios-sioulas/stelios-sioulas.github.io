@@ -42,7 +42,12 @@
    const url=clean(item.url);
    if(url){
     const link=document.createElement('a'); link.className='reel-link'; link.href=url;
-    link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='Watch on Instagram ↗'; card.appendChild(link);
+    link.target='_blank'; link.rel='noopener noreferrer';
+    const youtube=/youtu\.be|youtube\.com/i.test(url);
+    const instagram=/instagram\.com/i.test(url);
+    link.textContent=greek
+     ?(youtube?'Άνοιγμα στο YouTube ↗':instagram?'Άνοιγμα στο Instagram ↗':'Δες το video ↗')
+     :(youtube?'Watch on YouTube ↗':instagram?'Watch on Instagram ↗':'Watch video ↗'); card.appendChild(link);
    }
    if(card.childNodes.length)container.appendChild(card);
   });
