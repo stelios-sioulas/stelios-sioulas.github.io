@@ -34,9 +34,9 @@
     Array.from(container.children).filter(node=>node.tagName==='P').forEach(node=>node.remove());
     const anchor=container.querySelector('.photo-about');
     const fragment=document.createDocumentFragment();
-    const paragraphs=Array.isArray(data.about_paragraphs)?data.about_paragraphs:[];
-    paragraphs.forEach(item=>{
-     const content=translated(item,'text'); if(!content)return;
+    const aboutText=clean(data[greek?'about_text_el':'about_text_en']);
+    const paragraphs=aboutText?aboutText.split(/\n\s*\n/).map(text=>text.trim()).filter(Boolean):[];
+    paragraphs.forEach(content=>{
      const paragraph=document.createElement('p'); paragraph.textContent=content; fragment.appendChild(paragraph);
     });
     if(anchor)anchor.before(fragment); else container.appendChild(fragment);
