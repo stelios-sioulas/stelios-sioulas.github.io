@@ -682,7 +682,7 @@ content:
         list:
           collapsible:
             collapsed: true
-            summary: "{text_el}"
+            summary: "Παράγραφος"
         fields:
           - { name: text_en, label: Παράγραφος (EN), type: text, required: false }
           - { name: text_el, label: Παράγραφος (EL), type: text, required: false }
