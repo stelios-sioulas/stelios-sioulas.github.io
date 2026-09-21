@@ -687,3 +687,23 @@ content:
         type: text
         required: false
         description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
+
+
+  - name: contact
+    label: CONTACT / SOCIAL
+    type: file
+    path: data/contact.json
+    format: json
+    fields:
+      - { name: availability_en, label: Διαθέσιμος για (EN), type: text, required: false }
+      - { name: availability_el, label: Διαθέσιμος για (EL), type: text, required: false }
+
+      - name: socials
+        label: Επίσημοι σύνδεσμοι
+        type: object
+        required: true
+        fields:
+          - { name: facebook, label: Facebook URL, type: string, required: false }
+          - { name: instagram, label: Instagram URL, type: string, required: false }
+          - { name: tiktok, label: TikTok URL, type: string, required: false }
+          - { name: youtube, label: YouTube URL, type: string, required: false }
