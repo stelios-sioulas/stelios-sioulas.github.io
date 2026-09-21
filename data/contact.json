@@ -21,6 +21,11 @@
       "platform": "youtube",
       "label": "YouTube",
       "url": "https://www.youtube.com/@SteliosSioulas"
+    },
+    {
+      "platform": "test",
+      "label": "test",
+      "url": "https://example.com"
     }
   ]
 }
