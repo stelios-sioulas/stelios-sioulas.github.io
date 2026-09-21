@@ -442,6 +442,7 @@ content:
             label: Ημερομηνία εκδήλωσης
             type: date
             required: true
+            description: Μετά την ημερομηνία, η εμφάνιση μεταφέρεται αυτόματα στο αρχείο της σελίδας Live. Μην τη διαγράφεις.
             options:
               time: false
               format: yyyy-MM-dd

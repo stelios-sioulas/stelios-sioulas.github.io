@@ -53,12 +53,17 @@
     return year + '-' + month + '-' + day;
   };
 
-  const upcomingEvents = events => events
-    .filter(event => {
-      const date = value(event, 'event_date');
-      return /^\d{4}-\d{2}-\d{2}$/.test(date) && date >= todayKey();
-    })
+  const validDatedEvents = events => events.filter(event =>
+    /^\d{4}-\d{2}-\d{2}$/.test(value(event, 'event_date'))
+  );
+
+  const upcomingEvents = events => validDatedEvents(events)
+    .filter(event => value(event, 'event_date') >= todayKey())
     .sort((a, b) => value(a, 'event_date').localeCompare(value(b, 'event_date')));
+
+  const pastEvents = events => validDatedEvents(events)
+    .filter(event => value(event, 'event_date') < todayKey())
+    .sort((a, b) => value(b, 'event_date').localeCompare(value(a, 'event_date')));
 
   const createEmptyState = () => {
     const empty = document.createElement('div');
@@ -172,6 +177,75 @@
 
     return card;
   };
+  const createArchive = events => {
+    if (!events.length) return null;
+
+    const archive = document.createElement('section');
+    archive.className = 'live-archive';
+    archive.setAttribute('aria-labelledby', 'live-archive-title');
+
+    const header = document.createElement('div');
+    header.className = 'live-archive-header';
+
+    const heading = document.createElement('h2');
+    heading.id = 'live-archive-title';
+    heading.textContent = language === 'el' ? 'Προηγούμενες εμφανίσεις' : 'Past live dates';
+    header.appendChild(heading);
+
+    const count = document.createElement('p');
+    count.className = 'live-archive-count';
+    count.textContent = language === 'el'
+      ? events.length === 1
+        ? '1 προηγούμενη εμφάνιση'
+        : events.length + ' προηγούμενες εμφανίσεις'
+      : events.length === 1
+        ? '1 past show'
+        : events.length + ' past shows';
+    header.appendChild(count);
+    archive.appendChild(header);
+
+    const list = document.createElement('div');
+    list.className = 'event-list live-archive-list';
+    list.id = 'live-archive-list';
+
+    const cards = events.map(event => {
+      const card = createDesktopEvent(event);
+      card.classList.add('event-card-past');
+      return card;
+    });
+    cards.forEach((card, index) => {
+      if (index >= 3) card.hidden = true;
+    });
+    list.append(...cards);
+    archive.appendChild(list);
+
+    if (events.length > 3) {
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'live-archive-toggle';
+      toggle.setAttribute('aria-controls', list.id);
+      let expanded = false;
+
+      const updateToggle = () => {
+        cards.slice(3).forEach(card => {
+          card.hidden = !expanded;
+        });
+        toggle.setAttribute('aria-expanded', String(expanded));
+        toggle.textContent = expanded
+          ? language === 'el' ? 'Εμφάνιση λιγότερων' : 'Show fewer'
+          : language === 'el' ? 'Προβολή όλων (' + events.length + ')' : 'View all (' + events.length + ')';
+      };
+
+      toggle.addEventListener('click', () => {
+        expanded = !expanded;
+        updateToggle();
+      });
+      updateToggle();
+      archive.appendChild(toggle);
+    }
+
+    return archive;
+  };
 
   fetch('data/live.json', { cache: 'no-cache' })
     .then(response => {
@@ -180,7 +254,9 @@
     })
     .then(data => {
       const settings = data.section || {};
-      const allUpcoming = upcomingEvents(Array.isArray(data.events) ? data.events : []);
+      const sourceEvents = Array.isArray(data.events) ? data.events : [];
+      const allUpcoming = upcomingEvents(sourceEvents);
+      const allPast = fullPage ? pastEvents(sourceEvents) : [];
       const events = fullPage ? allUpcoming : allUpcoming.slice(0, 2);
       const label = section.querySelector('.section-label');
       if (label && value(settings, 'label')) {
@@ -224,8 +300,14 @@
           list.replaceChildren(...(
             events.length
               ? events.map(createDesktopEvent)
-              : fullPage ? [] : [createEmptyState()]
+              : [createEmptyState()]
           ));
+
+          section.querySelector('.live-archive')?.remove();
+          if (fullPage) {
+            const archive = createArchive(allPast);
+            if (archive) list.after(archive);
+          }
         }
 
         const highlight = section.querySelector(fullPage ? '.history' : '.placeholder');
