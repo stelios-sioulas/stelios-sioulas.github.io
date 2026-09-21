@@ -286,10 +286,10 @@ content:
           - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
           - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
           - name: url
-            label: Instagram ή YouTube URL
+            label: URL εκπαιδευτικού video
             type: string
             required: true
-            description: Δέχεται σύνδεσμο Instagram reel ή YouTube video.
+            description: Δέχεται σύνδεσμο από Instagram, YouTube ή άλλη πλατφόρμα.
 
       - name: performance_reels
         label: Live και rehearsal reels
