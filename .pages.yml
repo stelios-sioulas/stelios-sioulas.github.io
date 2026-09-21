@@ -586,3 +586,63 @@ content:
             label: Περιγραφή video για προσβασιμότητα
             type: string
             required: false
+
+
+  - name: press_kit
+    label: PRESS KIT
+    type: file
+    path: data/press-kit.json
+    format: json
+    fields:
+      - name: page
+        label: Σταθερά κείμενα και τίτλοι
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: eyebrow_en, label: Ετικέτα EN, type: string, required: true }
+          - { name: eyebrow_el, label: Ετικέτα EL, type: string, required: true }
+          - { name: title, label: Τίτλος, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+          - { name: profile_heading_en, label: Τίτλος profile EN, type: string, required: true }
+          - { name: profile_heading_el, label: Τίτλος profile EL, type: string, required: true }
+          - { name: current_heading_en, label: Τίτλος projects EN, type: string, required: true }
+          - { name: current_heading_el, label: Τίτλος projects EL, type: string, required: true }
+          - { name: teaching_heading_en, label: Τίτλος teaching EN, type: string, required: true }
+          - { name: teaching_heading_el, label: Τίτλος teaching EL, type: string, required: true }
+          - { name: downloads_heading_en, label: Τίτλος downloads EN, type: string, required: true }
+          - { name: downloads_heading_el, label: Τίτλος downloads EL, type: string, required: true }
+
+      - { name: profile_en, label: Επαγγελματικό bio (EN), type: text, required: false }
+      - { name: profile_el, label: Επαγγελματικό bio (EL), type: text, required: false }
+      - { name: teaching_availability_en, label: Διδασκαλία και διαθεσιμότητα (EN), type: text, required: false }
+      - { name: teaching_availability_el, label: Διδασκαλία και διαθεσιμότητα (EL), type: text, required: false }
+      - name: press_photo
+        label: Press φωτογραφία για download
+        type: image
+        required: false
+        description: Η εικόνα προσφέρεται για λήψη· δεν αλλάζει το background ή το design της σελίδας.
+      - { name: photo_intro_en, label: Περιγραφή φωτογραφίας (EN), type: text, required: false }
+      - { name: photo_intro_el, label: Περιγραφή φωτογραφίας (EL), type: text, required: false }
+      - { name: photo_button_en, label: Κείμενο κουμπιού φωτογραφίας (EN), type: string, required: false }
+      - { name: photo_button_el, label: Κείμενο κουμπιού φωτογραφίας (EL), type: string, required: false }
+
+      - name: links
+        label: Επίσημοι σύνδεσμοι
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label} — {url}"
+        fields:
+          - { name: label, label: Όνομα συνδέσμου, type: string, required: true }
+          - { name: url, label: Κοινό URL, type: string, required: false }
+          - { name: url_en, label: Διαφορετικό URL αγγλικής σελίδας, type: string, required: false }
+          - { name: url_el, label: Διαφορετικό URL ελληνικής σελίδας, type: string, required: false }
+          - name: external
+            label: Άνοιγμα σε νέα καρτέλα
+            type: boolean
+            required: false
+            default: true
