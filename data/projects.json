@@ -213,13 +213,6 @@
       "name": "Palermo",
       "meta_en": "Project",
       "meta_el": "Project"
-    },
-    {
-      "group": "current",
-      "name": "test",
-      "meta_en": "test",
-      "description_en": "test",
-      "url": "test"
     }
   ]
 }
