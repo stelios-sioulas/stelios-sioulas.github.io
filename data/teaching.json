@@ -43,6 +43,11 @@
       "name_el": "ΗΧΟΜΟΡΦΕΣ",
       "place_en": "Agia Paraskevi",
       "place_el": "Αγια Παρασκευη"
+    },
+    {
+      "name_en": "test",
+      "name_el": "test",
+      "place_el": "test"
     }
   ],
   "focus": [
