@@ -213,6 +213,13 @@
       "name": "Palermo",
       "meta_en": "Project",
       "meta_el": "Project"
+    },
+    {
+      "group": "current",
+      "name": "Tasty Onion Rings ",
+      "meta_en": "single",
+      "description_en": "The best album ever made in the multiverse.",
+      "description_el": "Το καλύτεροτερο αλμπουμ."
     }
   ]
 }
