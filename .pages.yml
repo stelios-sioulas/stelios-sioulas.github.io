@@ -676,13 +676,14 @@ content:
           - { name: title_en, label: Τίτλος EN, type: string, required: true }
           - { name: title_el, label: Τίτλος EL, type: string, required: true }
 
-      - name: about_paragraphs
-        label: Παράγραφοι About
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "Παράγραφος"
-        fields:
-          - { name: text_en, label: Παράγραφος (EN), type: text, required: false }
-          - { name: text_el, label: Παράγραφος (EL), type: text, required: false }
+      - name: about_text_en
+        label: Κείμενο About (EN)
+        type: text
+        required: false
+        description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
+
+      - name: about_text_el
+        label: Κείμενο About (EL)
+        type: text
+        required: false
+        description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
