@@ -169,29 +169,29 @@ content:
             type: string
             required: false
           - name: description_en
-            label: Περιγραφή (EN)
+            label: Βασική περιγραφή — εμφανίζεται παντού (EN)
             type: text
             required: false
           - name: description_el
-            label: Περιγραφή (EL)
+            label: Βασική περιγραφή — εμφανίζεται παντού (EL)
             type: text
             required: false
           - name: home_description_en
-            label: Διαφορετική περιγραφή αρχικής (EN)
+            label: Εναλλακτική περιγραφή μόνο για την αρχική (EN)
             type: text
             required: false
             description: Συμπλήρωσέ το μόνο αν η αρχική χρειάζεται διαφορετικό κείμενο.
           - name: home_description_el
-            label: Διαφορετική περιγραφή αρχικής (EL)
+            label: Εναλλακτική περιγραφή μόνο για την αρχική (EL)
             type: text
             required: false
           - name: page_description_en
-            label: Διαφορετική περιγραφή πλήρους σελίδας (EN)
+            label: Εναλλακτική περιγραφή μόνο για τη σελίδα Projects (EN)
             type: text
             required: false
             description: Συμπλήρωσέ το μόνο αν η πλήρης σελίδα χρειάζεται διαφορετικό κείμενο.
           - name: page_description_el
-            label: Διαφορετική περιγραφή πλήρους σελίδας (EL)
+            label: Εναλλακτική περιγραφή μόνο για τη σελίδα Projects (EL)
             type: text
             required: false
           - name: italic_text
