@@ -43,7 +43,13 @@
      if(anchor.dataset.cmsSocialExtra)return;
      const platform=platformOf(anchor);if(!platform)return;
      const item=byPlatform.get(platform);
-     if(item){anchor.href=clean(item.url);anchor.hidden=false;}
+     if(item){
+      const label=clean(item.label)||clean(item.platform)||platform;
+      anchor.href=clean(item.url);anchor.hidden=false;anchor.setAttribute('aria-label',label);
+      const text=anchor.querySelector('span');
+      if(text&&text.textContent!==label)text.textContent=label;
+      else if(anchor.matches('[data-press-kit-part="downloads"] .link-grid a')&&anchor.textContent!==label+' ↗')anchor.textContent=label+' ↗';
+     }
      else anchor.hidden=true;
     });
     const extras=items.filter(item=>!['facebook','instagram','tiktok','youtube'].includes(key(item.platform||item.label)));
@@ -66,9 +72,13 @@
    observer.observe(document.body,{childList:true,subtree:true});
    const contact=document.querySelector('#contact[data-contact-cms]');
    if(contact){
-    const availability=contact.querySelector('.availability strong');
+    const availability=contact.querySelector('.availability');
+    const availabilityText=availability&&availability.querySelector('strong');
     const text=clean(data[greek?'availability_el':'availability_en']);
-    if(availability){availability.textContent=text;availability.hidden=!text;}
+    if(availability){
+     if(availabilityText&&text)availabilityText.textContent=text;
+     availability.hidden=!text;
+    }
    }
   }).catch(error=>console.warn(error.message));
 })();

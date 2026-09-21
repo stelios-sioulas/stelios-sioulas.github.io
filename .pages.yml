@@ -3,165 +3,46 @@ media:
   output: /assets
 
 content:
-  - name: live
-    label: LIVE
+  - name: profile
+    label: HERO / ABOUT
     type: file
-    path: data/live.json
+    path: data/profile.json
     format: json
     fields:
-      - name: section
-        label: Κείμενα ενότητας
+      - name: hero
+        label: Κείμενα Hero
+        type: object
+        required: true
+        fields:
+          - { name: kicker_en, label: Επαγγελματική ιδιότητα (EN), type: string, required: false }
+          - { name: kicker_el, label: Επαγγελματική ιδιότητα (EL), type: string, required: false }
+          - { name: intro_en, label: Εισαγωγικό κείμενο (EN), type: text, required: false }
+          - { name: intro_el, label: Εισαγωγικό κείμενο (EL), type: text, required: false }
+
+      - name: about
+        label: Σταθεροί τίτλοι About
         type: object
         required: true
         hidden: true
         readonly: true
         fields:
-          - name: label
-            label: Αρίθμηση / ετικέτα ενότητας
-            type: string
-            required: true
-          - name: title_en
-            label: Τίτλος desktop (EN)
-            type: string
-            required: true
-          - name: title_el
-            label: Τίτλος desktop (EL)
-            type: string
-            required: true
-          - name: intro_en
-            label: Εισαγωγή desktop (EN)
-            type: text
-            required: false
-          - name: intro_el
-            label: Εισαγωγή desktop (EL)
-            type: text
-            required: false
-          - name: mobile_title_en
-            label: Τίτλος mobile (EN)
-            type: string
-            required: true
-          - name: mobile_title_el
-            label: Τίτλος mobile (EL)
-            type: string
-            required: true
+          - { name: label_en, label: Ετικέτα EN, type: string, required: true }
+          - { name: label_el, label: Ετικέτα EL, type: string, required: true }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
 
-      - name: events
-        label: Live εμφανίσεις
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title} — {event_date}"
-        fields:
-          - name: event_date
-            label: Ημερομηνία εκδήλωσης
-            type: date
-            required: true
-            options:
-              time: false
-              format: yyyy-MM-dd
-          - name: venue_en
-            label: Χώρος και πόλη (EN)
-            type: string
-            required: false
-          - name: venue_el
-            label: Χώρος και πόλη (EL)
-            type: string
-            required: false
-          - name: title
-            label: Όνομα μπάντας / εμφάνισης
-            type: string
-            required: true
-          - name: description_en
-            label: Περιγραφή desktop (EN)
-            type: text
-            required: false
-          - name: description_el
-            label: Περιγραφή desktop (EL)
-            type: text
-            required: false
-          - name: mobile_title_en
-            label: Τίτλος mobile (EN)
-            type: string
-            required: false
-          - name: mobile_title_el
-            label: Τίτλος mobile (EL)
-            type: string
-            required: false
-          - name: mobile_description_en
-            label: Περιγραφή mobile (EN)
-            type: text
-            required: false
-          - name: mobile_description_el
-            label: Περιγραφή mobile (EL)
-            type: text
-            required: false
-          - name: url
-            label: Σύνδεσμος εκδήλωσης (κοινός)
-            type: string
-            required: false
-          - name: url_en
-            label: Διαφορετικός σύνδεσμος (EN)
-            type: string
-            required: false
-          - name: url_el
-            label: Διαφορετικός σύνδεσμος (EL)
-            type: string
-            required: false
-          - name: poster
-            label: Φωτογραφία / αφίσα κάρτας
-            type: image
-            required: false
-            description: Αν μείνει κενό, η κάρτα εμφανίζεται χωρίς φωτογραφία.
-          - name: focus_x
-            label: Οριζόντια εστίαση εικόνας (%)
-            type: number
-            required: false
-            description: 0 = αριστερά, 50 = κέντρο, 100 = δεξιά.
-            options:
-              min: 0
-              max: 100
-          - name: focus_y
-            label: Κάθετη εστίαση εικόνας (%)
-            type: number
-            required: false
-            description: 0 = πάνω, 50 = κέντρο, 100 = κάτω.
-            options:
-              min: 0
-              max: 100
-          - name: zoom
-            label: Zoom εικόνας (%)
-            type: number
-            required: false
-            description: 100 = κανονικό. Αύξησέ το έως 180 για μεγαλύτερο zoom.
-            options:
-              min: 100
-              max: 180
-          - name: aria_label_en
-            label: Προσβάσιμη περιγραφή συνδέσμου (EN)
-            type: string
-            required: false
-            hidden: true
-            readonly: true
-          - name: aria_label_el
-            label: Προσβάσιμη περιγραφή συνδέσμου (EL)
-            type: string
-            required: false
-            hidden: true
-            readonly: true
-
-      - name: highlight_en
-        label: Ιστορικό / highlight desktop (EN)
+      - name: about_text_en
+        label: Κείμενο About (EN)
         type: text
         required: false
-        hidden: true
-        readonly: true
-      - name: highlight_el
-        label: Ιστορικό / highlight desktop (EL)
+        description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
+
+      - name: about_text_el
+        label: Κείμενο About (EL)
         type: text
         required: false
-        hidden: true
-        readonly: true
+        description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
+
 
   - name: projects
     label: PROJECTS
@@ -325,87 +206,6 @@ content:
             required: false
 
 
-  - name: discography
-    label: DISCOGRAPHY
-    type: file
-    path: data/discography.json
-    format: json
-    fields:
-      - name: home
-        label: Σταθερά κείμενα αρχικής
-        type: object
-        required: true
-        hidden: true
-        readonly: true
-        fields:
-          - { name: label, label: Ετικέτα ενότητας, type: string, required: true }
-          - { name: title_en, label: Τίτλος EN, type: string, required: true }
-          - { name: title_el, label: Τίτλος EL, type: string, required: true }
-          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
-          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
-          - { name: button_en, label: Κουμπί EN, type: string, required: true }
-          - { name: button_el, label: Κουμπί EL, type: string, required: true }
-
-      - name: page
-        label: Σταθερά κείμενα πλήρους σελίδας
-        type: object
-        required: true
-        hidden: true
-        readonly: true
-        fields:
-          - { name: eyebrow_en, label: Μικρός τίτλος EN, type: string, required: false }
-          - { name: eyebrow_el, label: Μικρός τίτλος EL, type: string, required: false }
-          - { name: title_en, label: Τίτλος EN, type: string, required: true }
-          - { name: title_el, label: Τίτλος EL, type: string, required: true }
-          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
-          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
-
-      - name: releases
-        label: Κυκλοφορίες
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{artist} — {title} ({year})"
-        fields:
-          - name: year
-            label: Έτος
-            type: string
-            required: true
-            description: Χρησιμοποίησε TBA όταν δεν έχει ανακοινωθεί έτος.
-          - name: artist
-            label: Καλλιτέχνης / μπάντα
-            type: string
-            required: true
-          - name: title
-            label: Τίτλος κυκλοφορίας
-            type: string
-            required: true
-          - name: status_en
-            label: Κατάσταση (EN)
-            type: string
-            required: false
-            description: Π.χ. To be released. Άφησέ το κενό για ήδη κυκλοφορημένο έργο.
-          - name: status_el
-            label: Κατάσταση (EL)
-            type: string
-            required: false
-            description: Π.χ. Προς κυκλοφορια.
-          - name: credit
-            label: Συμμετοχή / credit
-            type: string
-            required: false
-          - name: url
-            label: Σύνδεσμος κυκλοφορίας
-            type: string
-            required: false
-          - name: show_on_home
-            label: Εμφάνιση στην αρχική (desktop και mobile)
-            type: boolean
-            required: false
-            default: true
-
-
   - name: teaching
     label: TEACHING
     type: file
@@ -502,6 +302,247 @@ content:
           - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
           - { name: url, label: Instagram reel URL, type: string, required: true }
 
+
+  - name: discography
+    label: DISCOGRAPHY
+    type: file
+    path: data/discography.json
+    format: json
+    fields:
+      - name: home
+        label: Σταθερά κείμενα αρχικής
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: label, label: Ετικέτα ενότητας, type: string, required: true }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+          - { name: button_en, label: Κουμπί EN, type: string, required: true }
+          - { name: button_el, label: Κουμπί EL, type: string, required: true }
+
+      - name: page
+        label: Σταθερά κείμενα πλήρους σελίδας
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: eyebrow_en, label: Μικρός τίτλος EN, type: string, required: false }
+          - { name: eyebrow_el, label: Μικρός τίτλος EL, type: string, required: false }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+          - { name: intro_en, label: Εισαγωγή EN, type: text, required: false }
+          - { name: intro_el, label: Εισαγωγή EL, type: text, required: false }
+
+      - name: releases
+        label: Κυκλοφορίες
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{artist} — {title} ({year})"
+        fields:
+          - name: year
+            label: Έτος
+            type: string
+            required: true
+            description: Χρησιμοποίησε TBA όταν δεν έχει ανακοινωθεί έτος.
+          - name: artist
+            label: Καλλιτέχνης / μπάντα
+            type: string
+            required: true
+          - name: title
+            label: Τίτλος κυκλοφορίας
+            type: string
+            required: true
+          - name: status_en
+            label: Κατάσταση (EN)
+            type: string
+            required: false
+            description: Π.χ. To be released. Άφησέ το κενό για ήδη κυκλοφορημένο έργο.
+          - name: status_el
+            label: Κατάσταση (EL)
+            type: string
+            required: false
+            description: Π.χ. Προς κυκλοφορια.
+          - name: credit
+            label: Συμμετοχή / credit
+            type: string
+            required: false
+          - name: url
+            label: Σύνδεσμος κυκλοφορίας
+            type: string
+            required: false
+          - name: show_on_home
+            label: Εμφάνιση στην αρχική (desktop και mobile)
+            type: boolean
+            required: false
+            default: true
+
+
+  - name: live
+    label: LIVE
+    type: file
+    path: data/live.json
+    format: json
+    fields:
+      - name: section
+        label: Κείμενα ενότητας
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - name: label
+            label: Αρίθμηση / ετικέτα ενότητας
+            type: string
+            required: true
+          - name: title_en
+            label: Τίτλος desktop (EN)
+            type: string
+            required: true
+          - name: title_el
+            label: Τίτλος desktop (EL)
+            type: string
+            required: true
+          - name: intro_en
+            label: Εισαγωγή desktop (EN)
+            type: text
+            required: false
+          - name: intro_el
+            label: Εισαγωγή desktop (EL)
+            type: text
+            required: false
+          - name: mobile_title_en
+            label: Τίτλος mobile (EN)
+            type: string
+            required: true
+          - name: mobile_title_el
+            label: Τίτλος mobile (EL)
+            type: string
+            required: true
+
+      - name: events
+        label: Live εμφανίσεις
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} — {event_date}"
+        fields:
+          - name: event_date
+            label: Ημερομηνία εκδήλωσης
+            type: date
+            required: true
+            options:
+              time: false
+              format: yyyy-MM-dd
+          - name: venue_en
+            label: Χώρος και πόλη (EN)
+            type: string
+            required: false
+          - name: venue_el
+            label: Χώρος και πόλη (EL)
+            type: string
+            required: false
+          - name: title
+            label: Όνομα μπάντας / εμφάνισης
+            type: string
+            required: true
+          - name: description_en
+            label: Περιγραφή desktop (EN)
+            type: text
+            required: false
+          - name: description_el
+            label: Περιγραφή desktop (EL)
+            type: text
+            required: false
+          - name: mobile_title_en
+            label: Τίτλος mobile (EN)
+            type: string
+            required: false
+          - name: mobile_title_el
+            label: Τίτλος mobile (EL)
+            type: string
+            required: false
+          - name: mobile_description_en
+            label: Περιγραφή mobile (EN)
+            type: text
+            required: false
+          - name: mobile_description_el
+            label: Περιγραφή mobile (EL)
+            type: text
+            required: false
+          - name: url
+            label: Σύνδεσμος εκδήλωσης (κοινός)
+            type: string
+            required: false
+          - name: url_en
+            label: Διαφορετικός σύνδεσμος (EN)
+            type: string
+            required: false
+          - name: url_el
+            label: Διαφορετικός σύνδεσμος (EL)
+            type: string
+            required: false
+          - name: poster
+            label: Φωτογραφία / αφίσα κάρτας
+            type: image
+            required: false
+            description: Αν μείνει κενό, η κάρτα εμφανίζεται χωρίς φωτογραφία.
+          - name: focus_x
+            label: Οριζόντια εστίαση εικόνας (%)
+            type: number
+            required: false
+            description: 0 = αριστερά, 50 = κέντρο, 100 = δεξιά.
+            options:
+              min: 0
+              max: 100
+          - name: focus_y
+            label: Κάθετη εστίαση εικόνας (%)
+            type: number
+            required: false
+            description: 0 = πάνω, 50 = κέντρο, 100 = κάτω.
+            options:
+              min: 0
+              max: 100
+          - name: zoom
+            label: Zoom εικόνας (%)
+            type: number
+            required: false
+            description: 100 = κανονικό. Αύξησέ το έως 180 για μεγαλύτερο zoom.
+            options:
+              min: 100
+              max: 180
+          - name: aria_label_en
+            label: Προσβάσιμη περιγραφή συνδέσμου (EN)
+            type: string
+            required: false
+            hidden: true
+            readonly: true
+          - name: aria_label_el
+            label: Προσβάσιμη περιγραφή συνδέσμου (EL)
+            type: string
+            required: false
+            hidden: true
+            readonly: true
+
+      - name: highlight_en
+        label: Ιστορικό / highlight desktop (EN)
+        type: text
+        required: false
+        hidden: true
+        readonly: true
+      - name: highlight_el
+        label: Ιστορικό / highlight desktop (EL)
+        type: text
+        required: false
+        hidden: true
+        readonly: true
 
   - name: media
     label: VIDEOS / MEDIA
@@ -648,47 +689,6 @@ content:
             default: true
 
 
-  - name: profile
-    label: HERO / ABOUT
-    type: file
-    path: data/profile.json
-    format: json
-    fields:
-      - name: hero
-        label: Κείμενα Hero
-        type: object
-        required: true
-        fields:
-          - { name: kicker_en, label: Επαγγελματική ιδιότητα (EN), type: string, required: false }
-          - { name: kicker_el, label: Επαγγελματική ιδιότητα (EL), type: string, required: false }
-          - { name: intro_en, label: Εισαγωγικό κείμενο (EN), type: text, required: false }
-          - { name: intro_el, label: Εισαγωγικό κείμενο (EL), type: text, required: false }
-
-      - name: about
-        label: Σταθεροί τίτλοι About
-        type: object
-        required: true
-        hidden: true
-        readonly: true
-        fields:
-          - { name: label_en, label: Ετικέτα EN, type: string, required: true }
-          - { name: label_el, label: Ετικέτα EL, type: string, required: true }
-          - { name: title_en, label: Τίτλος EN, type: string, required: true }
-          - { name: title_el, label: Τίτλος EL, type: string, required: true }
-
-      - name: about_text_en
-        label: Κείμενο About (EN)
-        type: text
-        required: false
-        description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
-
-      - name: about_text_el
-        label: Κείμενο About (EL)
-        type: text
-        required: false
-        description: Άφησε μία κενή γραμμή για να ξεκινήσεις νέα παράγραφο.
-
-
   - name: contact
     label: CONTACT / SOCIAL
     type: file
@@ -719,4 +719,3 @@ content:
             label: URL
             type: string
             required: true
-
