@@ -39,7 +39,7 @@
    const items=Array.isArray(data.socials)?data.socials.filter(item=>clean(item.url)):[];
    const byPlatform=new Map(items.map(item=>[key(item.platform||item.label),item]));
    const syncLinks=()=>{
-    document.querySelectorAll('a[href], a[aria-label]').forEach(anchor=>{
+    document.querySelectorAll('.contact-socials a, .social-row a, .social-icons a, [data-press-kit-part="downloads"] .link-grid a').forEach(anchor=>{
      if(anchor.dataset.cmsSocialExtra)return;
      const platform=platformOf(anchor);if(!platform)return;
      const item=byPlatform.get(platform);
