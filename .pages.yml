@@ -701,9 +701,22 @@ content:
       - name: socials
         label: Επίσημοι σύνδεσμοι
         type: object
-        required: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
         fields:
-          - { name: facebook, label: Facebook URL, type: string, required: false }
-          - { name: instagram, label: Instagram URL, type: string, required: false }
-          - { name: tiktok, label: TikTok URL, type: string, required: false }
-          - { name: youtube, label: YouTube URL, type: string, required: false }
+          - name: platform
+            label: Αναγνωριστικό πλατφόρμας
+            type: string
+            required: true
+            description: Π.χ. facebook, instagram, spotify ή linkedin. Χρησιμοποίησε λατινικούς χαρακτήρες.
+          - name: label
+            label: Όνομα που θα εμφανίζεται
+            type: string
+            required: true
+          - name: url
+            label: URL
+            type: string
+            required: true
+
