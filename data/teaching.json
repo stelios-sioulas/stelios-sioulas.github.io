@@ -43,11 +43,6 @@
       "name_el": "ΗΧΟΜΟΡΦΕΣ",
       "place_en": "Agia Paraskevi",
       "place_el": "Αγια Παρασκευη"
-    },
-    {
-      "name_en": "test",
-      "name_el": "test",
-      "place_el": "test"
     }
   ],
   "focus": [
@@ -90,12 +85,6 @@
       "title_el": "Παιξιμο σε μπαντα",
       "description_en": "Dynamics, listening, arrangement awareness and practical live-playing skills.",
       "description_el": "Δυναμικές, ακρόαση, arrangement και πρακτικές live δεξιότητες."
-    },
-    {
-      "title_en": "test",
-      "title_el": "test",
-      "description_en": "test",
-      "description_el": "test"
     }
   ],
   "exercise_reels": [
@@ -130,11 +119,6 @@
       "description_en": "Practice material for drummers.",
       "description_el": "Υλικό εξάσκησης για drummers.",
       "url": "https://www.instagram.com/reel/DcA1k6hNsSq/?stkn=MXZueHBscmZoYmFkbg=="
-    },
-    {
-      "title_en": "test",
-      "title_el": "test",
-      "url": "https://example.com"
     }
   ],
   "performance_reels": [
@@ -153,11 +137,6 @@
       "description_en": "Rehearsal and playing reel from Stelios.",
       "description_el": "Reel από πρόβα και παίξιμο του Stelios.",
       "url": "https://www.instagram.com/reel/DbJIGItN3le/?stkn=dGF3Mnh2MnRkdGlq"
-    },
-    {
-      "title_en": "test",
-      "title_el": "test",
-      "url": "https://example.com"
     }
   ]
 }
