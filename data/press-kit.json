@@ -18,7 +18,7 @@
   "profile_el": "Ο Stelios Sioulas είναι ντράμερ με βάση την Αθήνα, με πολυετή παρουσία σε metal, rock και tribute projects, live εμφανίσεις, ηχογραφήσεις και διδασκαλία drums. Σε μεγάλο μέρος της δισκογραφικής δουλειάς στην οποία έχει συμμετάσχει, διαμορφώνει και γράφει ο ίδιος τα μέρη των τυμπάνων, ενώ τα drum solos και solo sections του αποτελούν δικές του συνθέσεις.",
   "teaching_availability_en": "Teaching experience at Orfeas Music School in Peraia, YMCA Thessaloniki / HANTH and Melodia Music School in Thessaloniki, and Ihomorfes Music School in Agia Paraskevi, Athens. Available for live projects, new bands, session work, collaborations and drum lessons.",
   "teaching_availability_el": "Διδακτική εμπειρία στο Ωδείον Ορφέας στην Περαία, στο Ωδείο ΧΑΝΘ και στο Ωδείο Μελωδία στη Θεσσαλονίκη, καθώς και στις Ηχομορφές στην Αγία Παρασκευή Αττικής. Διαθέσιμος για live projects, νέες μπάντες, session δουλειές, συνεργασίες και μαθήματα drums.",
-  "press_photo": "assets/viber_image_2026-09-14_23-43-36-763.jpg",
+  "press_photo": "/assets/viber_image_2026-09-14_23-43-36-763.jpg",
   "photo_intro_en": "High-resolution press photo for promotional and media use.",
   "photo_intro_el": "Press φωτογραφία υψηλής ανάλυσης για promotional και media χρήση.",
   "photo_button_en": "Download press photo",
@@ -55,6 +55,11 @@
       "url_en": "teaching.html",
       "url_el": "teaching-el.html",
       "external": false
+    },
+    {
+      "label": "test",
+      "url": "https://example.com",
+      "external": true
     }
   ]
 }
