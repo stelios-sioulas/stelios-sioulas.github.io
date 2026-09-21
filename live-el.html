@@ -60,11 +60,68 @@
 @media(max-width:560px){
   .event-card.event-art::before{left:52%;opacity:.15}
 }
+
+/* Automatic Live archive */
+.live-archive{
+  margin-top:48px;
+  padding-top:36px;
+  border-top:1px solid var(--line);
+}
+.live-archive-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:20px;
+}
+.live-archive-header h2{
+  margin:0;
+  font-size:clamp(28px,4vw,40px);
+}
+.live-archive-count{
+  margin:0 0 5px;
+  color:var(--muted);
+  font:600 11px Oswald,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.live-archive-list [hidden]{display:none!important}
+.live-archive-toggle{
+  min-height:44px;
+  margin-top:18px;
+  padding:11px 20px;
+  border:1px solid var(--accent);
+  border-radius:999px;
+  background:rgba(16,23,34,.86);
+  color:var(--text);
+  font:600 12px Oswald,sans-serif;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.live-archive-toggle:hover,
+.live-archive-toggle:focus-visible{
+  border-color:var(--accent2);
+  color:var(--accent2);
+  transform:translateY(-1px);
+}
+.live-archive-toggle:focus-visible{
+  outline:2px solid rgba(101,167,227,.35);
+  outline-offset:3px;
+}
+.live-archive + .history{margin-top:32px}
+@media(max-width:560px){
+  .live-archive{margin-top:36px;padding-top:28px}
+  .live-archive-header{align-items:flex-start;flex-direction:column;gap:6px}
+  .live-archive-count{margin:0}
+  .live-archive-toggle{width:100%}
+}
 </style></head><body>
 <header class="site-header"><div class="wrap site-top"><a class="site-brand" href="index-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="white">Stelios</span><span class="blue">Sioulas</span></a><div class="site-mobile-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="live.html">EN</a><button class="site-menu-btn" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false">☰</button></div><nav class="site-nav"><a href="index-el.html#about">Σχετικα</a><a href="index-el.html#projects">Projects</a><a href="index-el.html#teaching">Διδασκαλια</a><a href="index-el.html#discography">Δισκογραφια</a><a href="index-el.html#live" class="active">Live</a><a href="index-el.html#media">Media</a><a href="index-el.html#contact">Επικοινωνια</a><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="live.html">EN</a></nav></div></header>
 <main id="live" data-live-cms="page"><div class="hero"><div class="wrap"><div class="eyebrow">Συναυλιες & εμφανισεις</div><h1>Live</h1><p>Επόμενες εμφανίσεις και επιλεγμένα live highlights.</p></div></div><section class="content"><div class="wrap"><h2>Live εμφανισεις</h2><div class="event-list">
 <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener"><div class="event-date"><strong>03</strong><span>Οκτωβριου 2026</span></div><div class="event-copy"><div class="meta">Eightball Club · Θεσσαλονικη</div><h3>The Prisoners</h3><p>Iron Maiden tribute show · Support: Obscurus Rex.</p><p class="event-role">Ο Stelios Sioulas στα ντραμς και με τους The Prisoners και με τους Obscurus Rex.</p></div></a>
 <a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/doroathens_en" target="_blank" rel="noopener"><div class="event-date"><strong>09</strong><span>Οκτωβριου 2026</span></div><div class="event-copy"><div class="meta">Fuzz Club · Αθηνα</div><h3>Doro Pesch</h3><p>Support: Obscurus Rex.</p><p class="event-role">Στα ντραμς με τους Obscurus Rex.</p></div></a>
 </div><div class="history">Στη διάρκεια της πορείας του, ο Stelios έχει εμφανιστεί με πολλές διαφορετικές μπάντες και projects σε live stages σε όλη τη Θεσσαλονίκη και, τα τελευταία χρόνια, σε πολλούς χώρους της Αθήνας.</div></div></section></main><footer><div class="wrap">© 2026 Stelios Sioulas</div></footer>
-<audio id="introAudio" preload="auto" src="assets/stelios-intro.mp3"></audio><script>(()=>{const menu=document.querySelector('.site-menu-btn'),nav=document.querySelector('.site-nav');menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'×':'☰'});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));const audio=document.getElementById('introAudio'),buttons=document.querySelectorAll('.intro-sound-btn');const sync=()=>buttons.forEach(b=>{const on=!audio.paused;b.classList.toggle('is-off',!on);b.setAttribute('aria-pressed',String(on))});buttons.forEach(b=>b.addEventListener('click',()=>audio.paused?audio.play().catch(()=>{}):audio.pause()));audio.addEventListener('play',sync);audio.addEventListener('pause',sync);document.querySelectorAll('a[href]').forEach(a=>{if(a.origin===location.origin&&a.target!=='_blank')a.addEventListener('click',()=>sessionStorage.setItem('stelios-intro-skip-next-navigation','1'))});const skip=sessionStorage.getItem('stelios-intro-skip-next-navigation');sessionStorage.removeItem('stelios-intro-skip-next-navigation');if(!skip)audio.play().catch(()=>{});sync()})();</script><script src="assets/js/live-cms.js"></script><script src="assets/js/contact-cms.js"></script>
+<audio id="introAudio" preload="auto" src="assets/stelios-intro.mp3"></audio><script>(()=>{const menu=document.querySelector('.site-menu-btn'),nav=document.querySelector('.site-nav');menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'×':'☰'});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));const audio=document.getElementById('introAudio'),buttons=document.querySelectorAll('.intro-sound-btn');const sync=()=>buttons.forEach(b=>{const on=!audio.paused;b.classList.toggle('is-off',!on);b.setAttribute('aria-pressed',String(on))});buttons.forEach(b=>b.addEventListener('click',()=>audio.paused?audio.play().catch(()=>{}):audio.pause()));audio.addEventListener('play',sync);audio.addEventListener('pause',sync);document.querySelectorAll('a[href]').forEach(a=>{if(a.origin===location.origin&&a.target!=='_blank')a.addEventListener('click',()=>sessionStorage.setItem('stelios-intro-skip-next-navigation','1'))});const skip=sessionStorage.getItem('stelios-intro-skip-next-navigation');sessionStorage.removeItem('stelios-intro-skip-next-navigation');if(!skip)audio.play().catch(()=>{});sync()})();</script><script src="assets/js/live-cms.js?v=archive1"></script><script src="assets/js/contact-cms.js"></script>
 </body></html>
