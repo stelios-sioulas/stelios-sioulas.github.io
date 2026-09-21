@@ -55,11 +55,6 @@
       "url_en": "teaching.html",
       "url_el": "teaching-el.html",
       "external": false
-    },
-    {
-      "label": "test",
-      "url": "https://example.com",
-      "external": true
     }
   ]
 }
