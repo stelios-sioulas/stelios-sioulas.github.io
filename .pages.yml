@@ -273,7 +273,7 @@ content:
           - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
 
       - name: exercise_reels
-        label: Instagram exercise reels
+        label: Exercise videos
         type: object
         list:
           collapsible:
@@ -285,7 +285,11 @@ content:
           - { name: title_el, label: Τίτλος (EL), type: string, required: true }
           - { name: description_en, label: Περιγραφή (EN), type: text, required: false }
           - { name: description_el, label: Περιγραφή (EL), type: text, required: false }
-          - { name: url, label: Instagram reel URL, type: string, required: true }
+          - name: url
+            label: Instagram ή YouTube URL
+            type: string
+            required: true
+            description: Δέχεται σύνδεσμο Instagram reel ή YouTube video.
 
       - name: performance_reels
         label: Live και rehearsal reels
