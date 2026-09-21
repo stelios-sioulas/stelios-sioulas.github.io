@@ -646,3 +646,43 @@ content:
             type: boolean
             required: false
             default: true
+
+
+  - name: profile
+    label: HERO / ABOUT
+    type: file
+    path: data/profile.json
+    format: json
+    fields:
+      - name: hero
+        label: Κείμενα Hero
+        type: object
+        required: true
+        fields:
+          - { name: kicker_en, label: Επαγγελματική ιδιότητα (EN), type: string, required: false }
+          - { name: kicker_el, label: Επαγγελματική ιδιότητα (EL), type: string, required: false }
+          - { name: intro_en, label: Εισαγωγικό κείμενο (EN), type: text, required: false }
+          - { name: intro_el, label: Εισαγωγικό κείμενο (EL), type: text, required: false }
+
+      - name: about
+        label: Σταθεροί τίτλοι About
+        type: object
+        required: true
+        hidden: true
+        readonly: true
+        fields:
+          - { name: label_en, label: Ετικέτα EN, type: string, required: true }
+          - { name: label_el, label: Ετικέτα EL, type: string, required: true }
+          - { name: title_en, label: Τίτλος EN, type: string, required: true }
+          - { name: title_el, label: Τίτλος EL, type: string, required: true }
+
+      - name: about_paragraphs
+        label: Παράγραφοι About
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{text_el}"
+        fields:
+          - { name: text_en, label: Παράγραφος (EN), type: text, required: false }
+          - { name: text_el, label: Παράγραφος (EL), type: text, required: false }
