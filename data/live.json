@@ -10,6 +10,7 @@
   },
   "events": [
     {
+      "event_date": "2026-10-03",
       "venue_en": "Eightball Club · Thessaloniki",
       "venue_el": "Eightball Club · Θεσσαλονικη",
       "title": "The Prisoners",
@@ -20,15 +21,15 @@
       "mobile_description_en": "Thessaloniki · with Obscurus Rex. Stelios on drums with both projects.",
       "mobile_description_el": "Θεσσαλονίκη · μαζί με Obscurus Rex. Ο Stelios στα ντραμς και με τα δύο projects.",
       "url": "https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/",
-      "poster": "assets/event-prisoners-oct03.jpg",
-      "aria_label_en": "Open The Prisoners event on the official Eightball website",
-      "aria_label_el": "Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball",
+      "poster": "/assets/event-prisoners-oct03.jpg",
       "focus_x": 100,
       "focus_y": 30,
       "zoom": 100,
-      "event_date": "2026-10-03"
+      "aria_label_en": "Open The Prisoners event on the official Eightball website",
+      "aria_label_el": "Άνοιγμα της εκδήλωσης The Prisoners στην επίσημη σελίδα του Eightball"
     },
     {
+      "event_date": "2026-10-09",
       "venue_en": "Fuzz Club · Athens",
       "venue_el": "Fuzz Club · Αθηνα",
       "title": "Doro Pesch",
@@ -41,12 +42,19 @@
       "url_en": "https://eventation.gr/doroathens_en",
       "url_el": "https://eventation.gr/doroathens_en",
       "poster": "https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png",
-      "aria_label_en": "Open Doro Pesch Athens event on the official Eventation website",
-      "aria_label_el": "Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation",
       "focus_x": 100,
       "focus_y": 26,
       "zoom": 100,
-      "event_date": "2026-10-09"
+      "aria_label_en": "Open Doro Pesch Athens event on the official Eventation website",
+      "aria_label_el": "Άνοιγμα της συναυλίας Doro Pesch στην επίσημη σελίδα της Eventation"
+    },
+    {
+      "event_date": "2026-09-29",
+      "title": "test",
+      "poster": "/assets/safari_jungle.jpg",
+      "focus_x": 50,
+      "focus_y": 50,
+      "zoom": 180
     }
   ],
   "highlight_en": "Over the years, Stelios has performed with many different bands and projects at live stages throughout Thessaloniki and, in recent years, at numerous venues across Athens.",
