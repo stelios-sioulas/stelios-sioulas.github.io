@@ -33,7 +33,7 @@
   top:0;
   right:0;
   bottom:0;
-  left:42%;
+  left:48%;
   z-index:0;
   background-image:var(--event-poster,var(--event-image));
   background-size:cover;
@@ -63,7 +63,7 @@
   --event-position:right 26%;
 }
 @media(max-width:560px){
-  .event-card.event-art::before{left:48%;opacity:.15}
+  .event-card.event-art::before{left:52%;opacity:.15}
 }
 </style>
 </head>
@@ -71,7 +71,7 @@
 <header class="site-header"><div class="wrap site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="white">Stelios</span><span class="blue">Sioulas</span></a><div class="site-mobile-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Play audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="live-el.html">GR</a><button class="site-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div><nav class="site-nav"><a href="index.html#about">About</a><a href="index.html#projects">Projects</a><a href="index.html#teaching">Teaching</a><a href="index.html#discography">Discography</a><a href="index.html#live" class="active">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><button class="intro-sound-btn is-off" type="button" aria-label="Play audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="live-el.html">GR</a></nav></div></header>
 <main id="live" data-live-cms="page"><div class="hero"><div class="wrap"><div class="eyebrow">Shows & performances</div><h1>Live</h1><p>Upcoming shows and selected live highlights.</p></div></div><section class="content"><div class="wrap"><h2>Live dates</h2><div class="event-list">
 <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener"><div class="event-date"><strong>03</strong><span>October 2026</span></div><div class="event-copy"><div class="meta">Eightball Club · Thessaloniki</div><h3>The Prisoners</h3><p>Iron Maiden tribute show · Support: Obscurus Rex.</p><p class="event-role">Stelios Sioulas on drums with both The Prisoners and Obscurus Rex.</p></div></a>
-<a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/doroathens_en#about" target="_blank" rel="noopener"><div class="event-date"><strong>09</strong><span>October 2026</span></div><div class="event-copy"><div class="meta">Fuzz Club · Athens</div><h3>Doro Pesch</h3><p>Support: Obscurus Rex.</p><p class="event-role">On drums with Obscurus Rex.</p></div></a>
+<a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/doroathens_en" target="_blank" rel="noopener"><div class="event-date"><strong>09</strong><span>October 2026</span></div><div class="event-copy"><div class="meta">Fuzz Club · Athens</div><h3>Doro Pesch</h3><p>Support: Obscurus Rex.</p><p class="event-role">On drums with Obscurus Rex.</p></div></a>
 </div><div class="history">Over the years, Stelios has performed with many different bands and projects at live stages throughout Thessaloniki and, in recent years, at numerous venues across Athens.</div></div></section></main><footer><div class="wrap">© 2026 Stelios Sioulas</div></footer>
 <audio id="introAudio" preload="auto" src="assets/stelios-intro.mp3"></audio><script>
 (()=>{const menu=document.querySelector('.site-menu-btn'),nav=document.querySelector('.site-nav');menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'×':'☰'});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));const audio=document.getElementById('introAudio'),buttons=document.querySelectorAll('.intro-sound-btn');const sync=()=>buttons.forEach(b=>{const on=!audio.paused;b.classList.toggle('is-off',!on);b.setAttribute('aria-pressed',String(on))});buttons.forEach(b=>b.addEventListener('click',()=>audio.paused?audio.play().catch(()=>{}):audio.pause()));audio.addEventListener('play',sync);audio.addEventListener('pause',sync);document.querySelectorAll('a[href]').forEach(a=>{if(a.origin===location.origin&&a.target!=='_blank')a.addEventListener('click',()=>sessionStorage.setItem('stelios-intro-skip-next-navigation','1'))});const skip=sessionStorage.getItem('stelios-intro-skip-next-navigation');sessionStorage.removeItem('stelios-intro-skip-next-navigation');if(!skip)audio.play().catch(()=>{});sync()})();
