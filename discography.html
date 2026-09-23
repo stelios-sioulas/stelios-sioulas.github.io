@@ -219,9 +219,18 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
 .intro-sound-btn svg{width:17px;height:17px;display:block;fill:currentColor}
 .site-mobile-actions .intro-sound-btn{width:38px;height:38px}
 </style>
+
+<style>
+/* Keyboard navigation: visible only while an interactive element has focus. */
+.skip-link{position:fixed;top:8px;left:8px;z-index:1000;padding:11px 16px;border:2px solid #65a7e3;border-radius:8px;background:#f4f7fa;color:#070a0f;font:700 14px/1.3 Arial,sans-serif;text-decoration:none;transform:translateY(calc(-100% - 18px))}
+.skip-link:focus{transform:none;outline:3px solid #65a7e3;outline-offset:2px}
+header a:focus-visible,header button:focus-visible{outline:3px solid #b7e1ff!important;outline-offset:4px!important}
+#main-content,#top,#live{scroll-margin-top:80px}
+</style>
 </head><body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="site-top"><a class="site-brand" href="index.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="site-brand-stelios">Stelios</span> <span class="site-brand-sioulas">Sioulas</span></a><div class="site-mobile-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Play audio intro" title="Play audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="discography-el.html">GR</a><button class="site-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">☰</button></div><nav class="site-nav" id="siteNav"><a href="index.html#about">About</a><a href="index.html#projects">Projects</a><a href="index.html#teaching">Teaching</a><a href="index.html#discography" class="active">Discography</a><a href="index.html#live">Live</a><a href="index.html#media">Media</a><a href="index.html#contact">Contact</a><button class="intro-sound-btn is-off" type="button" aria-label="Play audio intro" title="Play audio intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang desktop-lang" href="discography-el.html">GR</a></nav></div></header>
-<div class="hero"><div class="wrap"><div class="eyebrow">Recording catalogue</div><h1>Discography</h1><p>A concise look at albums and selected recordings featuring Stelios on drums.</p></div></div>
+<div class="hero" id="main-content" tabindex="-1"><div class="wrap"><div class="eyebrow">Recording catalogue</div><h1>Discography</h1><p>A concise look at albums and selected recordings featuring Stelios on drums.</p></div></div>
 <section data-discography-cms="page"><div class="wrap"><h2>Discography</h2><div class="catalogue">
 <div class="release"><div class="year">TBA</div><div class="artist">Persona Non Grata</div><div><h3>Nexus <span class="status">To be released</span></h3></div><div class="credit">Drum tracking</div></div>
 <div class="release"><div class="year">TBA</div><div class="artist">Disaster Project</div><div><h3>Title WIP <span class="status">To be released</span></h3></div><div class="credit">Drum tracking, mixing and mastering</div></div>
@@ -331,14 +340,15 @@ footer{border-top:1px solid var(--line)!important;padding:34px 0 50px!important;
   const button=document.querySelector('.site-menu-btn');
   const nav=document.querySelector('.site-nav');
   if(!button||!nav)return;
-  const close=()=>{nav.classList.remove('open');button.setAttribute('aria-expanded','false');button.textContent='☰';};
+  const close=()=>{nav.classList.remove('open');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Open menu');button.textContent='☰';};
   button.addEventListener('click',()=>{
     const open=nav.classList.toggle('open');
     button.setAttribute('aria-expanded',String(open));
+    button.setAttribute('aria-label',open?'Close menu':'Open menu');
     button.textContent=open?'×':'☰';
   });
   nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',close));
-  document.addEventListener('keydown',event=>{if(event.key==='Escape')close();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){close();button.focus();}});
 })();
 </script>
 
