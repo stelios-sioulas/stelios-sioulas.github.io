@@ -4,6 +4,7 @@
  if(!root)return;
  const greek=document.documentElement.lang==='el';
  const clean=value=>typeof value==='string'?value.trim():'';
+ const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
  const value=(item,key)=>clean(item[key+(greek?'_el':'_en')])||clean(item[key]);
  const add=(parent,tag,className,content)=>{
   const text=clean(content); if(!text)return null;
@@ -32,7 +33,7 @@
  };
  const renderFeature=(article,item,platform)=>{
   if(!article)return;
-  const url=clean(item&&item.url);
+  const url=safeUrl(item&&item.url);
   const embed=platform==='instagram'?instagramEmbed(url):tiktokEmbed(url);
   if(!url||!embed){article.hidden=true;return;}
   article.hidden=false;
@@ -44,7 +45,7 @@
    add(copy,'h3','',clean(item.title));
    add(copy,'p','',value(item,'description'));
    const link=document.createElement('a');
-   link.className=platform+'-link'; link.href=url; link.target='_blank'; link.rel='noopener';
+   link.className=platform+'-link'; link.href=url; link.target='_blank'; link.rel='noopener noreferrer';
    link.textContent=greek?(platform==='instagram'?'Άνοιγμα στο Instagram ↗':'Άνοιγμα στο TikTok ↗'):(platform==='instagram'?'Open on Instagram ↗':'Open on TikTok ↗');
    copy.appendChild(link);
   }
