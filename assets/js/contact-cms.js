@@ -1,6 +1,7 @@
 /* Shared contact and social links from Pages CMS. Form handling and design stay in HTML. */
 (function(){
  const clean=value=>typeof value==='string'?value.trim():'';
+ const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
  const greek=document.documentElement.lang==='el';
  const key=value=>clean(value).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
  const platformOf=anchor=>{
@@ -23,7 +24,7 @@
   svg.append(p1,p2);return svg;
  };
  const createExtraLink=(item,kind)=>{
-  const link=document.createElement('a');link.href=clean(item.url);link.target='_blank';link.rel='noopener';
+  const link=document.createElement('a');link.href=safeUrl(item.url);link.target='_blank';link.rel='noopener noreferrer';
   link.dataset.cmsSocialExtra='true';link.dataset.socialPlatform=key(item.platform||item.label);
   const label=clean(item.label)||clean(item.platform)||'Link';
   link.setAttribute('aria-label',label);
@@ -45,7 +46,7 @@
      const item=byPlatform.get(platform);
      if(item){
       const label=clean(item.label)||clean(item.platform)||platform;
-      anchor.href=clean(item.url);anchor.hidden=false;anchor.setAttribute('aria-label',label);
+      anchor.href=safeUrl(item.url);anchor.hidden=false;anchor.setAttribute('aria-label',label);
       const text=anchor.querySelector('span');
       if(text&&text.textContent!==label)text.textContent=label;
       else if(anchor.matches('[data-press-kit-part="downloads"] .link-grid a')&&anchor.textContent!==label+' ↗')anchor.textContent=label+' ↗';
