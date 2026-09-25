@@ -4,6 +4,7 @@
  if(!root)return;
  const greek=document.documentElement.lang==='el';
  const clean=value=>typeof value==='string'?value.trim():'';
+ const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
  const local=value=>clean(value&&value[greek?'url_el':'url_en'])||clean(value&&value.url);
  const add=(parent,tag,className,value)=>{
   const text=clean(value); if(!text)return null;
@@ -40,7 +41,7 @@
    const introText=clean(data[greek?'photo_intro_el':'photo_intro_en']);
    if(intro){intro.textContent=introText;intro.hidden=!introText;}
    const photo=downloads.querySelector('.actions a[download]');
-   const photoPath=clean(data.press_photo);
+   const photoPath=safeUrl(data.press_photo);
    if(photo){
     photo.hidden=!photoPath;
     if(photoPath){
@@ -53,9 +54,9 @@
     linkGrid.replaceChildren();
     const links=Array.isArray(data.links)?data.links:[];
     links.forEach(item=>{
-     const url=local(item),label=clean(item.label); if(!url||!label)return;
+     const url=safeUrl(local(item)),label=clean(item.label); if(!url||!label)return;
      const link=document.createElement('a'); link.className='link-card'; link.href=url;
-     if(item.external!==false){link.target='_blank';link.rel='noopener';link.textContent=label+' ↗';}
+     if(item.external!==false){link.target='_blank';link.rel='noopener noreferrer';link.textContent=label+' ↗';}
      else link.textContent=label+' →';
      linkGrid.appendChild(link);
     });
