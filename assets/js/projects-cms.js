@@ -4,6 +4,8 @@
   if (!homeSection && !pageRoot) return;
 
   const language = document.documentElement.lang === 'el' ? 'el' : 'en';
+  const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
+
   const value = (item, key) => {
     const result = item && item[key];
     return typeof result === 'string' ? result.trim() : '';
@@ -22,13 +24,13 @@
   };
 
   const createHomeCard = project => {
-    const url = value(project, 'url');
+    const url = safeUrl(value(project, 'url'));
     const card = document.createElement(url ? 'a' : 'article');
     card.className = 'card' + (url ? ' card-link' : '');
     if (url) {
       card.href = url;
       card.target = '_blank';
-      card.rel = 'noopener';
+      card.rel = 'noopener noreferrer';
     }
     addTextElement(card, 'div', 'meta', value(project, 'meta_' + language));
     addTextElement(card, 'h3', '', value(project, 'name'));
@@ -55,13 +57,13 @@
   };
 
   const createPageProject = project => {
-    const url = value(project, 'url');
+    const url = safeUrl(value(project, 'url'));
     const card = document.createElement(url ? 'a' : 'div');
     card.className = 'project' + (url ? '' : ' no-link');
     if (url) {
       card.href = url;
       card.target = '_blank';
-      card.rel = 'noopener';
+      card.rel = 'noopener noreferrer';
     }
 
     const copy = document.createElement('div');
