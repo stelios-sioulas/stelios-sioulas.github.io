@@ -5,6 +5,7 @@
 
   const greek=document.documentElement.lang==='el';
   const text=(value)=>typeof value==='string'?value.trim():'';
+  const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
   const add=(parent,tag,className,value)=>{
     const clean=text(value);
     if(!clean)return null;
@@ -41,12 +42,12 @@
           }
           row.appendChild(titleWrap);
           const credit=add(row,'div','credit',item.credit);
-          const url=text(item.url);
+          const url=safeUrl(item.url);
           if(url&&heading){
             const link=document.createElement('a');
             link.href=url;
             link.target='_blank';
-            link.rel='noopener';
+            link.rel='noopener noreferrer';
             link.textContent=heading.firstChild?heading.firstChild.nodeValue:text(item.title);
             heading.firstChild.replaceWith(link);
           }
@@ -65,12 +66,12 @@
         const meta=[status||text(item.year),text(item.artist)].filter(Boolean).join(' · ');
         add(card,'div','meta',meta);
         const heading=add(card,'h3','',item.title);
-        const url=text(item.url);
+        const url=safeUrl(item.url);
         if(url&&heading){
           const link=document.createElement('a');
           link.href=url;
           link.target='_blank';
-          link.rel='noopener';
+          link.rel='noopener noreferrer';
           link.textContent=heading.textContent;
           heading.replaceChildren(link);
         }
