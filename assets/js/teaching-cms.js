@@ -4,6 +4,7 @@
  if(!root)return;
  const greek=document.documentElement.lang==='el';
  const clean=value=>typeof value==='string'?value.trim():'';
+ const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
  const value=(item,key)=>clean(item[key+(greek?'_el':'_en')])||clean(item[key]);
  const add=(parent,tag,className,content)=>{
   const text=clean(content); if(!text)return null;
@@ -39,7 +40,7 @@
    const copy=document.createElement('div');
    add(copy,'div','meta',value(item,'meta')); add(copy,'h3','',value(item,'title')); add(copy,'p','',value(item,'description'));
    if(copy.childNodes.length)card.appendChild(copy);
-   const url=clean(item.url);
+   const url=safeUrl(item.url);
    if(url){
     const link=document.createElement('a'); link.className='reel-link'; link.href=url;
     link.target='_blank'; link.rel='noopener noreferrer';
