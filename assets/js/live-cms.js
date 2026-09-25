@@ -5,6 +5,8 @@
   const language = document.documentElement.lang === 'el' ? 'el' : 'en';
   const mobile = section.dataset.liveCms === 'mobile';
   const fullPage = section.dataset.liveCms === 'page';
+  const safeUrl=value=>{const raw=typeof value==='string'?value.trim():'';if(!raw)return '';try{const parsed=new URL(raw,window.location.href);return parsed.protocol==='https:'?raw:'';}catch{return '';}};
+
   const value = (item, key) => {
     const result = item && item[key];
     return typeof result === 'string' ? result.trim() : '';
@@ -92,9 +94,9 @@
   };
 
   const createDesktopEvent = event => {
-    const url = value(event, 'url_' + language) || value(event, 'url');
+    const url = safeUrl(value(event, 'url_' + language) || value(event, 'url'));
     const card = document.createElement(url ? 'a' : 'article');
-    const poster = value(event, 'poster');
+    const poster = safeUrl(value(event, 'poster'));
     card.className = 'event-card' + (url ? ' event-card-link' : '') + (poster ? ' event-art' : '');
     if (poster) {
       card.style.setProperty('--event-poster', 'url(' + JSON.stringify(poster) + ')');
@@ -109,7 +111,7 @@
     if (url) {
       card.href = url;
       card.target = '_blank';
-      card.rel = 'noopener';
+      card.rel = 'noopener noreferrer';
       const ariaLabel = value(event, 'aria_label_' + language);
       if (ariaLabel) card.setAttribute('aria-label', ariaLabel);
     }
@@ -138,9 +140,9 @@
   };
 
   const createMobileEvent = event => {
-    const url = value(event, 'url_' + language) || value(event, 'url');
+    const url = safeUrl(value(event, 'url_' + language) || value(event, 'url'));
     const card = document.createElement(url ? 'a' : 'article');
-    const poster = value(event, 'poster');
+    const poster = safeUrl(value(event, 'poster'));
     card.className = 'event-card' + (url ? ' event-card-link' : '') + (poster ? ' event-art' : '');
     if (poster) {
       card.style.setProperty('--event-poster', 'url(' + JSON.stringify(poster) + ')');
@@ -155,7 +157,7 @@
     if (url) {
       card.href = url;
       card.target = '_blank';
-      card.rel = 'noopener';
+      card.rel = 'noopener noreferrer';
       const ariaLabel = value(event, 'aria_label_' + language);
       if (ariaLabel) card.setAttribute('aria-label', ariaLabel);
     }
