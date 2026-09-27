@@ -160,6 +160,19 @@ header a:focus-visible,header button:focus-visible{outline:3px solid #b7e1ff!imp
   ]
 }
 </script>
+<style>
+/* Mobile navigation: consistent touch targets and a compact narrow header. */
+@media(max-width:820px){
+  .site-menu-btn,.site-mobile-actions .intro-sound-btn,.site-mobile-actions .site-lang{min-width:44px;min-height:44px}
+  .site-header .site-nav a{min-height:44px!important;display:flex!important;align-items:center}
+  .site-header .site-nav .intro-sound-btn{display:none!important}
+}
+@media(max-width:350px){
+  .site-header .site-top{gap:6px!important}
+  .site-header .site-brand{font-size:16px!important;gap:5px!important}
+  .site-mobile-actions{gap:5px}
+}
+</style>
 </head><body>
 <a class="skip-link" href="#live">Μετάβαση στο περιεχόμενο</a>
 <header class="site-header"><div class="wrap site-top"><a class="site-brand" href="index-el.html"><img src="assets/favicon-s.svg?v=2" alt=""><span class="white">Stelios</span><span class="blue">Sioulas</span></a><div class="site-mobile-actions"><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="live.html">EN</a><button class="site-menu-btn" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="siteNav">☰</button></div><nav class="site-nav" id="siteNav"><a href="index-el.html#about">Σχετικα</a><a href="index-el.html#projects">Projects</a><a href="index-el.html#teaching">Διδασκαλια</a><a href="index-el.html#discography">Δισκογραφια</a><a href="index-el.html#live" class="active">Live</a><a href="index-el.html#media">Media</a><a href="index-el.html#contact">Επικοινωνια</a><button class="intro-sound-btn is-off" type="button" aria-label="Αναπαραγωγή ηχητικού intro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12zm0-7.18v2.06A6 6 0 0 1 18 12a6 6 0 0 1-2.5 5.12v2.06A8 8 0 0 0 20 12a8 8 0 0 0-4.5-7.18z"/></svg></button><a class="site-lang" href="live.html">EN</a></nav></div></header>
@@ -167,5 +180,89 @@ header a:focus-visible,header button:focus-visible{outline:3px solid #b7e1ff!imp
 <a class="event-card event-card-link event-art event-prisoners" href="https://eightballclub.gr/event/the-prisoners-somewhere-in-time-40-years-anniversary-20-years-the-prisoners-2006-2026/" target="_blank" rel="noopener"><div class="event-date"><strong>03</strong><span>Οκτωβριου 2026</span></div><div class="event-copy"><div class="meta">Eightball Club · Θεσσαλονικη</div><h3>The Prisoners</h3><p>Iron Maiden tribute show · Support: Obscurus Rex.</p><p class="event-role">Ο Stelios Sioulas στα ντραμς και με τους The Prisoners και με τους Obscurus Rex.</p></div></a>
 <a class="event-card event-card-link event-art event-doro" href="https://eventation.gr/doroathens_en" target="_blank" rel="noopener"><div class="event-date"><strong>09</strong><span>Οκτωβριου 2026</span></div><div class="event-copy"><div class="meta">Fuzz Club · Αθηνα</div><h3>Doro Pesch</h3><p>Support: Obscurus Rex.</p><p class="event-role">Στα ντραμς με τους Obscurus Rex.</p></div></a>
 </div><div class="history">Στη διάρκεια της πορείας του, ο Stelios έχει εμφανιστεί με πολλές διαφορετικές μπάντες και projects σε live stages σε όλη τη Θεσσαλονίκη και, τα τελευταία χρόνια, σε πολλούς χώρους της Αθήνας.</div></div></section></main><footer><div class="wrap">© 2026 Stelios Sioulas</div></footer>
-<audio id="introAudio" preload="auto" src="assets/stelios-intro.mp3"></audio><script>(()=>{const menu=document.querySelector('.site-menu-btn'),nav=document.querySelector('.site-nav');const closeMenu=()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Άνοιγμα μενού');menu.textContent='☰'};menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Κλείσιμο μενού':'Άνοιγμα μενού');menu.textContent=open?'×':'☰'});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){closeMenu();menu.focus()}});const audio=document.getElementById('introAudio'),buttons=document.querySelectorAll('.intro-sound-btn');const sync=()=>buttons.forEach(b=>{const on=!audio.paused;b.classList.toggle('is-off',!on);b.setAttribute('aria-pressed',String(on))});buttons.forEach(b=>b.addEventListener('click',()=>audio.paused?audio.play().catch(()=>{}):audio.pause()));audio.addEventListener('play',sync);audio.addEventListener('pause',sync);document.querySelectorAll('a[href]').forEach(a=>{if(a.origin===location.origin&&a.target!=='_blank')a.addEventListener('click',()=>sessionStorage.setItem('stelios-intro-skip-next-navigation','1'))});const skip=sessionStorage.getItem('stelios-intro-skip-next-navigation');sessionStorage.removeItem('stelios-intro-skip-next-navigation');if(!skip)audio.play().catch(()=>{});sync()})();</script><script src="assets/js/live-cms.js?v=archive1"></script><script src="assets/js/contact-cms.js"></script>
+<audio id="introAudio" preload="auto" src="assets/stelios-intro.mp3"></audio><script>
+(()=>{
+  const menu=document.querySelector('.site-menu-btn');
+  const nav=document.querySelector('.site-nav');
+  const greek=document.documentElement.lang==='el';
+  const openLabel=greek?'Άνοιγμα μενού':'Open menu';
+  const closeLabel=greek?'Κλείσιμο μενού':'Close menu';
+  const closeMenu=()=>{
+    nav.classList.remove('open');
+    menu.setAttribute('aria-expanded','false');
+    menu.setAttribute('aria-label',openLabel);
+    menu.textContent='☰';
+  };
+  menu.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded',String(open));
+    menu.setAttribute('aria-label',open?closeLabel:openLabel);
+    menu.textContent=open?'×':'☰';
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&nav.classList.contains('open')){closeMenu();menu.focus();}
+  });
+
+  const audio=document.getElementById('introAudio');
+  const buttons=document.querySelectorAll('.intro-sound-btn');
+  let wantsPlayback=false;
+  let playToken=0;
+  const sync=playing=>{
+    const label=playing
+      ?(greek?'Διακοπή ηχητικού intro':'Stop audio intro')
+      :(greek?'Αναπαραγωγή ηχητικού intro':'Play audio intro');
+    buttons.forEach(button=>{
+      button.classList.toggle('is-off',!playing);
+      button.setAttribute('aria-pressed',String(playing));
+      button.setAttribute('aria-label',label);
+      button.setAttribute('title',label);
+    });
+  };
+  const stop=()=>{
+    wantsPlayback=false;
+    playToken++;
+    audio.pause();
+    try{audio.currentTime=0;}catch(e){}
+    sync(false);
+  };
+  const play=()=>{
+    wantsPlayback=true;
+    const token=++playToken;
+    sync(true); // The button can stop an autoplay request before it finishes loading.
+    try{
+      const attempt=audio.play();
+      if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>{
+        if(token===playToken)stop();
+      });
+    }catch(e){if(token===playToken)stop();}
+  };
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    if(wantsPlayback)stop(); else play();
+  }));
+  audio.addEventListener('ended',stop);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+  window.addEventListener('pagehide',stop);
+
+  const SKIP_KEY='stelios-intro-skip-next-navigation';
+  document.addEventListener('click',event=>{
+    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    const link=event.target.closest?.('a[href]');
+    if(!link||link.hasAttribute('download')||link.target&&link.target!=='_self')return;
+    if(link.origin!==location.origin)return;
+    if(link.pathname===location.pathname&&link.search===location.search)return;
+    try{sessionStorage.setItem(SKIP_KEY,'1');}catch(e){}
+  });
+  let skip=false;
+  try{
+    skip=sessionStorage.getItem(SKIP_KEY)==='1';
+    sessionStorage.removeItem(SKIP_KEY);
+  }catch(e){}
+  try{
+    if(performance.getEntriesByType('navigation')[0]?.type==='back_forward')skip=true;
+  }catch(e){}
+  sync(false);
+  if(!skip)play();
+})();
+</script><script src="assets/js/live-cms.js?v=archive1"></script><script src="assets/js/contact-cms.js"></script>
 </body></html>
