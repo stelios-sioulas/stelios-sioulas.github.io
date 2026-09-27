@@ -1,5 +1,5 @@
-/* Waveform-synchronised cinematic wordmark.
-   The original title remains the no-JS/reduced-motion fallback. */
+/* Sequential top-down hero wordmark intro.
+   Progressive enhancement: the original title remains readable without JS. */
 .drum-wordmark{
   position:relative;
   display:block;
@@ -26,71 +26,57 @@
   transform-origin:50% 100%;
   will-change:transform,opacity,filter;
 }
-.drum-wordmark.is-synced-intro .drum-letter{
-  opacity:0;
+.drum-wordmark.is-prepared .drum-letter{opacity:0}
+.drum-wordmark.is-animating .drum-letter{
+  animation:drum-letter-drop 620ms cubic-bezier(.16,.76,.2,1) both;
+  animation-delay:var(--drop-delay,0ms);
 }
-.drum-wordmark.is-synced-intro .drum-letter.is-landed{
-  opacity:1;
-}
-.drum-wordmark.is-synced-intro .drum-letter.is-falling{
-  animation:drum-letter-random-fall var(--fall-duration,620ms) cubic-bezier(.14,.72,.22,1) both;
-}
-.drum-letter.is-impact{
-  animation:drum-impact-flash 170ms ease-out both!important;
-}
-.drum-wordmark.is-synced-intro::after{
+.drum-wordmark.is-animating::after{
   content:"";
   position:absolute;
-  left:3%;
+  left:2%;
   bottom:-.11em;
-  width:84%;
-  height:.16em;
-  border:1px solid rgba(101,167,227,.25);
+  width:82%;
+  height:.17em;
+  border:1px solid rgba(101,167,227,.34);
   border-radius:50%;
-  opacity:.16;
-  transform:scaleX(.82);
+  opacity:0;
+  transform:scaleX(.74);
   filter:blur(.2px);
-  box-shadow:0 0 18px rgba(58,120,184,.12);
+  box-shadow:0 0 18px rgba(58,120,184,.16);
+  animation:drum-head-breathe 2450ms ease-out both;
   pointer-events:none;
   z-index:-1;
 }
-@keyframes drum-letter-random-fall{
-  0%{
-    opacity:0;
-    transform:translate(var(--x-start,0),var(--y-start,-1.2em)) rotate(var(--rot-start,-5deg)) scale(.94);
-    filter:blur(3px);
-  }
-  42%{
-    opacity:.82;
-    transform:translate(var(--x-mid,0),-.46em) rotate(var(--rot-mid,2deg)) scale(.98);
-    filter:blur(1px);
-  }
-  78%{
-    opacity:1;
-    transform:translate(calc(var(--x-mid,0) * .18),.04em) rotate(0deg) scaleY(.98);
-    filter:blur(0);
-  }
-  90%{transform:translate(0,-.035em) rotate(0deg)}
-  100%{opacity:1;transform:translate(0,0) rotate(0deg);filter:blur(0)}
+.drum-letter.is-impact{
+  animation:drum-impact-flash 150ms ease-out both;
+}
+@keyframes drum-letter-drop{
+  0%{opacity:0;transform:translateY(-1.05em) rotate(var(--drop-tilt,-2deg));filter:blur(3px)}
+  58%{opacity:1;filter:blur(.35px)}
+  80%{transform:translateY(.035em) rotate(0);filter:blur(0)}
+  90%{transform:translateY(-.045em) rotate(0)}
+  100%{opacity:1;transform:translateY(0) rotate(0);filter:blur(0)}
 }
 @keyframes drum-impact-flash{
-  0%{opacity:1;transform:translateY(.02em) scaleY(.97)}
-  38%{opacity:1;text-shadow:0 0 15px rgba(101,167,227,.42),0 3px 14px rgba(0,0,0,.9)}
-  100%{opacity:1;transform:none}
+  0%{text-shadow:0 3px 14px rgba(0,0,0,.9)}
+  42%{text-shadow:0 0 16px rgba(101,167,227,.48),0 3px 14px rgba(0,0,0,.9);transform:translateY(.02em) scaleY(.97)}
+  100%{transform:none}
+}
+@keyframes drum-head-breathe{
+  0%,8%{opacity:0;transform:scaleX(.7)}
+  26%{opacity:.2}
+  72%{opacity:.34;transform:scaleX(1)}
+  100%{opacity:0;transform:scaleX(1.04)}
 }
 @media(max-width:820px){
   .drum-wordmark{width:100%}
   .drum-name-line{width:max-content;max-width:100%}
-  .drum-wordmark.is-synced-intro::after{width:89%;bottom:-.08em}
+  .drum-wordmark.is-animating::after{width:88%;bottom:-.08em}
 }
 @media(prefers-reduced-motion:reduce){
-  .drum-wordmark.is-synced-intro .drum-letter,
-  .drum-wordmark.is-synced-intro .drum-letter.is-falling,
-  .drum-letter.is-impact{
-    opacity:1!important;
-    animation:none!important;
-    transform:none!important;
-    filter:none!important;
-  }
-  .drum-wordmark.is-synced-intro::after{display:none}
+  .drum-wordmark.is-prepared .drum-letter{opacity:1}
+  .drum-wordmark.is-animating .drum-letter,
+  .drum-wordmark.is-animating::after,
+  .drum-letter.is-impact{animation:none!important}
 }
