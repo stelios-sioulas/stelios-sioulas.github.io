@@ -291,7 +291,7 @@ a.view-all.page-link:hover{color:#fff!important;border-color:var(--accent2)!impo
 header a:focus-visible,header button:focus-visible{outline:3px solid #b7e1ff!important;outline-offset:4px!important}
 #main-content,#top,#live{scroll-margin-top:80px}
 </style>
-<link rel="stylesheet" href="assets/css/hero-drum-intro.css?v=20260927">
+<link rel="stylesheet" href="assets/css/hero-drum-intro.css?v=20260927b">
 </head>
 <body>
 <a class="skip-link" href="#top">Skip to main content</a>
@@ -564,6 +564,7 @@ document.querySelectorAll('.contact-form').forEach(form=>{
   const audio=new Audio('assets/stelios-intro.mp3?v=20260919');
   audio.preload='auto';
   let playToken=0;
+  let playbackRequested=false;
 
   function updateState(playing){
     const greek=document.documentElement.lang==='el';
@@ -581,6 +582,7 @@ document.querySelectorAll('.contact-form').forEach(form=>{
   }
 
   function stopIntro(){
+    playbackRequested=false;
     playToken++;
     try{audio.pause();}catch(e){}
     try{audio.currentTime=0;}catch(e){}
@@ -589,6 +591,8 @@ document.querySelectorAll('.contact-form').forEach(form=>{
   }
 
   function playIntro(){
+    playbackRequested=true;
+    updateState(true);
     const token=++playToken;
     try{
       audio.pause();
@@ -601,14 +605,20 @@ document.querySelectorAll('.contact-form').forEach(form=>{
             window.dispatchEvent(new CustomEvent('stelios:intro-play',{detail:{audio:audio}}));
           }
         }).catch(function(){
-          if(token===playToken) updateState(false);
+          if(token===playToken){
+            playbackRequested=false;
+            updateState(false);
+          }
         });
       }else if(token===playToken){
         updateState(true);
         window.dispatchEvent(new CustomEvent('stelios:intro-play',{detail:{audio:audio}}));
       }
     }catch(e){
-      if(token===playToken) updateState(false);
+      if(token===playToken){
+        playbackRequested=false;
+        updateState(false);
+      }
     }
   }
 
@@ -616,7 +626,7 @@ document.querySelectorAll('.contact-form').forEach(form=>{
     btn.addEventListener('click',function(e){
       e.preventDefault();
       e.stopPropagation();
-      if(!audio.paused && !audio.ended) stopIntro();
+      if(playbackRequested || (!audio.paused && !audio.ended)) stopIntro();
       else playIntro();
     });
   });
@@ -693,6 +703,6 @@ document.querySelectorAll('.contact-form').forEach(form=>{
 <script src="assets/js/media-cms.js"></script>
 <script src="assets/js/profile-cms.js"></script>
 <script src="assets/js/contact-cms.js"></script>
-<script src="assets/js/hero-drum-intro.js?v=20260927"></script>
+<script src="assets/js/hero-drum-intro.js?v=20260927b"></script>
 </body>
 </html>
