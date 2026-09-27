@@ -344,6 +344,7 @@ html[lang="el"] .hero-name{
 header a:focus-visible,header button:focus-visible{outline:3px solid #b7e1ff!important;outline-offset:4px!important}
 #main-content,#top,#live{scroll-margin-top:80px}
 </style>
+<link rel="stylesheet" href="assets/css/hero-drum-intro.css?v=20260927">
 </head>
 <body>
 <a class="skip-link" href="#top">Μετάβαση στο περιεχόμενο</a>
@@ -734,7 +735,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   function autoStart(){
-    if(shouldAutoplay()) playIntro();
+    /* Legacy audio autoplay intentionally disabled.
+       The cinematic hero intro owns sound and enables it only after user interaction. */
+    updateState(false);
   }
 
   updateState(false);
@@ -753,5 +756,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script src="assets/js/media-cms.js"></script>
 <script src="assets/js/profile-cms.js"></script>
 <script src="assets/js/contact-cms.js"></script>
+<script src="assets/js/hero-drum-intro.js?v=20260927"></script>
 </body>
 </html>
