@@ -1500,6 +1500,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     try{audio.pause();}catch(e){}
     try{audio.currentTime=0;}catch(e){}
     updateState(false);
+    window.dispatchEvent(new CustomEvent('stelios:intro-stop'));
   }
 
   function playIntro(){
@@ -1510,12 +1511,16 @@ document.addEventListener('DOMContentLoaded',()=>{
       const result=audio.play();
       if(result&&typeof result.then==='function'){
         result.then(function(){
-          if(token===playToken) updateState(true);
+          if(token===playToken){
+            updateState(true);
+            window.dispatchEvent(new CustomEvent('stelios:intro-play',{detail:{audio:audio}}));
+          }
         }).catch(function(){
           if(token===playToken) updateState(false);
         });
       }else if(token===playToken){
         updateState(true);
+        window.dispatchEvent(new CustomEvent('stelios:intro-play',{detail:{audio:audio}}));
       }
     }catch(e){
       if(token===playToken) updateState(false);
@@ -1584,9 +1589,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   function autoStart(){
-    /* Legacy audio autoplay intentionally disabled.
-       The cinematic hero intro owns sound and enables it only after user interaction. */
-    updateState(false);
+    if(shouldAutoplay()) playIntro();
   }
 
   updateState(false);
