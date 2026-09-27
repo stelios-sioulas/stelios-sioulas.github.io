@@ -199,6 +199,7 @@
         try{ctx.close();}catch(e){}
         window.__steliosWaveformReady=true;
         window.dispatchEvent(new CustomEvent('stelios:waveform-ready'));
+        if(activeAudio && !activeAudio.paused && !activeAudio.ended) scheduleForAudio(activeAudio);
       });
   }
 
