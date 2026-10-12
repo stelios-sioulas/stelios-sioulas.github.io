@@ -110,7 +110,11 @@ try {
       if(config.clickToLoad&&['index.html','index-el.html','mobile.html','mobile-el.html'].includes(file))await waitFor(`document.querySelector('[data-media-cms]')?.dataset.mediaReady==='true'`);
       assert.equal((await evaluate('window.__cspViolations')).length,0,`Unexpected CSP block: ${file} @ ${width}`);
       const current=await visualProbe();
-      if(config.clickToLoad)assert.ok(await evaluate(`Array.from(document.querySelectorAll('.embed-consent')).every(container=>{const prompt=container.querySelector('.embed-consent__prompt');if(!prompt)return true;const a=container.getBoundingClientRect(),b=prompt.getBoundingClientRect();return b.top>=a.top-1&&b.bottom<=a.bottom+1&&b.left>=a.left-1&&b.right<=a.right+1;})`),`Player prompt must fit without clipping: ${file} @ ${width}`);
+      if(config.clickToLoad){
+        const clipped=await evaluate(`Array.from(document.querySelectorAll('.embed-consent')).flatMap((container,index)=>{const prompt=container.querySelector('.embed-consent__prompt');if(!prompt)return [];const a=container.getBoundingClientRect(),b=prompt.getBoundingClientRect();return b.top>=a.top-1&&b.bottom<=a.bottom+1&&b.left>=a.left-1&&b.right<=a.right+1?[]:[{index,container:{w:a.width,h:a.height,x:a.x,y:a.y},prompt:{w:b.width,h:b.height,x:b.x,y:b.y}}];})`);
+        if(clipped.length){await evaluate(`document.documentElement.style.scrollBehavior='auto';document.querySelectorAll('.embed-consent')[${clipped[0].index}].scrollIntoView({behavior:'instant',block:'center'})`);await delay(100);await screenshot('clipped-'+file.replace('.html','')+'-'+width);}
+        assert.deepEqual(clipped,[],`Player prompt must fit without clipping: ${file} @ ${width}: ${JSON.stringify(clipped)}`);
+      }
       assert.ok(current.overflow<=Math.max(width,old?.overflow||width)+1,`New horizontal overflow: ${file} @ ${width}`);
       if(old)for(const [selector,previous]of Object.entries(old.styles)){
         const next=current.styles[selector];assert.ok(next);
