@@ -110,6 +110,7 @@ try {
       if(config.clickToLoad&&['index.html','index-el.html','mobile.html','mobile-el.html'].includes(file))await waitFor(`document.querySelector('[data-media-cms]')?.dataset.mediaReady==='true'`);
       assert.equal((await evaluate('window.__cspViolations')).length,0,`Unexpected CSP block: ${file} @ ${width}`);
       const current=await visualProbe();
+      if(config.clickToLoad)assert.ok(await evaluate(`Array.from(document.querySelectorAll('.embed-consent')).every(container=>{const prompt=container.querySelector('.embed-consent__prompt');if(!prompt)return true;const a=container.getBoundingClientRect(),b=prompt.getBoundingClientRect();return b.top>=a.top-1&&b.bottom<=a.bottom+1&&b.left>=a.left-1&&b.right<=a.right+1;})`),`Player prompt must fit without clipping: ${file} @ ${width}`);
       assert.ok(current.overflow<=Math.max(width,old?.overflow||width)+1,`New horizontal overflow: ${file} @ ${width}`);
       if(old)for(const [selector,previous]of Object.entries(old.styles)){
         const next=current.styles[selector];assert.ok(next);
@@ -129,13 +130,16 @@ try {
       await navigate(file);await waitFor(`document.querySelector('[data-media-cms]')?.dataset.mediaReady==='true'`);
       assert.equal(await evaluate("document.querySelectorAll('iframe').length"),0,file);
       assert.equal(mediaRequests.length,0,'No provider request before selection');
-      await evaluate(`document.querySelector('#media').scrollIntoView()`);await screenshot(file.replace('.html','')+'-players-idle');
+      await evaluate(`document.documentElement.style.scrollBehavior='auto';document.querySelector('#media').scrollIntoView({behavior:'instant',block:'start'})`);await delay(100);await screenshot(file.replace('.html','')+'-players-idle');
       const count=await evaluate("document.querySelectorAll('.embed-consent').length");
       for(let i=0;i<count;i++){
+        const previousRequests=mediaRequests.length;
         const before=await evaluate(`(()=>{const r=document.querySelectorAll('.embed-consent')[${i}].getBoundingClientRect();return {w:r.width,h:r.height};})()`);
         await evaluate(`document.querySelectorAll('.embed-consent')[${i}].querySelector('[data-embed-load]').click()`);
         await waitFor(`document.querySelectorAll('iframe').length===1`);
         await delay(100);
+        for(let wait=0;wait<30&&mediaRequests.length===previousRequests;wait++)await delay(50);
+        assert.equal(mediaRequests.length,previousRequests+1,'Only the selected provider player may be requested');
         assert.equal(await evaluate(`document.querySelectorAll('.embed-consent[data-embed-state="loaded"]').length`),1);
         const after=await evaluate(`(()=>{const r=document.querySelectorAll('.embed-consent')[${i}].getBoundingClientRect();return {w:r.width,h:r.height};})()`);
         assert.deepEqual(after,before,'Loading must preserve the player box');
