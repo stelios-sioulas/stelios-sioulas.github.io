@@ -93,7 +93,7 @@ nav a:hover{color:var(--accent)}
   background:
     linear-gradient(90deg,rgba(7,10,15,.99) 0%,rgba(7,10,15,.90) 42%,rgba(7,10,15,.26) 72%,rgba(7,10,15,.60) 100%),
     radial-gradient(circle at 78% 22%,rgba(58,120,184,.22),transparent 28%),
-    url('assets/bg-hero.webp?v=clean') right center/auto 100% no-repeat,
+    var(--cms-image-hero,url('assets/bg-hero.webp?v=clean')) right center/auto 100% no-repeat,
     linear-gradient(135deg,#0d1420 0%,#070a0f 58%,#05070a 100%);
 }
 .hero:before{
@@ -169,13 +169,13 @@ main > section:not(.hero) .wrap{
   transition:transform .32s cubic-bezier(.2,.7,.2,1);
   transform-origin:center;
 }
-#about{--section-image:url('assets/viber_image_2026-09-14_23-43-36-763.jpg');--section-position:42% center}
-#projects{--section-image:url('assets/bg-projects.webp?v=focus');--section-position:0% 30%;--section-size:150% auto}
-#teaching{--section-image:url('assets/bg-teaching.webp');--section-position:44% center}
-#discography{--section-image:url('assets/bg-discography.webp');--section-position:18% center;--section-size:auto 125%}
-#live{--section-image:url('assets/bg-live.webp?v=bandus');--section-position:50% 42%}
-#media{--section-image:url('assets/bg-media.webp');--section-position:0% 30%;--section-size:150% auto}
-#contact{--section-image:url('assets/bg-contact.webp');--section-position:52% center}
+#about{--section-image:var(--cms-image-about,url('assets/viber_image_2026-09-14_23-43-36-763.jpg'));--section-position:42% center}
+#projects{--section-image:var(--cms-image-projects,url('assets/bg-projects.webp?v=focus'));--section-position:0% 30%;--section-size:150% auto}
+#teaching{--section-image:var(--cms-image-teaching,url('assets/bg-teaching.webp'));--section-position:44% center}
+#discography{--section-image:var(--cms-image-discography,url('assets/bg-discography.webp'));--section-position:18% center;--section-size:auto 125%}
+#live{--section-image:var(--cms-image-live,url('assets/bg-live.webp?v=bandus'));--section-position:50% 42%}
+#media{--section-image:var(--cms-image-media,url('assets/bg-media.webp'));--section-position:0% 30%;--section-size:150% auto}
+#contact{--section-image:var(--cms-image-contact,url('assets/bg-contact.webp'));--section-position:52% center}
 #about::after,#projects::after,#teaching::after,#discography::after,#live::after,#media::after,#contact::after{
   content:"";
   position:absolute;
@@ -1553,5 +1553,6 @@ document.querySelectorAll('.contact-form').forEach(form=>{
 <script src="assets/js/contact-cms.js"></script>
 <script src="assets/js/hero-drum-intro.js?v=20260927c"></script>
 <script defer src="/assets/js/web-analytics.js"></script>
+<script src="assets/js/images-cms.js"></script>
 </body>
 </html>

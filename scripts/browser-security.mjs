@@ -157,6 +157,8 @@ try {
       assert.equal(await evaluate("document.querySelectorAll('iframe').length"),0,'No saved provider consent on reload');
     }
     // CMS failure retains static placeholders and their working load control.
+    // The previous mobile scenario leaves a 390px viewport; index redirects there.
+    await resize(1280);
     failMedia=true;await navigate('index.html');await evaluate(`document.querySelector('[data-embed-load]').click()`);
     assert.equal(await evaluate("document.querySelectorAll('iframe').length"),1);failMedia=false;checks++;
   }else{

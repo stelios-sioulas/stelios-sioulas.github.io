@@ -26,7 +26,7 @@ jobs:
         run: node scripts/security-policy.mjs --check
       - name: Verify tokens, source policies, embeds and contact protections
         working-directory: source
-        run: node --test scripts/security.test.mjs
+        run: node --test scripts/security.test.mjs scripts/images.test.mjs
       - name: Browser security and appearance checks
         working-directory: source
         env:

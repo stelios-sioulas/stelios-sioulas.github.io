@@ -3,6 +3,102 @@ media:
   output: /assets
 
 content:
+  - name: images
+    label: ΦΩΤΟΓΡΑΦΙΕΣ / IMAGES
+    type: file
+    path: data/images.json
+    format: json
+    operations: { create: false, delete: false }
+    fields:
+      - name: hero
+        label: HERO — Κεντρική φωτογραφία
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: about
+        label: ABOUT — Φωτογραφία προφίλ
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: projects
+        label: PROJECTS — Φόντο ενότητας και σελίδας
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: teaching
+        label: TEACHING — Φόντο ενότητας και σελίδας
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: discography
+        label: DISCOGRAPHY — Φόντο ενότητας και σελίδας
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: live
+        label: LIVE — Φόντο ενότητας και σελίδας
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: media
+        label: MEDIA / PRESS KIT — Φόντο
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+      - name: contact
+        label: CONTACT — Φόντο επικοινωνίας
+        type: object
+        fields:
+          - name: image
+            label: Φωτογραφία / Image
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+              rename: safe
+            description: Επιλογή υπάρχουσας ή ανέβασμα νέας εικόνας. Ίδια εικόνα σε EN/EL, desktop/mobile. Κενό ή μη διαθέσιμο αρχείο διατηρεί την αρχική φωτογραφία και το κάδρο. Προτεινόμενο WebP, έως 2 MB. Οι εικόνες φόντου είναι διακοσμητικές. LIVE αφίσες και λήψη PRESS KIT αλλάζουν στις δικές τους ενότητες.
+
   - name: profile
     label: HERO / ABOUT
     type: file
