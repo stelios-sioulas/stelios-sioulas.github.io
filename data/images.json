@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "image": "/assets/bg-hero.webp"
+  },
+  "about": {
+    "image": "/assets/viber_image_2026-09-14_23-43-36-763.jpg"
+  },
+  "projects": {
+    "image": "/assets/bg-projects.webp"
+  },
+  "teaching": {
+    "image": "/assets/bg-teaching.webp"
+  },
+  "discography": {
+    "image": "/assets/bg-discography.webp"
+  },
+  "live": {
+    "image": "/assets/bg-live.webp"
+  },
+  "media": {
+    "image": "/assets/bg-media.webp"
+  },
+  "contact": {
+    "image": "/assets/bg-contact.webp"
+  }
+}
