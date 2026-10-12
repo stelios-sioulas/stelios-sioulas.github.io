@@ -1,4 +1,4 @@
-/* No provider request is made until the visitor loads that individual player. */
+/* Players load only after a click. YouTube poster images use anonymous, credential-free requests. */
 (() => {
   const el = document.documentElement.lang === 'el';
   const labels = { youtube: 'YouTube', instagram: 'Instagram', tiktok: 'TikTok' };
@@ -8,7 +8,7 @@
       if (url.protocol !== 'https:' || url.username || url.password || url.port || url.hash) return null;
       let match;
       if (['www.youtube.com', 'www.youtube-nocookie.com'].includes(url.hostname) && (match = url.pathname.match(/^\/embed\/([\w-]{11})$/))) {
-        return { platform: 'youtube', src: `https://www.youtube-nocookie.com/embed/${match[1]}?rel=0`, link: `https://www.youtube.com/watch?v=${match[1]}` };
+        return { platform: 'youtube', videoId: match[1], src: `https://www.youtube-nocookie.com/embed/${match[1]}?rel=0`, link: `https://www.youtube.com/watch?v=${match[1]}` };
       }
       if (url.hostname === 'www.instagram.com' && (match = url.pathname.match(/^\/(?:reel|p)\/([\w-]+)\/embed\/?$/))) {
         return { platform: 'instagram', src: `https://www.instagram.com/reel/${match[1]}/embed/`, link: `https://www.instagram.com/reel/${match[1]}/` };
@@ -23,6 +23,45 @@
     const info = parseEmbed(container.dataset.embedSrc);
     if (!info) return;
     const provider = labels[info.platform];
+    if (info.platform === 'youtube') {
+      const content = document.createElement('div');
+      content.className = 'embed-consent__prompt embed-consent__prompt--youtube';
+      const poster = document.createElement('img');
+      poster.className = 'embed-consent__thumbnail';
+      poster.alt = '';
+      poster.loading = 'lazy';
+      poster.decoding = 'async';
+      // Never send cookies or a referring page URL with thumbnail requests.
+      poster.crossOrigin = 'anonymous';
+      poster.referrerPolicy = 'no-referrer';
+      poster.onerror = () => { poster.hidden = true; };
+      poster.src = `https://i.ytimg.com/vi/${info.videoId}/hqdefault.jpg`;
+      const providerLabel = document.createElement('strong');
+      providerLabel.className = 'embed-consent__provider';
+      providerLabel.textContent = provider;
+      const play = document.createElement('button');
+      play.type = 'button';
+      play.dataset.embedLoad = '';
+      play.className = 'embed-consent__play';
+      play.setAttribute('aria-label', el ? `Αναπαραγωγή: ${container.dataset.embedTitle || 'βίντεο YouTube'}` : `Play: ${container.dataset.embedTitle || 'YouTube video'}`);
+      const playIcon = document.createElement('span');
+      playIcon.className = 'embed-consent__play-icon';
+      playIcon.setAttribute('aria-hidden', 'true');
+      playIcon.textContent = '▶';
+      play.appendChild(playIcon);
+      const notice = document.createElement('span');
+      notice.className = 'embed-consent__notice';
+      notice.textContent = el ? 'Το YouTube ενδέχεται να χρησιμοποιήσει cookies μετά την αναπαραγωγή.' : 'YouTube may use cookies after playback starts.';
+      const link = document.createElement('a');
+      link.href = info.link;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = el ? 'Άνοιγμα στο YouTube ↗' : 'Open on YouTube ↗';
+      content.append(poster, providerLabel, play, notice, link);
+      container.replaceChildren(content);
+      container.dataset.embedState = 'idle';
+      return;
+    }
     const content = document.createElement('div');
     content.className = 'embed-consent__prompt';
     const title = document.createElement('strong');
@@ -61,9 +100,9 @@
     const info = parseEmbed(container.dataset.embedSrc);
     if (!info) return;
     const frame = document.createElement('iframe');
-    frame.src = info.src;
+    frame.src = info.src + (info.platform === 'youtube' ? '&autoplay=1' : '');
     frame.title = container.dataset.embedTitle || labels[info.platform];
-    frame.allow = 'encrypted-media; picture-in-picture; fullscreen';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.allowFullscreen = true;
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     const close = document.createElement('button');
@@ -73,5 +112,6 @@
     container.replaceChildren(frame, close);
     close.focus();
   });
+  document.querySelectorAll('.embed-consent[data-embed-src]').forEach(prompt);
   window.siteEmbeds = Object.freeze({ create, parseEmbed });
 })();
