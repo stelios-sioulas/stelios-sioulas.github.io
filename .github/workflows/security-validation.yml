@@ -1,0 +1,41 @@
+name: Website security validation
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: source
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        if: github.event_name == 'pull_request'
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: baseline
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.19.0
+      - name: Verify generated CSP is current
+        working-directory: source
+        run: node scripts/security-policy.mjs --check
+      - name: Verify tokens, source policies, embeds and contact protections
+        working-directory: source
+        run: node --test scripts/security.test.mjs
+      - name: Browser security and appearance checks
+        working-directory: source
+        env:
+          BASELINE_ROOT: ${{ github.workspace }}/baseline
+        run: |
+          if [ ! -d "$BASELINE_ROOT" ]; then unset BASELINE_ROOT; fi
+          node scripts/browser-security.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: website-security-preview
+          path: source/qa-reports/

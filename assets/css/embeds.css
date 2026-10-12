@@ -1,0 +1,14 @@
+.embed-consent{position:relative;width:100%;aspect-ratio:16/9;display:grid;place-items:center;container-type:inline-size;background:linear-gradient(145deg,var(--panel2,#151f2c),var(--panel,#101722));color:var(--text,#f4f7fa);overflow:hidden}
+.embed-consent__prompt{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:8px;max-width:100%}
+.embed-consent__prompt strong{font-family:Oswald,sans-serif;font-size:17px;line-height:1.25}
+.embed-consent__prompt p{margin:0!important;max-width:38ch;font-size:12px!important;line-height:1.4;color:var(--muted,#aab5c2)}
+.embed-consent button{border:1px solid var(--accent,#3a78b8);background:var(--panel,#101722);color:var(--accent2,#65a7e3);font:600 13px Oswald,sans-serif;letter-spacing:.04em;padding:10px 16px;min-height:44px;cursor:pointer}
+.embed-consent button:hover{background:var(--accent,#3a78b8);color:#fff}
+.embed-consent button:focus-visible,.embed-consent a:focus-visible{outline:2px solid var(--accent2,#65a7e3);outline-offset:3px}
+.embed-consent a{font-size:12px;line-height:1.4;color:var(--muted,#aab5c2);text-decoration:underline;text-underline-offset:3px}
+.embed-consent>iframe{position:absolute;inset:0;width:100%!important;height:100%!important;border:0;display:block}
+.embed-consent__close{position:absolute;right:8px;top:8px;z-index:1;background:rgba(7,10,15,.94)!important;font-size:11px!important;padding:6px 10px!important}
+.instagram-embed-shell>.embed-consent{height:100%;aspect-ratio:auto}
+.tiktok-player-shell>.embed-consent{height:100%;min-height:500px;aspect-ratio:auto}
+@media(max-width:480px){.embed-consent__prompt{gap:4px;padding:8px}.embed-consent__prompt strong{font-size:16px}.embed-consent__prompt p{font-size:11px!important;line-height:1.4}.embed-consent button{padding:6px 10px;font-size:12px}.embed-consent a{font-size:11px;line-height:1.4}}
+@container(min-width:420px){.embed-consent__prompt{gap:12px;padding:24px}.embed-consent__prompt strong{font-size:23px}.embed-consent__prompt p{font-size:13px!important;line-height:1.5}}
