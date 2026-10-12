@@ -30,13 +30,14 @@ const base=`http://127.0.0.1:${server.address().port}`;
 const profile=await mkdtemp(path.join(tmpdir(),'music-security-'));
 const chrome=spawn(process.env.CHROME_PATH||'/usr/bin/google-chrome',['--headless','--no-sandbox','--disable-dev-shm-usage','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{stdio:['ignore','ignore','pipe']});
 let chromeError,log='';chrome.on('error',error=>{chromeError=error;});chrome.stderr.on('data',data=>{log=(log+data).slice(-10000);});
+chrome.on('exit',(code,signal)=>{chromeError=new Error(`Chrome exited (${code??signal}): ${log}`);});
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 let socket;
 try {
   let target;
-  for(let i=0;i<100;i++){
+  for(let i=0;i<120;i++){
     if(chromeError)throw chromeError;
-    try{const port=(await readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0];target=await(await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();break;}catch{await delay(100);}
+    try{const port=(await readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0];target=await(await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'})).json();break;}catch{await delay(250);}
   }
   assert.ok(target?.webSocketDebuggerUrl,log);
   socket=new WebSocket(target.webSocketDebuggerUrl);
