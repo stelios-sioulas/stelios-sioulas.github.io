@@ -1,0 +1,18 @@
+{
+  "name": "Stelios Sioulas",
+  "hosts": [
+    "steliossioulas.gr",
+    "www.steliossioulas.gr"
+  ],
+  "token": "8def2438908b415890fa5d5d29f50cb4",
+  "formEndpoint": "https://formspree.io/f/mvkggpvg",
+  "frameOrigins": [
+    "https://www.youtube-nocookie.com",
+    "https://www.instagram.com",
+    "https://www.tiktok.com"
+  ],
+  "clickToLoad": true,
+  "imageSources": [
+    "https://static.tildacdn.com/tild3038-3065-4234-b131-303461356330/image.png"
+  ]
+}
