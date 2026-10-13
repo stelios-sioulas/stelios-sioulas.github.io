@@ -1,0 +1,86 @@
+name: Fetch one-time Instagram and TikTok thumbnails
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - .github/workflows/fetch-social-thumbnails.yml
+permissions:
+  contents: write
+jobs:
+  thumbnails:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feat/instagram-tiktok-local-thumbnails-20261013' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+      - name: Fetch verified public video preview images (build only)
+        run: |
+          python3 - <<'PY'
+          import json, re, html
+          from pathlib import Path
+          from urllib.parse import quote, urljoin
+          from urllib.request import Request, urlopen
+          UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+          def get(url, accept='text/html', referer=None):
+              headers={'User-Agent':UA,'Accept':accept,'Accept-Language':'en-US,en;q=0.9'}
+              if referer: headers['Referer']=referer
+              req=Request(url,headers=headers)
+              with urlopen(req, timeout=25) as res:
+                  body=res.read(5_000_000)
+                  return body,res.headers.get('Content-Type',''),res.geturl(),res.status
+          def candidates(text):
+              found=[]
+              for exp in [r'<meta[^>]+property=["\\\']og:image["\\\'][^>]+content=["\\\']([^"\\\']+)', r'<meta[^>]+content=["\\\']([^"\\\']+)["\\\'][^>]+property=["\\\']og:image', r'<meta[^>]+name=["\\\']twitter:image["\\\'][^>]+content=["\\\']([^"\\\']+)',r'<meta[^>]+content=["\\\']([^"\\\']+)["\\\'][^>]+name=["\\\']twitter:image']:
+                  found += re.findall(exp,text,re.I)
+              return [html.unescape(u.replace('\\/','/')) for u in found]
+          urls={
+             'tiktok': 'https://www.tiktok.com/@stelios.sioulas.t/video/7653913479035882774',
+             'instagram': 'https://www.instagram.com/reel/DcA1k6hNsSq/'
+          }
+          folder=Path('assets/video-thumbnails');folder.mkdir(exist_ok=True)
+          for platform,url in urls.items():
+              leads=[]
+              pages=[]
+              if platform=='tiktok':
+                  pages += ['https://www.tiktok.com/oembed?url='+quote(url,safe='')]
+              else:
+                  pages += [url+'embed/', url+'?hl=en', 'https://www.instagram.com/p/DcA1k6hNsSq/']
+              if platform=='tiktok': pages += [url+'?lang=en']
+              for page in pages:
+                  try:
+                      body,typ,end,status=get(page)
+                      text=body.decode('utf-8','replace')
+                      print(platform,'page',status,typ,len(body),end[:120])
+                      if typ.startswith('application/json'):
+                          data=json.loads(text)
+                          print(platform,'json keys',list(data.keys())[:30])
+                          for key in ['thumbnail_url','cover','thumbnail_url_with_play_button']:
+                              if isinstance(data.get(key),str): leads.append(data[key])
+                      leads.extend(candidates(text))
+                      print(platform,'found image candidates',len(leads))
+                  except Exception as e: print(platform,'page error',str(e)[:300])
+              for thumb in dict.fromkeys(leads):
+                  try:
+                      img,typ,end,status=get(thumb,accept='image/avif,image/webp,image/apng,image/jpeg,image/png,*/*',referer=url)
+                      print(platform,'candidate',status,typ,len(img),end[:120])
+                      if 3500<len(img)<1_000_000 and img[:3]==bytes([255,216,255]) and img[-2:]==bytes([255,217]):
+                          dest=folder/(platform+'-featured.jpg');dest.write_bytes(img)
+                          print(platform,'SUCCESS',dest,len(img));break
+                      if img[:8]==bytes([137,80,78,71,13,10,26,10]): print(platform,'PNG found, convert needed')
+                      if img[:4]==b'RIFF': print(platform,'WebP found, convert needed')
+                  except Exception as e:print(platform,'thumbnail error',str(e)[:300])
+              else: print(platform,'NO USABLE IMAGE FOUND')
+          PY
+      - name: Commit downloaded images
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/video-thumbnails/instagram-featured.jpg assets/video-thumbnails/tiktok-featured.jpg 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No verified JPEGs available"
+          else
+            git commit -m "Self-host social video preview images"
+            git push origin "HEAD:feat/instagram-tiktok-local-thumbnails-20261013"
+          fi
