@@ -1,4 +1,4 @@
-/* Players load only after a click. YouTube poster images use anonymous, credential-free requests. */
+/* Click-to-load media: YouTube preview images are hosted on this site. */
 (() => {
   const el = document.documentElement.lang === 'el';
   const labels = { youtube: 'YouTube', instagram: 'Instagram', tiktok: 'TikTok' };
@@ -31,11 +31,10 @@
       poster.alt = '';
       poster.loading = 'lazy';
       poster.decoding = 'async';
-      // Never send cookies or a referring page URL with thumbnail requests.
-      poster.crossOrigin = 'anonymous';
+      // Local previews never contact a video provider before playback.
       poster.referrerPolicy = 'no-referrer';
       poster.onerror = () => { poster.hidden = true; };
-      poster.src = `https://i.ytimg.com/vi/${info.videoId}/hqdefault.jpg`;
+      poster.src = `/assets/video-thumbnails/${info.videoId}.jpg`;
       const providerLabel = document.createElement('strong');
       providerLabel.className = 'embed-consent__provider';
       providerLabel.textContent = provider;
