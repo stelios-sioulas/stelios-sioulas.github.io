@@ -111,6 +111,8 @@
     container.replaceChildren(frame, close);
     close.focus();
   });
-  document.querySelectorAll('.embed-consent[data-embed-src]').forEach(prompt);
+  if (typeof document.querySelectorAll === 'function') {
+    document.querySelectorAll('.embed-consent[data-embed-src]').forEach(prompt);
+  }
   window.siteEmbeds = Object.freeze({ create, parseEmbed });
 })();
