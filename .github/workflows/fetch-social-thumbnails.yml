@@ -58,7 +58,7 @@ jobs:
               if platform=='tiktok':
                   pages += ['https://www.tiktok.com/oembed?url='+quote(url,safe='')]
               else:
-                  pages += [url+'embed/', url+'?hl=en', 'https://www.instagram.com/p/DcA1k6hNsSq/', url+'?__a=1&__d=dis','https://www.instagram.com/api/v1/oembed/?url='+quote(url,safe='')]
+                  pages += ['https://graph.facebook.com/v25.0/instagram_oembed?url='+quote(url,safe='')+'&fields=thumbnail_url,author_name,provider_name,provider_url', url+'embed/', url+'embed/captioned/',url+'?hl=en', 'https://www.instagram.com/p/DcA1k6hNsSq/', url+'?__a=1&__d=dis','https://www.instagram.com/api/v1/oembed/?url='+quote(url,safe='')]
               if platform=='tiktok': pages += [url+'?lang=en']
               for page in pages:
                   try:
@@ -75,7 +75,7 @@ jobs:
                           parser=ImageMeta();parser.feed(text);leads.extend(parser.urls)
                           for term in ['og:image','display_url','thumbnail_src','scontent','cdninstagram','video_url','login','not available']:
                               print('instagram marker',term,text.lower().count(term.lower()))
-                          matches=re.findall(r'https?[^\s"'<>]+?\.(?:jpg|jpeg|webp)[^\s"'<>]*',text,re.I)
+                          matches=[]
                           leads.extend(html.unescape(u.replace('\\/','/')) for u in matches if 'fbcdn' in u or 'instagram' in u)
                           print('instagram URLs found',len(matches))
                       print(platform,'found image candidates',len(leads))
