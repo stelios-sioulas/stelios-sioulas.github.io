@@ -17,8 +17,12 @@ jobs:
           persist-credentials: true
       - name: Fetch verified public video preview images (build only)
         run: |
+          python3 -m pip -q install Pillow
           python3 - <<'PY'
           import json, re, html
+          from PIL import Image
+          from io import BytesIO
+          from html.parser import HTMLParser
           from pathlib import Path
           from urllib.parse import quote, urljoin
           from urllib.request import Request, urlopen
@@ -30,6 +34,14 @@ jobs:
               with urlopen(req, timeout=25) as res:
                   body=res.read(5_000_000)
                   return body,res.headers.get('Content-Type',''),res.geturl(),res.status
+          class ImageMeta(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.urls=[]
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  if tag=='meta' and (a.get('property') in ['og:image','og:image:secure_url'] or a.get('name') in ['twitter:image','twitter:image:src']):
+                      if a.get('content'): self.urls.append(a['content'])
           def candidates(text):
               found=[]
               for exp in [r'<meta[^>]+property=["\\\']og:image["\\\'][^>]+content=["\\\']([^"\\\']+)', r'<meta[^>]+content=["\\\']([^"\\\']+)["\\\'][^>]+property=["\\\']og:image', r'<meta[^>]+name=["\\\']twitter:image["\\\'][^>]+content=["\\\']([^"\\\']+)',r'<meta[^>]+content=["\\\']([^"\\\']+)["\\\'][^>]+name=["\\\']twitter:image']:
@@ -46,7 +58,7 @@ jobs:
               if platform=='tiktok':
                   pages += ['https://www.tiktok.com/oembed?url='+quote(url,safe='')]
               else:
-                  pages += [url+'embed/', url+'?hl=en', 'https://www.instagram.com/p/DcA1k6hNsSq/']
+                  pages += [url+'embed/', url+'?hl=en', 'https://www.instagram.com/p/DcA1k6hNsSq/', url+'?__a=1&__d=dis','https://www.instagram.com/api/v1/oembed/?url='+quote(url,safe='')]
               if platform=='tiktok': pages += [url+'?lang=en']
               for page in pages:
                   try:
@@ -59,17 +71,25 @@ jobs:
                           for key in ['thumbnail_url','cover','thumbnail_url_with_play_button']:
                               if isinstance(data.get(key),str): leads.append(data[key])
                       leads.extend(candidates(text))
+                      if platform=='instagram':
+                          parser=ImageMeta();parser.feed(text);leads.extend(parser.urls)
+                          for term in ['og:image','display_url','thumbnail_src','scontent','cdninstagram','video_url','login','not available']:
+                              print('instagram marker',term,text.lower().count(term.lower()))
+                          matches=re.findall(r'https?[^\s"'<>]+?\.(?:jpg|jpeg|webp)[^\s"'<>]*',text,re.I)
+                          leads.extend(html.unescape(u.replace('\\/','/')) for u in matches if 'fbcdn' in u or 'instagram' in u)
+                          print('instagram URLs found',len(matches))
                       print(platform,'found image candidates',len(leads))
                   except Exception as e: print(platform,'page error',str(e)[:300])
               for thumb in dict.fromkeys(leads):
                   try:
                       img,typ,end,status=get(thumb,accept='image/avif,image/webp,image/apng,image/jpeg,image/png,*/*',referer=url)
                       print(platform,'candidate',status,typ,len(img),end[:120])
-                      if 3500<len(img)<1_000_000 and img[:3]==bytes([255,216,255]) and img[-2:]==bytes([255,217]):
-                          dest=folder/(platform+'-featured.jpg');dest.write_bytes(img)
-                          print(platform,'SUCCESS',dest,len(img));break
-                      if img[:8]==bytes([137,80,78,71,13,10,26,10]): print(platform,'PNG found, convert needed')
-                      if img[:4]==b'RIFF': print(platform,'WebP found, convert needed')
+                      if 3500<len(img)<5_000_000 and (img[:3]==bytes([255,216,255]) or img[:8]==bytes([137,80,78,71,13,10,26,10]) or img[:4]==b'RIFF'):
+                          dest=folder/(platform+'-featured.jpg')
+                          im=Image.open(BytesIO(img)).convert('RGB')
+                          im.thumbnail((1080,1080))
+                          im.save(dest,'JPEG',quality=84,optimize=True)
+                          print(platform,'SUCCESS',dest,dest.stat().st_size,im.size);break
                   except Exception as e:print(platform,'thumbnail error',str(e)[:300])
               else: print(platform,'NO USABLE IMAGE FOUND')
           PY
