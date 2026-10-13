@@ -1,4 +1,4 @@
-/* Click-to-load media: YouTube preview images are hosted on this site. */
+/* Click-to-load media: local video preview images, no provider request before playback. */
 (() => {
   const el = document.documentElement.lang === 'el';
   const labels = { youtube: 'YouTube', instagram: 'Instagram', tiktok: 'TikTok' };
@@ -11,10 +11,10 @@
         return { platform: 'youtube', videoId: match[1], src: `https://www.youtube-nocookie.com/embed/${match[1]}?rel=0`, link: `https://www.youtube.com/watch?v=${match[1]}` };
       }
       if (url.hostname === 'www.instagram.com' && (match = url.pathname.match(/^\/(?:reel|p)\/([\w-]+)\/embed\/?$/))) {
-        return { platform: 'instagram', src: `https://www.instagram.com/reel/${match[1]}/embed/`, link: `https://www.instagram.com/reel/${match[1]}/` };
+        return { platform: 'instagram', videoId: match[1], src: `https://www.instagram.com/reel/${match[1]}/embed/`, link: `https://www.instagram.com/reel/${match[1]}/` };
       }
       if (url.hostname === 'www.tiktok.com' && (match = url.pathname.match(/^\/player\/v1\/(\d{16,22})$/))) {
-        return { platform: 'tiktok', src: `https://www.tiktok.com/player/v1/${match[1]}?description=1&music_info=1&rel=0`, link: `https://www.tiktok.com/@stelios.sioulas.t/video/${match[1]}` };
+        return { platform: 'tiktok', videoId: match[1], src: `https://www.tiktok.com/player/v1/${match[1]}?description=1&music_info=1&rel=0`, link: `https://www.tiktok.com/@stelios.sioulas.t/video/${match[1]}` };
       }
     } catch {}
     return null;
@@ -23,9 +23,13 @@
     const info = parseEmbed(container.dataset.embedSrc);
     if (!info) return;
     const provider = labels[info.platform];
-    if (info.platform === 'youtube') {
+    const preview =
+      info.platform === 'youtube' ? `/assets/video-thumbnails/${info.videoId}.jpg` :
+      info.platform === 'instagram' && info.videoId === 'DcA1k6hNsSq' ? '/assets/video-thumbnails/instagram-featured.jpg' :
+      info.platform === 'tiktok' && info.videoId === '7653913479035882774' ? '/assets/video-thumbnails/tiktok-featured.jpg' : '';
+    if (preview) {
       const content = document.createElement('div');
-      content.className = 'embed-consent__prompt embed-consent__prompt--youtube';
+      content.className = 'embed-consent__prompt embed-consent__prompt--preview';
       const poster = document.createElement('img');
       poster.className = 'embed-consent__thumbnail';
       poster.alt = '';
@@ -34,7 +38,7 @@
       // Local previews never contact a video provider before playback.
       poster.referrerPolicy = 'no-referrer';
       poster.onerror = () => { poster.hidden = true; };
-      poster.src = `/assets/video-thumbnails/${info.videoId}.jpg`;
+      poster.src = preview;
       const providerLabel = document.createElement('strong');
       providerLabel.className = 'embed-consent__provider';
       providerLabel.textContent = provider;
@@ -42,7 +46,7 @@
       play.type = 'button';
       play.dataset.embedLoad = '';
       play.className = 'embed-consent__play';
-      play.setAttribute('aria-label', el ? `Αναπαραγωγή: ${container.dataset.embedTitle || 'βίντεο YouTube'}` : `Play: ${container.dataset.embedTitle || 'YouTube video'}`);
+      play.setAttribute('aria-label', el ? `Αναπαραγωγή: ${container.dataset.embedTitle || 'βίντεο ' + provider}` : `Play: ${container.dataset.embedTitle || provider + ' video'}`);
       const playIcon = document.createElement('span');
       playIcon.className = 'embed-consent__play-icon';
       playIcon.setAttribute('aria-hidden', 'true');
@@ -50,12 +54,12 @@
       play.appendChild(playIcon);
       const notice = document.createElement('span');
       notice.className = 'embed-consent__notice';
-      notice.textContent = el ? 'Το YouTube ενδέχεται να χρησιμοποιήσει cookies μετά την αναπαραγωγή.' : 'YouTube may use cookies after playback starts.';
+      notice.textContent = el ? `Το ${provider} ενδέχεται να χρησιμοποιήσει cookies μετά το Play.` : `${provider} may use cookies after you press Play.`;
       const link = document.createElement('a');
       link.href = info.link;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.textContent = el ? 'Άνοιγμα στο YouTube ↗' : 'Open on YouTube ↗';
+      link.textContent = el ? `Άνοιγμα στο ${provider} ↗` : `Open on ${provider} ↗`;
       content.append(poster, providerLabel, play, notice, link);
       container.replaceChildren(content);
       container.dataset.embedState = 'idle';
