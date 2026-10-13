@@ -35,7 +35,7 @@ jobs:
                       with urlopen(req, timeout=25) as response:
                           data = response.read()
                       assert 2500 < len(data) < 500000, f"Bad size {len(data)}"
-                      assert data[:3] == b"\\xff\\xd8\\xff" and data[-2:] == b"\\xff\\xd9", f"Not a JPEG: type={response.headers.get('Content-Type')}, head={data[:50]!r}, tail={data[-10:]!r}"
+                      assert data[:3] == bytes([255, 216, 255]) and data[-2:] == bytes([255, 217]), "Not a valid JPEG"
                       dest.write_bytes(data)
                       print(f"{vid}: {len(data)} bytes from {host}")
                       break
