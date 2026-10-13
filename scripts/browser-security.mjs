@@ -122,7 +122,10 @@ try {
         assert.equal(next.size,previous.size,`Font size changed: ${file} ${selector}`);
         assert.equal(next.color,previous.color,`Color changed: ${file} ${selector}`);
         assert.ok(Math.abs(next.width-previous.width)<2,`Width changed: ${file} ${selector}`);
-        assert.ok(Math.abs(next.height-previous.height)<3,`Height changed: ${file} ${selector}: ${previous.height} -> ${next.height}`);
+        // The explicitly requested removal of the duplicate Media CTA shortens only this section.
+        const approvedMediaReduction = ['index.html','index-el.html'].includes(file) && selector==='#media'
+          && next.height < previous.height && previous.height-next.height < 350;
+        assert.ok(approvedMediaReduction || Math.abs(next.height-previous.height)<3,`Height changed: ${file} ${selector}: ${previous.height} -> ${next.height}`);
       }
       if(file.startsWith('press-kit')){await evaluate(`document.querySelector('[data-print-page]').click()`);assert.equal(await evaluate('window.__printCalls'),1);}
       checks++;
