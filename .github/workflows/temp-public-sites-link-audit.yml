@@ -1,0 +1,169 @@
+name: One-time public sites link audit (read-only)
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - .github/workflows/temp-public-sites-link-audit.yml
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install audit dependencies
+        run: python3 -m pip -q install requests beautifulsoup4
+      - name: Crawl all three published sites (GET only, no writes)
+        run: |
+          import json, re, sys, time
+          from pathlib import Path
+          from collections import deque, defaultdict
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+          from urllib.parse import urljoin, urlsplit, urlunsplit, urldefrag
+          from xml.etree import ElementTree as ET
+          import requests
+          from bs4 import BeautifulSoup
+          
+          ROOTS=[
+            'https://steliossioulas.gr/',
+            'https://uptheprisoners.gr/',
+            'https://storyfields.gr/',
+          ]
+          S=requests.Session()
+          S.headers.update({'User-Agent':'Mozilla/5.0 (compatible; LinkAudit/1.0; user-initiated site quality verification)','Accept-Language':'en;q=0.9'})
+          def fetch(u,limit=1700000):
+              try:
+                  resp=S.get(u,timeout=(7,12),allow_redirects=True,stream=True)
+                  content=b''
+                  typ=resp.headers.get('content-type','').split(';')[0].strip().lower()
+                  if typ in ['text/html','application/xhtml+xml','application/xml','text/xml','application/json','text/plain']:
+                      for chunk in resp.iter_content(32768):
+                          content+=chunk
+                          if len(content)>=limit: break
+                  resp.close()
+                  return {'status':resp.status_code,'final':resp.url,'type':typ,'html':content.decode('utf-8','replace') if 'html' in typ else '', 'content':content.decode('utf-8','replace') if typ in ['application/xml','text/xml','text/plain'] else ''}
+              except Exception as e:
+                  return {'status':0,'final':u,'type':'','html':'','content':'','error':str(e)[:200]}
+          
+          def canonical(u):
+              try:
+                  a=urlsplit(u.strip())
+                  if a.scheme not in ('http','https') or not a.netloc or a.username: return None
+                  return urlunsplit((a.scheme.lower(),a.netloc.lower(),a.path or '/',a.query,''))
+              except: return None
+          
+          def host(u): return (urlsplit(u).hostname or '').lower().removeprefix('www.')
+          def webpage(u):
+              p=urlsplit(u).path.lower()
+              return p.endswith(('/', '.html', '.htm')) or '.' not in p.rsplit('/',1)[-1]
+          
+          def parse_sitemap(root):
+              found=[]
+              pending=[urljoin(root,'sitemap.xml')]
+              visited=set()
+              while pending and len(visited)<12:
+                  url=pending.pop(0)
+                  if url in visited: continue
+                  visited.add(url)
+                  res=fetch(url,900000)
+                  if res['status']!=200: 
+                      print('SITEMAP_ERROR',root,url,res['status'],res.get('error',''))
+                      continue
+                  body=res['content']
+                  if not body:
+                      continue
+                  try:
+                      node=ET.fromstring(body)
+                      locs=[x.text.strip() for x in node.iter() if x.tag.endswith('loc') and x.text]
+                      for loc in locs[:500]:
+                          if loc.lower().endswith('.xml') and host(loc)==host(root): pending.append(loc)
+                          elif host(loc)==host(root): found.append(loc)
+                  except Exception as e:
+                      print('SITEMAP_PARSE_ERROR',url,str(e)[:120])
+              return found
+          
+          report={}
+          all_externals=defaultdict(set)
+          for root in ROOTS:
+              q=deque(dict.fromkeys([root]+parse_sitemap(root)))
+              pages={}
+              src=defaultdict(set)
+              hashes=defaultdict(set)
+              visited=set()
+              while q and len(visited)<130:
+                  url=canonical(q.popleft())
+                  if not url or url in visited: continue
+                  if host(url)!=host(root): continue
+                  visited.add(url)
+                  res=fetch(url)
+                  pages[url]={'status':res['status'],'final':res['final'],'type':res['type'],'error':res.get('error','')}
+                  if res['status']!=200 or not res['html']: continue
+                  soup=BeautifulSoup(res['html'],'html.parser')
+                  existing={n.get('id') for n in soup.find_all(id=True)}
+                  for element in soup.select('a[href],link[href],img[src],script[src],iframe[src],source[src],video[poster]'):
+                      raw=element.get('href') or element.get('src') or element.get('poster')
+                      if not raw or raw.startswith(('#','mailto:','tel:','data:','javascript:','blob:')): continue
+                      full=urljoin(res['final'],raw)
+                      fragment=urlsplit(full).fragment
+                      target=canonical(urldefrag(full)[0])
+                      if not target: continue
+                      if host(target)==host(root):
+                          src[target].add(url)
+                          if fragment and target==url and fragment not in existing: hashes[(url,fragment)].add(url)
+                          if webpage(target) and target not in visited and len(q)<200: q.append(target)
+                      elif element.name=='a':
+                          all_externals[target].add(root+' ('+urlsplit(url).path+')')
+              targets=sorted(set(src)|set(pages))
+              def evaluate(link): return (link,fetch(link,220000))
+              with ThreadPoolExecutor(max_workers=10) as pool:
+                  checked=dict(pool.map(evaluate,targets))
+              issues=[]
+              blocked=[]
+              redirects=[]
+              for target,response in checked.items():
+                  code=response['status']
+                  origin=list(src.get(target,[]))[:3]
+                  record={'url':target,'status':code,'final':response['final'],'from':origin}
+                  if code in [404,410,451] or code==0: 
+                      record['detail']=response.get('error','')
+                      issues.append(record)
+                  elif code in [401,403,429,500,502,503,504]:
+                      blocked.append(record)
+                  elif host(response['final'])!=host(root):
+                      redirects.append(record)
+              report[root]={'sitemap_and_crawled_pages':len(pages),'unique_internal_targets':len(targets),
+                'confirmed_missing_or_network_error':issues,'access_limited_or_server_error':blocked,
+                'off_domain_redirects':redirects,'missing_local_fragments':list(map(lambda x:{'page':x[0][0],'fragment':x[0][1]},hashes.items()))[:50],
+                'page_statuses':[{**{'url':url},**data} for url,data in pages.items() if data['status']!=200]}
+              print('SITE_SUMMARY',root,'pages',len(pages),'links',len(targets),'missing/network',len(issues),'blocked/server',len(blocked),'offdomain redirects',len(redirects))
+              for item in issues: print('INTERNAL_BROKEN',json.dumps(item,ensure_ascii=False))
+              for item in blocked: print('INTERNAL_UNCERTAIN',json.dumps(item,ensure_ascii=False))
+              for item in redirects: print('INTERNAL_REDIRECT_OFFDOMAIN',json.dumps(item,ensure_ascii=False))
+              for item in report[root]['missing_local_fragments']:print('MISSING_FRAGMENT',json.dumps(item,ensure_ascii=False))
+          ext=list(all_externals.items())
+          print('EXTERNAL_UNIQUE_TOTAL',len(ext))
+          def test_ext(pair):
+              link,origins=pair
+              r=fetch(link,25000)
+              code=r['status']
+              return {'url':link,'status':code,'final':r['final'],'references':list(origins)[:3],'error':r.get('error','')}
+          with ThreadPoolExecutor(max_workers=12) as pool:
+              external_results=list(pool.map(test_ext,ext[:400]))
+          report['external']={'checked':len(external_results),'capped':len(ext)>400,
+            'confirmed_missing':[x for x in external_results if x['status'] in (404,410,451)],
+            'access_limited_or_server_error':[x for x in external_results if x['status'] in (0,401,403,429,500,502,503,504)],
+            'unexpected_redirects':[x for x in external_results if x['status'] in (200,301,302) and host(x['url'])!=host(x['final'])],
+            'all':external_results}
+          print('EXTERNAL_SUMMARY','checked',len(external_results),'confirmed missing',len(report['external']['confirmed_missing']),'restricted/server',len(report['external']['access_limited_or_server_error']))
+          for x in report['external']['confirmed_missing']:print('EXTERNAL_BROKEN',json.dumps(x,ensure_ascii=False))
+          for x in report['external']['access_limited_or_server_error']:print('EXTERNAL_UNCERTAIN',json.dumps(x,ensure_ascii=False))
+          for x in report['external']['unexpected_redirects']:print('EXTERNAL_REDIRECT',json.dumps(x,ensure_ascii=False))
+          Path('audit-result.json').write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf-8')
+          print('READ_ONLY_AUDIT_COMPLETE')
+          
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: read-only-public-sites-link-audit
+          path: audit-result.json
