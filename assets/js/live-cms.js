@@ -249,6 +249,56 @@
     return archive;
   };
 
+
+  // Keep event metadata aligned with the CMS and exclude archived performances.
+  const updateLiveStructuredData = events => {
+    document.getElementById('live-events-jsonld')?.remove();
+    const nodes = events.flatMap((event, index) => {
+      const name = value(event, 'title');
+      const startDate = value(event, 'event_date');
+      const venue = value(event, 'venue_' + language) || value(event, 'venue_en');
+      if (!name || !venue || !/^\d{4}-\d{2}-\d{2}$/.test(startDate)) return [];
+
+      const [placeName, ...cityParts] = venue.split(/\s*[·•]\s*/);
+      if (!placeName.trim()) return [];
+      const city = cityParts.join(' ').trim();
+      const slug = name.toLowerCase().normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '') || 'show';
+      const eventNode = {
+        '@type': 'MusicEvent',
+        '@id': 'https://steliossioulas.gr/live.html#event-' + startDate + '-' + slug + '-' + (index + 1),
+        name,
+        startDate,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: placeName.trim(),
+          ...(city ? { address: {
+            '@type': 'PostalAddress',
+            addressLocality: city,
+            addressCountry: 'GR'
+          } } : {})
+        },
+        performer: { '@id': 'https://steliossioulas.gr/#person' }
+      };
+      const description = value(event, 'description_' + language) || value(event, 'description_en');
+      const image = safeUrl(value(event, 'poster'));
+      const url = safeUrl(value(event, 'url_' + language) || value(event, 'url'));
+      if (description) eventNode.description = description;
+      if (image) eventNode.image = new URL(image, window.location.href).href;
+      if (url) eventNode.url = new URL(url, window.location.href).href;
+      return [eventNode];
+    });
+    if (!nodes.length) return;
+    const script = document.createElement('script');
+    script.id = 'live-events-jsonld';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': nodes });
+    document.head.appendChild(script);
+  };
+
   fetch('data/live.json', { cache: 'no-cache' })
     .then(response => {
       if (!response.ok) throw new Error('LIVE data could not be loaded');
@@ -258,6 +308,7 @@
       const settings = data.section || {};
       const sourceEvents = Array.isArray(data.events) ? data.events : [];
       const allUpcoming = upcomingEvents(sourceEvents);
+      if (fullPage) updateLiveStructuredData(allUpcoming);
       const allPast = fullPage ? pastEvents(sourceEvents) : [];
       const events = fullPage ? allUpcoming : allUpcoming.slice(0, 2);
       const label = section.querySelector('.section-label');
